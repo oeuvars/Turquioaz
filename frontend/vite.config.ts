@@ -14,7 +14,15 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  resolve: {
+    alias: {
+      '@supabase/supabase-js': '@supabase/supabase-js/dist/main.js',
+    },
+  },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      external: ['@supabase/supabase-js'],
+    },
   },
 });

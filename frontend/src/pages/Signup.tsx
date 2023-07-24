@@ -38,7 +38,12 @@ const Signup: Component = () => {
         }
       }
     )
-    navigate("/")
+    if (data.user) {
+      navigate("/")
+    }
+    else {
+      alert(error)
+    }
   };
 
   return (

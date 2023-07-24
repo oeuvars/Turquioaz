@@ -119,7 +119,7 @@ const CarSpecifications: CarSpecifications[] = [
         id: uniqueId(),
         name: "Odyssey",
         transmission: "Automatic",
-        fuelType: "Petrol",
+        fuelType: "Diesel",
         seatNumbers: 7,
         condition: "Used",
         price: 30000,

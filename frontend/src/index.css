@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #131b1c;
+  scrollbar-width: none;
+  @apply text-[#F2EEC0];
+}
+
+@font-face {
+  font-family: Suntage;
+  src: url("/src/assets/fonts/Suntage.ttf");
+}
+
+@font-face {
+  font-family: Mabry-Regular;
+  src: url("../src/assets/fonts/MabryPro-Regular.ttf");
+}
+
+@font-face {
+  font-family: Mabry-Light;
+  src: url("../src/assets/fonts/MabryPro-Light.ttf");
+}
+
+@font-face {
+  font-family: Helvetica;
+  src: url("/src/assets/fonts/Helvetica.ttf");
+}
+@font-face {
+  font-family: Loubag;
+  src: url("/src/assets/fonts/Loubag-Bold.ttf");
+}
+@font-face {
+  font-family: Chloe;
+  src: url("/src/assets/fonts/Chloe.otf");
+}
+@font-face {
+  font-family: Draper;
+  src: url("/src/assets/fonts/Draper.otf");
+}
+@font-face {
+  font-family: Quiny;
+  src: url("/src/assets/fonts/quiny.ttf");
+}
+@font-face {
+  font-family: Mauline;
+  src: url("/src/assets/fonts/Mauline.otf");
+}
+@font-face {
+  font-family: Mabry;
+  src: url("/src/assets/fonts/MabryPro-Medium.ttf");
+}
+
+.blur {
+  backdrop-filter: blur(5px);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+.scroll {
+  scrollbar-width: none;
+}
+html {
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+.ciao {
+  background: #a1ffce; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #faffd1,
+    #a1ffce
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #faffd1,
+    #a1ffce
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

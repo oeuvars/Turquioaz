@@ -1,0 +1,522 @@
+[
+    {
+      "brand": "Toyota",
+      "models": [
+        {
+          "name": "Camry",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Corolla",
+          "transmission": "Manual",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "RAV4",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Highlander",
+          "transmission": "Automatic",
+          "fuelType": "Hybrid",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "Prius",
+          "transmission": "Automatic",
+          "fuelType": "Hybrid",
+          "seatNumbers": 5,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Honda",
+      "models": [
+        {
+          "name": "Civic",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Accord",
+          "transmission": "CVT",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "CR-V",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Pilot",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 8,
+          "condition": "New"
+        },
+        {
+          "name": "Odyssey",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Ford",
+      "models": [
+        {
+          "name": "F-150",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 6,
+          "condition": "New"
+        },
+        {
+          "name": "Mustang",
+          "transmission": "Manual",
+          "fuelType": "Petrol",
+          "seatNumbers": 4,
+          "condition": "Used"
+        },
+        {
+          "name": "Explorer",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "Used"
+        },
+        {
+          "name": "Escape",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Focus",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Chevrolet",
+      "models": [
+        {
+          "name": "Silverado",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Camaro",
+          "transmission": "Manual",
+          "fuelType": "Petrol",
+          "seatNumbers": 4,
+          "condition": "Used"
+        },
+        {
+          "name": "Equinox",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Traverse",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "Malibu",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Volkswagen",
+      "models": [
+        {
+          "name": "Golf",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Passat",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Tiguan",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Jetta",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Atlas",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "BMW",
+      "models": [
+        {
+          "name": "3 Series",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "5 Series",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "X3",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "X5",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "i8",
+          "transmission": "Automatic",
+          "fuelType": "Electric",
+          "seatNumbers": 2,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Mercedes-Benz",
+      "models": [
+        {
+          "name": "C-Class",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "E-Class",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "GLC",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "GLE",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "S-Class",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Audi",
+      "models": [
+        {
+          "name": "A4",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "A6",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Q5",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Q7",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "TT",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 2,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Lexus",
+      "models": [
+        {
+          "name": "ES",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "RX",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "NX",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "LS",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "GX",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Nissan",
+      "models": [
+        {
+          "name": "Altima",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Maxima",
+          "transmission": "CVT",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Rogue",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Pathfinder",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "Frontier",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Mazda",
+      "models": [
+        {
+          "name": "Mazda3",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Mazda6",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "CX-5",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "CX-9",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "MX-5 Miata",
+          "transmission": "Manual",
+          "fuelType": "Petrol",
+          "seatNumbers": 2,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Hyundai",
+      "models": [
+        {
+          "name": "Elantra",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Sonata",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Tucson",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Santa Fe",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "Kona",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        }
+      ]
+    },
+    {
+      "brand": "Kia",
+      "models": [
+        {
+          "name": "Optima",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "New"
+        },
+        {
+          "name": "Sorento",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "Used"
+        },
+        {
+          "name": "Sportage",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        },
+        {
+          "name": "Telluride",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 7,
+          "condition": "New"
+        },
+        {
+          "name": "Forte",
+          "transmission": "Automatic",
+          "fuelType": "Petrol",
+          "seatNumbers": 5,
+          "condition": "Used"
+        }
+      ]
+    }
+  ]

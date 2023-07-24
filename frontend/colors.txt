@@ -1,0 +1,3 @@
+Background Color: #243133
+Button Color: #EBD162
+Text Color: #F2EEC0

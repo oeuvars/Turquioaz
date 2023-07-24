@@ -1,0 +1,110 @@
+.link--dia {
+  font-family: Loubag, serif;
+  color: beige;
+  opacity: 0.7;
+}
+
+.link--dia::before,
+.link--dia::after {
+  opacity: 0;
+  transform-origin: 50% 0%;
+  transform: translate3d(0, 3px, 0);
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.8, 1);
+}
+
+.link--dia:hover::before,
+.link--dia:hover::after {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-timing-function: cubic-bezier(0.2, 0, 0.3, 1);
+}
+.content__item {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  counter-increment: itemcounter;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.content__item::before {
+  color: var(--color-number);
+  top: 0;
+  left: 0;
+  content: counters(itemcounter, ".", decimal-leading-zero);
+}
+
+.link--dia::after {
+  content: "";
+  top: calc(100% + 4px);
+  width: 70%;
+  left: 15%;
+}
+
+.link--dia::before,
+.link--dia:hover::after {
+  transition-delay: 0.1s;
+}
+
+.link--dia:hover::before {
+  transition-delay: 0s;
+}
+.link {
+  cursor: pointer;
+  font-size: 7.2rem;
+  white-space: nowrap;
+}
+
+.link::before,
+.link::after {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  top: 100%;
+  left: 0;
+  pointer-events: none;
+}
+
+.link::before {
+  content: "";
+  /* show by default */
+}
+
+hr.style {
+  height: 30px;
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+hr.style:before {
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}
+
+hr.style-two {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    #F2EEC0,
+    rgba(0, 0, 0, 0)
+  );
+}
+.verticalLine {
+  border-left: thick solid #ff0000;
+}

@@ -206,35 +206,3 @@ app.get("/users/yourwishlist", authenticateJwt, (req, res) => {
     res.status(403).json({ message: "User not found" });
   }
 });
-
-app.post("/users/cars/cart/:carId", authenticateJwt, (req, res) => {
-  const car = CARS.find((c) => c.id === parseInt(req.params.carId));
-  if (car) {
-    const user = USERS.find((u) => u.username === req.user.username);
-    if (user) {
-      if (!user.yourcart) {
-        user.yourcart = [];
-      }
-      user.yourcart.push(car);
-      fs.writeFileSync("users.json", JSON.stringify(USERS));
-      res.json({
-        message: "Ride is in your cart",
-      });
-    } else {
-      res.status(403).json({ message: "User not found" });
-    }
-  } else {
-    res.status(404).json({ message: "Car not found" });
-  }
-});
-
-app.get("/users/yourcart", authenticateJwt, (req, res) => {
-  const user = USERS.find((u) => u.username === req.user.username);
-  if (user) {
-    res.json({ yourcart: user.yourcart || [] });
-  } else {
-    res.status(403).json({ message: "User not found" });
-  }
-});
-
-app.listen(PORT, () => console.log("Server running on port 4000"));

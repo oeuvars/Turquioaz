@@ -32,7 +32,7 @@ try {
 }
 console.log(ADMINS);
 
-const hiddenkey = "softhack@2023";
+const hiddenkey = "car&cars";
 
 const authenticateJwt = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -202,36 +202,6 @@ app.get("/users/yourwishlist", authenticateJwt, (req, res) => {
   const user = USERS.find((u) => u.username === req.user.username);
   if (user) {
     res.json({ yourwishlist: user.yourwishlist || [] });
-  } else {
-    res.status(403).json({ message: "User not found" });
-  }
-});
-
-app.post("/users/cars/cart/:carId", authenticateJwt, (req, res) => {
-  const car = CARS.find((c) => c.id === parseInt(req.params.carId));
-  if (car) {
-    const user = USERS.find((u) => u.username === req.user.username);
-    if (user) {
-      if (!user.yourcart) {
-        user.yourcart = [];
-      }
-      user.yourcart.push(car);
-      fs.writeFileSync("users.json", JSON.stringify(USERS));
-      res.json({
-        message: "Ride is in your cart",
-      });
-    } else {
-      res.status(403).json({ message: "User not found" });
-    }
-  } else {
-    res.status(404).json({ message: "Car not found" });
-  }
-});
-
-app.get("/users/yourcart", authenticateJwt, (req, res) => {
-  const user = USERS.find((u) => u.username === req.user.username);
-  if (user) {
-    res.json({ yourcart: user.yourcart || [] });
   } else {
     res.status(403).json({ message: "User not found" });
   }

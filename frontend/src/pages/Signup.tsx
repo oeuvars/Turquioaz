@@ -42,7 +42,7 @@ const Signup: Component = () => {
       navigate("/")
     }
     else {
-      alert(error)
+      navigate('/signUp')
     }
   };
 

@@ -8,7 +8,7 @@ import Cart from "../pages/Cart";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Contact from "../pages/Contact";
-import Collection from "../pages/Collection";
+import Model from "../pages/Model";
 import User from "../pages/User";
 import Wishlist from "../pages/Wishlist";
 
@@ -21,7 +21,7 @@ const AppRoutes: Component = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collections" element={<Collections />} />
-        <Route path="/collections/:slug" element={<Collection/>} />
+        <Route path="/model/:slug" element={<Model/>} />
         <Route path="/search" element={<Search />} />
         <Route path="/info" element={<Info />} />
         <Route path="/cart" element={<Cart />} />

@@ -4,7 +4,7 @@ import CarSpecifications from "../collections/CarSpecifications";
 import image from "../assets/images/rosario-gianni-2qQ2uVKjZsI-unsplash.jpg";
 import Stripe from "stripe";
 
-const Collection: Component = () => {
+const Model: Component = () => {
   const calculateRentPrice = (
     rentPrice: number,
     numberOfDays: number
@@ -115,4 +115,4 @@ const Collection: Component = () => {
   );
 };
 
-export default Collection;
+export default Model;

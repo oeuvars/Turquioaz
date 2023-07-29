@@ -1,9 +1,7 @@
 import { Component, createSignal, createEffect } from "solid-js";
 import Card from "../components/Card";
 import CarSpecifications from "../collections/CarSpecifications";
-import Divider from "../components/Divider";
 import linedivider from "../assets/images/line.svg";
-import { useTopFilterContext } from "../utils/TopFilterContext";
 
 const Collections: Component = () => {
   const [currentPage, setCurrentPage] = createSignal(1);
@@ -11,7 +9,6 @@ const Collections: Component = () => {
   const [selectedFuel, setSelectedFuel] = createSignal("Any");
   const [selectedSeats, setSelectedSeats] = createSignal(2);
   const [selectedCondition, setSelectedCondition] = createSignal("All");
-  const { selectedBrand, setSelectedBrand, selectedModel, setSelectedModel } = useTopFilterContext();
   const cardsPerPage = 4;
   const totalCards = CarSpecifications.flatMap((brand) => brand.models).length;
   const totalPages = Math.ceil(totalCards / cardsPerPage);

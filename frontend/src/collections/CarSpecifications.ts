@@ -1,3 +1,4 @@
+import { createUniqueId } from "solid-js";
 export type CarSpecifications = {
   brand: string;
   models: {
@@ -11,17 +12,12 @@ export type CarSpecifications = {
     rentPrice: number;
   }[];
 };
-const uniqueId = () => {
-  const dateString = Date.now().toString(36);
-  const randomness = Math.random().toString(36).substr(2);
-  return dateString + randomness;
-};
 const CarSpecifications: CarSpecifications[] = [
   {
     brand: "Toyota",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Camry",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -31,7 +27,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Corolla",
         transmission: "Manual",
         fuelType: "Petrol",
@@ -41,7 +37,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 100,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "RAV4",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -51,7 +47,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 120,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Highlander",
         transmission: "Automatic",
         fuelType: "Hybrid",
@@ -61,7 +57,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 200,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Prius",
         transmission: "Automatic",
         fuelType: "Hybrid",
@@ -76,7 +72,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Honda",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Civic",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -86,9 +82,9 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 130,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Accord",
-        transmission: "CVT",
+        transmission: "Automatic",
         fuelType: "Petrol",
         seatNumbers: 5,
         condition: "Used",
@@ -96,7 +92,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 110,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "CR-V",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -106,7 +102,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Pilot",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -116,7 +112,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 200,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Odyssey",
         transmission: "Automatic",
         fuelType: "Diesel",
@@ -131,7 +127,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Ford",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "F-150",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -141,7 +137,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 220,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Mustang",
         transmission: "Manual",
         fuelType: "Petrol",
@@ -151,7 +147,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 170,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Explorer",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -161,7 +157,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 190,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Escape",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -171,7 +167,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Focus",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -186,7 +182,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Chevrolet",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Silverado",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -196,7 +192,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 220,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Camaro",
         transmission: "Manual",
         fuelType: "Petrol",
@@ -206,7 +202,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 190,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Equinox",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -216,7 +212,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 180,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Traverse",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -226,7 +222,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 250,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Malibu",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -241,7 +237,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Volkswagen",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Golf",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -251,7 +247,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 130,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Passat",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -261,7 +257,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 120,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Tiguan",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -271,7 +267,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Jetta",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -281,7 +277,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 140,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Atlas",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -296,7 +292,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "BMW",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "3 Series",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -306,7 +302,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 220,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "5 Series",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -316,7 +312,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 280,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "X3",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -326,7 +322,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 250,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "X5",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -336,7 +332,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 350,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "i8",
         transmission: "Automatic",
         fuelType: "Electric",
@@ -351,7 +347,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Mercedes-Benz",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "C-Class",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -361,7 +357,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 250,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "E-Class",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -371,7 +367,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 320,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "GLC",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -381,7 +377,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 280,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "GLE",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -391,7 +387,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 380,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "S-Class",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -406,7 +402,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Audi",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "A4",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -416,7 +412,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 220,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "A6",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -426,7 +422,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 280,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Q5",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -436,7 +432,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 250,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Q7",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -446,7 +442,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 350,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "TT",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -461,7 +457,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Lexus",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "ES",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -471,7 +467,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 250,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "RX",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -481,7 +477,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 320,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "NX",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -491,7 +487,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 280,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "LS",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -501,7 +497,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 380,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "GX",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -516,7 +512,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Nissan",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Altima",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -526,9 +522,9 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 130,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Maxima",
-        transmission: "CVT",
+        transmission: "Automatic",
         fuelType: "Petrol",
         seatNumbers: 5,
         condition: "Used",
@@ -536,7 +532,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Rogue",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -546,7 +542,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 180,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Pathfinder",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -556,7 +552,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 200,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Frontier",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -571,7 +567,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Mazda",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Mazda3",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -581,7 +577,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 140,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Mazda6",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -591,7 +587,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 160,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "CX-5",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -601,7 +597,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 180,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "CX-9",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -611,7 +607,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 240,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "MX-5",
         transmission: "Manual",
         fuelType: "Petrol",
@@ -626,7 +622,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Hyundai",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Elantra",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -636,7 +632,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 130,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Sonata",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -646,7 +642,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Tucson",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -656,7 +652,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 160,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Santa Fe",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -666,7 +662,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 220,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Kona",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -681,7 +677,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Kia",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Optima",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -691,7 +687,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 140,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Sorento",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -701,7 +697,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 200,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Sportage",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -711,7 +707,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 160,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Telluride",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -721,7 +717,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 240,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Forte",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -736,7 +732,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Subaru",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Impreza",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -746,7 +742,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Outback",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -756,7 +752,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 180,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Forester",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -766,7 +762,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 160,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Legacy",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -776,7 +772,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 200,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Crosstrek",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -791,7 +787,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Jeep",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Wrangler",
         transmission: "Manual",
         fuelType: "Petrol",
@@ -801,7 +797,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 220,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Cherokee",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -811,7 +807,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 180,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Grand Cherokee",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -821,7 +817,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 240,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Renegade",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -831,7 +827,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 150,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Compass",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -846,7 +842,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Volvo",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "S60",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -856,7 +852,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 240,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "S90",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -866,7 +862,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 280,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "XC40",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -876,7 +872,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 250,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "XC60",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -886,7 +882,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 300,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "XC90",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -901,7 +897,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Porsche",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "911",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -911,7 +907,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 500,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Cayenne",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -921,7 +917,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 450,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Macan",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -931,7 +927,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 400,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Panamera",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -941,7 +937,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 550,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Boxster",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -956,7 +952,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Tesla",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Model 3",
         transmission: "Automatic",
         fuelType: "Electric",
@@ -966,7 +962,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 300,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Model S",
         transmission: "Automatic",
         fuelType: "Electric",
@@ -976,7 +972,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 500,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Model X",
         transmission: "Automatic",
         fuelType: "Electric",
@@ -986,7 +982,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 550,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Model Y",
         transmission: "Automatic",
         fuelType: "Electric",
@@ -996,7 +992,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 350,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Cybertruck",
         transmission: "Automatic",
         fuelType: "Electric",
@@ -1011,7 +1007,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Ferrari",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "458 Italia",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -1021,7 +1017,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 1500,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "F8 Tributo",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -1031,7 +1027,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 1800,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "812 Superfast",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -1041,7 +1037,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 2000,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Portofino",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -1051,7 +1047,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 1600,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "SF90 Stradale",
         transmission: "Automatic",
         fuelType: "Hybrid",
@@ -1066,7 +1062,7 @@ const CarSpecifications: CarSpecifications[] = [
     brand: "Lamborghini",
     models: [
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Huracan",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -1076,7 +1072,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 1800,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Aventador",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -1086,7 +1082,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 2400,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Urus",
         transmission: "Automatic",
         fuelType: "Petrol",
@@ -1096,7 +1092,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 2000,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Sian",
         transmission: "Automatic",
         fuelType: "Hybrid",
@@ -1106,7 +1102,7 @@ const CarSpecifications: CarSpecifications[] = [
         rentPrice: 15000,
       },
       {
-        id: uniqueId(),
+        id: createUniqueId(),
         name: "Veneno",
         transmission: "Automatic",
         fuelType: "Petrol",

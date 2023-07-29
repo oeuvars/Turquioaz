@@ -29,7 +29,7 @@ const Model: Component = () => {
   });
 
   const createCheckoutSession = async () => {
-   const cancelUrl = "/collections"
+   const cancelUrl = "https://rent-ride-three.vercel.app/collections"
     try {
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -50,7 +50,7 @@ const Model: Component = () => {
         },
         mode: "payment",
         billing_address_collection: "auto",
-        success_url: "/success", // Replace with your success URL
+        success_url: "https://rent-ride-three.vercel.app/success", // Replace with your success URL
         cancel_url: cancelUrl, // Replace with your cancel URL
       });
 

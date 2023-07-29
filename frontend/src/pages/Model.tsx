@@ -50,7 +50,7 @@ const Model: Component = () => {
         },
         mode: "payment",
         billing_address_collection: "auto",
-        success_url: "https://rent-ride-three.vercel.app/success", // Replace with your success URL
+        success_url: "https://rent-ride-three.vercel.app", // Replace with your success URL
         cancel_url: cancelUrl, // Replace with your cancel URL
       });
 

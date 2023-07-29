@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import User from "./pages/User";
 import { useNavigate } from "@solidjs/router";
 
+export const origin = window.location.href
+
 const App: Component = () => {
   const [session, setSession] = createSignal<AuthSession | null>(null);
   const navigate = useNavigate();

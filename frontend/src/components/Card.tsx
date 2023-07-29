@@ -3,7 +3,7 @@ import passenger from "../assets/svgs/person.svg";
 import steering from "../assets/svgs/wheel.svg";
 import fuel from "../assets/svgs/fuel-pump.svg";
 import love from "../assets/svgs/love.svg";
-import { A, Link, useParams } from "@solidjs/router";
+import { A } from "@solidjs/router";
 import { supabase } from "../auth/supabaseClient";
 
 interface Model {
@@ -31,7 +31,7 @@ const Card: Component<CardProps> = (props) => {
 
         const { data, error: insertError } = await supabase
           .from("wishlist")
-          .insert({ cardId: model.id, userId: user!.id });
+          .insert({ cardId: model.id, userId: user!.id, name: model.name, transmission: model.transmission, fuelType: model.fuelType, seatNumbers: model.seatNumbers, condition: model.condition, price:model.price, rentPrice: model.rentPrice });
 
         if (insertError) {
           throw insertError;

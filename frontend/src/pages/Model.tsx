@@ -3,7 +3,6 @@ import { A, useParams } from "@solidjs/router";
 import CarSpecifications from "../collections/CarSpecifications";
 import image from "../assets/images/rosario-gianni-2qQ2uVKjZsI-unsplash.jpg";
 import Stripe from "stripe";
-import { origin } from "../App";
 
 const Model: Component = () => {
   const calculateRentPrice = (
@@ -29,9 +28,7 @@ const Model: Component = () => {
     apiVersion: "2022-11-15",
   });
 
-
   const createCheckoutSession = async () => {
-   const cancelUrl = `${origin}/collections`
     try {
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -52,8 +49,8 @@ const Model: Component = () => {
         },
         mode: "payment",
         billing_address_collection: "auto",
-        success_url: `${origin}`,
-        cancel_url: cancelUrl,
+        success_url: "https://rent-ride-three.vercel.app/",
+        cancel_url: "https://rent-ride-three.vercel.app/collections",
       });
 
       if (session.url) {

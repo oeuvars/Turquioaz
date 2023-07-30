@@ -49,7 +49,7 @@ const Model: Component = () => {
         },
         mode: "payment",
         billing_address_collection: "auto",
-        success_url: `${origin}/success`,
+        success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${origin}/collections`,
       });
 

@@ -8,6 +8,7 @@
     "build": "vite build",
     "serve": "vite preview"
   },
+  "proxy": "https://rent-ride-three.vercel.app/",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.14",

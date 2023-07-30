@@ -25,9 +25,6 @@ const App: Component = () => {
     if(!user) {
       navigate("/login")
     }
-    else {
-      navigate("/")
-    }
   });
   return (
     <div class="">

@@ -6,6 +6,7 @@ const path = require("path")
 const cors = require('cors');
 const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 4000;
+import { selectedDay, selectedModel } from "../frontend/src/pages/Model"
 
 app.use(express.json());
 app.use(cors());
@@ -235,6 +236,11 @@ app.get("/users/yourcart", authenticateJwt, (req, res) => {
   } else {
     res.status(403).json({ message: "User not found" });
   }
+});
+
+const Key = import.meta.env.VITE_STRIPE_SECRET_KEY;
+const stripe = new Stripe(Key, {
+  apiVersion: "2022-11-15",
 });
 
 app.listen(PORT, () => console.log("Server running on port 4000"));

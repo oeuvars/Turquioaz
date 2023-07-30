@@ -12,6 +12,7 @@ import Model from "../pages/Model";
 import User from "../pages/User";
 import Wishlist from "../pages/Wishlist";
 import Success from "../pages/Success";
+import App from "../App";
 
 const hideNavbarpages = ["/success", "/login"]
 

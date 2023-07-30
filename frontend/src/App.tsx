@@ -24,7 +24,8 @@ const App: Component = () => {
     const { data: { user } } = await supabase.auth.getUser()
     if(!user) {
       navigate("/login")
-    } else {
+    }
+    else {
       navigate("/")
     }
   });

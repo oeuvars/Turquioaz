@@ -3,6 +3,7 @@ import { A, useParams } from "@solidjs/router";
 import CarSpecifications from "../collections/CarSpecifications";
 import image from "../assets/images/rosario-gianni-2qQ2uVKjZsI-unsplash.jpg";
 import Stripe from "stripe";
+import { origin } from "../App";
 
 const Model: Component = () => {
   const calculateRentPrice = (
@@ -49,8 +50,8 @@ const Model: Component = () => {
         },
         mode: "payment",
         billing_address_collection: "auto",
-        success_url: "https://rent-ride-three.vercel.app/",
-        cancel_url: "https://rent-ride-three.vercel.app/collections",
+        success_url: `${origin}/success`,
+        cancel_url: `${origin}/collections`,
       });
 
       if (session.url) {

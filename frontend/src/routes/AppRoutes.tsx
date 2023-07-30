@@ -11,6 +11,7 @@ import Contact from "../pages/Contact";
 import Model from "../pages/Model";
 import User from "../pages/User";
 import Wishlist from "../pages/Wishlist";
+import Success from "../pages/Success";
 
 const hideNavbarpages = ["/success", "/login"]
 
@@ -30,6 +31,7 @@ const AppRoutes: Component = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/user" element={<User />} />
         <Route path="/wishlist" element={<Wishlist />}/>
+        <Route path="/success" element={<Success />}/>
       </Routes>
   );
 };

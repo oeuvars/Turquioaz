@@ -52,7 +52,7 @@ const Model = () => {
       cancel_url: `${origin}/collections`,
     });
     if (session.url) {
-      window.location.href = session.url;
+      window.open(session.url, '_blank');
     } else {
       console.error(
         "Error creating Stripe Checkout session: Session URL is null."

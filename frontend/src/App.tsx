@@ -20,12 +20,12 @@ const App: Component = () => {
       setSession(session);
     });
   });
-  createEffect(async () => {
-    const { data: { user } } = await supabase.auth.getUser()
-    if(!user) {
-      navigate("/login")
-    }
-  });
+  // createEffect(async () => {
+  //   const { data: { user } } = await supabase.auth.getUser()
+  //   if(!user) {
+  //     navigate("/login")
+  //   }
+  // });
   return (
     <div class="">
       {session() ? (

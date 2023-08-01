@@ -5,9 +5,8 @@ import image from "../assets/images/rosario-gianni-2qQ2uVKjZsI-unsplash.jpg";
 import Stripe from "stripe";
 import { useNavigate } from "@solidjs/router";
 
-const navigate = useNavigate();
-
 const Model = () => {
+  const navigate = useNavigate();
   const calculateRentPrice = (
     rentPrice: number,
     numberOfDays: number
@@ -16,10 +15,11 @@ const Model = () => {
   };
 
   const timeout = () =>{
-    navigate('${origin}')
+    navigate("/")
     setTimeout(()=>{
-      navigate('${origin}/collections')
+      navigate("/collections")
     },1000)
+    console.log("Hi")
     return ""
   }
   const params = useParams();
@@ -57,9 +57,7 @@ const Model = () => {
         allowed_countries: ["IN"],
       },
       mode: "payment",
-      success_url: `${origin}/success`,
-
-      cancel_url: timeout(),
+      success_url: `${origin}`,
     });
     if (session.url) {
       window.open(session.url, '_blank');

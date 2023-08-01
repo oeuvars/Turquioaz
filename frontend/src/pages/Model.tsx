@@ -3,6 +3,9 @@ import { A, useParams } from "@solidjs/router";
 import CarSpecifications from "../collections/CarSpecifications";
 import image from "../assets/images/rosario-gianni-2qQ2uVKjZsI-unsplash.jpg";
 import Stripe from "stripe";
+import { useNavigate } from "@solidjs/router";
+
+const navigate = useNavigate();
 
 const Model = () => {
   const calculateRentPrice = (
@@ -12,6 +15,13 @@ const Model = () => {
     return rentPrice * numberOfDays;
   };
 
+  const timeout = () =>{
+    navigate('${origin}')
+    setTimeout(()=>{
+      navigate('${origin}/collections')
+    },1000)
+    return ""
+  }
   const params = useParams();
   const selectedBrand = CarSpecifications.find((brand) =>
     brand.models.some((model) => model.id === params.slug)
@@ -49,7 +59,7 @@ const Model = () => {
       mode: "payment",
       success_url: `${origin}/success`,
 
-      cancel_url: `${origin}/collections`,
+      cancel_url: timeout(),
     });
     if (session.url) {
       window.open(session.url, '_blank');
@@ -57,6 +67,7 @@ const Model = () => {
       console.error(
         "Error creating Stripe Checkout session: Session URL is null."
       );
+
     }
   };
   return (

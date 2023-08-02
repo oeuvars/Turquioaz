@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import { ParentComponent } from "solid-js";
-import ferrari from "../../assets/images/cars/About2.jpg";
+import ferrari from "../../assets/images/cars/About2.webp";
 import Line from "../../components/Line";
 import "../../components/underline.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
@@ -86,9 +86,9 @@ const Shop: ParentComponent = () => {
 
           <img
             src={ferrari}
-            class="rounded-md w-11/12 flex mx-auto saturate-150 mt-5"
+            class="rounded-md w-11/12 flex mx-auto saturate-150 mt-4"
           />
-          <div class="justify-between w-11/12 mx-auto mt-5">
+          <div class="justify-between w-11/12 mx-auto mt-4">
             <div class="bg-white filter backdrop-blur-sm py-3 rounded-xl bg-opacity-10 mb-3">
               <h1 class="font-loubag text-2xl mb-5 bg-gradient-to-r from-yellow-200 to-amber-500 bg-clip-text text-transparent text-center">
                 360+

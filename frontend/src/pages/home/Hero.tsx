@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import cover from "../../assets/images/cover/cover2.jpg";
+import cover from "../../assets/images/cover/cover2.webp";
 import mercedes from "../../assets/svgs/merc.svg";
 import useMediaQuery from "../../hooks/useMediaQuery";
 

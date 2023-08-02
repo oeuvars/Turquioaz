@@ -23,7 +23,7 @@ const Hero: Component = () => {
           />
         </>
       ) : (
-        <div class="-mt-7">
+        <div class="">
           <div class="justify-between w-11/12 flex mx-auto">
             <img src={mercedes} class="w-[10rem] absolute justify-center flex" />
           </div>

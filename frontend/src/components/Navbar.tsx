@@ -7,7 +7,8 @@ import { IoClose } from "solid-icons/io";
 import { supabase } from "../auth/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import arrow from "../assets/svgs/upper-right-arrow.svg";
-import logout from "../assets/svgs/logout.svg"
+import logout from "../assets/svgs/logout.svg";
+import cross from "../assets/svgs/cross.svg";
 import { useNavigate } from "@solidjs/router";
 import wish from "../assets/svgs/wish-list.png";
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -88,21 +89,21 @@ const Navbar: Component = () => {
           <img src={wish} class="lg:w-12 lg:h-12 phone:w-7 phone:h-7" />
         </A>
         <Show when={isDropdownOpen()}>
-          <div class="flex absolute mt-20 bg-white/10 backdrop-blur-sm w-32 rounded-md shadow-md h-10 overflow-scroll scroll border-white/10 border">
-            <button
-              onClick={handleClick}
-              class="font-mabry-regular text-white p-2 z-40 cursor-pointer"
-            >
-              Log Out
-
+          <div class="flex justify-between absolute phone:-ml-20 lg:-ml-10 lg:mt-20 phone:mt-[3.3rem] bg-white/10 backdrop-blur-sm w-40 rounded-md shadow-md phone:h-12 lg:h-16 overflow-scroll scroll border-white/10 border">
+            <div class="flex">
+              <button
+                onClick={handleClick}
+                class="font-mabry-regular text-white p-2 z-40 cursor-pointer"
+              >
+                Log Out
+              </button>
+              <button onClick={handleClick}>
+                <img src={logout} class="w-7 h-7 my-auto" />
+              </button>
+            </div>
+            <button onClick={closeDropdown}>
+              <img src={cross} class="w-6 h-6 mr-2" />
             </button>
-            <img src={logout} class="w-7 h-7 my-auto"/>
-            <div class="flex pl-[100px] fixed z-10 mt-[7px]">
-              <IoClose
-                class="text-white w-6 h-6 cursor-pointer"
-                onClick={closeDropdown}
-              />
-            i</div>
           </div>
         </Show>
       </div>

@@ -6,7 +6,7 @@ import Hero from "./home/Hero";
 
 const Home: ParentComponent = () => {
   return (
-    <div class="mt-16">
+    <div class="phone:mt-7 lg:mt-16">
       <Hero />
       <Services />
       <Shop />

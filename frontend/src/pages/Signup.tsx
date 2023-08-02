@@ -47,22 +47,22 @@ const Signup: Component = () => {
   };
 
   return (
-    <div class='w-1/4 mx-auto bg-white/10 border border-white/10 py-10 px-5 mt-40 rounded-lg shadow-lg'>
+    <div class='phone:w-11/12 lg:w-1/4 mx-auto bg-white/10 border border-white/10 py-10 px-5 mt-40 rounded-lg shadow-lg'>
       <h1 class='text-center font-mauline text-emerald-700 text-5xl'>Sign Up</h1>
       <img src={line} class='mt-7 mb-5'/>
       <form onSubmit={handleSubmit}>
-        <div class='flex gap-5 w-full mb-5'>
+        <div class='flex gap-5 w-full mb-3'>
             <label class='font-mabry-regular my-auto'>Email:</label>
             <input
-              class='w-[70%] ml-auto rounded-md px-4 py-[8px] bg-white/20 outline-none text-white font-medium font-mabry-regular'
+              class='phone:w-3/5 lg:w-[70%] ml-auto rounded-md px-4 py-[8px] bg-white/20 outline-none text-white font-medium font-mabry-regular'
               type="email" name="email" value={formData().email} onInput={handleChange}
               required
             />
         </div>
-        <div class='flex my-2 gap-5 mb-5'>
+        <div class='flex my-2 gap-5 mb-3'>
           <label class='font-mabry-regular my-auto'>Name:</label>
           <input
-            class='w-[70%] ml-auto rounded-md px-4 py-[8px] bg-white/20 outline-none text-white font-medium font-mabry-regular'
+            class='phone:w-3/5 lg:w-[70%] ml-auto rounded-md px-4 py-[8px] bg-white/20 outline-none text-white font-medium font-mabry-regular'
             type="text" name="name" value={formData().name} onInput={handleChange}
             required
           />
@@ -70,7 +70,7 @@ const Signup: Component = () => {
         <div class='flex my-2 gap-5'>
           <label class='font-mabry-regular my-auto'>Password:</label>
           <input
-            class='w-[70%] ml-auto rounded-md px-4 py-[8px] bg-white/20 outline-none text-white font-medium font-mabry-regular'
+            class='phone:w-3/5 lg:w-[70%] ml-auto rounded-md px-4 py-[8px] bg-white/20 outline-none text-white font-medium font-mabry-regular'
             type="password" name="password" value={formData().password} onInput={handleChange}
             required
           />

@@ -15,10 +15,6 @@ const App: Component = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
   });
   createEffect(async () => {
     const { data: { user } } = await supabase.auth.getUser()

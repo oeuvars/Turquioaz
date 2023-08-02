@@ -35,7 +35,7 @@ const Model = () => {
       line_items: [
         {
           price_data: {
-            currency: "inr",
+            currency: "usd",
             product_data: {
               name: selectedModel!.name,
             },
@@ -45,7 +45,7 @@ const Model = () => {
         },
       ],
       shipping_address_collection: {
-        allowed_countries: ["IN"],
+        allowed_countries: ["US"],
       },
       mode: "payment",
       success_url: `${origin}`,

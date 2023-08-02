@@ -13,15 +13,6 @@ const Model = () => {
   ): number => {
     return rentPrice * numberOfDays;
   };
-
-  const timeout = () =>{
-    navigate("/")
-    setTimeout(()=>{
-      navigate("/collections")
-    },1000)
-    console.log("Hi")
-    return ""
-  }
   const params = useParams();
   const selectedBrand = CarSpecifications.find((brand) =>
     brand.models.some((model) => model.id === params.slug)
@@ -39,6 +30,7 @@ const Model = () => {
   });
 
   const handleClick = async () => {
+    const redirectUrl = `${origin}/collections`;
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -57,15 +49,14 @@ const Model = () => {
         allowed_countries: ["IN"],
       },
       mode: "payment",
-      success_url: `${origin}`,
+      success_url: `${origin}?redirect=${encodeURIComponent(redirectUrl)}`,
     });
     if (session.url) {
-      window.open(session.url, '_blank');
+      window.open(session.url, "_blank");
     } else {
       console.error(
         "Error creating Stripe Checkout session: Session URL is null."
       );
-
     }
   };
   return (

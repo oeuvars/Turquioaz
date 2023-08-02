@@ -10,21 +10,25 @@ export const origin = window.location.href
 
 const App: Component = () => {
   const [session, setSession] = createSignal<AuthSession | null>(null);
-  const [userState, setUserState] = createSignal('');
   const navigate = useNavigate();
+  createEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  });
   createEffect(async () => {
     const { data: { user } } = await supabase.auth.getUser()
-    const authenticated = user?.aud
-
     if(!user) {
       navigate("/login")
-    } else {
-      setUserState(authenticated || '');
     }
   });
   return (
     <div class="">
-      {userState() ? (
+      {session() ? (
         <div>
           <Navbar />
           <AppRoutes />

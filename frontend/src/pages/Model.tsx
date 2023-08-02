@@ -48,12 +48,32 @@ const Model = () => {
         allowed_countries: ["IN"],
       },
       mode: "payment",
-      success_url: "/success",
+      success_url: `${origin}`,
     });
 
     if (session.url) {
-      // Open the Stripe Checkout page in a new tab for payment
-      window.open(session.url, "_blank");
+      // Save the origin URL
+      const originUrl = window.location.origin;
+      window.location.href = session.url;
+      // After the payment is successful, redirect to the origin first and then to the "/success" page
+      const stripeCheckInterval = setInterval(async () => {
+        try {
+          const response = await fetch(session.url!); // Ensure session.url is not null before making the fetch call
+          if (response.status === 200) {
+            // Payment successful, redirect to origin and then to "/success" page
+            clearInterval(stripeCheckInterval);
+            window.location.href = originUrl + "/success";
+          } else if (response.status >= 400) {
+            // Payment failed or canceled, redirect to origin
+            clearInterval(stripeCheckInterval);
+            window.location.href = originUrl;
+          }
+        } catch (error) {
+          console.error("Error checking Stripe payment status:", error);
+          clearInterval(stripeCheckInterval);
+          window.location.href = originUrl;
+        }
+      }, 3000); // Check the status of the Stripe payment every 3 seconds (adjust this if needed)
     } else {
       console.error("Error creating Stripe Checkout session: Session URL is null.");
     }

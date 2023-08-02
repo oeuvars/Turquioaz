@@ -30,7 +30,6 @@ const Model = () => {
   });
 
   const handleClick = async () => {
-    const redirectUrl = `${window.location.origin}/collections`;
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -49,9 +48,7 @@ const Model = () => {
         allowed_countries: ["IN"],
       },
       mode: "payment",
-      success_url: `${window.location.origin}?redirect=${encodeURIComponent(
-        redirectUrl
-      )}`,
+      success_url: "/success",
     });
 
     if (session.url) {

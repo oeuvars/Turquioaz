@@ -48,7 +48,7 @@ const Signup: Component = () => {
 
   return (
     <div class='phone:w-11/12 lg:w-1/4 mx-auto bg-white/10 border border-white/10 py-10 px-5 mt-40 rounded-lg shadow-lg'>
-      <h1 class='text-center font-mauline text-emerald-700 text-5xl'>Sign Up</h1>
+      <h1 class='text-center font-mauline text-emerald-600 text-5xl'>Sign Up</h1>
       <img src={line} class='mt-7 mb-5'/>
       <form onSubmit={handleSubmit}>
         <div class='flex gap-5 w-full mb-3'>

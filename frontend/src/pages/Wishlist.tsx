@@ -102,19 +102,7 @@ const Wishlist: Component = () => {
     <>
       {isLoading() ? (
         <>
-          <div style="width:100%;height:0;padding-bottom:100%;position:relative;">
-            <iframe
-              src="https://giphy.com/embed/4EFt4UAegpqTy3nVce"
-              width="100%"
-              height="100%"
-              style="position:absolute"
-              class="giphy-embed"
-            ></iframe>
-          </div>
-          <p>
-            <a href="https://giphy.com/gifs/trippy-gif-artist-ericaofanderson-4EFt4UAegpqTy3nVce">
-            </a>
-          </p>
+          <img src={loading} class="w-32 h-32"/>
         </>
       ) : (
         <>

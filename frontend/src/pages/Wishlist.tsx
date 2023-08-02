@@ -101,9 +101,9 @@ const Wishlist: Component = () => {
   return (
     <>
       {isLoading() ? (
-        <>
-          <img src={loading} class="w-32 h-32"/>
-        </>
+        <div class="flex h-screen items-center justify-center">
+          <img src={loading} class="phone:w-20 phone:h-20 lg:w-40 lg:h-40"/>
+        </div>
       ) : (
         <>
           {isAboveSmallScreens() ? (

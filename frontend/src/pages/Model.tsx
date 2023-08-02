@@ -30,7 +30,7 @@ const Model = () => {
   });
 
   const handleClick = async () => {
-    const redirectUrl = `${origin}/collections`;
+    const redirectUrl = `${window.location.origin}/collections`;
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -49,16 +49,19 @@ const Model = () => {
         allowed_countries: ["IN"],
       },
       mode: "payment",
-      success_url: `${origin}?redirect=${encodeURIComponent(redirectUrl)}`,
+      success_url: `${window.location.origin}?redirect=${encodeURIComponent(
+        redirectUrl
+      )}`,
     });
+
     if (session.url) {
+      // Open the Stripe Checkout page in a new tab for payment
       window.open(session.url, "_blank");
     } else {
-      console.error(
-        "Error creating Stripe Checkout session: Session URL is null."
-      );
+      console.error("Error creating Stripe Checkout session: Session URL is null.");
     }
   };
+
   return (
     <div class="flex m-auto w-3/5 bg-white/10 p-5 rounded-lg mt-16 gap-10 border-2 border-white/10">
       <img

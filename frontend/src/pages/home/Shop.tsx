@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import { ParentComponent } from "solid-js";
-import ferrari from "../../assets/images/cars/About2.webp";
+import ferrari from "../../assets/images/cars/about2.webp";
 import Line from "../../components/Line";
 import "../../components/underline.css";
 import useMediaQuery from "../../hooks/useMediaQuery";

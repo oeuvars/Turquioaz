@@ -2,7 +2,7 @@ import { Component, JSX, createEffect } from "solid-js";
 import passenger from "../assets/svgs/person.svg";
 import steering from "../assets/svgs/wheel.svg";
 import fuel from "../assets/svgs/fuel-pump.svg";
-import love from "../assets/svgs/love.svg";
+import love from "../assets/svgs/heart.svg";
 import { A } from "@solidjs/router";
 import { supabase } from "../auth/supabaseClient";
 
@@ -47,7 +47,7 @@ const Card: Component<CardProps> = (props) => {
     <A href={`/model/${model.id}`}>
       <div
         {...restProps}
-        class="bg-white/10 border border-white/10 rounded-xl font-montserrat min-w-[470px] min-h-[310px] mx-5 px-4 py-3 shadow-lg"
+        class="bg-white/10 border border-white/10 rounded-xl font-montserrat lg:min-w-[470px] lg:min-h-[310px] phone:min-w-[330px] phone:min-h-[220px] mx-5 px-4 py-3 shadow-lg"
       >
         <div class="flex justify-between">
           <div class="flex-col justify-between">
@@ -68,7 +68,7 @@ const Card: Component<CardProps> = (props) => {
         />
 
         <div class="flex justify-between">
-          <div class="flex gap-3 items-center font-mabry-regular mt-auto">
+          <div class="lg:flex gap-3 items-center font-mabry-regular mt-auto">
             <div class="flex gap-1">
               <img src={passenger} class="w-6 h-6 my-auto" />
               <p class="font-medium">{model.seatNumbers}</p>
@@ -82,7 +82,7 @@ const Card: Component<CardProps> = (props) => {
               <p class="font-medium">{model.fuelType}</p>
             </div>
           </div>
-          <p class="font-semibold text-4xl">
+          <p class="font-semibold text-4xl my-auto">
             ${model.rentPrice}
             <span class="text-base font-normal">/day</span>
           </p>

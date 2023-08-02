@@ -52,52 +52,31 @@ const Model = () => {
     });
 
     if (session.url) {
-      // Save the origin URL
-      const originUrl = window.location.origin;
       window.location.href = session.url;
-      // After the payment is successful, redirect to the origin first and then to the "/success" page
-      const stripeCheckInterval = setInterval(async () => {
-        try {
-          const response = await fetch(session.url!); // Ensure session.url is not null before making the fetch call
-          if (response.status === 200) {
-            // Payment successful, redirect to origin and then to "/success" page
-            clearInterval(stripeCheckInterval);
-            window.location.href = originUrl + "/success";
-          } else if (response.status >= 400) {
-            // Payment failed or canceled, redirect to origin
-            clearInterval(stripeCheckInterval);
-            window.location.href = originUrl;
-          }
-        } catch (error) {
-          console.error("Error checking Stripe payment status:", error);
-          clearInterval(stripeCheckInterval);
-          window.location.href = originUrl;
-        }
-      }, 3000); // Check the status of the Stripe payment every 3 seconds (adjust this if needed)
     } else {
       console.error("Error creating Stripe Checkout session: Session URL is null.");
     }
   };
 
   return (
-    <div class="flex m-auto w-3/5 bg-white/10 p-5 rounded-lg mt-16 gap-10 border-2 border-white/10">
+    <div class="lg:flex m-auto phone:w-11/12 lg:w-3/5 bg-white/10 p-5 rounded-lg mt-16 gap-10 border-2 border-white/10 phone:text-center lg:text-left">
       <img
         src={image}
-        class="h-[500px] object-cover my-auto rounded-md filter text-opacity-90"
+        class="h-60 w-96 object-cover my-auto rounded-md filter text-opacity-90"
       />
       <div class="flex flex-col gap-3 mr-auto font-mabry-light mt-5 text-white">
-        <p class="font-loubag text-5xl uppercase">{selectedModel?.name}</p>
-        <p class="text-3xl mt-2">
+        <p class="font-loubag phone:text-3xl lg:text-5xl uppercase">{selectedModel?.name}</p>
+        <p class="phone:text-2xl lg:text-3xl mt-2">
           Price: &nbsp;<span class="font-mabry">${selectedModel?.price}</span>
         </p>
-        <p class="mt-2 text-lg">
+        <p class="mt-2 phone:text-base lg:text-lg">
           {selectedModel?.fuelType} &nbsp; | &nbsp; {selectedModel?.seatNumbers}{" "}
           &nbsp; Seater &nbsp; | &nbsp; {selectedModel?.transmission}
         </p>
         <p class="text-lg mt-auto">
           Days: <span class="font-mabry">&nbsp; {selectedDay()}</span>
         </p>
-        <div class="flex gap-x-2 mt-1">
+        <div class="flex gap-x-2 mt-1 phone:mx-auto lg:mx-0">
           {days.map((day) => (
             <button
               class={`font-mabry text-lg px-4 py-1 ${
@@ -116,7 +95,7 @@ const Model = () => {
           {calculateRentPrice(selectedModel?.rentPrice || 0, selectedDay())}
         </p>
         <button
-          class="px-32 py-2 bg-emerald-700 my-2 rounded-md font-mabry-regular text-lg"
+          class="lg:px-32 phone:px-5 py-2 bg-emerald-700 my-2 rounded-md font-mabry-regular text-lg"
           onClick={handleClick}
         >
           Book Now

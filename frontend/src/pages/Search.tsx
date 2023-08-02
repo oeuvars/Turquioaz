@@ -70,7 +70,7 @@ const Search: Component = () => {
     <div class="w-[98%] mx-auto">
       <div class="flex justify-between mt-10">
         <div class="flex py-3 px-5 items-center rounded-lg gap-5 bg-white/10 border border-white/10 shadow-lg backdrop-blur-md mx-auto">
-          <div class="flex w-44">
+          <div class="flex phone:w-20 lg:w-44">
             <div class="w-4/5 font-mabry-regular font-medium">
               <p class="text-xs text-yellow-200/50">Car Brand</p>
               <h1>{selectedBrand()}</h1>
@@ -104,7 +104,7 @@ const Search: Component = () => {
             </Show>
           </div>
           <hr class="w-[1px] h-[50px] rounded-full bg-yellow-100" />
-          <div class="flex w-44">
+          <div class="flex phone:w-20 lg:w-44">
             <div class="w-4/5 font-mabry-regular text-sm font-medium">
               <p class="text-xs text-yellow-200/50">Car Model</p>
               <h1>{selectedModel()}</h1>

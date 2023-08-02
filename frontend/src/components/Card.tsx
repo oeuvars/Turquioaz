@@ -1,7 +1,7 @@
 import { Component, JSX, createEffect } from "solid-js";
 import passenger from "../assets/svgs/person.svg";
 import steering from "../assets/svgs/wheel.svg";
-import fuel from "../assets/svgs/fuel-pump.svg";
+import fuel from "../assets/svgs/gas-station.svg";
 import love from "../assets/svgs/heart.svg";
 import { A } from "@solidjs/router";
 import { supabase } from "../auth/supabaseClient";

@@ -11,6 +11,7 @@ import logout from "../assets/svgs/logout.svg";
 import cross from "../assets/svgs/cross.svg";
 import { useNavigate } from "@solidjs/router";
 import wish from "../assets/svgs/wish-list.png";
+import love from "../assets/svgs/heart.svg";
 import useMediaQuery from "../hooks/useMediaQuery";
 
 const Navbar: Component = () => {

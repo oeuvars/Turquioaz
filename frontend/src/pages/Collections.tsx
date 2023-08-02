@@ -8,8 +8,6 @@ import transmission from "../assets/svgs/manual-transmission.png";
 import fuel from "../assets/svgs/gas-station.svg";
 import condition from "../assets/svgs/tools.svg";
 import { IoClose } from "solid-icons/io";
-import left from "../assets/svgs/back.png";
-import right from "../assets/svgs/next.png";
 
 const Collections: Component = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
@@ -423,12 +421,8 @@ const Collections: Component = () => {
                   </button>
                   <div class="gap-3 flex mt-3">
                     <Show when={isDropdownOpen()}>
-                      <div class="absolute mt-12 -ml-16 bg-white/10 w-24 rounded-md shadow-md h-40 overflow-scroll scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
-                        <IoClose
-                          class="text-white w-6 h-6 cursor-pointer"
-                          onClick={closeDropdown}
-                        />
-                        <div class="grid">
+                      <div class="flex absolute mt-12 -ml-16 bg-white/10 w-24 rounded-md shadow-md h-24 scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
+                        <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
                               selectedTransmission() === "Any"
@@ -460,6 +454,10 @@ const Collections: Component = () => {
                             Automatic
                           </button>
                         </div>
+                        <IoClose
+                          class="text-white w-6 h-6 cursor-pointer -ml-7 mt-1"
+                          onClick={closeDropdown}
+                        />
                       </div>
                     </Show>
                   </div>
@@ -471,12 +469,8 @@ const Collections: Component = () => {
                   </button>
                   <div class="gap-3 flex mt-3 flex-wrap">
                     <Show when={isDropdownOpen2()}>
-                      <div class="absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-24 rounded-md shadow-md h-40 overflow-scroll scroll z-20 my-1 border-white/10 border">
-                        <IoClose
-                          class="text-white w-6 h-6 cursor-pointer"
-                          onClick={closeDropdown2}
-                        />
-                        <div class="grid">
+                      <div class="flex absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-24 rounded-md shadow-md h-[9.3rem] overflow-scroll scroll z-20 my-1 border-white/10 border">
+                        <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
                               selectedFuel() === "Any" ? "font-bold" : ""
@@ -518,6 +512,10 @@ const Collections: Component = () => {
                             Hybrid
                           </button>
                         </div>
+                        <IoClose
+                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7"
+                          onClick={closeDropdown2}
+                        />
                       </div>
                     </Show>
                   </div>
@@ -529,12 +527,8 @@ const Collections: Component = () => {
                   </button>
                   <div class="gap-3 flex mt-3 flex-wrap">
                     <Show when={isDropdownOpen3()}>
-                      <div class="absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-20 rounded-md shadow-md h-40 overflow-scroll scroll z-20 my-1 border-white/10 border">
-                        <IoClose
-                          class="text-white w-6 h-6 cursor-pointer"
-                          onClick={closeDropdown3}
-                        />
-                        <div class="grid">
+                      <div class="flex absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-28 rounded-md shadow-md h-[7.5rem] overflow-scroll scroll z-20 my-1 border-white/10 border">
+                        <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
                               selectedSeats() === 2 ? "font-bold" : ""
@@ -568,6 +562,10 @@ const Collections: Component = () => {
                             7 Seater
                           </button>
                         </div>
+                        <IoClose
+                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7"
+                          onClick={closeDropdown3}
+                        />
                       </div>
                     </Show>
                   </div>
@@ -579,12 +577,8 @@ const Collections: Component = () => {
                   </button>
                   <div class="gap-3 flex mt-3 flex-wrap">
                     <Show when={isDropdownOpen4()}>
-                      <div class="absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-20 rounded-md shadow-md h-40 overflow-scroll scroll z-20 my-1 border-white/10 border">
-                        <IoClose
-                          class="text-white w-6 h-6 cursor-pointer"
-                          onClick={closeDropdown4}
-                        />
-                        <div class="grid">
+                      <div class="flex absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-20 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
+                        <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
                               selectedCondition() === "All" ? "font-bold" : ""
@@ -610,6 +604,10 @@ const Collections: Component = () => {
                             Used
                           </button>
                         </div>
+                        <IoClose
+                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7"
+                          onClick={closeDropdown4}
+                        />
                       </div>
                     </Show>
                   </div>

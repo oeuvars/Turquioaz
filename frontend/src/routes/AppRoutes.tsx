@@ -14,26 +14,28 @@ import Wishlist from "../pages/Wishlist";
 import Success from "../pages/Success";
 import App from "../App";
 
-const hideNavbarpages = ["/success", "/login"]
+const hideNavbarpages = ["/success", "/login"];
 
 const AppRoutes: Component = () => {
   const hideNavbar = hideNavbarpages.includes(window.location.pathname);
 
   return (
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collections" element={<Collections />} />
-        <Route path="/model/:slug" element={<Model/>} />
+        <Route path="/model/:slug" element={<Model />} />
         <Route path="/search" element={<Search />} />
         <Route path="/info" element={<Info />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup/>} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/user" element={<User />} />
-        <Route path="/wishlist" element={<Wishlist />}/>
-        <Route path="/success" element={<Success />}/>
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/success" element={<Success />} />
       </Routes>
+    </Router>
   );
 };
 

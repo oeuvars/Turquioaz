@@ -5,12 +5,12 @@ import Signup from "./Signup";
 
 const User: Component = () => {
   return (
-    <Router>
+
       <Routes>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<Signup />}/>
       </Routes>
-    </Router>
+
   );
 };
 

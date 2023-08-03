@@ -22,18 +22,18 @@ const AppRoutes: Component = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/collections" element={<Collections />} />
-        <Route path="/model/:slug" element={<Model />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/info" element={<Info />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/success" element={<Success />} />
+        <Route path="/" component={Home} />
+        <Route path="/collections" component={Collections} />
+        <Route path="/model/:slug" component={Model} />
+        <Route path="/search" component={Search} />
+        <Route path="/info" component={Info} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/user" component={User} />
+        <Route path="/wishlist" component={Wishlist} />
+        <Route path="/success" component={Success} />
       </Routes>
     </Router>
   );

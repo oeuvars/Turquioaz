@@ -17,11 +17,9 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 render(
   () => (
     <Router>
-      <Routes>
         <TopFilterProvider>
           <App />
         </TopFilterProvider>
-      </Routes>
     </Router>
   ),
   root!

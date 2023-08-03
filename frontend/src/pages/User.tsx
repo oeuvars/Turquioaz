@@ -1,4 +1,4 @@
-import { A, Route, Routes, Router } from "@solidjs/router";
+import { Route, Routes } from "@solidjs/router";
 import { Component } from "solid-js";
 import Login from "./Login";
 import Signup from "./Signup";

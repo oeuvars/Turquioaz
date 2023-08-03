@@ -20,7 +20,7 @@ const AppRoutes: Component = () => {
   const hideNavbar = hideNavbarpages.includes(window.location.pathname);
 
   return (
-    <Router>
+    <>
       <Routes>
         <Route path="/" component={Home} />
         <Route path="/collections" component={Collections} />
@@ -35,7 +35,7 @@ const AppRoutes: Component = () => {
         <Route path="/wishlist" component={Wishlist} />
         <Route path="/success" component={Success} />
       </Routes>
-    </Router>
+    </>
   );
 };
 

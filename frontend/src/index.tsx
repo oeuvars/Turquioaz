@@ -3,7 +3,7 @@ import { render } from "solid-js/web";
 
 import "./index.css";
 import App from "./App";
-import { Router } from "@solidjs/router";
+import { Router, Routes } from "@solidjs/router";
 import { TopFilterProvider } from "./utils/TopFilterContext";
 
 const root = document.getElementById("root");
@@ -17,9 +17,11 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 render(
   () => (
     <Router>
-      <TopFilterProvider>
-        <App />
-      </TopFilterProvider>
+      <Routes>
+        <TopFilterProvider>
+          <App />
+        </TopFilterProvider>
+      </Routes>
     </Router>
   ),
   root!

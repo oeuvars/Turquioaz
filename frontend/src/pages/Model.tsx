@@ -48,7 +48,8 @@ const Model = () => {
         allowed_countries: ["US"],
       },
       mode: "payment",
-      success_url: `${origin}`,
+      success_url: `${origin}/success`,
+      cancel_url: `${origin}/collections`,
     });
 
     if (session.url) {

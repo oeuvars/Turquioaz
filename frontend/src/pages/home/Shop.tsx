@@ -87,14 +87,14 @@ const Shop: ParentComponent = () => {
 
             <div>
               <button
-                class="border border-yellow-200 text-sm px-4 py-2 rounded-full font-mabry-regular"
+                class="border border-yellow-200 text-sm px-4 py-2 rounded-3xl font-mabry-regular"
                 onClick={toggleDropdown}
               >
                 View All
               </button>
               <div class="relative">
                 <Show when={openDropdown()}>
-                  <div class="w-24 -ml-1 p-2 z-20 mt-1 rounded-md absolute bg-white/10 border border-white/10 backdrop-blur-sm">
+                  <div class="w-24 -ml-[0.75rem] p-2 z-20 mt-2 rounded-md absolute bg-white/10 border border-white/10 backdrop-blur-sm">
                     <div class="grid gap-1">
                       <A href="/collections" class="text-white text-sm font-mabry-regular text-center py-1 bg-gray-300/10 hover:bg-gray-300/30 rounded-md">Collections</A>
                       <A href="/search" class="text-white text-sm font-mabry-regular text-center py-1 bg-gray-300/10 hover:bg-gray-300/30 rounded-md">Search</A>

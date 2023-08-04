@@ -411,7 +411,7 @@ const Collections: Component = () => {
         </div>
       ) : (
         <div class="font-mabry-regular mb-7 overflow-x-hidden">
-          <div class="mx-auto mt-5 w-11/12">
+          <div class="mx-auto mt-5 w-[88%]">
             <div class="w-full bg-white/10 border border-white/10 rounded-xl py-3 my-5 shadow-lg mx-auto">
               <div class="flex justify-between">
                 <div class="flex mx-auto">
@@ -419,7 +419,7 @@ const Collections: Component = () => {
                     <img src={transmission} class="w-6 h-6 mx-auto mt-1" />
                     <h1 class="text-white font-sm -mb-1">{selectedTransmission()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-3">
+                  <div class="gap-3 flex mt-5">
                     <Show when={isDropdownOpen()}>
                       <div class="flex absolute mt-[3.5rem] -ml-[3.3rem] bg-white/10 w-24 rounded-md shadow-md h-24 scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
                         <div class="flex-col">
@@ -468,7 +468,7 @@ const Collections: Component = () => {
                     <img src={fuel} class="w-8 h-8 mx-auto" />
                     <h1 class="text-white text-sm">{selectedFuel()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-3 flex-wrap">
+                  <div class="gap-3 flex mt-5 flex-wrap">
                     <Show when={isDropdownOpen2()}>
                       <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-24 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
@@ -527,7 +527,7 @@ const Collections: Component = () => {
                     <img src={seats} class="w-8 h-8 mx-auto" />
                     <h1 class="text-white text-sm">{selectedSeats()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-3 flex-wrap">
+                  <div class="gap-3 flex mt-5 flex-wrap">
                     <Show when={isDropdownOpen3()}>
                       <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-28 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
@@ -578,7 +578,7 @@ const Collections: Component = () => {
                     <img src={condition} class="w-8 h-8" />
                     <h1 class="text-white text-sm">{selectedCondition()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-3 flex-wrap">
+                  <div class="gap-3 flex mt-5 flex-wrap">
                     <Show when={isDropdownOpen4()}>
                       <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-20 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
@@ -617,7 +617,7 @@ const Collections: Component = () => {
                 </div>
               </div>
             </div>
-            <h1 class="font-mauline text-4xl text-emerald-600 font-semibold text-center mb-7 py-2">Collections</h1>
+            <h1 class="my-5 text-[3.5rem] font-bold font-mauline text-center text-emerald-600">Collections</h1>
             <div class="flex flex-wrap justify-center gap-y-2">
               {currentCards()
                 .filter(

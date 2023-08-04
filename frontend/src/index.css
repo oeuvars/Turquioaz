@@ -99,3 +99,11 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.custom-toast {
+  background-color: rgba(254, 233, 233, 0.9);
+  font-family: Mabry-Regular;
+  backdrop-filter: blur(4px);
+  color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

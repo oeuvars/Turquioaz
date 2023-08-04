@@ -9,6 +9,7 @@ import right from "../assets/svgs/slider/next.png";
 import useMediaQuery from "../hooks/useMediaQuery";
 import loading from "../assets/images/loading.gif";
 import trash from "../assets/svgs/card/empty-bin.svg";
+import toast, { Toaster } from "solid-toast";
 
 interface CarModel {
   id: string;
@@ -49,10 +50,10 @@ const Wishlist: Component = () => {
 
       // Perform the delete operation.
       await supabase
-        .from('wishlist')
+        .from("wishlist")
         .delete()
-        .eq('userId', user?.id)
-        .eq('cardId', cardIdToDelete);
+        .eq("userId", user?.id)
+        .eq("cardId", cardIdToDelete);
 
       setLinkId(linkId().filter((_, i) => i !== index));
       setNames(names().filter((_, i) => i !== index));
@@ -63,11 +64,17 @@ const Wishlist: Component = () => {
       setPrice(price().filter((_, i) => i !== index));
       setRentPrice(rentPrice().filter((_, i) => i !== index));
     } catch (error) {
-      console.error('Error deleting card:', error);
+      console.error("Error deleting card:", error);
     }
-    setDeleteCarLoaidng(true)
+    setDeleteCarLoaidng(true);
+    toast.success('Item Removed Successfully', {
+      className: 'custom-toast',
+      iconTheme: {
+        primary: '#F2EEC0',
+        secondary: '#1f2937'
+      }
+    })
   };
-
 
   createEffect(async () => {
     try {
@@ -163,6 +170,7 @@ const Wishlist: Component = () => {
                           <button onClick={(event) => deleteCard(event, index)}>
                             <img src={trash} class="w-10 h-10 my-auto" />
                           </button>
+                          <Toaster position="bottom-center" gutter={8} />
                         </div>
 
                         <img

@@ -5,6 +5,7 @@ import fuel from "../assets/svgs/collections/gas-station.svg";
 import love from "../assets/svgs/card/heart.svg";
 import { A } from "@solidjs/router";
 import { supabase } from "../auth/supabaseClient";
+import toast, { Toaster } from "solid-toast";
 
 interface Model {
   id: string;
@@ -24,24 +25,41 @@ interface CardProps extends JSX.HTMLAttributes<HTMLDivElement> {
 const Card: Component<CardProps> = (props) => {
   const { model, ...restProps } = props;
 
-    const handleAddToWishlistClick = async (e: MouseEvent) => {
-      e.preventDefault();
-      try {
-        const { data: { user } } = await supabase.auth.getUser();
+  const handleAddToWishlistClick = async (e: MouseEvent) => {
+    e.preventDefault();
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-        const { data, error: insertError } = await supabase
-          .from("wishlist")
-          .insert({ cardId: model.id, userId: user!.id, name: model.name, transmission: model.transmission, fuelType: model.fuelType, seatNumbers: model.seatNumbers, condition: model.condition, price:model.price, rentPrice: model.rentPrice });
+      const { data, error: insertError } = await supabase
+        .from("wishlist")
+        .insert({
+          cardId: model.id,
+          userId: user!.id,
+          name: model.name,
+          transmission: model.transmission,
+          fuelType: model.fuelType,
+          seatNumbers: model.seatNumbers,
+          condition: model.condition,
+          price: model.price,
+          rentPrice: model.rentPrice,
+        });
 
-        if (insertError) {
-          throw insertError;
-        }
-
-        console.log("Item added to wishlist successfully!");
-      } catch (error: any) {
-        console.error("Error adding item to wishlist:", error.message);
+      if (insertError) {
+        throw insertError;
       }
-    };
+      toast.success('Item added to wishlist successfully!', {
+        className: 'custom-toast',
+        iconTheme: {
+          primary: '#F2EEC0',
+          secondary: '#1f2937'
+        }
+      })
+    } catch (error: any) {
+      console.error("Error adding item to wishlist:", error.message);
+    }
+  };
 
   return (
     <A href={`/model/${model.id}`}>
@@ -52,14 +70,15 @@ const Card: Component<CardProps> = (props) => {
         <div class="flex justify-between">
           <div class="flex-col justify-between">
             <h2 class="text-4xl font-bold font-mabry">{model.name}</h2>
-            <p class="text-sm font-medium opacity-70 font-mabry-regular">${model.price}</p>
+            <p class="text-sm font-medium opacity-70 font-mabry-regular">
+              ${model.price}
+            </p>
           </div>
 
           <button onClick={handleAddToWishlistClick}>
-
-              <img src={love} class="w-8 h-8" />
-
+            <img src={love} class="w-8 h-8" />
           </button>
+          <Toaster position="bottom-center" gutter={16} />
         </div>
 
         <img

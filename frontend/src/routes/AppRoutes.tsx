@@ -11,8 +11,8 @@ import Search from "../pages/Search";
 import Info from "../pages/Info";
 import Contact from "../pages/Contact";
 import Wishlist from "../pages/Wishlist";
+import Collections from "../pages/Collections";
 
-const Collections = lazy(() => import("../pages/Collections"));
 
 const AppRoutes: Component = () => {
 

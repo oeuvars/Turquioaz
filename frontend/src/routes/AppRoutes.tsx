@@ -6,13 +6,13 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import User from "../pages/User";
 import Success from "../pages/Success";
+import Collections from "../pages/Collections";
+import Model from "../pages/Model";
+import Search from "../pages/Search";
+import Info from "../pages/Info";
+import Contact from "../pages/Contact";
+import Wishlist from "../pages/Wishlist";
 
-const Info = lazy(() => import("../pages/Info"));
-const Contact = lazy(() => import("../pages/Contact"));
-const Collections = lazy(() => import("../pages/Collections"));
-const Search = lazy(() => import("../pages/Search"));
-const Wishlist = lazy(() => import("../pages/Wishlist"));
-const Model = lazy(() => import("../pages/Model"));
 
 const AppRoutes: Component = () => {
 

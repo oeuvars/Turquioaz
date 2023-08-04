@@ -1,16 +1,16 @@
 import { A } from "@solidjs/router";
 import { Component, Show, createEffect, createSignal } from "solid-js";
 import "./underline.css";
-import logo from "../assets/svgs/logo.svg";
-import profileimage from "../assets/svgs/customer.png";
-import Home from "../assets/svgs/home.svg";
+import logo from "../assets/svgs/navbar/logo.svg";
+import profileimage from "../assets/svgs/navbar/customer.png";
+import Home from "../assets/svgs/navbar/home.svg";
 import { supabase } from "../auth/supabaseClient";
 import { User } from "@supabase/supabase-js";
-import arrow from "../assets/svgs/upper-right-arrow.svg";
-import logout from "../assets/svgs/logout.svg";
-import cross from "../assets/svgs/cross.svg";
+import arrow from "../assets/svgs/navbar/upper-right-arrow.svg";
+import logout from "../assets/svgs/navbar/logout.svg";
+import cross from "../assets/svgs/navbar/cross.svg";
 import { useNavigate } from "@solidjs/router";
-import wish from "../assets/svgs/wish-list.png";
+import wish from "../assets/svgs/navbar/wish-list.png";
 import useMediaQuery from "../hooks/useMediaQuery";
 
 const Navbar: Component = () => {

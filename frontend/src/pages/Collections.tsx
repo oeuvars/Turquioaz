@@ -3,10 +3,10 @@ import Card from "../components/Card";
 import CarSpecifications from "../collections/CarSpecifications";
 import linedivider from "../assets/images/line.svg";
 import useMediaQuery from "../hooks/useMediaQuery";
-import seats from "../assets/svgs/person.svg";
-import transmission from "../assets/svgs/manual-transmission.png";
-import fuel from "../assets/svgs/gas-station.svg";
-import condition from "../assets/svgs/tools.svg";
+import seats from "../assets/svgs/collections/person.svg";
+import transmission from "../assets/svgs/collections/manual-transmission.png";
+import fuel from "../assets/svgs/collections/gas-station.svg";
+import condition from "../assets/svgs/collections/tools.svg";
 import { IoClose } from "solid-icons/io";
 
 const Collections: Component = () => {
@@ -410,18 +410,18 @@ const Collections: Component = () => {
           </div>
         </div>
       ) : (
-        <div class="font-mabry-regular mb-7">
+        <div class="font-mabry-regular mb-7 overflow-x-hidden">
           <div class="mx-auto mt-5 w-11/12">
-
-            <div class="w-11/12 bg-white/10 border border-white/10 rounded-xl py-3 my-5 shadow-lg mx-auto">
+            <div class="w-full bg-white/10 border border-white/10 rounded-xl py-3 my-5 shadow-lg mx-auto">
               <div class="flex justify-between">
                 <div class="flex mx-auto">
                   <button class="font-medium" onClick={() => toggleDropdown()}>
-                    <img src={transmission} class="w-6 h-6" />
+                    <img src={transmission} class="w-6 h-6 mx-auto mt-1" />
+                    <h1 class="text-white font-sm -mb-1">{selectedTransmission()}</h1>
                   </button>
                   <div class="gap-3 flex mt-3">
                     <Show when={isDropdownOpen()}>
-                      <div class="flex absolute mt-12 -ml-16 bg-white/10 w-24 rounded-md shadow-md h-24 scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
+                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] bg-white/10 w-24 rounded-md shadow-md h-24 scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
@@ -465,11 +465,12 @@ const Collections: Component = () => {
 
                 <div class="flex mx-auto">
                   <button class="font-medium" onClick={toggleDropdown2}>
-                    <img src={fuel} class="w-8 h-8" />
+                    <img src={fuel} class="w-8 h-8 mx-auto" />
+                    <h1 class="text-white text-sm">{selectedFuel()}</h1>
                   </button>
                   <div class="gap-3 flex mt-3 flex-wrap">
                     <Show when={isDropdownOpen2()}>
-                      <div class="flex absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-24 rounded-md shadow-md h-[9.3rem] overflow-scroll scroll z-20 my-1 border-white/10 border">
+                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-24 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
@@ -513,7 +514,7 @@ const Collections: Component = () => {
                           </button>
                         </div>
                         <IoClose
-                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7"
+                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7 sticky top-0"
                           onClick={closeDropdown2}
                         />
                       </div>
@@ -523,11 +524,12 @@ const Collections: Component = () => {
 
                 <div class="flex mx-auto">
                   <button class="font-medium" onClick={toggleDropdown3}>
-                    <img src={seats} class="w-8 h-8" />
+                    <img src={seats} class="w-8 h-8 mx-auto" />
+                    <h1 class="text-white text-sm">{selectedSeats()}</h1>
                   </button>
                   <div class="gap-3 flex mt-3 flex-wrap">
                     <Show when={isDropdownOpen3()}>
-                      <div class="flex absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-28 rounded-md shadow-md h-[7.5rem] overflow-scroll scroll z-20 my-1 border-white/10 border">
+                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-28 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
@@ -563,7 +565,7 @@ const Collections: Component = () => {
                           </button>
                         </div>
                         <IoClose
-                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7"
+                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7 sticky top-0"
                           onClick={closeDropdown3}
                         />
                       </div>
@@ -573,11 +575,12 @@ const Collections: Component = () => {
 
                 <div class="flex mx-auto">
                   <button class="font-medium" onClick={toggleDropdown4}>
-                    <img src={condition} class="w-7 h-7" />
+                    <img src={condition} class="w-8 h-8" />
+                    <h1 class="text-white text-sm">{selectedCondition()}</h1>
                   </button>
                   <div class="gap-3 flex mt-3 flex-wrap">
                     <Show when={isDropdownOpen4()}>
-                      <div class="flex absolute mt-12 -ml-16 backdrop-blur-sm bg-white/10 w-20 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
+                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-20 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
@@ -605,7 +608,7 @@ const Collections: Component = () => {
                           </button>
                         </div>
                         <IoClose
-                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7"
+                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7 sticky top-0"
                           onClick={closeDropdown4}
                         />
                       </div>
@@ -614,7 +617,7 @@ const Collections: Component = () => {
                 </div>
               </div>
             </div>
-            <h1 class="font-mauline text-4xl text-emerald-600 font-semibold text-center mb-7">Collections</h1>
+            <h1 class="font-mauline text-4xl text-emerald-600 font-semibold text-center mb-7 py-2">Collections</h1>
             <div class="flex flex-wrap justify-center gap-y-2">
               {currentCards()
                 .filter(

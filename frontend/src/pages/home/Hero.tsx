@@ -1,6 +1,6 @@
 import { Component } from "solid-js";
 import cover from "../../assets/images/cover/cover2.webp";
-import mercedes from "../../assets/svgs/merc.svg";
+import mercedes from "../../assets/svgs/hero/merc.svg";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Hero: Component = () => {

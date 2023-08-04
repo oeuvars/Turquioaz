@@ -1,11 +1,11 @@
 import { Component, createEffect, createSignal } from "solid-js";
 import { supabase } from "../auth/supabaseClient";
-import passenger from "../assets/svgs/person.svg";
-import steering from "../assets/svgs/wheel.svg";
-import fuel from "../assets/svgs/fuel-pump.svg";
+import passenger from "../assets/svgs/collections/person.svg";
+import steering from "../assets/svgs/card/wheel.svg";
+import fuel from "../assets/svgs/collections/gas-station.svg";
 import { A } from "@solidjs/router";
-import left from "../assets/svgs/back.png";
-import right from "../assets/svgs/next.png";
+import left from "../assets/svgs/slider/back.png";
+import right from "../assets/svgs/slider/next.png";
 import useMediaQuery from "../hooks/useMediaQuery";
 import loading from "../assets/images/loading.gif";
 

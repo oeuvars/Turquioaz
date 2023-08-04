@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal, JSX } from "solid-js";
+import { createSignal } from "solid-js";
 import line from "../assets/images/line.svg";
 import { A, useNavigate } from "@solidjs/router";
 import { supabase } from "../auth/supabaseClient";

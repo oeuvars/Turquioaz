@@ -1,8 +1,8 @@
 import { Component, JSX, createEffect } from "solid-js";
-import passenger from "../assets/svgs/person.svg";
-import steering from "../assets/svgs/wheel.svg";
-import fuel from "../assets/svgs/gas-station.svg";
-import love from "../assets/svgs/heart.svg";
+import passenger from "../assets/svgs/collections/person.svg";
+import steering from "../assets/svgs/card/wheel.svg";
+import fuel from "../assets/svgs/collections/gas-station.svg";
+import love from "../assets/svgs/card/heart.svg";
 import { A } from "@solidjs/router";
 import { supabase } from "../auth/supabaseClient";
 

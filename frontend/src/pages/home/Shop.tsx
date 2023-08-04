@@ -1,11 +1,19 @@
 import { A } from "@solidjs/router";
-import { ParentComponent } from "solid-js";
+import { ParentComponent, Show, createSignal } from "solid-js";
 import ferrari from "../../assets/images/cars/about2.webp";
 import Line from "../../components/Line";
 import "../../components/underline.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Shop: ParentComponent = () => {
+  const [openDropdown, setOpenDowndown] = createSignal(false);
+
+  const toggleDropdown = () => {
+    setOpenDowndown(!openDropdown());
+  };
+  const closeDropdown = () => {
+    setOpenDowndown(false);
+  };
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
   return (
     <>
@@ -77,11 +85,24 @@ const Shop: ParentComponent = () => {
               </p>
             </div>
 
-            <A href="/collections" class="my-auto">
-              <button class="border border-yellow-200 text-sm px-4 py-2 rounded-full font-mabry-regular">
+            <div>
+              <button
+                class="border border-yellow-200 text-sm px-4 py-2 rounded-full font-mabry-regular"
+                onClick={toggleDropdown}
+              >
                 View All
               </button>
-            </A>
+              <div class="relative">
+                <Show when={openDropdown()}>
+                  <div class="w-24 -ml-1 p-2 z-20 mt-1 rounded-md absolute bg-white/10 border border-white/10 backdrop-blur-sm">
+                    <div class="grid gap-1">
+                      <A href="/collections" class="text-white text-sm font-mabry-regular text-center py-1 bg-gray-300/10 hover:bg-gray-300/30 rounded-md">Collections</A>
+                      <A href="/search" class="text-white text-sm font-mabry-regular text-center py-1 bg-gray-300/10 hover:bg-gray-300/30 rounded-md">Search</A>
+                    </div>
+                  </div>
+                </Show>
+              </div>
+            </div>
           </div>
 
           <img

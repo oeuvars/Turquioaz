@@ -13,13 +13,13 @@ const Services: ParentComponent = () => {
           <div class="w-11/12 flex mx-auto mt-16 justify-between">
             <div class="flex gap-20">
               <h1 class="font-loubag text-5xl flex items-center">SERVICES</h1>
-              <p class="font-mabry flex items-center text-xl font-medium">
+              <p class="font-mabry flex items-center font-medium">
                 / &nbsp; Our area of expertise
               </p>
             </div>
 
             <A href="/services">
-              <button class="border border-yellow-200 px-7 py-3 rounded-full font-mabry-regular text-2xl">
+              <button class="border border-yellow-200 px-7 py-3 rounded-full font-mabry-regular">
                 View All
               </button>
             </A>

@@ -2,26 +2,22 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const app = express();
-const path = require("path")
-const cors = require('cors');
+const path = require("path");
+const cors = require("cors");
 const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 4000;
-import { selectedDay, selectedModel } from "../frontend/src/pages/Model"
+const supabase = require("./auth");
+const Stripe = require("stripe");
 
 app.use(express.json());
+
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
+app.use(express.static(path.join(__dirname, "build")));
 
 let ADMINS = [];
 let USERS = [];
 let CARS = [];
 
-// Read data from file, or initialize to empty array if file does not exist
 try {
   ADMINS = JSON.parse(fs.readFileSync("admins.json", "utf8"));
   USERS = JSON.parse(fs.readFileSync("users.json", "utf8"));
@@ -208,39 +204,69 @@ app.get("/users/yourwishlist", authenticateJwt, (req, res) => {
   }
 });
 
-app.post("/users/cars/cart/:carId", authenticateJwt, (req, res) => {
-  const car = CARS.find((c) => c.id === parseInt(req.params.carId));
-  if (car) {
-    const user = USERS.find((u) => u.username === req.user.username);
-    if (user) {
-      if (!user.yourcart) {
-        user.yourcart = [];
-      }
-      user.yourcart.push(car);
-      fs.writeFileSync("users.json", JSON.stringify(USERS));
-      res.json({
-        message: "Ride is in your cart",
-      });
-    } else {
-      res.status(403).json({ message: "User not found" });
+app.post("/create-checkout-session", async (req, res) => {
+  try {
+    const Key = process.env.VITE_STRIPE_SECRET_KEY;
+    const stripe = new Stripe(Key, {
+      apiVersion: "2022-11-15",
+    });
+
+    const { paymentId } = req.body; // Assuming you're sending the paymentId in the request body
+
+    if (!paymentId) {
+      console.error("Payment ID is missing in the request body.");
+      res.status(400).send("Payment ID is required.");
+      return;
     }
-  } else {
-    res.status(404).json({ message: "Car not found" });
-  }
-});
 
-app.get("/users/yourcart", authenticateJwt, (req, res) => {
-  const user = USERS.find((u) => u.username === req.user.username);
-  if (user) {
-    res.json({ yourcart: user.yourcart || [] });
-  } else {
-    res.status(403).json({ message: "User not found" });
-  }
-});
+    const { data: paymentData } = await supabase
+      .from("payment")
+      .select("theModel, theDays, userId")
+      .eq("id", paymentId)
+      .single();
 
-const Key = import.meta.env.VITE_STRIPE_SECRET_KEY;
-const stripe = new Stripe(Key, {
-  apiVersion: "2022-11-15",
+    const { theModel, theDays, userId } = paymentData;
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user === userId) {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: [
+          {
+            price_data: {
+              currency: "inr",
+              product_data: {
+                name: theModel, // Use the correct theModel
+              },
+              unit_amount: theDays * 100, // Use the correct theDays
+            },
+            quantity: selectedDay(),
+          },
+        ],
+        shipping_address_collection: {
+          allowed_countries: ["IN"],
+        },
+        mode: "payment",
+        success_url: "http://localhost:3000/success",
+        cancel_url: `http://localhost:3000/collections`,
+      });
+
+      if (session.url) {
+        res.redirect(303, session.url);
+      } else {
+        console.error("Error creating Stripe Checkout session: Session URL is null.");
+        res.status(500).send("Error creating Stripe Checkout session.");
+      }
+    } else {
+      console.error("Invalid user. User not authorized to create a checkout session.");
+      res.status(401).send("Unauthorized");
+    }
+  } catch (error) {
+    console.error("Error occurred while creating Stripe Checkout session:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.listen(PORT, () => console.log("Server running on port 4000"));

@@ -1,39 +1,36 @@
-import { Component, createEffect, createSignal, lazy, JSX } from "solid-js";
-import { Routes, Route, Navigate, Router } from "@solidjs/router";
+import { Component, lazy } from "solid-js";
+import { Routes, Route } from "@solidjs/router";
 import Home from "../pages/Home";
-import Collections from "../pages/Collections";
-import Search from "../pages/Search";
-import Info from "../pages/Info";
 import Cart from "../pages/Cart";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import Contact from "../pages/Contact";
-import Model from "../pages/Model";
 import User from "../pages/User";
-import Wishlist from "../pages/Wishlist";
 import Success from "../pages/Success";
-import { render } from "solid-js/web";
 
-const hideNavbarpages = ["/success", "/login"];
+const Info = lazy(() => import("../pages/Info"));
+const Contact = lazy(() => import("../pages/Contact"));
+const Collections = lazy(() => import("../pages/Collections"));
+const Search = lazy(() => import("../pages/Search"));
+const Wishlist = lazy(() => import("../pages/Wishlist"));
+const Model = lazy(() => import("../pages/Model"));
 
 const AppRoutes: Component = () => {
-  const hideNavbar = hideNavbarpages.includes(window.location.pathname);
 
   return (
     <>
       <Routes>
-        <Route path="/" component={Home} />
-        <Route path="/collections" component={Collections} />
-        <Route path="/model/:slug" component={Model} />
-        <Route path="/search" component={Search} />
-        <Route path="/info" component={Info} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/user" component={User} />
-        <Route path="/wishlist" component={Wishlist} />
-        <Route path="/success" component={Success} />
+        <Route path="/" element={<Home />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/model/:slug" element={<Model />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/info" element={<Info />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );

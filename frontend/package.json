@@ -1,7 +1,7 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
+  "name": "rent_n_ride",
+  "version": "0.0.1",
+  "description": "A luxury car rental application.",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -20,11 +20,9 @@
     "vite-plugin-solid": "^2.7.0"
   },
   "dependencies": {
+    "@gh0st-work/solid-js-router": "^1.5.0",
     "@solidjs/router": "^0.8.2",
     "@supabase/supabase-js": "^2.29.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "ngrok": "^5.0.0-beta.2",
     "solid-icons": "^1.0.11",
     "solid-js": "^1.7.6",
     "solid-slider": "^1.3.14",

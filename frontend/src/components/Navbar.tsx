@@ -3,7 +3,7 @@ import { Component, Show, createEffect, createSignal } from "solid-js";
 import "./underline.css";
 import logo from "../assets/svgs/logo.svg";
 import profileimage from "../assets/svgs/customer.png";
-import { IoClose } from "solid-icons/io";
+import Home from "../assets/svgs/home.svg";
 import { supabase } from "../auth/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import arrow from "../assets/svgs/upper-right-arrow.svg";
@@ -11,7 +11,6 @@ import logout from "../assets/svgs/logout.svg";
 import cross from "../assets/svgs/cross.svg";
 import { useNavigate } from "@solidjs/router";
 import wish from "../assets/svgs/wish-list.png";
-import love from "../assets/svgs/heart.svg";
 import useMediaQuery from "../hooks/useMediaQuery";
 
 const Navbar: Component = () => {
@@ -44,8 +43,9 @@ const Navbar: Component = () => {
 
   return (
     <div class="flex lg:gap-52 justify-between py-4 bg-white/10 lg:px-16 phone:px-5 items-center mx-auto sticky top-0 z-40 backdrop-blur-md">
-      <A href="/">
-        <img src={logo} class="lg:w-52 phone:w-32" />
+      <A href="/" class="flex phone:gap-2 lg:gap-3">
+        <img src={Home} class="phone:w-7 phone:h-7 lg:w-12 lg:h-12 my-auto" />
+        <img src={logo} class="lg:w-52 phone:w-32 phone:-mb-[3px] lg:-mb-[6px]" />
       </A>
 
       {isAboveSmallScreens() ? (
@@ -84,10 +84,10 @@ const Navbar: Component = () => {
 
       <div class="flex gap-5">
         <button onClick={toggleDropdown}>
-          <img src={profileimage} class="lg:w-12 lg:h-12 phone:w-7 phone:h-7" />
+          <img src={profileimage} class="lg:w-11 lg:h-11 phone:w-7 phone:h-7" />
         </button>
         <A href="/wishlist">
-          <img src={wish} class="lg:w-12 lg:h-12 phone:w-7 phone:h-7" />
+          <img src={wish} class="lg:w-11 lg:h-11 phone:w-7 phone:h-7" />
         </A>
         <Show when={isDropdownOpen()}>
           <div class="flex justify-between absolute phone:-ml-20 lg:-ml-10 lg:mt-20 phone:mt-[3.3rem] bg-white/10 backdrop-blur-sm w-40 rounded-md shadow-md phone:h-12 lg:h-16 overflow-scroll scroll border-white/10 border">

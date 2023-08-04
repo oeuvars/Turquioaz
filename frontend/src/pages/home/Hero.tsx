@@ -11,8 +11,10 @@ const Hero: Component = () => {
         <>
           <div class="justify-between w-11/12 flex mx-auto relative">
             <img src={mercedes} class="w-[30rem] absolute" />
-            <p class="flex font-mabry-regular text-right items-center relative ml-auto pt-5 text-xl">
-              Welcome to the world of luxury cars.
+            <p class="flex font-mabry-regular text-sm items-center relative ml-auto w-1/5 text-justify">
+              Discover opulence and performance. Navigate our exquisite
+              selection of luxury cars, where elegance meets innovation and
+              power.
             </p>
           </div>
           <img
@@ -34,8 +36,9 @@ const Hero: Component = () => {
             alt="car"
             class="w-11/12 flex mx-auto rounded-md mt-10"
           />
-          <p class="font-mabry-regular text-sm text-center pt-5 mx-auto">
-            Welcome to the world of luxury cars.
+          <p class="font-mabry-regular text-xs text-center pt-5 mx-auto w-4/5">
+            Discover opulence and performance. Navigate our exquisite selection
+            of luxury cars, where elegance meets innovation and power.
           </p>
         </div>
       )}

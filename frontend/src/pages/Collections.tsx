@@ -421,7 +421,7 @@ const Collections: Component = () => {
                   </button>
                   <div class="gap-3 flex mt-3">
                     <Show when={isDropdownOpen()}>
-                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] bg-white/10 w-24 rounded-md shadow-md h-24 scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
+                      <div class="flex absolute mt-[3.5rem] -ml-[3.3rem] bg-white/10 w-24 rounded-md shadow-md h-24 scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${

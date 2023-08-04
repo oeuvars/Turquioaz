@@ -8,6 +8,7 @@ import left from "../assets/svgs/slider/back.png";
 import right from "../assets/svgs/slider/next.png";
 import useMediaQuery from "../hooks/useMediaQuery";
 import loading from "../assets/images/loading.gif";
+import trash from "../assets/svgs/card/empty-bin.svg";
 
 interface CarModel {
   id: string;
@@ -24,6 +25,7 @@ const Wishlist: Component = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
 
   const [isLoading, setIsLoading] = createSignal(true);
+  const [deleleCardLoading, setDeleteCarLoaidng] = createSignal(false);
   const [names, setNames] = createSignal<string[]>([]);
   const [transmissions, setTransmissions] = createSignal<string[]>([]);
   const [fuelTypes, setFuelTypes] = createSignal<string[]>([]);
@@ -35,6 +37,37 @@ const Wishlist: Component = () => {
   const [currentPage, setCurrentPage] = createSignal(1);
   const cardsPerPage = 6;
   const smallCardsPerPage = 4;
+
+  const deleteCard = async (event: Event, index: number) => {
+    event.preventDefault();
+    setDeleteCarLoaidng(true);
+    try {
+      const cardIdToDelete = linkId()[index];
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      // Perform the delete operation.
+      await supabase
+        .from('wishlist')
+        .delete()
+        .eq('userId', user?.id)
+        .eq('cardId', cardIdToDelete);
+
+      setLinkId(linkId().filter((_, i) => i !== index));
+      setNames(names().filter((_, i) => i !== index));
+      setTransmissions(transmissions().filter((_, i) => i !== index));
+      setFuelTypes(fuelTypes().filter((_, i) => i !== index));
+      setSeatNumbers(seatNumbers().filter((_, i) => i !== index));
+      setCondition(condition().filter((_, i) => i !== index));
+      setPrice(price().filter((_, i) => i !== index));
+      setRentPrice(rentPrice().filter((_, i) => i !== index));
+    } catch (error) {
+      console.error('Error deleting card:', error);
+    }
+    setDeleteCarLoaidng(true)
+  };
+
 
   createEffect(async () => {
     try {
@@ -102,7 +135,7 @@ const Wishlist: Component = () => {
     <>
       {isLoading() ? (
         <div class="flex h-screen items-center justify-center">
-          <img src={loading} class="phone:w-20 phone:h-20 lg:w-40 lg:h-40"/>
+          <img src={loading} class="phone:w-20 phone:h-20 lg:w-40 lg:h-40" />
         </div>
       ) : (
         <>
@@ -127,6 +160,9 @@ const Wishlist: Component = () => {
                               ${price()[index]}
                             </p>
                           </div>
+                          <button onClick={(event) => deleteCard(event, index)}>
+                            <img src={trash} class="w-10 h-10 my-auto" />
+                          </button>
                         </div>
 
                         <img
@@ -201,6 +237,9 @@ const Wishlist: Component = () => {
                               ${price()[index]}
                             </p>
                           </div>
+                          <button onClick={(event) => deleteCard(event, index)}>
+                            <img src={trash} class="w-10 h-10 my-auto" />
+                          </button>
                         </div>
 
                         <img

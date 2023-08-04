@@ -49,13 +49,13 @@ const Card: Component<CardProps> = (props) => {
       if (insertError) {
         throw insertError;
       }
-      toast.success('Item added to wishlist successfully!', {
-        className: 'custom-toast',
+      toast.success("Item added to wishlist successfully!", {
+        className: "custom-toast",
         iconTheme: {
-          primary: '#F2EEC0',
-          secondary: '#1f2937'
-        }
-      })
+          primary: "#F2EEC0",
+          secondary: "#1f2937",
+        },
+      });
     } catch (error: any) {
       console.error("Error adding item to wishlist:", error.message);
     }

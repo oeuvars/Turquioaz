@@ -3,10 +3,8 @@ import { A, useParams } from "@solidjs/router";
 import CarSpecifications from "../collections/CarSpecifications";
 import image from "../assets/images/rosario-gianni-2qQ2uVKjZsI-unsplash.jpg";
 import Stripe from "stripe";
-import { useNavigate } from "@solidjs/router";
 
 const Model = () => {
-  const navigate = useNavigate();
   const calculateRentPrice = (
     rentPrice: number,
     numberOfDays: number

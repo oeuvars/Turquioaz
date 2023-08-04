@@ -246,8 +246,9 @@ const Wishlist: Component = () => {
                             </p>
                           </div>
                           <button onClick={(event) => deleteCard(event, index)}>
-                            <img src={trash} class="w-8 h-8 my-auto" />
+                            <img src={trash} class="w-10 h-10 my-auto" />
                           </button>
+                          <Toaster position="bottom-center" gutter={8} />
                         </div>
 
                         <img

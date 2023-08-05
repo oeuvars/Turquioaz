@@ -47,7 +47,7 @@ const Model = () => {
       },
       mode: "payment",
       success_url: `${origin}/success`,
-      cancel_url: `${origin}/collections`,
+      cancel_url: `${origin}/model/:id`,
     });
 
     if (session.url) {

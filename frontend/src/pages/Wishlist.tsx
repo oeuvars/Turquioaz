@@ -11,22 +11,10 @@ import loading from "../assets/images/loading.gif";
 import trash from "../assets/svgs/card/empty-bin.svg";
 import toast, { Toaster } from "solid-toast";
 
-interface CarModel {
-  id: string;
-  name: string;
-  transmission: string;
-  fuelType: string;
-  seatNumbers: number;
-  condition: string;
-  price: number;
-  rentPrice: number;
-}
-
 const Wishlist: Component = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
 
   const [isLoading, setIsLoading] = createSignal(true);
-  const [deleleCardLoading, setDeleteCarLoaidng] = createSignal(false);
   const [names, setNames] = createSignal<string[]>([]);
   const [transmissions, setTransmissions] = createSignal<string[]>([]);
   const [fuelTypes, setFuelTypes] = createSignal<string[]>([]);
@@ -36,19 +24,18 @@ const Wishlist: Component = () => {
   const [rentPrice, setRentPrice] = createSignal<string[]>([]);
   const [linkId, setLinkId] = createSignal<string[]>([]);
   const [currentPage, setCurrentPage] = createSignal(1);
+
   const cardsPerPage = 6;
   const smallCardsPerPage = 4;
 
   const deleteCard = async (event: Event, index: number) => {
     event.preventDefault();
-    setDeleteCarLoaidng(true);
     try {
       const cardIdToDelete = linkId()[index];
       const {
         data: { user },
       } = await supabase.auth.getUser();
 
-      // Perform the delete operation.
       await supabase
         .from("wishlist")
         .delete()
@@ -66,7 +53,6 @@ const Wishlist: Component = () => {
     } catch (error) {
       console.error("Error deleting card:", error);
     }
-    setDeleteCarLoaidng(true);
     toast.success('Item Removed Successfully', {
       className: 'custom-toast',
       iconTheme: {

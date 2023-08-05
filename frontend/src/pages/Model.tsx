@@ -47,13 +47,10 @@ const Model = () => {
       },
       mode: "payment",
       success_url: `${origin}/success`,
-      cancel_url: `${origin}/model/:id`,
     });
 
     if (session.url) {
       window.location.href = session.url;
-    } else {
-      console.error("Error creating Stripe Checkout session: Session URL is null.");
     }
   };
 

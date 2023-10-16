@@ -2,4 +2,3 @@ node_modules
 .env
 src
 rentnride.cars.json
-build

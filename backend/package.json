@@ -5,6 +5,9 @@
   "scripts": {
     "build": "nodemon run server.js"
   },
+  "engines": {
+    "node": ">= 16.13"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -6,6 +6,9 @@
     "build": "nodemon run app.js",
     "start": "nodemon ./build/app.js"
   },
+  "engines": {
+    "node": ">= 16.13"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

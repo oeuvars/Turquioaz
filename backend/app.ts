@@ -1,7 +1,8 @@
 import express from "express";
 
 const app = express();
-import "dotenv/config";
+
+const port = process.env.PORT || 3000;
 
 import userRoutes from "./routes/userRoutes";
 
@@ -14,6 +15,4 @@ app.get("/", (req, res) => res.send("this is home page!"));
 
 app.use("/user", userRoutes);
 
-app.listen(5000, () => {
-  console.log("server has started on port 5000");
-});
+app.listen(port, () => console.log(`app listening on port ${port}!`));

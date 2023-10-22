@@ -1,30 +1,41 @@
 import { Component, createSignal, createEffect, Show } from "solid-js";
-import { FaSolidCalendarDays } from "solid-icons/fa";
-import { FaSolidLocationDot } from "solid-icons/fa";
 import { HiOutlineChevronDown } from "solid-icons/hi";
 import { IoClose } from "solid-icons/io";
-import brand from "../assets/svgs/search/brand.png";
-import model from "../assets/svgs/search/car.svg";
-import location from "../assets/svgs/search/location.svg";
-import calender from "../assets/svgs/search/calendar.svg";
+import brand from "../../../assets/svgs/search/brand.png";
+import model from "../../../assets/svgs/search/car.svg";
 import carBrands from "../collections/Brand";
 import carModels from "../collections/CarModels";
-import { useTopFilterContext } from "../utils/TopFilterContext";
+import { useTopFilterContext } from "../../../utils/TopFilterContext";
 import CarSpecifications from "../collections/CarSpecifications";
-import Card from "../components/Card";
-import useMediaQuery from "../hooks/useMediaQuery";
+import Card from "../../../components/Card";
+import useMediaQuery from "../../../hooks/useMediaQuery";
+import axios from "axios";
 
 const Search: Component = () => {
+  const [models, setModels] = createSignal([])
+
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
   const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
   const [openModelDropdown, setOpenModelDropdown] = createSignal(false);
-  const [openCalenderDropdown, setOpenCalenderDropdown] = createSignal(false);
   const [selectedBrandModels, setSelectedBrandModels] = createSignal<string[]>(
     []
   );
-  const [searchQuery, setSearchQuery] = createSignal("");
-  const { selectedBrand, setSelectedBrand, selectedModel, setSelectedModel } =
-    useTopFilterContext();
+  const { selectedBrand, setSelectedBrand, selectedModel, setSelectedModel } = useTopFilterContext();
+
+  createEffect(async () => {
+    const token = localStorage.getItem("loginToken");
+    const res = await axios.get(
+      "http://localhost:4000/user/",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  setModels(res.data.models);
+  console.log(models())
+  })
+  console.log(models())
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen());
@@ -42,13 +53,6 @@ const Search: Component = () => {
     setOpenModelDropdown(false);
   };
 
-  const toggleCalenderDropdown = () => {
-    setOpenCalenderDropdown(!openCalenderDropdown());
-  };
-
-  const closeCalenderDropdown = () => {
-    setOpenCalenderDropdown(false);
-  };
 
   const handleBrandSelection = (brand: string) => {
     setSelectedBrand(brand);
@@ -67,17 +71,14 @@ const Search: Component = () => {
         ?.models || [];
     setSelectedBrandModels(brandModels);
   });
-  createEffect(() => {
-    setSearchQuery("");
-  });
 
   return (
     <>
       {isAboveSmallScreens() ? (
         <div class="w-[98%] mx-auto">
           <div class="flex justify-between mt-10">
-            <div class="flex py-3 px-5 items-center rounded-lg gap-5 bg-white/10 border border-white/10 shadow-lg backdrop-blur-md mx-auto">
-              <div class="flex phone:w-20 lg:w-44">
+            <div class="flex py-3 px-5 items-center rounded-lg gap-10 bg-white/10 border border-white/10 shadow-lg backdrop-blur-md mx-auto">
+              <div class="flex gap-[3vw]">
                 <div class="w-4/5 font-mabry-regular font-medium">
                   <p class="text-xs text-yellow-200/50">Car Brand</p>
                   <h1>{selectedBrand()}</h1>
@@ -87,30 +88,29 @@ const Search: Component = () => {
                   onClick={toggleDropdown}
                 />
                 <Show when={isDropdownOpen()}>
-                  <div class="absolute mt-16 bg-white/10 w-48 rounded-md shadow-md h-40 overflow-scroll scroll z-20 my-1 border-white/10 border">
-                    <div class="flex pl-[160px] fixed z-10 pt-[6px]">
-                      <IoClose
-                        class="text-white w-6 h-6 cursor-pointer"
-                        onClick={closeDropdown}
-                      />
+                  <div class="absolute flex mt-16 bg-white/10 rounded-md shadow-md h-[10vw] overflow-scroll scroll z-20 my-1 border-white/10 border backdrop-blur-md">
+                    <div>
+                       {carBrands.map((brand, index) => (
+                        <div class="">
+                          <button
+                            class={`pt-[0.2vw] px-2 text-white text-lg font-mabry-regular font-medium ${
+                              brand === selectedBrand() ? "font-bold" : ""
+                            }`}
+                            onClick={() => handleBrandSelection(brand)}
+                          >
+                            {brand}
+                          </button>
+                        </div>
+                      ))}
                     </div>
-                    {carBrands.map((brand, index) => (
-                      <div>
-                        <button
-                          class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
-                            brand === selectedBrand() ? "font-bold" : ""
-                          }`}
-                          onClick={() => handleBrandSelection(brand)}
-                        >
-                          {brand}
-                        </button>
-                      </div>
-                    ))}
+                    <IoClose
+                      class="text-white w-7 h-7 cursor-pointer m-2"
+                      onClick={closeDropdown}
+                    />
                   </div>
                 </Show>
               </div>
-              <hr class="w-[1px] h-[50px] rounded-full bg-yellow-100" />
-              <div class="flex phone:w-20 lg:w-44">
+              <div class="flex gap-[3vw]">
                 <div class="w-4/5 font-mabry-regular text-sm font-medium">
                   <p class="text-xs text-yellow-200/50">Car Model</p>
                   <h1>{selectedModel()}</h1>
@@ -139,37 +139,6 @@ const Search: Component = () => {
                         </button>
                       </div>
                     ))}
-                  </div>
-                </Show>
-              </div>
-              <hr class="w-[1px] h-[50px] rounded-full bg-yellow-100" />
-              <div class="flex w-60">
-                <div class="w-4/5 font-mabry-regular text-sm font-medium">
-                  <p class="text-xs text-yellow-200/50">Pickup Location</p>
-                  <h1>John F. Kennedy Airport</h1>
-                </div>
-                <FaSolidLocationDot class="fill-white/50 w-6 h-6 my-auto mx-auto" />
-              </div>
-              <hr class="w-[1px] h-[50px] rounded-full bg-yellow-100" />
-              <div class="flex w-60">
-                <div class="w-4/5 font-mabry-regular text-sm font-medium">
-                  <p class="text-xs text-yellow-200/50">Pickup & Return Date</p>
-                  <h1>Apr 27 - May 1</h1>
-                </div>
-                <FaSolidCalendarDays
-                  class="fill-white/50 w-6 h-6 my-auto mx-auto"
-                  onClick={toggleCalenderDropdown}
-                />
-                <Show when={openCalenderDropdown()}>
-                  <div class="absolute mt-16 bg-white w-48 rounded-md shadow-md px-4 py-2">
-                    <input
-                      type="date"
-                      class="flex font-mabry-regular font-medium text-gray-800 outline-none mx-auto"
-                    />
-                    <input
-                      type="date"
-                      class="flex font-mabry-regular font-medium text-gray-800 outline-none mx-auto"
-                    />
                   </div>
                 </Show>
               </div>

@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,73 +11,49 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #131b1c;
   scrollbar-width: none;
-  @apply text-[#F2EEC0];
-}
-
-@font-face {
-  font-family: Suntage;
-  src: url("/src/assets/fonts/Suntage.ttf");
-}
-
-@font-face {
-  font-family: Mabry-Regular;
-  src: url("../src/assets/fonts/MabryPro-Regular.ttf");
-}
-
-@font-face {
-  font-family: Mabry-Light;
-  src: url("../src/assets/fonts/MabryPro-Light.ttf");
-}
-
-@font-face {
-  font-family: Helvetica;
-  src: url("/src/assets/fonts/Helvetica.ttf");
-}
-@font-face {
-  font-family: Loubag;
-  src: url("/src/assets/fonts/Loubag-Bold.ttf");
-}
-@font-face {
-  font-family: Chloe;
-  src: url("/src/assets/fonts/Chloe.otf");
-}
-@font-face {
-  font-family: Draper;
-  src: url("/src/assets/fonts/Draper.otf");
-}
-@font-face {
-  font-family: Quiny;
-  src: url("/src/assets/fonts/quiny.ttf");
-}
-@font-face {
-  font-family: Mauline;
-  src: url("/src/assets/fonts/Mauline.otf");
-}
-@font-face {
-  font-family: Mabry;
-  src: url("/src/assets/fonts/MabryPro-Medium.ttf");
+  @apply text-[#F2EEC0] font-travertino-medium;
 }
 
 .blur {
   backdrop-filter: blur(5px);
 }
+
+.animation {
+  @apply transition duration-500 ease-in-out
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
 body::-webkit-scrollbar {
   display: none;
 }
+
 .scroll::-webkit-scrollbar {
   display: none;
 }
+
+@font-face {
+  font-family: Travertino;
+  src: url("./assets/fonts/Travertino.ttf");
+}
+
+@font-face {
+  font-family: Travertino-Medium;
+  src: url("./assets/fonts/Travertino-Medium.ttf");
+}
+
 .scroll {
   scrollbar-width: none;
 }
+
 html {
   -webkit-tap-highlight-color: transparent;
   height: 100%;

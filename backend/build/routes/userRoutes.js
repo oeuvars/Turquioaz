@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const sendMail_1 = require("../helper/sendMail");
 const auth_1 = require("../middlewares/auth");
 const db_config_1 = __importDefault(require("../DB/db.config"));
 //USER SIGNUP
@@ -32,7 +33,7 @@ router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function*
                 password: password,
             },
         });
-        const token = jsonwebtoken_1.default.sign({ email, role: "user" }, process.env.hiddenKey, {
+        const token = jsonwebtoken_1.default.sign({ email, role: "user", name }, process.env.hiddenKey, {
             expiresIn: "1h",
         });
         res.json({ message: "User created successfully", token });
@@ -48,13 +49,69 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         },
     });
     if (user) {
-        const token = jsonwebtoken_1.default.sign({ email, role: "user" }, process.env.hiddenKey, {
+        const name = user.name;
+        const token = jsonwebtoken_1.default.sign({ email, role: "user", name }, process.env.hiddenKey, {
             expiresIn: "24h",
         });
         res.json({ message: "Logged in successfully", token });
     }
     else {
         res.status(403).json({ message: "Invalid email or password" });
+    }
+}));
+router.post("/forgotPassword", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.body;
+    const user = yield db_config_1.default.user.findUnique({
+        where: {
+            email: email,
+        },
+    });
+    if (user) {
+        const secret = process.env.hiddenKey + user.password;
+        const payload = {
+            email: user.email,
+            id: user.id,
+        };
+        const token = jsonwebtoken_1.default.sign(payload, secret, { expiresIn: "15m" });
+        const content = `${user.id}/${token}`;
+        //sendMail(email, "Reset Password", link);
+        res.send((0, sendMail_1.sendMail)(email, "Reset Password", content));
+        //res.status(200).json({ message: "reset link sent" });
+    }
+    else {
+        res.status(402).json({ message: "User doesnt reside in our database" });
+    }
+}));
+router.post("/resetPassword/:id/:token", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id, token } = req.params;
+    const { password, confirmPassword } = req.body;
+    const user = yield db_config_1.default.user.findUnique({
+        where: {
+            id: parseInt(id),
+        },
+    });
+    if (user) {
+        const secret = process.env.hiddenKey + user.password;
+        try {
+            const payload = jsonwebtoken_1.default.verify(token, secret);
+            if (password === confirmPassword) {
+                yield db_config_1.default.user.update({
+                    where: {
+                        id: parseInt(id),
+                    },
+                    data: {
+                        password: password,
+                    },
+                });
+                res.send("password updated successfully");
+            }
+            else {
+                res.send("passwords do not match");
+            }
+        }
+        catch (error) {
+            res.status(404).json(error);
+        }
     }
 }));
 //GET ALL MODELS
@@ -91,7 +148,7 @@ router.get("/car/:id", auth_1.authentication, (req, res) => __awaiter(void 0, vo
     }
 }));
 // RENT A CAR
-router.post("/cars/:id", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/rent-car/:id", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { startDate, endDate, status } = req.body;
     const id = parseInt(req.params.id);
     const car = yield db_config_1.default.model.findUnique({
@@ -191,6 +248,38 @@ router.get("/wishlistedCar", auth_1.authentication, (req, res) => __awaiter(void
     }
     else {
         res.status(403).json({ message: "User not found" });
+    }
+}));
+//REMOVE IT FROM WISHLIST
+router.delete("/wishlistedCar/:id", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const wishCar = yield db_config_1.default.wishlistedCar.findUnique({
+        where: { id: parseInt(req.params.id) },
+    });
+    console.log(wishCar);
+    if (wishCar) {
+        const user = yield db_config_1.default.user.findUnique({
+            where: { email: req.user.email },
+            include: {
+                onWishlist: true,
+            },
+        });
+        if (user) {
+            const wishCarId = wishCar.id;
+            yield db_config_1.default.wishlistedCar.delete({
+                where: {
+                    id: wishCarId,
+                },
+            });
+            res.json({
+                message: "Car removed from wishlist",
+            });
+        }
+        else {
+            res.status(403).json({ message: "User Not found" });
+        }
+    }
+    else {
+        res.status(404).json({ message: "Car Not Found" });
     }
 }));
 exports.default = router;

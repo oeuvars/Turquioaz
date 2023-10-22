@@ -1,39 +1,41 @@
-import { Component, lazy } from "solid-js";
+import { Component } from "solid-js";
 import { Routes, Route } from "@solidjs/router";
-import Home from "../pages/Home";
-import Cart from "../pages/Cart";
-import Login from "../pages/Login";
-import Signup from "../pages/Signup";
-import User from "../pages/User";
-import Success from "../pages/Success";
-import Model from "../pages/Model";
-import Search from "../pages/Search";
-import Info from "../pages/Info";
-import Contact from "../pages/Contact";
-import Wishlist from "../pages/Wishlist";
-import Collections from "../pages/Collections";
+import Cart from "../pages/user/payment-gateway/Cart";
+import Login from "../pages/user/auth/Login";
+import Signup from "../pages/user/auth/Signup";
+import Success from "../pages/user/payment-gateway/Success";
+import Model from "../pages/user/cars/Model";
+import Search from "../pages/user/cars/Search";
+import Wishlist from "../pages/user/cars/Wishlist";
+import Collections from "../pages/user/cars/Collections";
+import Contact from "../pages/user/contact/Contact";
+import Info from "../pages/user/contact/Info";
+import Home from "../pages/home/Home";
 
-
-const AppRoutes: Component = () => {
-
+const UserRoutes: Component = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/collections" element={<Collections />} />
-        <Route path="/model/:slug" element={<Model />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/info" element={<Info />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/info" element={<Info />} />
+
+        {/* User Routes */}
+        <Route path="/user/collections" element={<Collections />} />
+        <Route path="/user/model/:id" element={<Model />} />
+        <Route path="/user/search" element={<Search />} />
+        <Route path="/user/cart" element={<Cart />} />
+        <Route path="/user/wishlist" element={<Wishlist />} />
+        <Route path="/user/success/:id" element={<Success />} />
+        <Route path="/user/login" element={<Login />} />
+        <Route path="/user/signup" element={<Signup />} />
+
+        {/* User Routes */}
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/signup" element={<Signup />} />
       </Routes>
     </>
   );
 };
 
-export default AppRoutes;
+export default UserRoutes;

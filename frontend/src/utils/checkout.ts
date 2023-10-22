@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { selectedDay, selectedModel } from "../pages/Model";
+import { selectedDay, selectedModel } from "../user/cars/Model";
 import { createSignal } from "solid-js";
 
 const express = require("express");

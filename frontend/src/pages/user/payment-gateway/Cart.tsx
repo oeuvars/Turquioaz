@@ -1,5 +1,5 @@
 import { Component, useContext, For } from "solid-js";
-import line from "../assets/images/line.svg";
+import line from "../../../assets/images/line.svg";
 
 const Cart: Component = () => {
 

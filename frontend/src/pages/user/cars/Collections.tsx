@@ -1,29 +1,56 @@
 import { Component, createSignal, createEffect, Show } from "solid-js";
-import Card from "../components/Card";
-import CarSpecifications from "../collections/CarSpecifications";
-import linedivider from "../assets/images/line.svg";
-import useMediaQuery from "../hooks/useMediaQuery";
-import seats from "../assets/svgs/collections/person.svg";
-import transmission from "../assets/svgs/collections/manual-transmission.png";
-import fuel from "../assets/svgs/collections/gas-station.svg";
-import condition from "../assets/svgs/collections/tools.svg";
+import Card from "../../../components/Card";
+import useMediaQuery from "../../../hooks/useMediaQuery";
+import seats from "../../../assets/svgs/collections/person.svg";
+import transmission from "../../../assets/svgs/collections/manual-transmission.png";
+import fuel from "../../../assets/svgs/collections/gas-station.svg";
+import condition from "../../../assets/svgs/collections/tools.svg";
 import { IoClose } from "solid-icons/io";
+import Navbar from "../../../components/Navbar";
+import axios from "axios";
+import { BsChevronLeft, BsChevronRight } from "solid-icons/bs";
+import { AiOutlineRedo } from 'solid-icons/ai'
 
 const Collections: Component = () => {
+  const [models, setModels] = createSignal([])
+
+  const [loading, setLoading] = createSignal(false)
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
   const [currentPage, setCurrentPage] = createSignal(1);
   const [selectedTransmission, setSelectedTransmission] = createSignal("Any");
   const [selectedFuel, setSelectedFuel] = createSignal("Any");
   const [selectedSeats, setSelectedSeats] = createSignal(2);
   const [selectedCondition, setSelectedCondition] = createSignal("All");
+  const [totalPages, setTotalPages] = createSignal(0);
   const cardsPerPage = 4;
-  const totalCards = CarSpecifications.flatMap((brand) => brand.models).length;
-  const totalPages = Math.ceil(totalCards / cardsPerPage);
 
   const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
   const [isDropdownOpen2, setIsDropdownOpen2] = createSignal(false);
   const [isDropdownOpen3, setIsDropdownOpen3] = createSignal(false);
   const [isDropdownOpen4, setIsDropdownOpen4] = createSignal(false);
+
+  const loginToken = localStorage.getItem("loginToken");
+  const signupToken = localStorage.getItem("signupToken");
+
+  if(loginToken || signupToken) {
+
+  }
+
+  createEffect(async () => {
+    const token = localStorage.getItem("loginToken");
+    const res = await axios.get(
+      "http://localhost:4000/user/inventory",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  setModels(res.data.models);
+  const totalCards = models().length
+  const totalPages = Math.ceil(totalCards / cardsPerPage);
+  setTotalPages(totalPages);
+  })
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen());
@@ -54,93 +81,27 @@ const Collections: Component = () => {
   };
 
   createEffect(() => {
-    const startIndex = (currentPage() - 1) * cardsPerPage;
-    const endIndex = startIndex + cardsPerPage;
-    const currentCards = CarSpecifications.flatMap(
-      (brand) => brand.models
-    ).slice(startIndex, endIndex);
-    setCurrentCards(currentCards);
-  });
-  createEffect(() => {
+    setLoading(true)
     const startIndex = (currentPage() - 1) * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
 
-    const filteredCars = CarSpecifications.flatMap((brand) =>
-      brand.models.filter(
-        (model) =>
-          selectedTransmission() === "Any" ||
-          model.transmission === selectedTransmission()
-      )
-    );
-    const currentCards = filteredCars.slice(startIndex, endIndex);
+    const filteredModels = models().filter((model) => {
+      const transmissionMatch = selectedTransmission() === "Any" || (model as any).transmission === selectedTransmission();
+      const fuelMatch = selectedFuel() === "Any" || (model as any).fuelType === selectedFuel();
+      const seatsMatch = selectedSeats() === 2 || (model as any).seatNumbers === selectedSeats();
+      const conditionMatch = selectedCondition() === "All" || (model as any).condition === selectedCondition();
 
-    setCurrentCards(currentCards);
-  });
-  createEffect(() => {
-    const startIndex = (currentPage() - 1) * cardsPerPage;
-    const endIndex = startIndex + cardsPerPage;
+      return transmissionMatch && fuelMatch && seatsMatch && conditionMatch;
+    });
 
-    const filteredCars = CarSpecifications.flatMap((brand) =>
-      brand.models.filter(
-        (model) => selectedFuel() === "Any" || model.fuelType === selectedFuel()
-      )
-    );
-    const currentCards = filteredCars.slice(startIndex, endIndex);
-
-    setCurrentCards(currentCards);
-  });
-  createEffect(() => {
-    const startIndex = (currentPage() - 1) * cardsPerPage;
-    const endIndex = startIndex + cardsPerPage;
-
-    const filteredCars = CarSpecifications.flatMap((brand) =>
-      brand.models.filter(
-        (model) =>
-          selectedSeats() === 2 || model.seatNumbers === selectedSeats()
-      )
-    );
-    const currentCards = filteredCars.slice(startIndex, endIndex);
-
-    setCurrentCards(currentCards);
-  });
-  createEffect(() => {
-    const startIndex = (currentPage() - 1) * cardsPerPage;
-    const endIndex = startIndex + cardsPerPage;
-
-    const filteredCars = CarSpecifications.flatMap((brand) =>
-      brand.models.filter(
-        (model) =>
-          selectedCondition() === "All" ||
-          model.condition === selectedCondition()
-      )
-    );
-    const currentCards = filteredCars.slice(startIndex, endIndex);
-
-    setCurrentCards(currentCards);
-  });
-  createEffect(() => {
-    const startIndex = (currentPage() - 1) * cardsPerPage;
-    const endIndex = startIndex + cardsPerPage;
-
-    const filteredCars = CarSpecifications.flatMap((brand) =>
-      brand.models.filter((model) => {
-        const transmissionMatch =
-          selectedTransmission() === "Any" ||
-          model.transmission === selectedTransmission();
-        const fuelMatch =
-          selectedFuel() === "Any" || model.fuelType === selectedFuel();
-        const seatsMatch =
-          selectedSeats() === 2 || model.seatNumbers === selectedSeats();
-        const conditionMatch =
-          selectedCondition() === "All" ||
-          model.condition === selectedCondition();
-        return transmissionMatch && fuelMatch && seatsMatch && conditionMatch;
-      })
-    );
-
-    const currentCards = filteredCars.slice(startIndex, endIndex);
+    const currentCards = filteredModels.slice(startIndex, endIndex);
     setCurrentCards(currentCards || []);
+    const totalCards = filteredModels.length;
+    const totalPages = Math.ceil(totalCards / cardsPerPage);
+    setTotalPages(totalPages);
+    setLoading(false)
   });
+
   const resetFilters = () => {
     setSelectedTransmission("Any");
     setSelectedFuel("Any");
@@ -149,12 +110,10 @@ const Collections: Component = () => {
     setCurrentPage(1);
   };
 
-  const [currentCards, setCurrentCards] = createSignal(
-    CarSpecifications.flatMap((brand) => brand.models).slice(0, cardsPerPage)
-  );
+  const [currentCards, setCurrentCards] = createSignal(models().slice(0, cardsPerPage));
 
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages()));
   };
 
   const handlePreviousPage = () => {
@@ -162,12 +121,12 @@ const Collections: Component = () => {
   };
 
   const getPageNumbers = () => {
-    const pageRange = 2; // Number of page numbers to display on each side of the current page
+    const pageRange = 2;
     let start = Math.max(1, currentPage() - pageRange);
-    let end = Math.min(totalPages, currentPage() + pageRange);
+    let end = Math.min(totalPages(), currentPage() + pageRange);
 
     if (currentPage() - start < pageRange) {
-      end = Math.min(end + pageRange - (currentPage() - start), totalPages);
+      end = Math.min(end + pageRange - (currentPage() - start), totalPages());
     }
     if (end - currentPage() < pageRange) {
       start = Math.max(start - (pageRange - (end - currentPage())), 1);
@@ -177,27 +136,15 @@ const Collections: Component = () => {
   };
   return (
     <>
+    <Navbar />
       {isAboveSmallScreens() ? (
-        <div class="font-mabry-regular mb-7">
-          <div class="mx-auto mt-16 flex w-11/12">
-            <div class="w-80 bg-white/10 border border-white/10 rounded-xl py-10 px-5 shadow-lg">
-              <div class="flex justify-between w-72 mx-auto">
-                <h1 class="font-medium text-lg">Filters</h1>
+        <div class="font-mabry-regular">
+          <div class="mx-auto mt-[4vw] flex w-11/12 justify-between phone:gap-5 lg:gap-9">
+            <div class="bg-white/10 border border-white/10 rounded-xl py-10 px-5 shadow-lg">
+              <div class="flex justify-between mx-auto">
+                <h1 class="font-medium text-xl">Filters</h1>
                 <div class="flex gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-5 h-5 text-yellow-500 my-auto"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                    />
-                  </svg>
+                <AiOutlineRedo class="w-6 h-6 my-auto"/>
 
                   <button
                     onClick={resetFilters}
@@ -208,9 +155,9 @@ const Collections: Component = () => {
                 </div>
               </div>
 
-              <img src={linedivider} class="py-5" />
+              <hr class="my-[1.5vw] bg-yellow-50/70 border-0 h-[0.1vw] rounded-full"/>
 
-              <div class="w-72 mx-auto text-sm">
+              <div class="mx-auto">
                 <h1 class="font-medium">Transmission Type</h1>
                 <div class="gap-3 flex mt-3">
                   <button
@@ -242,9 +189,9 @@ const Collections: Component = () => {
                 </div>
               </div>
 
-              <img src={linedivider} class="py-5" />
+              <hr class="my-[1.5vw] bg-yellow-50/70 border-0 h-[0.1vw] rounded-full"/>
 
-              <div class="max-w-[288px] mx-auto text-sm overflow-clip">
+              <div class="mx-auto overflow-clip">
                 <h1 class="font-medium">Fuel Type</h1>
                 <div class="gap-3 flex mt-3 flex-wrap">
                   <button
@@ -290,9 +237,9 @@ const Collections: Component = () => {
                 </div>
               </div>
 
-              <img src={linedivider} class="py-5" />
+              <hr class="my-[1.5vw] bg-yellow-50/70 border-0 h-[0.1vw] rounded-full"/>
 
-              <div class="w-72 mx-auto text-sm">
+              <div class="mx-auto overflow-clip">
                 <h1 class="font-medium">Seat</h1>
                 <div class="gap-3 flex mt-3 flex-wrap">
                   <button
@@ -330,9 +277,9 @@ const Collections: Component = () => {
                 </div>
               </div>
 
-              <img src={linedivider} class="py-5" />
+              <hr class="my-[1.5vw] bg-yellow-50/70 border-0 h-[0.1vw] rounded-full"/>
 
-              <div class="w-72 mx-auto text-sm">
+              <div class="mx-auto overflow-clip">
                 <h1 class="font-medium">Veichle Condition</h1>
                 <div class="gap-3 flex mt-3">
                   <button
@@ -362,50 +309,52 @@ const Collections: Component = () => {
                 </div>
               </div>
             </div>
-            <div class="flex flex-wrap justify-center gap-y-9">
+            <div class="grid grid-cols-2 phone:gap-5 lg:gap-9 justify-center">
               {currentCards()
                 .filter(
                   (model) =>
                     (selectedTransmission() === "Any" ||
-                      model.transmission === selectedTransmission()) &&
+                      (model as any).transmission === selectedTransmission()) &&
                     (selectedFuel() === "Any" ||
-                      model.fuelType === selectedFuel()) &&
+                      (model as any).fuelType === selectedFuel()) &&
                     (selectedSeats() === 2 ||
-                      model.seatNumbers === selectedSeats()) &&
+                      (model as any).seatNumbers === selectedSeats()) &&
                     (selectedCondition() === "All" ||
-                      model.condition === selectedCondition())
+                      (model as any).condition === selectedCondition())
                 )
                 .map((model) => (
                   <Card model={model} />
                 ))}
             </div>
           </div>
-          <div class="flex justify-center transition duration-500 mx-auto w-full">
+          <div class="flex justify-center gap-2 transition duration-500 mx-auto my-[2vw] w-full">
             <button
-              class="mx-2 min-w-[30px] min-h-[30px] rounded-full font-medium transition duration-500 mt-7 bg-green-900"
+              class=""
               disabled={currentPage() === 1}
               onClick={handlePreviousPage}
             >
-              &lt;
+              <BsChevronLeft class="min-w-[40px] min-h-[40px] bg-emerald-900/30 rounded-full p-[0.5vw]"/>
             </button>
-            {getPageNumbers().map((page) => (
-              <button
-                class={`mx-2 min-w-[30px] min-h-[30px] rounded-full font-medium transition duration-500 mt-7 ${
-                  currentPage() === page
-                    ? "bg-emerald-900 text-white"
-                    : "bg-yellow-50/20"
-                }`}
-                onClick={() => setCurrentPage(page)}
-              >
-                {page}
-              </button>
-            ))}
+            <div class="">
+              {getPageNumbers().map((page) => (
+                <button
+                  class={`mx-1 min-w-[40px] min-h-[40px] text-lg rounded-full font-medium transition duration-500 ${
+                    currentPage() === page
+                      ? "bg-emerald-900 text-white"
+                      : "bg-yellow-50/20"
+                  }`}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
             <button
-              class="mx-2 min-w-[30px] min-h-[30px] rounded-full font-medium transition duration-500 mt-7 bg-green-900"
-              disabled={currentPage() === totalPages}
+              class=""
+              disabled={currentPage() === totalPages()}
               onClick={handleNextPage}
             >
-              &gt;
+              <BsChevronRight class="min-w-[40px] min-h-[40px] bg-emerald-900/30 rounded-full p-[0.5vw]"/>
             </button>
           </div>
         </div>
@@ -415,14 +364,19 @@ const Collections: Component = () => {
             <div class="w-full bg-white/10 border border-white/10 rounded-xl py-3 my-5 shadow-lg mx-auto">
               <div class="flex justify-between">
                 <div class="flex mx-auto">
-                  <button class="font-medium" onClick={() => toggleDropdown()}>
+                  <button class="font-medium" onClick={() => {
+                      toggleDropdown();
+                      closeDropdown2();
+                      closeDropdown3();
+                      closeDropdown4();
+                    }}>
                     <img src={transmission} class="w-6 h-6 mx-auto mt-1" />
-                    <h1 class="text-white font-sm -mb-1">{selectedTransmission()}</h1>
+                    <h1 class="text-white text-sm -mb-1">{selectedTransmission()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-5">
+                  <div class="absolute flex mt-[8vh] -ml-[3vh]">
                     <Show when={isDropdownOpen()}>
-                      <div class="flex absolute mt-[3.5rem] -ml-[3.3rem] bg-white/10 w-24 rounded-md shadow-md h-24 scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
-                        <div class="flex-col">
+                      <div class="flex absolute bg-white/10 rounded-md w-[13vh] shadow-md scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
+                        <div class="">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
                               selectedTransmission() === "Any"
@@ -455,7 +409,7 @@ const Collections: Component = () => {
                           </button>
                         </div>
                         <IoClose
-                          class="text-white w-6 h-6 cursor-pointer -ml-7 mt-1"
+                          class="text-white w-5 h-5 cursor-pointer m-[0.5vh] sticky top-0"
                           onClick={closeDropdown}
                         />
                       </div>
@@ -464,13 +418,18 @@ const Collections: Component = () => {
                 </div>
 
                 <div class="flex mx-auto">
-                  <button class="font-medium" onClick={toggleDropdown2}>
+                  <button class="font-medium" onClick={() => {
+                      toggleDropdown2();
+                      closeDropdown();
+                      closeDropdown3();
+                      closeDropdown4();
+                    }}>
                     <img src={fuel} class="w-8 h-8 mx-auto" />
                     <h1 class="text-white text-sm">{selectedFuel()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-5 flex-wrap">
+                  <div class="absolute mt-[8vh] -ml-[3vh] flex-wrap">
                     <Show when={isDropdownOpen2()}>
-                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-24 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
+                      <div class="flex absolute backdrop-blur-sm bg-white/10 w-[12vh] h-[12vh] rounded-md shadow-md overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
@@ -514,7 +473,7 @@ const Collections: Component = () => {
                           </button>
                         </div>
                         <IoClose
-                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7 sticky top-0"
+                          class="text-white w-5 h-5 cursor-pointer m-[0.5vh] sticky top-0"
                           onClick={closeDropdown2}
                         />
                       </div>
@@ -523,13 +482,18 @@ const Collections: Component = () => {
                 </div>
 
                 <div class="flex mx-auto">
-                  <button class="font-medium" onClick={toggleDropdown3}>
+                  <button class="font-medium" onClick={() => {
+                      toggleDropdown3();
+                      closeDropdown();
+                      closeDropdown2();
+                      closeDropdown4();
+                    }}>
                     <img src={seats} class="w-8 h-8 mx-auto" />
                     <h1 class="text-white text-sm">{selectedSeats()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-5 flex-wrap">
+                  <div class="absolute mt-[8vh] -ml-[3vh] flex-wrap">
                     <Show when={isDropdownOpen3()}>
-                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-28 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
+                      <div class="flex absolute backdrop-blur-sm bg-white/10 w-[13vh] rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
@@ -565,7 +529,7 @@ const Collections: Component = () => {
                           </button>
                         </div>
                         <IoClose
-                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7 sticky top-0"
+                          class="text-white w-5 h-5 cursor-pointer m-[0.5vh] sticky top-0"
                           onClick={closeDropdown3}
                         />
                       </div>
@@ -574,13 +538,18 @@ const Collections: Component = () => {
                 </div>
 
                 <div class="flex mx-auto">
-                  <button class="font-medium" onClick={toggleDropdown4}>
+                  <button class="font-medium" onClick={() => {
+                      toggleDropdown4();
+                      closeDropdown();
+                      closeDropdown2();
+                      closeDropdown3();
+                    }}>
                     <img src={condition} class="w-8 h-8" />
                     <h1 class="text-white text-sm">{selectedCondition()}</h1>
                   </button>
-                  <div class="gap-3 flex mt-5 flex-wrap">
+                  <div class="absolute mt-[8vh] -ml-[4vh] flex-wrap">
                     <Show when={isDropdownOpen4()}>
-                      <div class="flex absolute mt-[3.5rem] -ml-[3.5rem] backdrop-blur-sm bg-white/10 w-20 rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
+                      <div class="flex absolute backdrop-blur-sm bg-white/10 w-[11vh] rounded-md shadow-md overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
                             class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
@@ -608,7 +577,7 @@ const Collections: Component = () => {
                           </button>
                         </div>
                         <IoClose
-                          class="text-white w-6 h-6 cursor-pointer mt-1 -ml-7 sticky top-0"
+                          class="text-white w-5 h-5 cursor-pointer m-[0.5vh] sticky top-0"
                           onClick={closeDropdown4}
                         />
                       </div>
@@ -623,13 +592,13 @@ const Collections: Component = () => {
                 .filter(
                   (model) =>
                     (selectedTransmission() === "Any" ||
-                      model.transmission === selectedTransmission()) &&
+                      (model as any).transmission === selectedTransmission()) &&
                     (selectedFuel() === "Any" ||
-                      model.fuelType === selectedFuel()) &&
+                      (model as any).fuelType === selectedFuel()) &&
                     (selectedSeats() === 2 ||
-                      model.seatNumbers === selectedSeats()) &&
+                      (model as any).seatNumbers === selectedSeats()) &&
                     (selectedCondition() === "All" ||
-                      model.condition === selectedCondition())
+                      (model as any).condition === selectedCondition())
                 )
                 .map((model) => (
                   <Card model={model} />
@@ -657,7 +626,7 @@ const Collections: Component = () => {
               ))}
               <button
                 class="mx-2 min-w-[30px] min-h-[30px] rounded-full font-medium transition duration-500 mt-7 bg-green-900"
-                disabled={currentPage() === totalPages}
+                disabled={currentPage() === totalPages()}
                 onClick={handleNextPage}
               >
                 &gt;

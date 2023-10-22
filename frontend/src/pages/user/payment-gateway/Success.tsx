@@ -1,8 +1,26 @@
-import { A } from "@solidjs/router";
-import { Component } from "solid-js";
-import logo from "../assets/svgs/navbar/logo.svg";
+import { A, useParams } from "@solidjs/router";
+import { Component, createEffect } from "solid-js";
+import logo from "../../../assets/svgs/navbar/logo.svg";
+import axios from "axios";
 
 const Success: Component = () => {
+  const { id } = useParams<{ id: string }>();
+
+  createEffect(async () => {
+    const token = localStorage.getItem("loginToken");
+    const res = await axios.post(
+      `http://localhost:4000/user/rent-car/${id}`,
+      {
+        status: "Rented"
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  })
+
   return (
     <main class="grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
       <div class="text-center">

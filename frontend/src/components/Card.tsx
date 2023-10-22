@@ -1,11 +1,11 @@
-import { Component, JSX, createEffect } from "solid-js";
+import { Component, JSX, createEffect, createSignal } from "solid-js";
 import passenger from "../assets/svgs/collections/person.svg";
 import steering from "../assets/svgs/card/wheel.svg";
 import fuel from "../assets/svgs/collections/gas-station.svg";
-import love from "../assets/svgs/card/heart.svg";
-import { A } from "@solidjs/router";
-import { supabase } from "../auth/supabaseClient";
+import { A, useParams } from "@solidjs/router";
 import toast, { Toaster } from "solid-toast";
+import axios from "axios";
+import { AiFillHeart, AiOutlineHeart } from 'solid-icons/ai'
 
 interface Model {
   id: string;
@@ -22,50 +22,136 @@ interface CardProps extends JSX.HTMLAttributes<HTMLDivElement> {
   model: Model;
 }
 
+interface WishlistedCar {
+  id: number;
+  carId: number;
+  wishlistedbyId: number
+}
+
 const Card: Component<CardProps> = (props) => {
   const { model, ...restProps } = props;
+  const [models, setModels] = createSignal<WishlistedCar[]>([])
+  const id = model.id;
+  const [message, setMessage] = createSignal("")
+  const [liked, setLiked] = createSignal()
+
+  const toggledLikeButton = () => {
+    setLiked(!liked());
+  }
+
+  const wishlistedCar = async () => {
+    const token = localStorage.getItem("loginToken");
+    const res = await axios.get("http://localhost:4000/user/wishlistedCar", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setModels(res.data.wishlistedCar);
+  };
+  wishlistedCar()
 
   const handleAddToWishlistClick = async (e: MouseEvent) => {
     e.preventDefault();
-    try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-
-      const { data, error: insertError } = await supabase
-        .from("wishlist")
-        .insert({
-          cardId: model.id,
-          userId: user!.id,
-          name: model.name,
-          transmission: model.transmission,
-          fuelType: model.fuelType,
-          seatNumbers: model.seatNumbers,
-          condition: model.condition,
-          price: model.price,
-          rentPrice: model.rentPrice,
+    createEffect(async () => {
+      const token = localStorage.getItem("loginToken");
+      const res = await axios.post(
+        `http://localhost:4000/user/wishlist/${id}`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res) {
+        await wishlistedCar()
+        toast.success("Added to wishlist", {
+          style: {
+            border: "2px solid rgba(255, 255, 255, 0.1)",
+            padding: "10px",
+            color: "#fff",
+            "background-color": "rgba(0, 0, 0, 0.1)",
+            "backdrop-filter": "blur(10px)",
+            "font-size": '1.1em',
+            "min-width": "10em",
+          },
+          iconTheme: {
+            primary: "#000",
+            secondary: "#fff",
+          },
         });
-
-      if (insertError) {
-        throw insertError;
+      } else {
+        toast.error("Could not remove from wishlist", {
+          style: {
+            border: "2px solid rgba(255, 255, 255, 0.1)",
+            padding: "10px",
+            color: "#fff",
+            "background-color": "rgba(0, 0, 0, 0.1)",
+            "backdrop-filter": "blur(10px)",
+            "font-size": '1.1em',
+            "min-width": "10em",
+          },
+          iconTheme: {
+            primary: "#000",
+            secondary: "#fff",
+          },
+        });
       }
-      toast.success("Item added to wishlist successfully!", {
-        className: "custom-toast",
+    })
+  };
+  const handleDeleteClick = async (event: Event, id: number) => {
+    event.preventDefault();
+    const token = localStorage.getItem("loginToken");
+    const res = await axios.delete(
+        `http://localhost:4000/user/wishlistedCar/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (res) {
+      await wishlistedCar();
+      setMessage(res.data.message)
+      toast.success(message(), {
+        style: {
+          border: "2px solid rgba(255, 255, 255, 0.1)",
+          padding: "10px",
+          color: "#fff",
+          "background-color": "rgba(0, 0, 0, 0.1)",
+          "backdrop-filter": "blur(10px)",
+          "font-size": '1.1em',
+          "min-width": "10em",
+        },
         iconTheme: {
-          primary: "#F2EEC0",
-          secondary: "#1f2937",
+          primary: "#000",
+          secondary: "#fff",
         },
       });
-    } catch (error: any) {
-      console.error("Error adding item to wishlist:", error.message);
+    } else {
+      toast.success("Could not add to wishlist", {
+        style: {
+          border: "2px solid rgba(255, 255, 255, 0.1)",
+          padding: "10px",
+          color: "#fff",
+          "background-color": "rgba(0, 0, 0, 0.1)",
+          "backdrop-filter": "blur(10px)",
+          "font-size": '1.1em',
+          "min-width": "10em",
+        },
+        iconTheme: {
+          primary: "#000",
+          secondary: "#fff",
+        },
+      });
     }
   };
-
   return (
-    <A href={`/model/${model.id}`}>
+    <A href={`/user/model/${model.id}`}>
       <div
         {...restProps}
-        class="bg-white/10 border border-white/10 rounded-xl font-montserrat lg:min-w-[470px] lg:min-h-[310px] phone:min-w-[330px] phone:min-h-[220px] mx-5 px-4 py-3 shadow-lg"
+        class="bg-white/10 border border-white/10 rounded-xl font-montserrat mx-auto px-4 py-3 shadow-lg"
       >
         <div class="flex justify-between">
           <div class="flex-col justify-between">
@@ -74,10 +160,21 @@ const Card: Component<CardProps> = (props) => {
               ${model.price}
             </p>
           </div>
-
-          <button onClick={handleAddToWishlistClick}>
-            <img src={love} class="w-8 h-8" />
-          </button>
+          {models().some((item) => item.carId === Number(id)) ? (
+            <>
+              {models().map((item) => (
+                item.carId === Number(id) ? (
+                  <button onClick={(event) => handleDeleteClick(event, item.id)}>
+                    <AiFillHeart class="h-8 w-8 text-red-600" />
+                  </button>
+                ) : null
+              ))}
+            </>
+          ) : (
+            <button onClick={handleAddToWishlistClick}>
+              <AiOutlineHeart class="h-8 w-8 hover:text-red-600 animation" />
+            </button>
+          )}
           <Toaster position="bottom-center" gutter={16} />
         </div>
 

@@ -1,23 +1,16 @@
-import { A } from "@solidjs/router";
-import { Component, Show, createEffect, createSignal } from "solid-js";
+import { Component, Show, createSignal } from "solid-js";
 import "./underline.css";
 import logo from "../assets/svgs/navbar/logo.svg";
-import profileimage from "../assets/svgs/navbar/customer.png";
-import Home from "../assets/svgs/navbar/home.svg";
-import { supabase } from "../auth/supabaseClient";
-import { User } from "@supabase/supabase-js";
+import { CgProfile } from 'solid-icons/cg'
 import arrow from "../assets/svgs/navbar/upper-right-arrow.svg";
 import logout from "../assets/svgs/navbar/logout.svg";
 import cross from "../assets/svgs/navbar/cross.svg";
-import { useNavigate } from "@solidjs/router";
-import wish from "../assets/svgs/navbar/wish-list.png";
+import { A, useNavigate } from "@solidjs/router";
 import useMediaQuery from "../hooks/useMediaQuery";
 
 const Navbar: Component = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
-  const [name, setName] = createSignal<User | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
-  const [profile, setProfile] = createSignal<any[]>([]);
 
   const navigate = useNavigate();
   const toggleDropdown = () => {
@@ -28,23 +21,13 @@ const Navbar: Component = () => {
   };
 
   const handleClick = async (e: Event) => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.log(error);
-    } else {
-      navigate("/login");
-    }
+    localStorage.removeItem("loginToken")
+    navigate("/user/login")
   };
-  createEffect(async () => {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("full_name, id");
-  }, []);
 
   return (
     <div class="flex lg:gap-52 justify-between py-4 bg-white/10 lg:px-16 phone:px-5 items-center mx-auto sticky top-0 z-40 backdrop-blur-md">
       <A href="/" class="flex phone:gap-2 lg:gap-3">
-        <img src={Home} class="phone:w-7 phone:h-7 lg:w-12 lg:h-12 my-auto" />
         <img src={logo} class="lg:w-52 phone:w-32 phone:-mb-[3px] lg:-mb-[6px]" />
       </A>
 
@@ -61,7 +44,7 @@ const Navbar: Component = () => {
           </div>
           <div class="flex gap-1">
             <div>
-              <A href="/collections" class="text-lg">
+              <A href="/user/collections" class="text-lg">
                 Car Collections
               </A>
               <hr class="style-two" />
@@ -70,8 +53,8 @@ const Navbar: Component = () => {
           </div>
           <div class="flex gap-1">
             <div>
-              <A href="/search" class="text-lg">
-                Search
+              <A href="/user/wishlist" class="text-lg">
+                Wishlist
               </A>
               <hr class="style-two" />
             </div>
@@ -84,13 +67,13 @@ const Navbar: Component = () => {
 
       <div class="flex gap-5">
         <button onClick={toggleDropdown}>
-          <img src={profileimage} class="lg:w-11 lg:h-11 phone:w-7 phone:h-7" />
+          <CgProfile class="w-9 h-9 my-auto hover:text-yellow-200 animation"/>
         </button>
-        <A href="/wishlist">
-          <img src={wish} class="lg:w-11 lg:h-11 phone:w-7 phone:h-7" />
+        <A href="/user/login" class="rounded-lg bg-emerald-800 px-7 py-2 font-medium text-lg hover:bg-emerald-900 animation">
+          Log In
         </A>
         <Show when={isDropdownOpen()}>
-          <div class="flex justify-between absolute phone:-ml-20 lg:-ml-10 lg:mt-20 phone:mt-[3.3rem] bg-white/10 backdrop-blur-sm w-40 rounded-md shadow-md phone:h-12 lg:h-16 overflow-scroll scroll border-white/10 border">
+          <div class="flex justify-between absolute bg-white/10 backdrop-blur-sm w-40 rounded-md shadow-md phone:h-12 lg:h-16 overflow-scroll scroll border-white/10 border">
             <div class="flex">
               <button
                 onClick={handleClick}

@@ -66,8 +66,9 @@ router.get("/inventory", auth_1.authentication, (req, res) => __awaiter(void 0, 
 }));
 // ADMIN GET SINGLE CAR
 router.get("/inventory/:id", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = parseInt(req.params.id);
     const car = yield db_config_1.default.model.findUnique({
-        where: { id: Number(req.params.id) },
+        where: { id: id },
     });
     res.json({ car });
 }));

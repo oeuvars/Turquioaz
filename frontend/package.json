@@ -22,6 +22,7 @@
   "dependencies": {
     "@solidjs/router": "^0.8.2",
     "@supabase/supabase-js": "^2.29.0",
+    "@thisbeyond/solid-select": "^0.14.0",
     "axios": "^1.5.1",
     "jwt-decode": "^3.1.2",
     "solid-icons": "^1.0.11",

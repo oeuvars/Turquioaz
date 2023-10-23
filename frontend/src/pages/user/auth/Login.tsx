@@ -25,7 +25,7 @@ const Login = () => {
       e.preventDefault();
      try {
       setIsLoggingIn(true);
-      const res = await axios.post('http://localhost:4000/user/login',user())
+      const res = await axios.post('https://rent-n-ride-ts-production.up.railway.app/user/login',user())
       const token = res.data.token;
       localStorage.setItem('loginToken', token);
       navigate('/user/collections')
@@ -107,7 +107,7 @@ const Login = () => {
           <A href="/user/forgot-password" class='underline text-gray-600 text-sm'>Forgot Your Password?</A>
           <Toaster
               position="top-center"
-            />
+          />
           <button
             class={`w-full py-2 rounded-md text-xl font-medium mt-4 ${
                isLoggingIn()

@@ -2,10 +2,10 @@ import { Component, JSX, createEffect, createSignal } from "solid-js";
 import passenger from "../../../assets/svgs/collections/person.svg";
 import steering from "../../../assets/svgs/card/wheel.svg";
 import fuel from "../../../assets/svgs/collections/gas-station.svg";
-import { A, useParams } from "@solidjs/router";
+import { A } from "@solidjs/router";
 import toast, { Toaster } from "solid-toast";
 import axios from "axios";
-import { AiFillHeart, AiOutlineHeart } from 'solid-icons/ai'
+import { BsTrash3 } from 'solid-icons/bs'
 
 interface Model {
   id: string;
@@ -22,15 +22,56 @@ interface CardProps extends JSX.HTMLAttributes<HTMLDivElement> {
   model: Model;
 }
 
-interface WishlistedCar {
-  id: number;
-  carId: number;
-  wishlistedbyId: number
-}
-
 const AdminCard: Component<CardProps> = (props) => {
   const { model, ...restProps } = props;
+  const [message, setMessage] = createSignal("")
 
+  const handleDeleteClick = async (event: Event, id: number) => {
+    event.preventDefault();
+    const token = localStorage.getItem("loginToken");
+    const res = await axios.delete(
+        `https://rent-n-ride-ts-production.up.railway.app/admin/inventory/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (res) {
+      setMessage(res.data.message)
+      toast.success(message(), {
+        style: {
+          border: "2px solid rgba(255, 255, 255, 0.1)",
+          padding: "10px",
+          color: "#fff",
+          "background-color": "rgba(0, 0, 0, 0.1)",
+          "backdrop-filter": "blur(10px)",
+          "font-size": '1.1em',
+          "min-width": "10em",
+        },
+        iconTheme: {
+          primary: "#000",
+          secondary: "#fff",
+        },
+      });
+    } else {
+      toast.success("Could not add to wishlist", {
+        style: {
+          border: "2px solid rgba(255, 255, 255, 0.1)",
+          padding: "10px",
+          color: "#fff",
+          "background-color": "rgba(0, 0, 0, 0.1)",
+          "backdrop-filter": "blur(10px)",
+          "font-size": '1.1em',
+          "min-width": "10em",
+        },
+        iconTheme: {
+          primary: "#000",
+          secondary: "#fff",
+        },
+      });
+    }
+  };
   return (
     <A href={`/admin/inventory/${model.id}`}>
       <div
@@ -44,6 +85,9 @@ const AdminCard: Component<CardProps> = (props) => {
               ${model.price}
             </p>
           </div>
+          <button onClick={(event) => handleDeleteClick(event, Number(model.id))}>
+            <BsTrash3 class="h-8 w-8 text-red-700/80 hover:text-red-700/90 animation" />
+          </button>
           <Toaster position="bottom-center" gutter={16} />
         </div>
 

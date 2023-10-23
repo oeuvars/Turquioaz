@@ -4,6 +4,7 @@ import image from "../../../assets/images/cars/Model.jpg";
 import axios from "axios";
 import toast, { Toaster } from "solid-toast";
 import AdminNavbar from "../components/AdminNavbar";
+import { HiSolidPencil } from 'solid-icons/hi'
 
 const AdminModel = () => {
   const [model, setModel] = createSignal<any>([])
@@ -12,7 +13,7 @@ const AdminModel = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.get(
-      `http://localhost:4000/admin/inventory/${id}`,
+      `https://rent-n-ride-ts-production.up.railway.app/admin/inventory/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -25,27 +26,51 @@ const AdminModel = () => {
   return (
     <>
       <AdminNavbar />
-      <div class="m-auto tablet:flex gap-[5vw] rounded-lg">
+      <div class="m-auto tablet:grid tablet:grid-cols-2 gap-[1vw] rounded-lg">
         <img
           src={image}
           class="object-cover max-h-screen my-auto"
         />
-        <div class="flex flex-col gap-[1.5vw] font-mabry-light text-white my-auto justify-center">
-          <p class="font-loubag phone:text-3xl lg:text-7xl">Model: {model().name}</p>
-          <p class="phone:text-2xl lg:text-4xl">
-            Price: &nbsp;<span class="font-mabry">${model().price}</span>
-          </p>
-          <p class="phone:text-base lg:text-xl">
-            {model().fuelType} &nbsp; | &nbsp; {model().seatNumbers}
-            &nbsp; Seater &nbsp; | &nbsp; {model().transmission}
-          </p>
-          <div class="flex flex-col gap-[1vw]">
-            <p class="font-mabry text-3xl">
+        <div class="flex flex-col gap-[1.2vw] font-mabry-light my-auto justify-center m-[2vw]">
+          <div>
+            <h1 class="font-loubag text-lg ml-1">Model</h1>
+            <p class="font-loubag text-lg text-white bg-white/5 px-5 py-2 rounded-md border border-white/20">{model().name}</p>
+          </div>
+          <div>
+            <h1 class="font-loubag text-lg ml-1">Price</h1>
+            <p class="font-loubag text-lg text-white bg-white/5 px-5 py-2 rounded-md border border-white/20">
+             ${model().price}
+            </p>
+          </div>
+          <div>
+            <h1 class="font-loubag text-lg ml-1">Fuel Type</h1>
+            <p class="phone:text-base lg:text-xlfont-loubag text-lg text-white bg-white/5 px-5 py-2 rounded-md border border-white/20">
+              {model().fuelType}
+            </p>
+          </div>
+          <div>
+            <h1 class="font-loubag text-lg ml-1">Seat Numbers</h1>
+            <p class="phone:text-base lg:text-xlfont-loubag text-lg text-white bg-white/5 px-5 py-2 rounded-md border border-white/20">
+              {model().seatNumbers}
+            </p>
+          </div>
+          <div>
+            <h1 class="font-loubag text-lg ml-1">Transmission</h1>
+            <p class="phone:text-base lg:text-xlfont-loubag text-lg text-white bg-white/5 px-5 py-2 rounded-md border border-white/20">
+              {model().transmission}
+            </p>
+          </div>
+          <div class="flex flex-col">
+            <h1 class="font-loubag text-lg ml-1">Rent Price</h1>
+            <p class="phone:text-base lg:text-xlfont-loubag text-lg text-white bg-white/5 px-5 py-2 rounded-md border border-white/20">
               <span class="font-mabry-light"></span>$
               {model().rentPrice}/day
             </p>
             <Toaster position="bottom-center" gutter={16} />
           </div>
+          <A href={`/admin/inventory/update-cars/${id}`} class="flex gap-1 bg-emerald-800/50 hover:bg-emerald-800/60 animation px-5 py-2 my-[1vw] rounded-md mx-auto">
+            <p class="text-lg">Update</p>
+          </A>
         </div>
       </div>
     </>

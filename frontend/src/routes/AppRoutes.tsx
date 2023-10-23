@@ -19,6 +19,8 @@ import AdminModel from "../pages/admin/cars/AdminModel";
 import ForgotPassword from "../pages/user/auth/ForgotPassword";
 import ResetPassword from "../pages/user/auth/ResetPassword";
 import PleaseVerify from "../pages/user/auth/PleaseVerify";
+import AddCars from "../pages/admin/cars/AddCars";
+import UpdateCars from "../pages/admin/cars/UpdateCars";
 
 const UserRoutes: Component = () => {
   return (
@@ -47,6 +49,8 @@ const UserRoutes: Component = () => {
         <Route path="/admin/signup" element={<AdminSignup />} />
         <Route path="/admin/inventory" element={<Inventory />} />
         <Route path="/admin/inventory/:id" element={<AdminModel />} />
+        <Route path="/admin/inventory/add-cars" element={<AddCars />} />
+        <Route path="/admin/inventory/update-cars/:id" element={<UpdateCars />} />
       </Routes>
     </>
   );

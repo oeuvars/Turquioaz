@@ -32,18 +32,18 @@ const Collections: Component = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginAdminToken");
     const res = await axios.get(
-      "http://localhost:4000/admin/inventory",
+      "https://rent-n-ride-ts-production.up.railway.app/admin/inventory",
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-  setModels(res.data.cars);
-  console.log(res.data.cars)
-  const totalCards = models().length
-  const totalPages = Math.ceil(totalCards / cardsPerPage);
-  setTotalPages(totalPages);
+    setModels(res.data.cars);
+    console.log(res.data.cars)
+    const totalCards = models().length
+    const totalPages = Math.ceil(totalCards / cardsPerPage);
+    setTotalPages(totalPages);
   })
 
   const toggleDropdown = () => {
@@ -139,7 +139,6 @@ const Collections: Component = () => {
                 <h1 class="font-medium text-xl">Filters</h1>
                 <div class="flex gap-1">
                 <AiOutlineRedo class="w-6 h-6 my-auto"/>
-
                   <button
                     onClick={resetFilters}
                     class="font-mabry font-medium text-yellow-500 text-lg"

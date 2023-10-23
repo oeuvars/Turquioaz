@@ -11,6 +11,9 @@ dependencies:
   '@supabase/supabase-js':
     specifier: ^2.29.0
     version: 2.38.1
+  '@thisbeyond/solid-select':
+    specifier: ^0.14.0
+    version: 0.14.0(solid-js@1.7.6)
   axios:
     specifier: ^1.5.1
     version: 1.5.1
@@ -919,6 +922,14 @@ packages:
       '@supabase/storage-js': 2.5.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@thisbeyond/solid-select@0.14.0(solid-js@1.7.6):
+    resolution: {integrity: sha512-ecq4U3Vnc/nJbU84ARuPg2scNuYt994ljF5AmBlzuZW87x43mWiGJ5hEWufIJJMpDT6CcnCIx/xbrdDkaDEHQw==}
+    peerDependencies:
+      solid-js: ^1.5
+    dependencies:
+      solid-js: 1.7.6
     dev: false
 
   /@types/babel__core@7.20.1:

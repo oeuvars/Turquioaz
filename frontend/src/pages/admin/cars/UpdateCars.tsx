@@ -1,6 +1,7 @@
-import { JSX, createSignal } from "solid-js";
+import { Component, JSX, createSignal } from "solid-js";
 import axios from "axios";
 import toast, { Toaster } from "solid-toast";
+import { useNavigate, useParams } from "@solidjs/router";
 
 const brandsData = [
    {
@@ -85,18 +86,20 @@ const brandsData = [
     },
 ]
 
-function AddCars() {
-  const [carData, setCarData] = createSignal({
-    carId: "",
-    name: "",
-    transmission: "",
-    fuelType: "",
-    seatNumbers: "",
-    condition: "",
-    price: "",
-    rentPrice: "",
-    published: false,
-  });
+const UpdateCars: Component = () => {
+   const navigate = useNavigate()
+   const { id } = useParams<{ id: string }>();
+   const [carData, setCarData] = createSignal({
+      carId: "",
+      name: "",
+      transmission: "",
+      fuelType: "",
+      seatNumbers: "",
+      condition: "",
+      price: "",
+      rentPrice: "",
+      published: false,
+   });
 
   const handleBrandChange = (event: Event) => {
    const selectedBrandId = (event.target as HTMLSelectElement).value;
@@ -139,7 +142,7 @@ function AddCars() {
       return;
     }
    try {
-     const response = await axios.post("https://rent-n-ride-ts-production.up.railway.app/admin/inventory/addCar",
+     const response = await axios.put(`https://rent-n-ride-ts-production.up.railway.app/admin/inventory/${id}`,
       carData(),
       {
          headers: {
@@ -147,7 +150,22 @@ function AddCars() {
          },
       }
      );
-     console.log(response.data);
+     toast.success(response.data.message, {
+      style: {
+        border: "2px solid rgba(255, 255, 255, 0.1)",
+        padding: "10px",
+        color: "#fff",
+        "background-color": "rgba(0, 0, 0, 0.1)",
+        "backdrop-filter": "blur(10px)",
+        "font-size": '1.1em',
+        "min-width": "10em",
+      },
+      iconTheme: {
+        primary: "#000",
+        secondary: "#fff",
+      },
+    });
+    navigate(`/admin/inventory/${id}`)
    } catch (error) {
      console.error("Error adding car:", error);
    }
@@ -156,7 +174,7 @@ function AddCars() {
   return (
    <div class="w-[60%] mx-auto my-[7vw]">
       <form onSubmit={handleSubmit}>
-         <h1 class="text-6xl text-center">Add A Car</h1>
+         <h1 class="text-6xl text-center">Update Car</h1>
          <div>
             <h1>Brand</h1>
             <select
@@ -262,4 +280,4 @@ function AddCars() {
   );
 }
 
-export default AddCars;
+export default UpdateCars;

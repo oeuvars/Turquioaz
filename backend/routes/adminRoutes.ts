@@ -67,8 +67,9 @@ router.get("/inventory", authentication, async (req, res) => {
 
 // ADMIN GET SINGLE CAR
 router.get("/inventory/:id", authentication, async (req, res) => {
+  const id = parseInt(req.params.id);
   const car = await prisma.model.findUnique({
-    where: { id: Number(req.params.id) },
+    where: { id: id },
   });
   res.json({ car });
 });

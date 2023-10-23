@@ -14,7 +14,7 @@ const Success: Component = () => {
     const id = decoded.id
     console.log(id)
     const res = await axios.put(
-      `http://localhost:4000/user/statusCheck/${id}`,
+      `https://rent-n-ride-ts-production.up.railway.app/user/statusCheck/${id}`,
       {
         status: true
       },

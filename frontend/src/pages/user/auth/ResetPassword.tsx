@@ -27,7 +27,7 @@ function ConfirmPasswordPage() {
 
   async function handleClick() {
     if (password() === confirmPassword()) {
-      await axios.post(`http://localhost:4000/user/resetPassword/${id}/${token}`, {
+      await axios.post(`https://rent-n-ride-ts-production.up.railway.app/user/resetPassword/${id}/${token}`, {
          password: password(),
          confirmPassword: confirmPassword(),
        });

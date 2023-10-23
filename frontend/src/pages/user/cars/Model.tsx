@@ -16,7 +16,7 @@ const Model = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.get(
-      `http://localhost:4000/user/car/${id}`,
+      `https://rent-n-ride-ts-production.up.railway.app/user/car/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -29,7 +29,7 @@ const Model = () => {
   const handleRent = async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.post(
-      `http://localhost:4000/user/rent-car/${id}`,
+      `https://rent-n-ride-ts-production.up.railway.app/user/rent-car/${id}`,
       {
         startDate: startDate().toISOString().split('T')[0],
         endDate: endDate().toISOString().split('T')[0],
@@ -108,12 +108,12 @@ const Model = () => {
   return (
     <>
       <Navbar />
-      <div class="m-auto tablet:flex gap-[5vw] rounded-lg">
+      <div class="m-auto tablet:grid tablet:grid-cols-2 gap-[1vw] rounded-lg">
         <img
           src={image}
           class="object-cover max-h-screen my-auto"
         />
-        <div class="flex flex-col gap-[1.5vw] font-mabry-light text-white my-auto justify-center">
+        <div class="flex flex-col gap-[1.5vw] font-mabry-light text-white my-auto justify-center m-[1vw]">
           <p class="font-loubag phone:text-3xl lg:text-7xl">{model().name}</p>
           <p class="phone:text-2xl lg:text-4xl">
             Price: &nbsp;<span class="font-mabry">${model().price}</span>

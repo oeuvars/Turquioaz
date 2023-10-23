@@ -7,9 +7,9 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 import { FaSolidAngleLeft } from 'solid-icons/fa'
 import { FiEye, FiEyeOff } from 'solid-icons/fi'
 
-const Login = () => {
+const AdminLogin = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
-   const [user,setUser] = createSignal({
+   const [admin,setAdmin] = createSignal({
       email : "",
       password : ""
     })
@@ -25,10 +25,10 @@ const Login = () => {
       e.preventDefault();
      try {
       setIsLoggingIn(true);
-      const res = await axios.post('http://localhost:4000/user/login',user())
+      const res = await axios.post('http://localhost:4000/admin/login',admin())
       const token = res.data.token;
-      localStorage.setItem('loginToken', token);
-      navigate('/user/collections')
+      localStorage.setItem('loginAdminToken', token);
+      navigate('/admin/inventory')
       toast.success("You are logged in!", {
         style: {
           border: "2px solid rgba(255, 255, 255, 0.1)",
@@ -85,7 +85,7 @@ const Login = () => {
               id="email"
               name="email"
               class="w-full px-4 py-2 border-2 border-white/20 rounded-md focus:outline-none bg-white/10 focus:border-white/10 transition duration-500 text-white/70 text-lg font-medium"
-              onChange={(e) => setUser({ ...user(), email: e.target.value })}
+              onChange={(e) => setAdmin({ ...admin(), email: e.target.value })}
             />
           </div>
           <label class="block text-lg text-yellow-100 font-medium">Password</label>
@@ -95,7 +95,7 @@ const Login = () => {
               id="password"
               name="password"
               class="w-full px-4 py-2 border-2 border-white/20 rounded-md focus:outline-none bg-white/10 focus:border-white/10 transition duration-500 text-white/70 text-lg font-medium"
-              onChange={(e) => setUser({ ...user(), password: e.target.value })}
+              onChange={(e) => setAdmin({ ...admin(), password: e.target.value })}
             />
             <button
                 onClick={togglePasswordVisibility}
@@ -104,7 +104,7 @@ const Login = () => {
                 {showPassword() ? (<FiEye class='w-6 h-6 text-neutral-300'/>) : (<FiEyeOff class='w-6 h-6 text-neutral-300'/>)}
             </button>
           </div>
-          <A href="/user/forgot-password" class='underline text-gray-600 text-sm'>Forgot Your Password?</A>
+          <A href="/auth/reset-password" class='underline text-gray-600 text-sm'>Forgot Your Password?</A>
           <Toaster
               position="top-center"
             />
@@ -119,13 +119,10 @@ const Login = () => {
           >
             {isLoggingIn() ? 'Logging In...' : 'Login'}
           </button>
-        <div class='flex w-full justify-center gap-5'>
-          <A href="/admin/signup" class='underline text-gray-400 flex justify-center items-center mt-2 text-center'>Sign up as admin? Sign Up</A>
-          <A href="/user/signup" class='underline text-gray-400 flex justify-center items-center mt-2 text-center'>Not signed up yet? Sign Up</A>
-        </div>
+        <A href="/admin/signup" class='underline text-gray-400 flex justify-center items-center mt-2 text-center'>Not signed up yet? Sign Up</A>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default AdminLogin;

@@ -7,7 +7,7 @@ import carBrands from "../collections/Brand";
 import carModels from "../collections/CarModels";
 import { useTopFilterContext } from "../../../utils/TopFilterContext";
 import CarSpecifications from "../collections/CarSpecifications";
-import Card from "../../../components/Card";
+import Card from "../components/Card";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import axios from "axios";
 

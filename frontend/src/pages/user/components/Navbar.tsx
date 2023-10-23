@@ -1,12 +1,12 @@
 import { Component, Show, createSignal } from "solid-js";
 import "./underline.css";
-import logo from "../assets/svgs/navbar/logo.svg";
+import logo from "../../../assets/svgs/navbar/logo.svg";
 import { CgProfile } from 'solid-icons/cg'
-import arrow from "../assets/svgs/navbar/upper-right-arrow.svg";
-import logout from "../assets/svgs/navbar/logout.svg";
-import cross from "../assets/svgs/navbar/cross.svg";
+import arrow from "../../../assets/svgs/navbar/upper-right-arrow.svg";
+import logout from "../../../assets/svgs/navbar/logout.svg";
+import cross from "../../../assets/svgs/navbar/cross.svg";
 import { A, useNavigate } from "@solidjs/router";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
 const Navbar: Component = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
@@ -73,11 +73,11 @@ const Navbar: Component = () => {
           Log In
         </A>
         <Show when={isDropdownOpen()}>
-          <div class="flex justify-between absolute bg-white/10 backdrop-blur-sm w-40 rounded-md shadow-md phone:h-12 lg:h-16 overflow-scroll scroll border-white/10 border">
+          <div class="flex justify-between phone:mt-[10vh] tablet:mt-[5.5vw] lg:mt-[4.5vw] phone:gap-[2vh] tablet:gap-[0.7vh] lg:gap-[1vw] py-[0.3vw] absolute bg-white/10 backdrop-blur-xl rounded-md shadow-md overflow-scroll scroll border-white/10 border">
             <div class="flex">
               <button
                 onClick={handleClick}
-                class="font-mabry-regular text-white p-2 z-40 cursor-pointer"
+                class="font-mabry-regular text-white hover:text-gray-200 animation p-2 z-40 cursor-pointer"
               >
                 Log Out
               </button>

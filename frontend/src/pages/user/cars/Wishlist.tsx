@@ -10,7 +10,7 @@ import loading from "../../../assets/images/loading.gif";
 import toast, { Toaster } from "solid-toast";
 import axios from "axios";
 import { BsTrash3 } from "solid-icons/bs";
-import Navbar from "../../../components/Navbar";
+import Navbar from "../components/Navbar";
 import jwtDecode from "jwt-decode";
 
 interface Model {
@@ -57,9 +57,7 @@ const Wishlist: Component = () => {
         Authorization: `Bearer ${token}`,
       },
     });
-
     setModels(res.data.wishlistedCar);
-
     const carDetailsPromises = models().map(async (item: WishlistedCar) => {
       const carRes = await axios.get(
         `http://localhost:4000/user/car/${item.carId}`,
@@ -71,7 +69,6 @@ const Wishlist: Component = () => {
       return { ...carRes.data, wishlistedCarId: item.id };
     });
     const carDetails = await Promise.all(carDetailsPromises);
-    console.log(carDetails);
     setModelInfo(carDetails)
   };
 

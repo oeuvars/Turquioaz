@@ -60,7 +60,7 @@ model RentedCar{
   rentedtoId    Int
   startDate     String
   endDate       String
-  status        String
+  status        Boolean
 
   rentedto      User    @relation(fields: [rentedtoId], references: [id])
   car           Model   @relation(fields: [carId], references: [id])

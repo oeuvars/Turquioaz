@@ -166,7 +166,7 @@ router.post("/rent-car/:id", auth_1.authentication, (req, res) => __awaiter(void
         if (user) {
             const carID = car.id;
             const userID = user.id;
-            yield db_config_1.default.rentedCar.create({
+            const rentedCar = yield db_config_1.default.rentedCar.create({
                 data: {
                     carId: carID,
                     rentedtoId: userID,
@@ -175,11 +175,36 @@ router.post("/rent-car/:id", auth_1.authentication, (req, res) => __awaiter(void
                     status: status,
                 },
             });
-            res.json({ message: "Car Rented successfully" });
+            const rentedCarID = rentedCar.id;
+            const token = jsonwebtoken_1.default.sign({ id: rentedCarID }, process.env.hiddenKey, {
+                expiresIn: "24h",
+            });
+            res.json({ message: "Car Rented successfully", token });
         }
         else {
             res.status(403).json({ message: "User not found" });
         }
+    }
+    else {
+        res.status(404).json({ message: "Car not found" });
+    }
+}));
+// UPDATING STATUS FOR CHECKING
+router.put("/statusCheck/:id", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = parseInt(req.params.id);
+    const { status } = req.body;
+    const targetCar = yield db_config_1.default.rentedCar.findUnique({
+        where: { id: id },
+    });
+    if (targetCar) {
+        const carId = targetCar.id;
+        yield db_config_1.default.rentedCar.update({
+            where: { id: carId },
+            data: {
+                status: status,
+            },
+        });
+        res.json({ message: "Car checked successfully" });
     }
     else {
         res.status(404).json({ message: "Car not found" });
@@ -192,7 +217,11 @@ router.get("/rentedCars", auth_1.authentication, (req, res) => __awaiter(void 0,
             email: req.user.email,
         },
         include: {
-            onRent: true,
+            onRent: {
+                where: {
+                    status: true,
+                },
+            },
         },
     });
     if (user) {

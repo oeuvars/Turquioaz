@@ -3,7 +3,7 @@ import Services from "./Services";
 import Shop from "./Shop";
 import Footer from "./Footer";
 import Hero from "./Hero";
-import Navbar from "../../components/Navbar";
+import Navbar from "../user/components/Navbar";
 
 const Home: ParentComponent = () => {
   return (

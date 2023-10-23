@@ -34,7 +34,7 @@ router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function*
                 password: password,
             },
         });
-        const token = jsonwebtoken_1.default.sign({ email, role: "admin" }, process.env.hiddenKey, {
+        const token = jsonwebtoken_1.default.sign({ email, role: "admin", name }, process.env.hiddenKey, {
             expiresIn: "24h",
         });
         res.json({ message: "Admin created successfully", token });
@@ -62,14 +62,14 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
 // ADMIN GET ALL CARS
 router.get("/inventory", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const cars = yield db_config_1.default.model.findMany();
-    res.json(cars);
+    res.json({ cars });
 }));
 // ADMIN GET SINGLE CAR
 router.get("/inventory/:id", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const car = yield db_config_1.default.model.findUnique({
         where: { id: Number(req.params.id) },
     });
-    res.json(car);
+    res.json({ car });
 }));
 // ADMIN ADD CARS
 router.post("/inventory/addCar", auth_1.authentication, (req, res) => __awaiter(void 0, void 0, void 0, function* () {

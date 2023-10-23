@@ -172,7 +172,7 @@ router.post("/rent-car/:id", authentication, async (req, res) => {
     if (user) {
       const carID = car.id;
       const userID = user.id;
-      await prisma.rentedCar.create({
+      const rentedCar = await prisma.rentedCar.create({
         data: {
           carId: carID,
           rentedtoId: userID,
@@ -181,10 +181,40 @@ router.post("/rent-car/:id", authentication, async (req, res) => {
           status: status,
         },
       });
-      res.json({ message: "Car Rented successfully" });
+      const rentedCarID = rentedCar.id;
+      const token = jwt.sign(
+        { id: rentedCarID },
+        process.env.hiddenKey as string,
+        {
+          expiresIn: "24h",
+        }
+      );
+      res.json({ message: "Car Rented successfully", token });
     } else {
       res.status(403).json({ message: "User not found" });
     }
+  } else {
+    res.status(404).json({ message: "Car not found" });
+  }
+});
+
+// UPDATING STATUS FOR CHECKING
+
+router.put("/statusCheck/:id", authentication, async (req, res) => {
+  const id = parseInt(req.params.id);
+  const { status } = req.body;
+  const targetCar = await prisma.rentedCar.findUnique({
+    where: { id: id },
+  });
+  if (targetCar) {
+    const carId = targetCar.id;
+    await prisma.rentedCar.update({
+      where: { id: carId },
+      data: {
+        status: status,
+      },
+    });
+    res.json({ message: "Car checked successfully" });
   } else {
     res.status(404).json({ message: "Car not found" });
   }
@@ -197,7 +227,11 @@ router.get("/rentedCars", authentication, async (req, res) => {
       email: req.user.email,
     },
     include: {
-      onRent: true,
+      onRent: {
+        where: {
+          status: true,
+        },
+      },
     },
   });
   if (user) {

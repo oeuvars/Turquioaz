@@ -1,6 +1,6 @@
 import { Component } from "solid-js";
 import benz from "../../assets/images/cars/Benz.jpg";
-import Line from "../../components/Line";
+import Line from "../user/components/Line";
 import { A } from "@solidjs/router";
 import { BsTwitter } from "solid-icons/bs";
 import { BsInstagram } from "solid-icons/bs";

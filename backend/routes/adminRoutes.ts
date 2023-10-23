@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
       },
     });
     const token = jwt.sign(
-      { email, role: "admin" },
+      { email, role: "admin", name },
       process.env.hiddenKey as string,
       {
         expiresIn: "24h",
@@ -62,7 +62,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/inventory", authentication, async (req, res) => {
   const cars = await prisma.model.findMany();
-  res.json(cars);
+  res.json({ cars });
 });
 
 // ADMIN GET SINGLE CAR
@@ -70,7 +70,7 @@ router.get("/inventory/:id", authentication, async (req, res) => {
   const car = await prisma.model.findUnique({
     where: { id: Number(req.params.id) },
   });
-  res.json(car);
+  res.json({ car });
 });
 
 // ADMIN ADD CARS

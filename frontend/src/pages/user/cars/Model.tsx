@@ -3,7 +3,7 @@ import { A, useParams } from "@solidjs/router";
 import image from "../../../assets/images/cars/Model.jpg";
 import Stripe from "stripe";
 import axios from "axios";
-import Navbar from "../../../components/Navbar";
+import Navbar from "../components/Navbar";
 import toast, { Toaster } from "solid-toast";
 
 const Model = () => {
@@ -23,7 +23,7 @@ const Model = () => {
         },
       }
     );
-  setModel(res.data.model);
+    setModel(res.data.model);
   })
 
   const handleRent = async () => {
@@ -33,7 +33,7 @@ const Model = () => {
       {
         startDate: startDate().toISOString().split('T')[0],
         endDate: endDate().toISOString().split('T')[0],
-        status: "Not Rented"
+        status: false
       },
       {
         headers: {
@@ -41,6 +41,8 @@ const Model = () => {
         },
       }
     );
+    const idToken = res.data.token;
+    localStorage.setItem('idToken', idToken);
   }
 
   createEffect(() => {

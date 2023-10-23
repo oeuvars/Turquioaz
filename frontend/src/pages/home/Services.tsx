@@ -1,7 +1,7 @@
 import { A } from "@solidjs/router";
 import { ParentComponent } from "solid-js";
-import Showcase from "../../components/Showcase";
-import Line from "../../components/Line";
+import Showcase from "../user/components/Showcase";
+import Line from "../user/components/Line";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Services: ParentComponent = () => {

@@ -1,8 +1,8 @@
 import { A } from "@solidjs/router";
 import { ParentComponent, Show, createSignal } from "solid-js";
 import ferrari from "../../assets/images/cars/about2.webp";
-import Line from "../../components/Line";
-import "../../components/underline.css";
+import Line from "../user/components/Line";
+import "../user/components/underline.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Shop: ParentComponent = () => {

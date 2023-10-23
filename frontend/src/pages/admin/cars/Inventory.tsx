@@ -1,15 +1,15 @@
 import { Component, createSignal, createEffect, Show } from "solid-js";
-import Card from "../components/Card";
+import AdminCard from "../components/AdminCard";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import seats from "../../../assets/svgs/collections/person.svg";
 import transmission from "../../../assets/svgs/collections/manual-transmission.png";
 import fuel from "../../../assets/svgs/collections/gas-station.svg";
 import condition from "../../../assets/svgs/collections/tools.svg";
 import { IoClose } from "solid-icons/io";
-import Navbar from "../components/Navbar";
 import axios from "axios";
 import { BsChevronLeft, BsChevronRight } from "solid-icons/bs";
 import { AiOutlineRedo } from 'solid-icons/ai'
+import AdminNavbar from "../components/AdminNavbar";
 
 const Collections: Component = () => {
   const [models, setModels] = createSignal([])
@@ -29,24 +29,18 @@ const Collections: Component = () => {
   const [isDropdownOpen3, setIsDropdownOpen3] = createSignal(false);
   const [isDropdownOpen4, setIsDropdownOpen4] = createSignal(false);
 
-  const loginToken = localStorage.getItem("loginToken");
-  const signupToken = localStorage.getItem("signupToken");
-
-  if(loginToken || signupToken) {
-
-  }
-
   createEffect(async () => {
-    const token = localStorage.getItem("loginToken");
+    const token = localStorage.getItem("loginAdminToken");
     const res = await axios.get(
-      "http://localhost:4000/user/inventory",
+      "http://localhost:4000/admin/inventory",
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-  setModels(res.data.models);
+  setModels(res.data.cars);
+  console.log(res.data.cars)
   const totalCards = models().length
   const totalPages = Math.ceil(totalCards / cardsPerPage);
   setTotalPages(totalPages);
@@ -136,7 +130,7 @@ const Collections: Component = () => {
   };
   return (
     <>
-    <Navbar />
+      <AdminNavbar />
       {isAboveSmallScreens() ? (
         <div class="font-mabry-regular">
           <div class="mx-auto mt-[4vw] flex w-11/12 justify-between phone:gap-5 lg:gap-9">
@@ -323,7 +317,7 @@ const Collections: Component = () => {
                       (model as any).condition === selectedCondition())
                 )
                 .map((model) => (
-                  <Card model={model} />
+                  <AdminCard model={model} />
                 ))}
             </div>
           </div>
@@ -601,7 +595,7 @@ const Collections: Component = () => {
                       (model as any).condition === selectedCondition())
                 )
                 .map((model) => (
-                  <Card model={model} />
+                  <AdminCard model={model} />
                 ))}
             </div>
             <div class="flex justify-center transition duration-500 mx-auto w-full">

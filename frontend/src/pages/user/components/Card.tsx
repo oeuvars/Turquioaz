@@ -1,7 +1,7 @@
 import { Component, JSX, createEffect, createSignal } from "solid-js";
-import passenger from "../assets/svgs/collections/person.svg";
-import steering from "../assets/svgs/card/wheel.svg";
-import fuel from "../assets/svgs/collections/gas-station.svg";
+import passenger from "../../../assets/svgs/collections/person.svg";
+import steering from "../../../assets/svgs/card/wheel.svg";
+import fuel from "../../../assets/svgs/collections/gas-station.svg";
 import { A, useParams } from "@solidjs/router";
 import toast, { Toaster } from "solid-toast";
 import axios from "axios";

@@ -1,16 +1,16 @@
 import "solid-slider/slider.css";
 import { Slider, createSlider } from "solid-slider";
 import type { Component } from "solid-js";
-import car1 from "../assets/images/cars/car1.jpg";
-import car2 from "../assets/images/cars/car2.jpg";
-import car3 from "../assets/images/cars/car3.jpg";
-import car4 from "../assets/images/cars/car4.jpg";
-import car5 from "../assets/images/cars/car5.jpg";
-import left from "../assets/svgs/slider/back.png";
-import right from "../assets/svgs/slider/next.png";
+import car1 from "../../../assets/images/cars/car1.jpg";
+import car2 from "../../../assets/images/cars/car2.jpg";
+import car3 from "../../../assets/images/cars/car3.jpg";
+import car4 from "../../../assets/images/cars/car4.jpg";
+import car5 from "../../../assets/images/cars/car5.jpg";
+import left from "../../../assets/svgs/slider/back.png";
+import right from "../../../assets/svgs/slider/next.png";
 import { A } from "@solidjs/router";
 import "./underline.css";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
 const Showcase: Component = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");

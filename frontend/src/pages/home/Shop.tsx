@@ -57,8 +57,9 @@ const Shop: ParentComponent = () => {
 function StatBlock(props: Stat) {
   return (
     <div class="bg-white/5 phone:py-5 lg:py-10 px-3 gap-5 rounded-lg">
-      <h1 class="font-loubag text-5xl mb-5 gradient-text text-center">{props.value}</h1>
-      <p class="text-center">{props.description}</p>
+      <h1 class="font-loubag text-5xl gradient-text text-center">{props.value}</h1>
+      <h1 class="font-loubag text-3xl mb-5 gradient-text text-center">{props.title}</h1>
+      <p class="text-center font-garamond phone:text-base tablet:text-lg md:text-xl">{props.description}</p>
     </div>
   );
 }

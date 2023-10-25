@@ -12,7 +12,7 @@ const Hero: Component = () => {
         <>
           <div class="justify-between w-11/12 flex mx-auto relative">
             <img src={mercedes} class="sm:w-[32vw] tablet:w-[28vw] md:w-[32vw] lg:w-[32vw] absolute" />
-            <p class="flex font-mabry-regular items-center relative my-2 ml-auto sm:w-1/3 md:w-1/4 lg:w-1/4 text-justify">
+            <p class="flex text-lg font-garamond items-center relative my-2 ml-auto sm:w-1/3 md:w-1/4 lg:w-1/4 text-justify">
               Discover opulence and performance. Navigate our exquisite
               selection of luxury cars, where elegance meets innovation and
               power.
@@ -37,7 +37,7 @@ const Hero: Component = () => {
             alt="car"
             class="w-11/12 flex mx-auto rounded-md mt-10"
           />
-          <p class="font-mabry-regular text-sm text-center pt-5 mx-auto w-4/5">
+          <p class="font-garamond text-center pt-5 mx-auto w-4/5">
             Discover opulence and performance. Navigate our exquisite selection
             of luxury cars, where elegance meets innovation and power.
           </p>

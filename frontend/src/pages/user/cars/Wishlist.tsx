@@ -52,7 +52,7 @@ const Wishlist: Component = () => {
     } else {
       navigate("/login")
     }
-    const res = await axios.get("https://rent-n-ride-ts-production.up.railway.app/user/wishlistedCar", {
+    const res = await axios.get("http://localhost:4000/user/wishlistedCar", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -60,7 +60,7 @@ const Wishlist: Component = () => {
     setModels(res.data.wishlistedCar);
     const carDetailsPromises = models().map(async (item: WishlistedCar) => {
       const carRes = await axios.get(
-        `https://rent-n-ride-ts-production.up.railway.app/user/car/${item.carId}`,
+        `http://localhost:4000/user/car/${item.carId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const Wishlist: Component = () => {
     const token = localStorage.getItem("loginToken");
     console.log(id)
     const res = await axios.delete(
-        `https://rent-n-ride-ts-production.up.railway.app/user/wishlistedCar/${id}`,
+        `http://localhost:4000/user/wishlistedCar/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

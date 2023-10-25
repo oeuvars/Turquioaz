@@ -32,7 +32,7 @@ const Collections: Component = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginAdminToken");
     const res = await axios.get(
-      "https://rent-n-ride-ts-production.up.railway.app/admin/inventory",
+      "http://localhost:4000/admin/inventory",
       {
         headers: {
           Authorization: `Bearer ${token}`,

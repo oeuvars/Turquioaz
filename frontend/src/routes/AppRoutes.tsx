@@ -21,6 +21,7 @@ import ResetPassword from "../pages/user/auth/ResetPassword";
 import PleaseVerify from "../pages/user/auth/PleaseVerify";
 import AddCars from "../pages/admin/cars/AddCars";
 import UpdateCars from "../pages/admin/cars/UpdateCars";
+import PasswordUpdated from "../pages/user/auth/PasswordUpdated";
 
 const UserRoutes: Component = () => {
   return (
@@ -43,6 +44,7 @@ const UserRoutes: Component = () => {
         <Route path="/user/forgot-password" element={<ForgotPassword />} />
         <Route path="/user/reset-password/:id/:token" element={<ResetPassword />} />
         <Route path="/user/please-verify" element={<PleaseVerify />} />
+        <Route path="/user/password-updated" element={<PasswordUpdated />} />
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />

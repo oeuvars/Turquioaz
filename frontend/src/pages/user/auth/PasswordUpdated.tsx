@@ -11,7 +11,7 @@ const PasswordUpdated: Component = () => {
          setCountdown((prevCountdown) => {
             if (prevCountdown === 1) {
                clearInterval(timerId);
-               navigate("/user/collections");
+               navigate("/user/login");
                return 0;
             } else {
                return prevCountdown - 1;
@@ -28,7 +28,7 @@ const PasswordUpdated: Component = () => {
    return (
       <div class="my-[7vw] grid">
          <h1 class="text-6xl font-semibold text-center">Your Password has been updated</h1>
-         <A href="/user/collections" class="bg-emerald-800 flex justify-center w-[10%] mx-auto py-[0.5vw] rounded-md my-[2vw]">
+         <A href="/user/login" class="bg-emerald-800 flex justify-center w-[10%] mx-auto py-[0.5vw] rounded-md my-[2vw]">
             Explore
             <BsArrowRight class="w-5 h-5 my-auto ml-2"/>
          </A>

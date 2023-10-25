@@ -1,6 +1,6 @@
 import { Component, Show, createSignal } from "solid-js";
 import "../../user/components/underline.css";
-import logo from "../../../assets/svgs/navbar/logo.svg";
+import logo from "../../../assets/svgs/navbar/rentnridewhite.svg";
 import { CgProfile } from 'solid-icons/cg'
 import arrow from "../../../assets/svgs/navbar/upper-right-arrow.svg";
 import logout from "../../../assets/svgs/navbar/logout.svg";

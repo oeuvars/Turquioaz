@@ -1,6 +1,6 @@
 import { Component, Show, createSignal } from "solid-js";
 import "./underline.css";
-import logo from "../../../assets/svgs/navbar/logo.svg";
+import logo from "../../../assets/svgs/navbar/rentnridewhite.svg";
 import { CgProfile } from 'solid-icons/cg'
 import arrow from "../../../assets/svgs/navbar/upper-right-arrow.svg";
 import logout from "../../../assets/svgs/navbar/logout.svg";
@@ -9,8 +9,11 @@ import { A, useNavigate } from "@solidjs/router";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 
 const Navbar: Component = () => {
-  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
+  const isAboveSmallScreens = useMediaQuery("(min-width: 914px)");
   const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
+
+  const loginToken = localStorage.getItem("loginToken")
+  const signupToken = localStorage.getItem("signupToken")
 
   const navigate = useNavigate();
   const toggleDropdown = () => {
@@ -26,13 +29,13 @@ const Navbar: Component = () => {
   };
 
   return (
-    <div class="flex lg:gap-52 justify-between py-4 bg-white/10 lg:px-16 phone:px-5 items-center mx-auto sticky top-0 z-40 backdrop-blur-md">
+    <div class="flex justify-between phone:py-3 lg:py-4 bg-white/10 lg:px-16 md:px-12 tablet:px-10 sm:px-7 phone:px-5 items-center mx-auto sticky top-0 z-40 backdrop-blur-md">
       <A href="/" class="flex phone:gap-2 lg:gap-3">
-        <img src={logo} class="lg:w-52 phone:w-32 phone:-mb-[3px] lg:-mb-[6px]" />
+        <img src={logo} class="lg:w-52 md:w-48 tablet:w-44 phone:w-40" />
       </A>
 
       {isAboveSmallScreens() ? (
-        <div class="flex gap-10 -ml-10 font-mabry-regular">
+        <div class="flex gap-10">
           <div class="flex gap-1">
             <div>
               <A href="/info" class="text-lg">
@@ -69,9 +72,15 @@ const Navbar: Component = () => {
         <button onClick={toggleDropdown}>
           <CgProfile class="w-9 h-9 my-auto hover:text-yellow-200 animation"/>
         </button>
-        <A href="/user/login" class="rounded-lg bg-emerald-800 px-7 py-2 font-medium text-lg hover:bg-emerald-900 animation">
-          Log In
-        </A>
+        {loginToken || signupToken ? (
+          <A href="/user/collections" class="rounded-md bg-emerald-800 phone:px-5 lg:px-7 py-2 font-medium phone:text-sm tablet:text-base lg:text-lg hover:bg-emerald-900 animation">
+            Explore
+          </A>
+        ) : (
+          <A href="/user/login" class="rounded-md bg-emerald-800 phone:px-5 lg:px-7 py-2 font-medium phone:text-sm tablet:text-base lg:text-lg hover:bg-emerald-900 animation">
+            Log In
+          </A>
+        )}
         <Show when={isDropdownOpen()}>
           <div class="flex justify-between phone:mt-[10vh] tablet:mt-[5.5vw] lg:mt-[4.5vw] phone:gap-[2vh] tablet:gap-[0.7vh] lg:gap-[1vw] py-[0.3vw] absolute bg-white/10 backdrop-blur-xl rounded-md shadow-md overflow-scroll scroll border-white/10 border">
             <div class="flex">

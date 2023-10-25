@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,11 +10,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #131b1c;
   scrollbar-width: none;
-  @apply text-[#F2EEC0] font-travertino-medium;
+  @apply text-[#F2EEC0] font-doran-regular;
 }
 
 .blur {
   backdrop-filter: blur(5px);
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-yellow-200 to-amber-800 bg-clip-text text-transparent
+}
+
+.header-text {
+  @apply phone:text-[3vh] xs:text-[3vh] s:text-[3vh] sm:text-[4vw] tablet:text-[4vw] md:text-[3.5vw] lg:text-[3.5vw]
 }
 
 .animation {
@@ -41,13 +48,28 @@ body::-webkit-scrollbar {
 }
 
 @font-face {
-  font-family: Travertino;
-  src: url("./assets/fonts/Travertino.ttf");
+  font-family: Klimaks-Regular;
+  src: url("./assets/fonts/Klimaks-Regular.ttf");
 }
 
 @font-face {
-  font-family: Travertino-Medium;
-  src: url("./assets/fonts/Travertino-Medium.ttf");
+  font-family: Kilmaks-Bold;
+  src: url("./assets/fonts/Klimaks-Bold.ttf");
+}
+
+@font-face {
+  font-family: Doran-Regular;
+  src: url("./assets/fonts/Doran-Regular.ttf");
+}
+
+@font-face {
+  font-family: Doran-Medium;
+  src: url("./assets/fonts/Doran-Medium.ttf");
+}
+
+@font-face {
+  font-family: Doran-Bold;
+  src: url("./assets/fonts/Doran-Bold.ttf");
 }
 
 .scroll {

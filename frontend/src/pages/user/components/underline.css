@@ -1,7 +1,6 @@
 .link--dia {
-  font-family: Loubag, serif;
   color: beige;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .link--dia::before,
@@ -57,7 +56,6 @@
 }
 .link {
   cursor: pointer;
-  font-size: 7.2rem;
   white-space: nowrap;
 }
 

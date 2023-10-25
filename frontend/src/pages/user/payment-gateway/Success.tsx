@@ -1,6 +1,6 @@
 import { A, useParams } from "@solidjs/router";
 import { Component, createEffect } from "solid-js";
-import logo from "../../../assets/svgs/navbar/logo.svg";
+import logo from "../../../assets/svgs/navbar/rentnridewhite.svg";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import jwtDecode from "jwt-decode";

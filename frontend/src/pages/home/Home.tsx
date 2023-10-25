@@ -1,9 +1,10 @@
 import { ParentComponent, from } from "solid-js";
 import Services from "./Services";
 import Shop from "./Shop";
-import Footer from "./Footer";
+import Footer from "./UpperFooter";
 import Hero from "./Hero";
 import Navbar from "../user/components/Navbar";
+import DownFooter from "./DownFooter";
 
 const Home: ParentComponent = () => {
   return (
@@ -14,6 +15,7 @@ const Home: ParentComponent = () => {
         <Services />
         <Shop />
         <Footer />
+        <DownFooter />
       </div>
     </div>
   );

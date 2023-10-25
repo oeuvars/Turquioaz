@@ -16,7 +16,7 @@ const Model = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.get(
-      `http://localhost:4000/user/car/${id}`,
+      `https://rent-n-ride-ts-production.up.railway.app/user/car/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -29,7 +29,7 @@ const Model = () => {
   const handleRent = async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.post(
-      `http://localhost:4000/user/rent-car/${id}`,
+      `https://rent-n-ride-ts-production.up.railway.app/user/rent-car/${id}`,
       {
         startDate: startDate().toISOString().split('T')[0],
         endDate: endDate().toISOString().split('T')[0],

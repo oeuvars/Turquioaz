@@ -39,7 +39,7 @@ const Collections: Component = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.get(
-      "http://localhost:4000/user/inventory",
+      "https://rent-n-ride-ts-production.up.railway.app/user/inventory",
       {
         headers: {
           Authorization: `Bearer ${token}`,

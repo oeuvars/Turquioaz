@@ -41,7 +41,7 @@ const Card: Component<CardProps> = (props) => {
 
   const wishlistedCar = async () => {
     const token = localStorage.getItem("loginToken");
-    const res = await axios.get("http://localhost:4000/user/wishlistedCar", {
+    const res = await axios.get("https://rent-n-ride-ts-production.up.railway.app/user/wishlistedCar", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -56,7 +56,7 @@ const Card: Component<CardProps> = (props) => {
     createEffect(async () => {
       const token = localStorage.getItem("loginToken");
       const res = await axios.post(
-        `http://localhost:4000/user/wishlist/${id}`,
+        `https://rent-n-ride-ts-production.up.railway.app/user/wishlist/${id}`,
         null,
         {
           headers: {
@@ -104,7 +104,7 @@ const Card: Component<CardProps> = (props) => {
     event.preventDefault();
     const token = localStorage.getItem("loginToken");
     const res = await axios.delete(
-        `http://localhost:4000/user/wishlistedCar/${id}`,
+        `https://rent-n-ride-ts-production.up.railway.app/user/wishlistedCar/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

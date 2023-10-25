@@ -142,7 +142,7 @@ const UpdateCars: Component = () => {
       return;
     }
    try {
-     const response = await axios.put(`http://localhost:4000/admin/inventory/${id}`,
+     const response = await axios.put(`https://rent-n-ride-ts-production.up.railway.app/admin/inventory/${id}`,
       carData(),
       {
          headers: {

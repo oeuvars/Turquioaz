@@ -47,7 +47,7 @@ const Rentedcars: Component = () => {
         navigate("/login");
       }
       try {
-        const res = await axios.get(`http://localhost:4000/user/rentedCars`, {
+        const res = await axios.get(`https://rent-n-ride-ts-production.up.railway.app/user/rentedCars`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -55,7 +55,7 @@ const Rentedcars: Component = () => {
         setData(res.data.rentedCars);
         const carDetailsPromises = data()!.map(async (item: Rentedcar) => {
           const carRes = await axios.get(
-            `http://localhost:4000/user/car/${item.carId}`,
+            `https://rent-n-ride-ts-production.up.railway.app/user/car/${item.carId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

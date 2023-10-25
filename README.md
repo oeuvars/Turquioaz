@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src ="frontend/rentnridewhite.png" width=full height=full>
+<img src ="/frontend/src/assets/svgs/navbar/rentnridewhite.svg" width=full height=full>
 
 </div>
 

@@ -15,7 +15,7 @@ Rent n Ride is a web app to rent luxury and mid-range cars at your convenience.
 - Put the car on your wishlist for renting later
 - Pay with your credit card through stripe integration
 
-## 🖥Tech Stack
+## Tech Stack
 #### Frontend
 - SolidJS
 

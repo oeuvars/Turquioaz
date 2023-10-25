@@ -11,9 +11,6 @@ dependencies:
   '@supabase/supabase-js':
     specifier: ^2.29.0
     version: 2.38.1
-  '@thisbeyond/solid-select':
-    specifier: ^0.14.0
-    version: 0.14.0(solid-js@1.7.6)
   axios:
     specifier: ^1.5.1
     version: 1.5.1
@@ -26,9 +23,6 @@ dependencies:
   solid-js:
     specifier: ^1.7.6
     version: 1.7.6
-  solid-slider:
-    specifier: ^1.3.14
-    version: 1.3.15
   solid-toast:
     specifier: ^0.5.0
     version: 0.5.0(solid-js@1.7.6)
@@ -837,22 +831,6 @@ packages:
       solid-js: 1.7.6
     dev: true
 
-  /@solid-primitives/timer@1.3.7(solid-js@1.8.1):
-    resolution: {integrity: sha512-zS3qA7WVZYsW7+iTdk2M4W1wpMvRhdcMnO23Tcd+nX3YD7eMvjOnO15Oz2mymyfl/OC2ZgM1L5ec66GayEvPwQ==}
-    peerDependencies:
-      solid-js: ^1.6.12
-    dependencies:
-      solid-js: 1.8.1
-    dev: false
-
-  /@solid-primitives/utils@4.0.1(solid-js@1.8.1):
-    resolution: {integrity: sha512-06fSyBair7ZxCquMjIqJes29aNg65X776TVw4EUN7PBtdWsGUeIZ9F/H4ek7yrDSxaSDaPHeye5knEYsYAq2gA==}
-    peerDependencies:
-      solid-js: ^1.6.0
-    dependencies:
-      solid-js: 1.8.1
-    dev: false
-
   /@solid-primitives/utils@6.2.0(solid-js@1.7.6):
     resolution: {integrity: sha512-T62WlLwKkbmicsw/xpwMQyv9MmZRSaVyutXfS5icc9v0cb8qGMUxRxr5LVvZHYQCZ9DEFboZB0r711xsbVBbeA==}
     peerDependencies:
@@ -922,14 +900,6 @@ packages:
       '@supabase/storage-js': 2.5.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@thisbeyond/solid-select@0.14.0(solid-js@1.7.6):
-    resolution: {integrity: sha512-ecq4U3Vnc/nJbU84ARuPg2scNuYt994ljF5AmBlzuZW87x43mWiGJ5hEWufIJJMpDT6CcnCIx/xbrdDkaDEHQw==}
-    peerDependencies:
-      solid-js: ^1.5
-    dependencies:
-      solid-js: 1.7.6
     dev: false
 
   /@types/babel__core@7.20.1:
@@ -1580,10 +1550,6 @@ packages:
     resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
     dev: false
 
-  /keen-slider@6.8.6:
-    resolution: {integrity: sha512-dcEQ7GDBpCjUQA8XZeWh3oBBLLmyn8aoeIQFGL/NTVkoEOsmlnXqA4QykUm/SncolAZYGsEk/PfUhLZ7mwMM2w==}
-    dev: false
-
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
@@ -1865,11 +1831,6 @@ packages:
     hasBin: true
     dev: true
 
-  /seroval@0.10.4:
-    resolution: {integrity: sha512-TdaE9JkoATjKu+vjwllieX8zWyBTUVxbgWDnOsDJFfmKbM7vLSukuCXuD3pO3kkCtX4daywOW8ps2VCdPhS8/w==}
-    engines: {node: '>=10'}
-    dev: false
-
   /seroval@0.5.1:
     resolution: {integrity: sha512-ZfhQVB59hmIauJG5Ydynupy8KHyr5imGNtdDhbZG68Ufh1Ynkv9KOYOAABf71oVbQxJ8VkWnMHAjEHE7fWkH5g==}
     engines: {node: '>=10'}
@@ -1920,13 +1881,6 @@ packages:
       csstype: 3.1.2
       seroval: 0.5.1
 
-  /solid-js@1.8.1:
-    resolution: {integrity: sha512-HU4tB/vWY5/0P9GzbvePjK1aucNqUcF1XlAirZBjKkrkWG8XNIN9HSjscTC/nbl3A6JWjrW+OLcPEvWxsMhdng==}
-    dependencies:
-      csstype: 3.1.2
-      seroval: 0.10.4
-    dev: false
-
   /solid-refresh@0.5.3(solid-js@1.7.6):
     resolution: {integrity: sha512-Otg5it5sjOdZbQZJnvo99TEBAr6J7PQ5AubZLNU6szZzg3RQQ5MX04oteBIIGDs0y2Qv8aXKm9e44V8z+UnFdw==}
     peerDependencies:
@@ -1937,15 +1891,6 @@ packages:
       '@babel/types': 7.22.5
       solid-js: 1.7.6
     dev: true
-
-  /solid-slider@1.3.15:
-    resolution: {integrity: sha512-5VdpvBOaP3OrMcgDpG0NxozQjsPDMDxQIAseyKon9+S4I/508TdQnUoDJllP2ED0qlNdOl++88cfvFXOKg+xKg==}
-    dependencies:
-      '@solid-primitives/timer': 1.3.7(solid-js@1.8.1)
-      '@solid-primitives/utils': 4.0.1(solid-js@1.8.1)
-      keen-slider: 6.8.6
-      solid-js: 1.8.1
-    dev: false
 
   /solid-toast@0.5.0(solid-js@1.7.6):
     resolution: {integrity: sha512-t770JakjyS2P9b8Qa1zMLOD51KYKWXbTAyJePVUoYex5c5FH5S/HtUBUbZAWFcqRCKmAE8KhyIiCvDZA8bOnxQ==}

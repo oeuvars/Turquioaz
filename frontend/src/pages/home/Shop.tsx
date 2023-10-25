@@ -19,7 +19,7 @@ const Shop: ParentComponent = () => {
     {
       title: "International Rewards",
       value: "20+",
-      description: "We have achieved 20+ international rewards for our collection and services",
+      description: "We have achieved 20+ international rewards for our collection",
     },
     {
       title: "Company Revenue",
@@ -44,7 +44,7 @@ const Shop: ParentComponent = () => {
         </A>
       </div>
       <Line />
-      <div class="justify-between w-11/12 mx-auto sm:flex phone:grid my-[2vw] gap-5">
+      <div class="justify-between w-11/12 mx-auto phone:flex phone:flex-col gap-5 sm:grid sm:grid-cols-3 my-[2vw] gap-5">
           {statsData.map((stat) => (
             <StatBlock title={stat.title} value={stat.value} description={stat.description} />
           ))}
@@ -56,10 +56,12 @@ const Shop: ParentComponent = () => {
 
 function StatBlock(props: Stat) {
   return (
-    <div class="bg-white/5 phone:py-5 lg:py-10 px-3 gap-5 rounded-lg">
-      <h1 class="font-loubag text-5xl gradient-text text-center">{props.value}</h1>
-      <h1 class="font-loubag text-3xl mb-5 gradient-text text-center">{props.title}</h1>
-      <p class="text-center font-garamond phone:text-base tablet:text-lg md:text-xl">{props.description}</p>
+    <div class="bg-white/5 phone:py-5 lg:py-10 px-3 gap-5 rounded-lg flex flex-col justify-between">
+      <div>
+        <h1 class="font-loubag text-5xl gradient-text text-center">{props.value}</h1>
+        <h1 class="font-loubag text-2xl mb-5 gradient-text text-center">{props.title}</h1>
+      </div>
+      <p class="text-center phone:text-base">{props.description}</p>
     </div>
   );
 }

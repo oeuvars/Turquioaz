@@ -82,7 +82,7 @@ const Navbar: Component = () => {
           </A>
         )}
         <Show when={isDropdownOpen()}>
-          <div class="flex justify-between phone:mt-[10vh] tablet:mt-[5.5vw] lg:mt-[4.5vw] phone:gap-[2vh] tablet:gap-[0.7vh] lg:gap-[1vw] py-[0.3vw] absolute bg-white/10 backdrop-blur-xl rounded-md shadow-md overflow-scroll scroll border-white/10 border">
+          <div class="flex justify-between phone:mt-[6vh] tablet:mt-[6.5vw] md:mt-[6.5vw] lg:mt-[5.5vw] phone:gap-[2vh] tablet:gap-[0.7vh] lg:gap-[1vw] py-[0.3vw] absolute bg-white/10 backdrop-blur-xl rounded-md shadow-md overflow-scroll scroll border-white/10 border">
             <div class="flex">
               <button
                 onClick={handleClick}

@@ -111,16 +111,14 @@ const Login = () => {
             class={`w-full py-2 rounded-md text-xl font-medium mt-4 ${
                isLoggingIn()
                  ? 'bg-neutext-gray-700 font-medium/10 cursor-not-allowed border border-black/10'
-                 : 'bg-yellow-200 text-gray-700 font-medium hover:bg-amber-200 transition duration-500'
+                 : 'bg-emerald-900 text-yellow-100 font-medium hover:shadow-lg animation'
              }`}
              onClick={handleClick}
              disabled={isLoggingIn()}
           >
             {isLoggingIn() ? 'Logging In...' : 'Login'}
           </button>
-        <div class='flex w-full justify-center gap-5 font-didact-gothic'>
-          <A href="/user/signup" class='underline text-gray-400 flex justify-center items-center mt-2 text-center'>Not signed up yet? Sign Up</A>
-        </div>
+          <A href="/user/signup" class='font-didact-gothic underline text-gray-400 flex justify-center items-center mt-2 text-center'>Not signed up yet? Sign Up</A>
       </div>
     </div>
   );

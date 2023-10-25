@@ -37,7 +37,7 @@ const Shop: ParentComponent = () => {
             / &nbsp; Welcome to Luxury Garage
           </p>
         </div>
-        <A href="/collections" class="my-auto">
+        <A href="/user/collections" class="my-auto">
           <button class="border border-yellow-200 px-7 phone:py-2 tablet:py-3 rounded-full font-mabry font-medium">
             View All
           </button>

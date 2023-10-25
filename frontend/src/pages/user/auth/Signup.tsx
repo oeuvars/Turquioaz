@@ -83,8 +83,7 @@ const Signup: Component = () => {
         <></>
       )}
       <div class="p-8 shadow-lg rounded-xl phone:w-[90%] lg:w-[50%] m-auto bg-white/10">
-        <h1 class="text-4xl py-2 text-white font-bold mb-4 header text-center">Sign Up</h1>
-
+        <h1 class="text-4xl py-2 text-white mb-4 text-center">Sign Up</h1>
           <div class='mb-2'>
           <label class="block text-lg text-yellow-100 font-didact-gothic">Email</label>
             <input
@@ -129,14 +128,14 @@ const Signup: Component = () => {
             class={`w-full py-2 rounded-md text-xl font-medium mt-4 ${
                isLoggingIn()
                  ? 'bg-neutext-gray-700 font-medium/10 cursor-not-allowed border border-black/10'
-                 : 'bg-yellow-200 text-gray-700 font-medium hover:bg-amber-200 transition duration-500'
+                 : 'bg-emerald-800 text-yellow-100 font-medium hover:shadow-lg animation'
              }`}
              onClick={handleClick}
              disabled={isLoggingIn()}
           >
-            {isLoggingIn() ? 'Logging In...' : 'Login'}
+            {isLoggingIn() ? 'Signing Up...' : 'Sign Up'}
           </button>
-        <A href="/user/login" class='underline text-yellow-50/50 font-didact-gothic text-sm flex justify-center items-center mt-2 text-center'>Already have an account? Log In</A>
+        <A href="/user/login" class='underline text-gray-400 font-didact-gothic flex justify-center items-center mt-2 text-center'>Already have an account? Log In</A>
       </div>
     </div>
   );

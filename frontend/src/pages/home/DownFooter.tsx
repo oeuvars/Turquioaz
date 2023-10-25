@@ -4,7 +4,7 @@ import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from "solid-icons/bs";
 
 const DownFooter: Component = () => {
   return (
-   <>
+   <div>
       <Line />
       <div class="w-11/12 mx-auto my-[1vw]">
          <div class="font-montserrat flex gap-5 justify-center">
@@ -25,7 +25,7 @@ const DownFooter: Component = () => {
             <BsGithub class="w-7 h-7 cursor-pointer opacity-50" />
          </div>
       </div>
-   </>
+   </div>
   )
 };
 

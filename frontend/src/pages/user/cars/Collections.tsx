@@ -46,10 +46,10 @@ const Collections: Component = () => {
         },
       }
     );
-  setModels(res.data.models);
-  const totalCards = models().length
-  const totalPages = Math.ceil(totalCards / cardsPerPage);
-  setTotalPages(totalPages);
+    setModels(res.data.models);
+    const totalCards = models().length
+    const totalPages = Math.ceil(totalCards / cardsPerPage);
+    setTotalPages(totalPages);
   })
 
   const toggleDropdown = () => {
@@ -138,7 +138,7 @@ const Collections: Component = () => {
     <>
     <Navbar />
       {isAboveSmallScreens() ? (
-        <div class="font-mabry-regular">
+        <div class="font-didact-gothic">
           <div class="mx-auto mt-[4vw] flex w-11/12 justify-between phone:gap-5 lg:gap-9">
             <div class="bg-white/10 border border-white/10 rounded-xl py-10 px-5 shadow-lg">
               <div class="flex justify-between mx-auto">

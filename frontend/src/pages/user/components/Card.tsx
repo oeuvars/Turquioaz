@@ -151,12 +151,12 @@ const Card: Component<CardProps> = (props) => {
     <A href={`/user/model/${model.id}`}>
       <div
         {...restProps}
-        class="bg-white/10 border border-white/10 rounded-xl font-montserrat mx-auto px-4 py-3 shadow-lg"
+        class="bg-white/10 border border-white/10 rounded-xl mx-auto px-4 py-3 shadow-lg"
       >
         <div class="flex justify-between">
           <div class="flex-col justify-between">
-            <h2 class="text-4xl font-bold font-mabry">{model.name}</h2>
-            <p class="text-sm font-medium opacity-70 font-mabry-regular">
+            <h2 class="text-4xl font-doran-medium">{model.name}</h2>
+            <p class="text-sm font-medium opacity-70 font-montserrat">
               ${model.price}
             </p>
           </div>
@@ -184,7 +184,7 @@ const Card: Component<CardProps> = (props) => {
         />
 
         <div class="flex justify-between">
-          <div class="lg:flex gap-3 items-center font-mabry-regular mt-auto">
+          <div class="lg:flex gap-3 items-center font-didact-gothic mt-auto">
             <div class="flex gap-1">
               <img src={passenger} class="w-6 h-6 my-auto" />
               <p class="font-medium">{model.seatNumbers}</p>
@@ -198,7 +198,7 @@ const Card: Component<CardProps> = (props) => {
               <p class="font-medium">{model.fuelType}</p>
             </div>
           </div>
-          <p class="font-semibold text-4xl my-auto">
+          <p class="font-doran-medium text-4xl">
             ${model.rentPrice}
             <span class="text-base font-normal">/day</span>
           </p>

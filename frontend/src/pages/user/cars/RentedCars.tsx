@@ -2,7 +2,7 @@ import { A, useNavigate } from "@solidjs/router";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { Component, createEffect, createSignal } from "solid-js";
-import image from "../../../assets/images/cars/Model.jpg";
+import image from "../../../assets/images/cars/bigModel.jpg";
 import Navbar from "../components/Navbar";
 
 interface Rentedcar {

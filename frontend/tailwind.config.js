@@ -11,7 +11,8 @@ module.exports = {
         "klimaks-bold": ["Klimaks-Bold", "serif"],
         "montserrat": ["Montserrat", "sans-serif"],
         "garamond": ['Cormorant Garamond', 'serif'],
-        "didact-gothic": ['Didact Gothic', 'sans-serif']
+        "didact-gothic": ['Didact Gothic', 'sans-serif'],
+        "dm-sans": ['DM Sans', "sans-serif"]
       },
     },
     screens: {

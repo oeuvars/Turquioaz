@@ -1,10 +1,12 @@
 import { createEffect, createSignal } from "solid-js";
 import { A, useParams } from "@solidjs/router";
-import image from "../../../assets/images/cars/Model.jpg";
+import bigModel from "../../../assets/images/cars/bigModel.jpg";
+import phoneModel from "../../../assets/images/cars/phoneModel.jpg";
 import Stripe from "stripe";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import toast, { Toaster } from "solid-toast";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
 const Model = () => {
   const [model, setModel] = createSignal<any>([])
@@ -104,25 +106,34 @@ const Model = () => {
       }
     }
   };
-
+  const isAboveSmallScreens = useMediaQuery("(min-width: 914px)");
   return (
     <>
       <Navbar />
-      <div class="m-auto tablet:grid tablet:grid-cols-2 gap-[1vw] rounded-lg">
-        <img
-          src={image}
-          class="object-cover max-h-screen my-auto"
-        />
-        <div class="flex flex-col gap-[1.5vw] font-mabry-light text-white my-auto justify-center m-[1vw]">
-          <p class="font-loubag phone:text-3xl lg:text-7xl">{model().name}</p>
-          <p class="phone:text-2xl lg:text-4xl">
-            Price: &nbsp;<span class="font-mabry">${model().price}</span>
+      <div class="m-auto phone:flex phone:flex-col tablet:grid tablet:grid-cols-[2fr_3fr] phone:gap-[5vh] tablet:gap-[1vw] phone:w-[95%] tablet:w-full">
+        {isAboveSmallScreens() ? (
+          <img
+            src={bigModel}
+            class="object-cover max-h-screen my-auto w-full"
+          />
+        ) : (
+          <img
+            src={phoneModel}
+            class="object-cover mt-3 rounded-sm my-auto"
+          />
+        )}
+        <div class="flex flex-col gap-[1.5vw] my-auto justify-center m-[1vw]">
+          <div class="flex phone:text-3xl lg:text-5xl text-emerald-700 mt-auto">
+            Model:<span class="text-yellow-50">&nbsp;{model().name}</span>
+          </div>
+          <p class="phone:text-2xl lg:text-5xl text-yellow-50">
+            ${model().price}
           </p>
-          <p class="phone:text-base lg:text-xl">
+          <p class="phone:text-base lg:text-xl font-montserrat">
             {model().fuelType} &nbsp; | &nbsp; {model().seatNumbers}
             &nbsp; Seater &nbsp; | &nbsp; {model().transmission}
           </p>
-          <div class="flex gap-5 text-lg">
+          <div class="flex gap-5 text-lg font-montserrat">
             <input
               type="date"
               id="datePicker"
@@ -130,7 +141,7 @@ const Model = () => {
               onInput={(e) => setStartDate(new Date(e.target.value))}
               class="border border-gray-300/20 rounded-md p-2 text-white bg-white/10 focus:outline-none"
             />
-            <h1 class="my-auto">to</h1>
+            <h1 class="my-auto font-doran-regular tablet:text-2xl">to</h1>
             <input
               type="date"
               id="datePicker"
@@ -140,14 +151,14 @@ const Model = () => {
             />
           </div>
           <div class="flex flex-col gap-[1vw]">
-            <p class="font-mabry text-3xl">
-              <span class="font-mabry-light"></span>$
-              {model().rentPrice}/day &#215; {totalDays()} days
+            <p class="text-white text-5xl font-klimaks-bold">
+              ${model().rentPrice}/day
             </p>
+            <p class="text-4xl text-emerald-700">Total Cost: &nbsp;<span class="text-yellow-50">{Number(model().rentPrice)*totalDays()}$</span></p>
             <Toaster position="bottom-center" gutter={16} />
             <div onClick={handleRent}>
-              <button onClick={handleClick} class="bg-emerald-700 rounded-md text-lg py-2 px-5">
-                <p class="text-center">Rent It</p>
+              <button onClick={handleClick} class="bg-emerald-700 rounded-md text-lg py-2 w-[30%]">
+                <p class="text-center font-montserrat">Rent It</p>
               </button>
             </div>
           </div>

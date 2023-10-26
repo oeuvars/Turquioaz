@@ -1,6 +1,6 @@
 import { createEffect, createSignal } from "solid-js";
 import { A, useParams } from "@solidjs/router";
-import image from "../../../assets/images/cars/Model.jpg";
+import image from "../../../assets/images/cars/bigModel.jpg";
 import axios from "axios";
 import toast, { Toaster } from "solid-toast";
 import AdminNavbar from "../components/AdminNavbar";

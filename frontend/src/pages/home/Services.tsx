@@ -10,8 +10,8 @@ const Services: ParentComponent = () => {
     <>
       <div class="w-11/12 flex mx-auto justify-between">
         <div class="sm:flex gap-[2vw]">
-          <h1 class="header-text flex items-center my-auto">SERVICES</h1>
-          <p class="flex phone:text-sm tablet:text-base md:text-lg items-center font-medium">
+          <h1 class="header-text font-rubintek flex items-center my-auto">SERVICES</h1>
+          <p class="flex phone:text-sm tablet:text-base md:text-lg items-center font-rubintek font-medium">
             / &nbsp; Our area of expertise
           </p>
         </div>

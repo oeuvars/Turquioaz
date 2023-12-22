@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
 
 @tailwind base;
@@ -13,7 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #131b1c;
   scrollbar-width: none;
-  @apply text-[#F2EEC0] font-doran-regular;
+  @apply text-[#F2EEC0] font-rethink-sans font-medium;
 }
 
 .blur {
@@ -51,27 +49,12 @@ body::-webkit-scrollbar {
 }
 
 @font-face {
-  font-family: Klimaks-Regular;
-  src: url("./assets/fonts/Klimaks-Regular.ttf");
+  font-family: Rubintek;
+  src: url("./assets/fonts/rubintek.ttf");
 }
 
 @font-face {
-  font-family: Kilmaks-Bold;
-  src: url("./assets/fonts/Klimaks-Bold.ttf");
-}
-
-@font-face {
-  font-family: Doran-Regular;
-  src: url("./assets/fonts/Doran-Regular.ttf");
-}
-
-@font-face {
-  font-family: Doran-Medium;
-  src: url("./assets/fonts/Doran-Medium.ttf");
-}
-
-@font-face {
-  font-family: Doran-Bold;
+  font-family: Doran;
   src: url("./assets/fonts/Doran-Bold.ttf");
 }
 
@@ -109,3 +92,4 @@ html {
   color: #000000;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+

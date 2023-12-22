@@ -7,6 +7,8 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import toast, { Toaster } from "solid-toast";
 import useMediaQuery from "../../../hooks/useMediaQuery";
+import { FaSolidAngleLeft } from "solid-icons/fa";
+import DownFooter from "../../home/DownFooter";
 
 const Model = () => {
   const [model, setModel] = createSignal<any>([])
@@ -110,30 +112,41 @@ const Model = () => {
   return (
     <>
       <Navbar />
-      <div class="m-auto phone:flex phone:flex-col tablet:grid tablet:grid-cols-[2fr_3fr] phone:gap-[5vh] tablet:gap-[1vw] phone:w-[95%] tablet:w-full">
+      <div class="m-auto phone:flex phone:flex-col tablet:grid tablet:grid-cols-2 phone:gap-[5vh] tablet:gap-[2vw] phone:w-[95%] tablet:w-full">
         {isAboveSmallScreens() ? (
-          <img
-            src={bigModel}
-            class="object-cover max-h-screen my-auto w-full"
-          />
+          <div>
+            <FaSolidAngleLeft  class='absolute w-10 h-10 text-white hover:text-gray-100 font-medium transition duration-300 m-5 cursor-pointer'/>
+            <img
+              src={bigModel}
+              class="object-cover max-h-screen my-auto w-full"
+            />
+          </div>
         ) : (
           <img
             src={phoneModel}
             class="object-cover mt-3 rounded-sm my-auto"
           />
         )}
-        <div class="flex flex-col gap-[1.5vw] my-auto justify-center m-[1vw]">
-          <div class="flex phone:text-3xl lg:text-5xl text-emerald-700 mt-auto">
-            Model:<span class="text-yellow-50">&nbsp;{model().name}</span>
+        <div class="flex flex-col my-auto justify-center m-[1vw]">
+          <div class="phone:mb-[0.5vh] lg:mb-[0.5vw]">
+            <p class="flex text-emerald-700 mt-auto font-dm-sans font-medium">
+              Model:
+            </p>
+            <p class="text-yellow-50 font-rubintek phone:text-5xl lg:text-7xl">{model().name}</p>
           </div>
-          <p class="phone:text-2xl lg:text-5xl text-yellow-50">
-            ${model().price}
-          </p>
-          <p class="phone:text-base lg:text-xl font-montserrat">
+          <div>
+            <p class="flex text-emerald-700 mt-auto font-dm-sans font-medium">
+              Price:
+            </p>
+            <p class="phone:text-3xl lg:text-4xl text-yellow-50 font-dm-sans font-semibold">
+              ${model().price}
+            </p>
+          </div>
+          <p class="phone:text-base lg:text-base font-dm-sans font-medium phone:mt-[2vh] lg:mt-[2vw] text-yellow-50">
             {model().fuelType} &nbsp; | &nbsp; {model().seatNumbers}
             &nbsp; Seater &nbsp; | &nbsp; {model().transmission}
           </p>
-          <div class="flex gap-5 text-lg font-montserrat">
+          <div class="flex gap-5 text-base font-dm-sans font-medium phone:my-[1.5vh] lg:my-[1.5vw]">
             <input
               type="date"
               id="datePicker"
@@ -141,7 +154,7 @@ const Model = () => {
               onInput={(e) => setStartDate(new Date(e.target.value))}
               class="border border-gray-300/20 rounded-md p-2 text-white bg-white/10 focus:outline-none"
             />
-            <h1 class="my-auto font-doran-regular tablet:text-2xl">to</h1>
+            <h1 class="my-auto font-dm-sans font-medium tablet:text-base text-yellow-50">To</h1>
             <input
               type="date"
               id="datePicker"
@@ -150,15 +163,18 @@ const Model = () => {
               class="border border-gray-300/20 rounded-md p-2 text-white bg-white/10 focus:outline-none"
             />
           </div>
-          <div class="flex flex-col gap-[1vw]">
-            <p class="text-white text-5xl font-klimaks-bold">
+          <div class="flex flex-col phone:gap-[2vh] lg:gap-[1vw]">
+            <p class="text-white text-5xl font-rethink-sans">
               ${model().rentPrice}/day
             </p>
-            <p class="text-4xl text-emerald-700">Total Cost: &nbsp;<span class="text-yellow-50">{Number(model().rentPrice)*totalDays()}$</span></p>
+            <div>
+              <p class="text-base text-emerald-700 font-dm-sans font-medium">Total Cost:</p>
+              <p class="text-yellow-50 font-dm-sans font-medium text-4xl">${Number(model().rentPrice)*totalDays()}</p>
+            </div>
             <Toaster position="bottom-center" gutter={16} />
             <div onClick={handleRent}>
-              <button onClick={handleClick} class="bg-emerald-700 rounded-md text-lg py-2 w-[30%]">
-                <p class="text-center font-montserrat">Rent It</p>
+              <button onClick={handleClick} class="bg-emerald-700 rounded-sm text-lg py-2 phone:w-full tablet:w-[50%] text-yellow-50">
+                <p class="text-center font-dm-sans">Rent It</p>
               </button>
             </div>
           </div>

@@ -15,7 +15,7 @@ const Footer: Component = () => {
       {isAboveSmallScreens() ? (
         <div class="mt-[3vw]">
           <div class="relative">
-            <h1 class="absolute sm:text-[15vw] tablet:text-[15vw] md:text-[16vw] lg:text-[17vw] font-doran-medium sm:mt-[9vw] tablet:mt-[9vw] md:mt-[8vw] lg:mt-[6.5vw] leading-none text-center gradient-text">
+            <h1 class="absolute sm:text-[15vw] tablet:text-[15vw] md:text-[16vw] lg:text-[17vw] font-doran sm:mt-[9vw] tablet:mt-[9vw] md:mt-[8vw] lg:mt-[6.5vw] leading-none text-center gradient-text">
               MERCEDES BENZ 1952
             </h1>
           </div>
@@ -26,10 +26,10 @@ const Footer: Component = () => {
           <Line />
           <div class="w-11/12 flex mx-auto justify-between">
             <div class="flex gap-[2vw]">
-              <h1 class="font-loubag uppercase header-text flex items-center my-auto">
+              <h1 class="font-rubintek uppercase header-text flex items-center my-auto">
                 Contact
               </h1>
-              <p class="font-mabry flex items-center font-medium phone:text-sm tablet:text-base md:text-lg">
+              <p class="font-rubintek flex items-center font-medium phone:text-sm tablet:text-base md:text-lg">
                 / &nbsp; Let's talk about your new car
               </p>
             </div>

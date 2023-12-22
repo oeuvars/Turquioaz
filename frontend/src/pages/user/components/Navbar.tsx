@@ -29,7 +29,7 @@ const Navbar: Component = () => {
   };
 
   return (
-    <div class="flex justify-between phone:py-3 lg:py-4 bg-white/10 lg:px-16 md:px-12 tablet:px-10 sm:px-7 phone:px-5 items-center mx-auto sticky top-0 z-40 backdrop-blur-md">
+    <div class="font-dm-sans font-medium flex justify-between phone:py-3 lg:py-4 bg-white/10 lg:px-16 md:px-12 tablet:px-10 sm:px-7 phone:px-5 items-center mx-auto sticky top-0 z-40 backdrop-blur-md">
       <A href="/" class="flex phone:gap-2 lg:gap-3">
         <img src={logo} class="lg:w-52 md:w-48 tablet:w-44 phone:w-40" />
       </A>
@@ -46,21 +46,39 @@ const Navbar: Component = () => {
             <img src={arrow} class="h-7 w-7" />
           </div>
           <div class="flex gap-1">
-            <div>
-              <A href="/user/collections" class="text-lg">
-                Car Collections
-              </A>
-              <hr class="style-two" />
-            </div>
+            {loginToken || signupToken ? (
+              <div>
+                <A href="/user/collections" class="text-lg">
+                  Car Collections
+                </A>
+                <hr class="style-two" />
+              </div>
+            ) : (
+              <div>
+                <A href="/user/login" class="text-lg">
+                  Car Collections
+                </A>
+                <hr class="style-two" />
+              </div>
+            )}
             <img src={arrow} class="h-7 w-7" />
           </div>
           <div class="flex gap-1">
-            <div>
-              <A href="/user/wishlist" class="text-lg">
-                Wishlist
-              </A>
-              <hr class="style-two" />
-            </div>
+            {loginToken || signupToken ? (
+              <div>
+                <A href="/user/wishlist" class="text-lg">
+                  Wishlist
+                </A>
+                <hr class="style-two" />
+              </div>
+            ) : (
+              <div>
+                <A href="/user/login" class="text-lg">
+                  Wishlist
+                </A>
+                <hr class="style-two" />
+              </div>
+            )}
             <img src={arrow} class="h-7 w-7" />
           </div>
         </div>

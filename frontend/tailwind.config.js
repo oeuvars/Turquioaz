@@ -4,15 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "doran-regular": ["Doran-Regular", "serif"],
-        "doran-medium": ["Doran-Medium", "serif"],
-        "doran-bold": ["Doran-Bold", "serif"],
-        "klimaks-regular": ["Klimaks-Regular", "serif"],
-        "klimaks-bold": ["Klimaks-Bold", "serif"],
-        "montserrat": ["Montserrat", "sans-serif"],
-        "garamond": ['Cormorant Garamond', 'serif'],
-        "didact-gothic": ['Didact Gothic', 'sans-serif'],
-        "dm-sans": ['DM Sans', "sans-serif"]
+        "rethink-sans": ['Rethink Sans', "sans-serif"],
+        "dm-sans": ['DM Sans', "sans-serif"],
+        "rubintek": ["Rubintek", "sans-serif"],
+        "doran": ["Doran", "serif"]
       },
     },
     screens: {

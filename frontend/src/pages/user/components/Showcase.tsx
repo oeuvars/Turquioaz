@@ -60,7 +60,7 @@ const Showcase: Component = () => {
         {carData.map((car, index) => (
           <div class="w-screen flex-shrink-0 relative">
             <img src={car.image} alt="car" class="-z-10 py-5 rounded-sm filter blur-sm phone:h-[30vh] xs:h-[35vh] s:h-[40vh] sm:h-[50vw] tablet:h-[51vw] md:h-[50vw] lg:h-[43vw] w-full object-cover" />
-            <A href="/user/services" class="absolute inset-0 flex items-center justify-center link link--dia z-10 px-3 py-1 italic phone:text-[3.5vh] xs:text-[4.5vh] s:text-[5.5vh] sm:text-[10vw] tablet:text-[10vw] md:text-[9vw] lg:text-[10vw]">{car.title}</A>
+            <A href="/user/services" class="absolute inset-0 flex items-center justify-center link link--dia z-10 px-3 py-1 italic phone:text-[3.5vh] xs:text-[4.5vh] s:text-[5.5vh] sm:text-[10vw] tablet:text-[10vw] md:text-[9vw] lg:text-[10vw] font-rubintek">{car.title}</A>
           </div>
         ))}
       </div>

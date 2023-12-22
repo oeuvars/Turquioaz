@@ -2,7 +2,7 @@ import { Component, JSX, createEffect, createSignal } from "solid-js";
 import passenger from "../../../assets/svgs/collections/person.svg";
 import steering from "../../../assets/svgs/card/wheel.svg";
 import fuel from "../../../assets/svgs/collections/gas-station.svg";
-import { A, useParams } from "@solidjs/router";
+import { A } from "@solidjs/router";
 import toast, { Toaster } from "solid-toast";
 import axios from "axios";
 import { AiFillHeart, AiOutlineHeart } from 'solid-icons/ai'
@@ -155,7 +155,7 @@ const Card: Component<CardProps> = (props) => {
       >
         <div class="flex justify-between">
           <div class="flex-col justify-between">
-            <h2 class="text-4xl font-doran-medium">{model.name}</h2>
+            <h2 class="text-4xl font-rubintek font-medium">{model.name}</h2>
             <p class="text-sm font-medium opacity-70 font-montserrat">
               ${model.price}
             </p>
@@ -184,18 +184,18 @@ const Card: Component<CardProps> = (props) => {
         />
 
         <div class="flex justify-between">
-          <div class="lg:flex gap-3 items-center font-didact-gothic mt-auto">
+          <div class="lg:flex gap-3 items-center font-dm-sans mt-auto">
             <div class="flex gap-1">
               <img src={passenger} class="w-6 h-6 my-auto" />
-              <p class="font-medium">{model.seatNumbers}</p>
+              <p class="font-medium text-yellow-50/90">{model.seatNumbers}</p>
             </div>
             <div class="flex gap-1">
               <img src={steering} class="w-6 h-6 my-auto" />
-              <p class="font-medium">{model.transmission}</p>
+              <p class="font-medium text-yellow-50/90">{model.transmission}</p>
             </div>
             <div class="flex gap-1">
               <img src={fuel} class="w-6 h-6 my-auto" />
-              <p class="font-medium">{model.fuelType}</p>
+              <p class="font-medium text-yellow-50/90">{model.fuelType}</p>
             </div>
           </div>
           <p class="font-doran-medium text-4xl">

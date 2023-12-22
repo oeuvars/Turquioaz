@@ -12,6 +12,7 @@ import axios from "axios";
 import { BsTrash3 } from "solid-icons/bs";
 import Navbar from "../components/Navbar";
 import jwtDecode from "jwt-decode";
+import DownFooter from "../../home/DownFooter";
 
 interface Model {
   id: string;
@@ -150,8 +151,8 @@ const Wishlist: Component = () => {
                       <div class="bg-white/10 border border-white/10 rounded-xl font-montserrat min-w-[470px] min-h-[310px] mx-2 px-4 py-3 shadow-lg my-2">
                         <div class="flex justify-between">
                           <div class="flex-col justify-between">
-                            <h2 class="text-4xl font-mabry">{entry.model.name}</h2>
-                            <p class="text-base font-medium opacity-70 font-mabry-regular">
+                            <h2 class="text-4xl font-rubintek">{entry.model.name}</h2>
+                            <p class="text-base font-medium opacity-70 font-dm-sans">
                               ${entry.model.price}
                             </p>
                           </div>
@@ -166,7 +167,7 @@ const Wishlist: Component = () => {
                           class="w-[450px] h-[200px] object-cover my-3 rounded-md border-2 border-white/10"
                         />
                         <div class="flex justify-between">
-                          <div class="flex gap-3 items-center font-mabry-regular mt-auto">
+                          <div class="flex gap-3 items-center font-dm-sans mt-auto">
                             <div class="flex gap-1">
                               <img src={passenger} class="w-6 h-6 my-auto" />
                               <p class="font-medium">
@@ -230,8 +231,8 @@ const Wishlist: Component = () => {
                       <div class="bg-white/10 border border-white/10 rounded-xl font-montserrat mx-2 px-4 py-3 shadow-lg my-2">
                         <div class="flex justify-between">
                           <div class="flex-col justify-between">
-                            <h2 class="text-4xl font-mabry">{entry.model.name}</h2>
-                            <p class="text-base font-medium opacity-70 font-mabry-regular">
+                            <h2 class="text-4xl font-rubintek">{entry.model.name}</h2>
+                            <p class="text-base font-medium opacity-70 font-dm-sans">
                               ${entry.model.price}
                             </p>
                           </div>
@@ -246,7 +247,7 @@ const Wishlist: Component = () => {
                           class="w-[450px] h-[200px] object-cover my-3 rounded-md border-2 border-white/10"
                         />
                         <div class="flex justify-between">
-                          <div class="flex gap-3 items-center font-mabry-regular mt-auto">
+                          <div class="flex gap-3 items-center font-dm-sans mt-auto">
                             <div class="flex gap-1">
                               <img src={passenger} class="w-6 h-6 my-auto" />
                               <p class="font-medium">
@@ -282,6 +283,7 @@ const Wishlist: Component = () => {
           )}
         </>
       )}
+      <DownFooter />
     </>
   );
 };

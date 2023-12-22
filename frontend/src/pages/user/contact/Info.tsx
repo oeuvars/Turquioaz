@@ -6,6 +6,7 @@ import image3 from "../assets/about/744607.jpg";
 import image4 from "../assets/about/745166.jpg";
 import image5 from "../assets/about/745274.jpg";
 import Navbar from "../components/Navbar";
+import DownFooter from "../../home/DownFooter";
 
 const Info: Component = () => {
     const [teamMembers] = createSignal([
@@ -49,6 +50,7 @@ const Info: Component = () => {
           <p>Email: info@carrentalwebsite.com</p>
           <p>Phone: +1 123-456-7890</p>
         </div>
+        <DownFooter />
       </>
     );
 };

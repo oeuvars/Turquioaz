@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import { Component, createEffect, createSignal } from "solid-js";
 import image from "../../../assets/images/cars/bigModel.jpg";
 import Navbar from "../components/Navbar";
+import DownFooter from "../../home/DownFooter";
 
 interface Rentedcar {
    carId: number
@@ -127,6 +128,7 @@ const Rentedcars: Component = () => {
             )}
             </div>
       </div>
+      <DownFooter />
       </>
     );
 

@@ -10,6 +10,7 @@ import CarSpecifications from "../collections/CarSpecifications";
 import Card from "../components/Card";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import axios from "axios";
+import DownFooter from "../../home/DownFooter";
 
 const Search: Component = () => {
   const [models, setModels] = createSignal([])
@@ -271,6 +272,7 @@ const Search: Component = () => {
           </div>
         </div>
       )}
+      <DownFooter />
     </>
   );
 };

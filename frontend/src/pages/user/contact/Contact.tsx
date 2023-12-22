@@ -1,5 +1,6 @@
 import { Component, createSignal } from "solid-js";
 import Navbar from "../components/Navbar";
+import DownFooter from "../../home/DownFooter";
 
 const Contact: Component = () => {
   const [name, setName] = createSignal("");
@@ -62,6 +63,7 @@ const Contact: Component = () => {
           Compose Email
         </button>
       </div>
+      <DownFooter />
     </>
   );
 };

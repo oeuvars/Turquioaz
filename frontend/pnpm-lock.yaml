@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@solidjs/router':
-    specifier: ^0.8.2
+    specifier: ^0.8.3
     version: 0.8.3(solid-js@1.7.6)
   '@supabase/supabase-js':
     specifier: ^2.29.0

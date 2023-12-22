@@ -10,6 +10,7 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { BsChevronLeft, BsChevronRight } from "solid-icons/bs";
 import { AiOutlineRedo } from 'solid-icons/ai'
+import DownFooter from "../../home/DownFooter";
 
 const Collections: Component = () => {
   const [models, setModels] = createSignal([])
@@ -138,17 +139,16 @@ const Collections: Component = () => {
     <>
     <Navbar />
       {isAboveSmallScreens() ? (
-        <div class="font-didact-gothic">
+        <div class="font-dm-sans">
           <div class="mx-auto mt-[4vw] flex w-11/12 justify-between phone:gap-5 lg:gap-9">
             <div class="bg-white/10 border border-white/10 rounded-xl py-10 px-5 shadow-lg">
               <div class="flex justify-between mx-auto">
-                <h1 class="font-medium text-xl">Filters</h1>
+                <h1 class="text-xl font-dm-sans">Filters</h1>
                 <div class="flex gap-1">
                 <AiOutlineRedo class="w-6 h-6 my-auto"/>
-
                   <button
                     onClick={resetFilters}
-                    class="font-mabry font-medium text-yellow-500 text-lg"
+                    class="text-yellow-500 text-lg"
                   >
                     Reset All
                   </button>
@@ -157,11 +157,11 @@ const Collections: Component = () => {
 
               <hr class="my-[1.5vw] bg-yellow-50/70 border-0 h-[0.1vw] rounded-full"/>
 
-              <div class="mx-auto">
-                <h1 class="font-medium">Transmission Type</h1>
+              <div class="mx-auto font-dm-sans">
+                <h1 class="">Transmission Type</h1>
                 <div class="gap-3 flex mt-3">
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedTransmission() === "Any" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedTransmission("Any")}
@@ -169,7 +169,7 @@ const Collections: Component = () => {
                     Any
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedTransmission() === "Manual" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedTransmission("Manual")}
@@ -177,7 +177,7 @@ const Collections: Component = () => {
                     Manual
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedTransmission() === "Automatic"
                         ? "bg-yellow-500"
                         : ""
@@ -191,11 +191,11 @@ const Collections: Component = () => {
 
               <hr class="my-[1.5vw] bg-yellow-50/70 border-0 h-[0.1vw] rounded-full"/>
 
-              <div class="mx-auto overflow-clip">
+              <div class="mx-auto overflow-clip font-dm-sans">
                 <h1 class="font-medium">Fuel Type</h1>
                 <div class="gap-3 flex mt-3 flex-wrap">
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedFuel() === "Any" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedFuel("Any")}
@@ -203,7 +203,7 @@ const Collections: Component = () => {
                     Any
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedFuel() === "Petrol" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedFuel("Petrol")}
@@ -211,7 +211,7 @@ const Collections: Component = () => {
                     Petrol
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedFuel() === "Diesel" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedFuel("Diesel")}
@@ -219,7 +219,7 @@ const Collections: Component = () => {
                     Diesel
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedFuel() === "Electric" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedFuel("Electric")}
@@ -227,7 +227,7 @@ const Collections: Component = () => {
                     Electric
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedFuel() === "Hybrid" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedFuel("Hybrid")}
@@ -243,7 +243,7 @@ const Collections: Component = () => {
                 <h1 class="font-medium">Seat</h1>
                 <div class="gap-3 flex mt-3 flex-wrap">
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedSeats() === 2 ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedSeats(2)}
@@ -251,7 +251,7 @@ const Collections: Component = () => {
                     2 Seater
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedSeats() === 4 ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedSeats(4)}
@@ -259,7 +259,7 @@ const Collections: Component = () => {
                     4 Seater
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedSeats() === 5 ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedSeats(5)}
@@ -267,7 +267,7 @@ const Collections: Component = () => {
                     5 Seater
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedSeats() === 7 ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedSeats(7)}
@@ -283,7 +283,7 @@ const Collections: Component = () => {
                 <h1 class="font-medium">Veichle Condition</h1>
                 <div class="gap-3 flex mt-3">
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedCondition() === "All" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedCondition("All")}
@@ -291,7 +291,7 @@ const Collections: Component = () => {
                     All
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedCondition() === "New" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedCondition("New")}
@@ -299,7 +299,7 @@ const Collections: Component = () => {
                     Brand New
                   </button>
                   <button
-                    class={`rounded-full px-3 py-1 bg-yellow-100 text-black font-medium ${
+                    class={`rounded-full px-3 py-1 bg-yellow-100 text-neutral-900 font-medium ${
                       selectedCondition() === "Used" ? "bg-yellow-500" : ""
                     }`}
                     onClick={() => setSelectedCondition("Used")}
@@ -359,7 +359,7 @@ const Collections: Component = () => {
           </div>
         </div>
       ) : (
-        <div class="font-mabry-regular mb-7 overflow-x-hidden">
+        <div class=" mb-7 overflow-x-hidden">
           <div class="mx-auto mt-5 w-[88%]">
             <div class="w-full bg-white/10 border border-white/10 rounded-xl py-3 my-5 shadow-lg mx-auto">
               <div class="flex justify-between">
@@ -378,7 +378,7 @@ const Collections: Component = () => {
                       <div class="flex absolute bg-white/10 rounded-md w-[13vh] shadow-md scroll z-20 my-1 border-white/10 border backdrop-blur-sm">
                         <div class="">
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedTransmission() === "Any"
                                 ? "font-bold"
                                 : ""
@@ -388,7 +388,7 @@ const Collections: Component = () => {
                             Any
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedTransmission() === "Manual"
                                 ? "font-bold"
                                 : ""
@@ -398,7 +398,7 @@ const Collections: Component = () => {
                             Manual
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedTransmission() === "Automatic"
                                 ? "font-bold"
                                 : ""
@@ -432,7 +432,7 @@ const Collections: Component = () => {
                       <div class="flex absolute backdrop-blur-sm bg-white/10 w-[12vh] h-[12vh] rounded-md shadow-md overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedFuel() === "Any" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedFuel("Any") && closeDropdown2()}
@@ -440,7 +440,7 @@ const Collections: Component = () => {
                             Any
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedFuel() === "Petrol" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedFuel("Petrol") && closeDropdown2()}
@@ -448,7 +448,7 @@ const Collections: Component = () => {
                             Petrol
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedFuel() === "Diesel" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedFuel("Diesel") && closeDropdown2()}
@@ -456,7 +456,7 @@ const Collections: Component = () => {
                             Diesel
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedFuel() === "Electric" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedFuel("Electric") && closeDropdown2()}
@@ -464,7 +464,7 @@ const Collections: Component = () => {
                             Electric
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedFuel() === "Hybrid" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedFuel("Hybrid") && closeDropdown2()}
@@ -496,7 +496,7 @@ const Collections: Component = () => {
                       <div class="flex absolute backdrop-blur-sm bg-white/10 w-[13vh] rounded-md shadow-md h-24 overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedSeats() === 2 ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedSeats(2) && closeDropdown3()}
@@ -504,7 +504,7 @@ const Collections: Component = () => {
                             2 Seater
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedSeats() === 4 ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedSeats(4) && closeDropdown3()}
@@ -512,7 +512,7 @@ const Collections: Component = () => {
                             4 Seater
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedSeats() === 5 ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedSeats(5) && closeDropdown3()}
@@ -520,7 +520,7 @@ const Collections: Component = () => {
                             5 Seater
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedSeats() === 7 ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedSeats(7) && closeDropdown3()}
@@ -552,7 +552,7 @@ const Collections: Component = () => {
                       <div class="flex absolute backdrop-blur-sm bg-white/10 w-[11vh] rounded-md shadow-md overflow-scroll scroll z-20 my-1 border-white/10 border">
                         <div class="flex-col">
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedCondition() === "All" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedCondition("All") && closeDropdown4()}
@@ -560,7 +560,7 @@ const Collections: Component = () => {
                             All
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedCondition() === "New" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedCondition("New") && closeDropdown4()}
@@ -568,7 +568,7 @@ const Collections: Component = () => {
                             New
                           </button>
                           <button
-                            class={`pt-1 px-2 text-white font-mabry-regular font-medium ${
+                            class={`pt-1 px-2 text-white  font-medium ${
                               selectedCondition() === "Used" ? "font-bold" : ""
                             }`}
                             onClick={() => setSelectedCondition("Used") && closeDropdown4()}
@@ -635,6 +635,7 @@ const Collections: Component = () => {
           </div>
         </div>
       )}
+      <DownFooter />
     </>
   );
 };

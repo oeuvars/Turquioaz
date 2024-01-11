@@ -26,6 +26,6 @@ Rent n Ride is a web app to rent luxury and mid-range cars at your convenience.
 - JWT
 
 ## About us
-- Frontend - [Anurag Das](https://github.com/oeuvars)
-- Backend - [Ritam Samanta](https://github.com/wrritam)
+- [Anurag Das](https://github.com/oeuvars)
+- [Ritam Samanta](https://github.com/wrritam)
 

@@ -22,6 +22,7 @@ import PleaseVerify from "../pages/user/auth/PleaseVerify";
 import AddCars from "../pages/admin/cars/AddCars";
 import UpdateCars from "../pages/admin/cars/UpdateCars";
 import PasswordUpdated from "../pages/user/auth/PasswordUpdated";
+import Verify from "../pages/user/auth/Verify";
 
 const UserRoutes: Component = () => {
   return (
@@ -40,6 +41,7 @@ const UserRoutes: Component = () => {
         <Route path="/user/success/:id" element={<Success />} />
         <Route path="/user/login" element={<Login />} />
         <Route path="/user/signup" element={<Signup />} />
+        <Route path="/user/verify" element={<Verify />} />
         <Route path="/user/rented-cars" element={<Rentedcars />} />
         <Route path="/user/forgot-password" element={<ForgotPassword />} />
         <Route path="/user/reset-password/:id/:token" element={<ResetPassword />} />

@@ -1,42 +1,44 @@
-"use client";
-
-import { createSignal, createEffect, Component } from "solid-js";
-import Link from "next/link";
-import { trpc } from "@/app/_trpc/client";
-import Cookies from "js-cookie";
-import { parseJwt } from "@/server/helpers/decode";
+import { createSignal, createEffect, Component, createComputed } from "solid-js";
+import jwtDecode from "jwt-decode";
 import toast, { Toaster } from "solid-toast";
+import { useNavigate } from "@solidjs/router";
+import axios from "axios";
 
-const VerificationPage: React.FC = () => {
-  const [otp, setOtp] = useState<string[]>(["", "", "", ""]);
-  const oneTimePass = Number(otp.join(""));
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState<string>("");
+const Verify: Component = () => {
+  const [otp, setOtp] = createSignal<string[]>(["", "", "", ""]);
+  const [oneTimePass, setOneTimePass] = createSignal<number>();
+  const [loading, setLoading] = createSignal(false);
+  const [email, setEmail] = createSignal<string>("");
+  const navigate = useNavigate();
 
-  const verify = trpc.verify.useMutation();
-  const router = useRouter();
-
-  const handleOtpChange = ( e: React.ChangeEvent<HTMLInputElement>, index: number ) => {
-    const newOtp = [...otp];
-    newOtp[index] = e.target.value;
-    if (e.target.value && index < otp.length - 1) {
+  const handleOtpChange = ( e: any, index: number ) => {
+   const newOtp = [...otp()];
+   newOtp[index] = e.target.value;
+   if (e.target.value && index < otp.length - 1) {
       document.getElementById(`otp-input-${index + 1}`)?.focus();
+   }
+   setOtp(newOtp);
+   setOneTimePass(Number(otp().join("")))
+ };
+
+  createEffect(() => {
+    const token = localStorage.getItem("signupToken")
+    if (token) {
+      const result = jwtDecode(token) as { email: string };
+      setEmail(result.email)
+    } else {
+      navigate('/user/signup')
     }
-    setOtp(newOtp);
-  };
-  useEffect(() => {
-    const cookie = Cookies.get("newCookie");
-    const currentMail = parseJwt(cookie!).email;
-    setEmail(currentMail)
   })
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async (e: Event) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const result = await verify.mutateAsync({ email: email, oneTimePass: oneTimePass });
+      console.log("otps", oneTimePass())
+      const result = await axios.post('http://localhost:4000/user/verify', {email: email(), oneTimePass: oneTimePass()})
       console.log(result)
        if (result) {
-         router.push('/welcome')
+         navigate('/user/collections')
          toast.success("You are Verified!", {
             style: {
               border: "2px solid rgba(255, 255, 255, 0.1)",
@@ -87,7 +89,7 @@ const VerificationPage: React.FC = () => {
         </div>
 
         <div class="flex justify-center space-x-3 mt-10">
-          {otp.map((digit: number) => (
+          {otp().map((digit: string, index: number) => (
             <input
               type="text"
               id={`otp-input-${index}`}
@@ -102,15 +104,15 @@ const VerificationPage: React.FC = () => {
         <button
           onClick={handleClick}
           class={`flex bg-[#F99052] text-white px-6 py-2 rounded-lg border-2 font-satoshi-medium text-lg border-[#F1E9DF] hover:lower-card-shadow mt-10 w-[50%] mx-auto justify-center ${
-            loading ? "opacity-50 cursor-not-allowed" : ""
+            loading() ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          disabled={loading}
+          disabled={loading()}
         >
-          <p class="text-center">{loading ? "Verifying..." : "Verify"}</p>
+          <p class="text-center">{loading() ? "Verifying..." : "Verify"}</p>
         </button>
       </div>
     </div>
   );
 };
 
-export default VerificationPage;
+export default Verify;

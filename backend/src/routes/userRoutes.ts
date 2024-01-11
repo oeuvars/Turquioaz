@@ -124,7 +124,7 @@ router.post("/register", async (req, res) => {
 router.post("/verify", async (req, res) => {
   const {email, oneTimePass} = req.body;
   const user = await prisma.user.findUnique({ where: { email: email }});
-  if (user.otp === oneTimePass) {
+  if (user.otp === Number(oneTimePass)) {
     await prisma.user.update({where: {email: email}, data: {otp: null, is_verified: true}});
     res.json({ message: "User Verified"})
   } else {

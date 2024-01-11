@@ -34,7 +34,7 @@ const Signup: Component = () => {
       const res = await axios.post('https://rent-ride.onrender.com/user/register', user())
       const token = res.data.token;
       localStorage.setItem('signupToken', token);
-      navigate('/user/collections')
+      navigate('/user/verify')
       toast.success("You are logged in!", {
         style: {
           border: "2px solid rgba(255, 255, 255, 0.1)",

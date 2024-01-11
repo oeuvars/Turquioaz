@@ -9,7 +9,7 @@ Rent n Ride is a web app to rent luxury and mid-range cars at your convenience.
 
 
 ## Features
-- Extended authentication with forget password and reset password
+- Extended authentication with user verification, forget password and reset password
 - Choose your perfect car with filtration
 - Contact us to list your car for rent
 - Put the car on your wishlist for renting later
@@ -18,6 +18,7 @@ Rent n Ride is a web app to rent luxury and mid-range cars at your convenience.
 ## Tech Stack
 #### Frontend
 - SolidJS
+- Tailwind CSS
 
 #### Backend
 - NodeJS

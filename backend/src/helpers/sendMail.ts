@@ -11,20 +11,18 @@ export const sendMail = async (
       port: 465,
       secure: true,
       auth: {
-        user: "www.anuragniall@gmail.com",
+        user: "verify.rentride@gmail.com",
         pass: process.env.password,
       },
     });
 
     const mailOptions = {
-      from: "www.anuragniall@gmail.com",
+      from: "Rent & Ride",
       to: email,
       subject: mailSubject,
       html: content,
     };
-
     const info = await transport.sendMail(mailOptions);
-
     console.log("Mail Sent Successfully!", info.response);
   } catch (error: any) {
     console.error("Error sending email:", error.message);

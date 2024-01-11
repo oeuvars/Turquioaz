@@ -39,9 +39,10 @@ const Rentedcars: Component = () => {
    const navigate = useNavigate();
 
    createEffect(async () => {
-      const token = localStorage.getItem("loginToken");
-      if (token) {
-        const result = jwtDecode(token) as { name: string };
+      const loginToken = localStorage.getItem("loginToken");
+      const signupToken = localStorage.getItem("signupToken");
+      if (loginToken || signupToken) {
+        const result = jwtDecode(loginToken! || signupToken!) as { name: string };
         const userName = result.name;
         setName(userName);
       } else {
@@ -50,7 +51,7 @@ const Rentedcars: Component = () => {
       try {
         const res = await axios.get(`https://rent-ride.onrender.com/user/rentedCars`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${loginToken || signupToken}`,
           },
         });
         setData(res.data.rentedCars);
@@ -59,7 +60,7 @@ const Rentedcars: Component = () => {
             `https://rent-ride.onrender.com/user/car/${item.carId}`,
             {
               headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${loginToken || signupToken}`,
               },
             });
           return {

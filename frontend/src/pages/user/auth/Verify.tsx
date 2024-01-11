@@ -35,7 +35,7 @@ const Verify: Component = () => {
     setLoading(true);
     try {
       console.log("otps", oneTimePass())
-      const result = await axios.post('http://localhost:4000/user/verify', {email: email(), oneTimePass: oneTimePass()})
+      const result = await axios.post('https://rent-ride.onrender.com/user/verify', {email: email(), oneTimePass: oneTimePass()})
       console.log(result)
        if (result) {
          navigate('/user/collections')

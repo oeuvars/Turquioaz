@@ -31,7 +31,8 @@ const Model = () => {
   })
 
   const handleRent = async () => {
-    const token = localStorage.getItem("loginToken");
+    const loginToken = localStorage.getItem("loginToken");
+    const signupToken = localStorage.getItem("signupToken");
     const res = await axios.post(
       `https://rent-ride.onrender.com/user/rent-car/${id}`,
       {
@@ -41,7 +42,7 @@ const Model = () => {
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${loginToken || signupToken}`,
         },
       }
     );

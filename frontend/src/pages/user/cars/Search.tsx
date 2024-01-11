@@ -24,12 +24,13 @@ const Search: Component = () => {
   const { selectedBrand, setSelectedBrand, selectedModel, setSelectedModel } = useTopFilterContext();
 
   createEffect(async () => {
-    const token = localStorage.getItem("loginToken");
+    const loginToken = localStorage.getItem("loginToken");
+    const signupToken = localStorage.getItem("signupToken");
     const res = await axios.get(
       "https://rent-ride.onrender.com/user/",
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${loginToken || signupToken}`,
         },
       }
     );

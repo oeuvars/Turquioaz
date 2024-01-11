@@ -45,9 +45,10 @@ const Wishlist: Component = () => {
   const [isLoading, setIsLoading] = createSignal(false);
 
   const refetchData = async () => {
-    const token = localStorage.getItem("loginToken");
-    if (token) {
-      const result = jwtDecode(token) as { name: string };
+    const loginToken = localStorage.getItem("loginToken");
+    const signupToken = localStorage.getItem("signupToken");
+    if (loginToken || signupToken) {
+      const result = jwtDecode(loginToken || signupToken!) as { name: string };
       const userName  = result.name
       setName(userName)
     } else {
@@ -55,7 +56,7 @@ const Wishlist: Component = () => {
     }
     const res = await axios.get("https://rent-ride.onrender.com/user/wishlistedCar", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${loginToken || signupToken}`,
       },
     });
     setModels(res.data.wishlistedCar);
@@ -64,7 +65,7 @@ const Wishlist: Component = () => {
         `https://rent-ride.onrender.com/user/car/${item.carId}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${loginToken || signupToken}`,
           },
         });
       return { ...carRes.data, wishlistedCarId: item.id };
@@ -77,13 +78,14 @@ const Wishlist: Component = () => {
 
   const deleteCard = async (event: Event, id: number) => {
     event.preventDefault();
-    const token = localStorage.getItem("loginToken");
+    const loginToken = localStorage.getItem("loginToken");
+    const signupToken = localStorage.getItem("signupToken");
     console.log(id)
     const res = await axios.delete(
         `https://rent-ride.onrender.com/user/wishlistedCar/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${loginToken || signupToken}`,
         },
       }
     );

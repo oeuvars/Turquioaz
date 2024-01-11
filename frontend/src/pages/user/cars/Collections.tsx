@@ -30,20 +30,15 @@ const Collections: Component = () => {
   const [isDropdownOpen3, setIsDropdownOpen3] = createSignal(false);
   const [isDropdownOpen4, setIsDropdownOpen4] = createSignal(false);
 
-  const loginToken = localStorage.getItem("loginToken");
-  const signupToken = localStorage.getItem("signupToken");
-
-  if(loginToken || signupToken) {
-
-  }
 
   createEffect(async () => {
-    const token = localStorage.getItem("loginToken");
+    const loginToken = localStorage.getItem("loginToken");
+    const signupToken = localStorage.getItem("signupToken");
     const res = await axios.get(
       "https://rent-ride.onrender.com/user/inventory",
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${loginToken || signupToken}`,
         },
       }
     );

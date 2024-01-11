@@ -59,8 +59,8 @@ const content = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   const existingUser = await prisma.user.findUnique({ where: { email: email }});
-  const isUserVerified = existingUser.is_verified
   if (existingUser) {
+    const isUserVerified = existingUser.is_verified
     if (isUserVerified === false) {
       await prisma.user.update({ where: { email: email }, data: { otp: randomOTP, created_at: new Date().toLocaleDateString() }});
       await sendMail(email, mailSubject, content);
@@ -76,9 +76,9 @@ router.post("/register", async (req, res) => {
         else resolve(hash);
       });
     });
-    await prisma.user.create({ data: { name: name, email: email, password: hashedPassword, is_verified: false, otp: null, created_at: new Date().toLocaleDateString() }});
+    await prisma.user.create({ data: { name: name, email: email, password: hashedPassword, is_verified: false, otp: randomOTP, created_at: new Date().toLocaleDateString() }});
     await sendMail(email, mailSubject, content);
-    await prisma.user.update({ where: { email: email }, data: { otp: randomOTP, updated_at: new Date().toLocaleDateString() }});
+    await prisma.user.update({ where: { email: email }, data: { updated_at: new Date().toLocaleDateString() }});
     const token = jwt.sign({ email, role: "user", name }, process.env.hiddenKey as string, { expiresIn: "1h" });
     res.json({ message: "User created successfully", token: token });
   }
@@ -88,7 +88,7 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = await prisma.user.findUnique({ where: { email: email }});
   if (!user || user.is_verified === false) {
-    return { success: false, message : "User not verified or registered", token: null }
+    res.json({ message: "User not verified or don't exist", token: null });
   } else {
     const passwordCheck: boolean = await new Promise((resolve, reject) => {
       bcrypt.compare(password, user.password! , async (error, result) => {

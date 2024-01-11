@@ -4,7 +4,7 @@ import toast, { Toaster } from "solid-toast";
 import { useNavigate } from "@solidjs/router";
 import axios from "axios";
 
-const Verify: Component = () => {
+const VerifyToRegister: Component = () => {
   const [otp, setOtp] = createSignal<string[]>(["", "", "", ""]);
   const [oneTimePass, setOneTimePass] = createSignal<number>();
   const [loading, setLoading] = createSignal(false);
@@ -35,7 +35,7 @@ const Verify: Component = () => {
     setLoading(true);
     try {
       console.log("otps", oneTimePass())
-      const result = await axios.post('https://rent-ride.onrender.com/user/verify', {email: email(), oneTimePass: oneTimePass()})
+      const result = await axios.post('http://localhost:4000/user/verify', {email: email(), oneTimePass: oneTimePass()})
       console.log(result)
        if (result) {
          navigate('/user/collections')
@@ -115,4 +115,4 @@ const Verify: Component = () => {
   );
 };
 
-export default Verify;
+export default VerifyToRegister;

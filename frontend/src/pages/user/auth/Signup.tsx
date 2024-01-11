@@ -31,7 +31,7 @@ const Signup: Component = () => {
     console.log(user())
     try {
       setIsLoggingIn(true);
-      const res = await axios.post('https://rent-ride.onrender.com/user/register', user())
+      const res = await axios.post('http://localhost:4000/user/register', user())
       const token = res.data.token;
       localStorage.setItem('signupToken', token);
       navigate('/user/verify')

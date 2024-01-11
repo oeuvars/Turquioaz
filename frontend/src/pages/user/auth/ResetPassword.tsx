@@ -1,7 +1,8 @@
-import { A, useNavigate, useParams } from "@solidjs/router";
+import { useNavigate } from "@solidjs/router";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import { FiEye, FiEyeOff } from "solid-icons/fi";
-import { createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 import toast from "solid-toast";
 
 function ConfirmPasswordPage() {
@@ -12,7 +13,6 @@ function ConfirmPasswordPage() {
   const [passwordMatch, setPasswordMatch] = createSignal(true);
   const [showPassword, setShowPassword] = createSignal(false);
   const [inputError, setInputError] = createSignal(false);
-  const { id, token } = useParams<{ id: string; token: string }>();
 
   function handlePasswordChange(event: Event) {
     setPassword((event.target as HTMLInputElement).value);
@@ -29,12 +29,15 @@ function ConfirmPasswordPage() {
       setInputError(true);
       return;
     }
+
     if (password() === confirmPassword()) {
       try {
+        const token = localStorage.getItem('updateToken');
+        const result = jwtDecode(token!) as { email: string };
         setIsSubmitting(true);
-        await axios.post(`https://rent-ride.onrender.com/user/resetPassword/${id}/${token}`, {
+        await axios.post(`http://localhost:4000/user/reset-password`, {
+          email: result.email,
           password: password(),
-          confirmPassword: confirmPassword(),
         });
         toast.success("Password updated successfully", {
           style: {

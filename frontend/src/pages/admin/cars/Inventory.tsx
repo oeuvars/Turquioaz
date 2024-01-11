@@ -32,7 +32,7 @@ const Collections: Component = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginAdminToken");
     const res = await axios.get(
-      "https://rent-ride.onrender.com/admin/inventory",
+      "http://localhost:4000/admin/inventory",
       {
         headers: {
           Authorization: `Bearer ${token}`,

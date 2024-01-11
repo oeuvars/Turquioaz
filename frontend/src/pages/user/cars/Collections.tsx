@@ -35,7 +35,7 @@ const Collections: Component = () => {
     const loginToken = localStorage.getItem("loginToken");
     const signupToken = localStorage.getItem("signupToken");
     const res = await axios.get(
-      "https://rent-ride.onrender.com/user/inventory",
+      "http://localhost:4000/user/inventory",
       {
         headers: {
           Authorization: `Bearer ${loginToken || signupToken}`,
@@ -84,7 +84,7 @@ const Collections: Component = () => {
     const filteredModels = models().filter((model) => {
       const transmissionMatch = selectedTransmission() === "Any" || (model as any).transmission === selectedTransmission();
       const fuelMatch = selectedFuel() === "Any" || (model as any).fuelType === selectedFuel();
-      const seatsMatch = selectedSeats() === 2 || (model as any).seatNumbers === selectedSeats();
+      const seatsMatch = selectedSeats() === 5 || (model as any).seatNumbers === selectedSeats();
       const conditionMatch = selectedCondition() === "All" || (model as any).condition === selectedCondition();
 
       return transmissionMatch && fuelMatch && seatsMatch && conditionMatch;

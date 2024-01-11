@@ -35,8 +35,8 @@ const ForgotPassword: Component = () => {
 
       try {
         setIsSubmitting(true);
-        const res = await axios.post('https://rent-ride.onrender.com/user/forgotPassword', user());
-        navigate('/user/please-verify');
+        const res = await axios.post('http://localhost:4000/user/forgot-password', user());
+        localStorage.setItem('updateToken', res.data.token)
         toast.success("Verification mail sent.", {
          style: {
            border: "2px solid rgba(255, 255, 255, 0.1)",
@@ -52,6 +52,7 @@ const ForgotPassword: Component = () => {
            secondary: "#fff",
          },
        });
+       navigate('/user/verify-to-update');
       } catch (err) {
          toast.error("Something went wrong", {
             style: {

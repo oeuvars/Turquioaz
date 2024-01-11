@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,9 +8,10 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #131b1c;
+  background-color: #000;
   scrollbar-width: none;
-  @apply text-[#F2EEC0] font-satoshi-regular font-medium;
+  font-family: 'Space Grotesk', sans-serif;
+  @apply text-[#BBBBBB];
 }
 
 .blur {

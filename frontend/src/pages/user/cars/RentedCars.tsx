@@ -49,7 +49,7 @@ const Rentedcars: Component = () => {
         navigate("/login");
       }
       try {
-        const res = await axios.get(`https://rent-ride.onrender.com/user/rentedCars`, {
+        const res = await axios.get(`http://localhost:4000/user/rentedCars`, {
           headers: {
             Authorization: `Bearer ${loginToken || signupToken}`,
           },
@@ -57,7 +57,7 @@ const Rentedcars: Component = () => {
         setData(res.data.rentedCars);
         const carDetailsPromises = data()!.map(async (item: Rentedcar) => {
           const carRes = await axios.get(
-            `https://rent-ride.onrender.com/user/car/${item.carId}`,
+            `http://localhost:4000/user/car/${item.carId}`,
             {
               headers: {
                 Authorization: `Bearer ${loginToken || signupToken}`,

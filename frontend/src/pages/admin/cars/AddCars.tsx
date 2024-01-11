@@ -139,7 +139,7 @@ function AddCars() {
       return;
     }
    try {
-     const response = await axios.post("https://rent-ride.onrender.com/admin/inventory/addCar",
+     const response = await axios.post("http://localhost:4000/admin/inventory/addCar",
       carData(),
       {
          headers: {

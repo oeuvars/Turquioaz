@@ -27,7 +27,7 @@ const Search: Component = () => {
     const loginToken = localStorage.getItem("loginToken");
     const signupToken = localStorage.getItem("signupToken");
     const res = await axios.get(
-      "https://rent-ride.onrender.com/user/",
+      "http://localhost:4000/user/",
       {
         headers: {
           Authorization: `Bearer ${loginToken || signupToken}`,

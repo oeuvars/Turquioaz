@@ -25,21 +25,13 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Cars" (
-    "id" SERIAL NOT NULL,
-    "brand" TEXT NOT NULL,
-
-    CONSTRAINT "Cars_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "Model" (
     "id" SERIAL NOT NULL,
+    "brand" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "transmission" TEXT NOT NULL,
     "fuelType" TEXT NOT NULL,
     "seatNumbers" INTEGER NOT NULL,
-    "condition" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
     "rent" INTEGER NOT NULL,
     "published" BOOLEAN NOT NULL DEFAULT false,
@@ -74,9 +66,6 @@ CREATE UNIQUE INDEX "Admin_adminMail_key" ON "Admin"("adminMail");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-
--- AddForeignKey
-ALTER TABLE "Model" ADD CONSTRAINT "Model_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Cars"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "RentedCar" ADD CONSTRAINT "RentedCar_rentedtoId_fkey" FOREIGN KEY ("rentedtoId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

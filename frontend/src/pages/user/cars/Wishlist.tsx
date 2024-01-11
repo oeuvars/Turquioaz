@@ -54,7 +54,7 @@ const Wishlist: Component = () => {
     } else {
       navigate("/login")
     }
-    const res = await axios.get("https://rent-ride.onrender.com/user/wishlistedCar", {
+    const res = await axios.get("http://localhost:4000/user/wishlistedCar", {
       headers: {
         Authorization: `Bearer ${loginToken || signupToken}`,
       },
@@ -62,7 +62,7 @@ const Wishlist: Component = () => {
     setModels(res.data.wishlistedCar);
     const carDetailsPromises = models().map(async (item: WishlistedCar) => {
       const carRes = await axios.get(
-        `https://rent-ride.onrender.com/user/car/${item.carId}`,
+        `http://localhost:4000/user/car/${item.carId}`,
         {
           headers: {
             Authorization: `Bearer ${loginToken || signupToken}`,
@@ -82,7 +82,7 @@ const Wishlist: Component = () => {
     const signupToken = localStorage.getItem("signupToken");
     console.log(id)
     const res = await axios.delete(
-        `https://rent-ride.onrender.com/user/wishlistedCar/${id}`,
+        `http://localhost:4000/user/wishlistedCar/${id}`,
       {
         headers: {
           Authorization: `Bearer ${loginToken || signupToken}`,

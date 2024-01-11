@@ -20,7 +20,7 @@ const Model = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.get(
-      `https://rent-ride.onrender.com/user/car/${id}`,
+      `http://localhost:4000/user/car/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -34,7 +34,7 @@ const Model = () => {
     const loginToken = localStorage.getItem("loginToken");
     const signupToken = localStorage.getItem("signupToken");
     const res = await axios.post(
-      `https://rent-ride.onrender.com/user/rent-car/${id}`,
+      `http://localhost:4000/user/rent-car/${id}`,
       {
         startDate: startDate().toISOString().split('T')[0],
         endDate: endDate().toISOString().split('T')[0],

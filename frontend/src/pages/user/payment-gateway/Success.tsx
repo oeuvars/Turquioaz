@@ -14,7 +14,7 @@ const Success: Component = () => {
     const id = decoded.id
     console.log(id)
     const res = await axios.put(
-      `https://rent-ride.onrender.com/user/statusCheck/${id}`,
+      `http://localhost:4000/user/statusCheck/${id}`,
       {
         status: true
       },

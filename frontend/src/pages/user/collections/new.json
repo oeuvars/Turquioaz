@@ -1,0 +1,222 @@
+[
+  {
+    "carId": "8",
+    "brand": "Bentley",
+    "name": "Continental GT",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 4,
+    "condition": "New",
+    "price": 250000,
+    "rentPrice": 1500
+  },
+  {
+    "carId": "8",
+    "brand": "Bentley",
+    "name": "Mulsanne",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 4,
+    "condition": "Used",
+    "price": 350000,
+    "rentPrice": 2000
+  },
+  {
+    "carId": "8",
+    "brand": "Bentley",
+    "name": "Flying Spur",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 4,
+    "condition": "New",
+    "price": 280000,
+    "rentPrice": 1600
+  },
+  {
+    "carId": "8",
+    "brand": "Bentley",
+    "name": "Bentayga",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 5,
+    "condition": "New",
+    "price": 320000,
+    "rentPrice": 1800
+  },
+  {
+    "carId": "8",
+    "brand": "Bentley",
+    "name": "Azure",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 2,
+    "condition": "Used",
+    "price": 400000,
+    "rentPrice": 2200
+  },
+  {
+    "carId": "9",
+    "brand": "McLaren",
+    "name": "720S",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 2,
+    "condition": "New",
+    "price": 300000,
+    "rentPrice": 1800
+  },
+  {
+    "carId": "9",
+    "brand": "McLaren",
+    "name": "570S",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 2,
+    "condition": "New",
+    "price": 260000,
+    "rentPrice": 1500
+  },
+  {
+    "carId": "9",
+    "brand": "McLaren",
+    "name": "GT",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 2,
+    "condition": "New",
+    "price": 320000,
+    "rentPrice": 2000
+  },
+  {
+    "carId": "9",
+    "brand": "McLaren",
+    "name": "540C",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 2,
+    "condition": "Used",
+    "price": 220000,
+    "rentPrice": 1300
+  },
+  {
+    "carId": "9",
+    "brand": "McLaren",
+    "name": "Speedtail",
+    "transmission": "Automatic",
+    "fuelType": "Hybrid",
+    "seatNumbers": 3,
+    "condition": "New",
+    "price": 500000,
+    "rentPrice": 3000
+  },
+  {
+    "carId": "10",
+    "brand": "Jaguar",
+    "name": "F-Type",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 2,
+    "condition": "New",
+    "price": 200000,
+    "rentPrice": 1200
+  },
+  {
+    "carId": "10",
+    "brand": "Jaguar",
+    "name": "XE",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 5,
+    "condition": "New",
+    "price": 250000,
+    "rentPrice": 1500
+  },
+  {
+    "carId": "10",
+    "brand": "Jaguar",
+    "name": "XF",
+    "transmission": "Automatic",
+    "fuelType": "Diesel",
+    "seatNumbers": 5,
+    "condition": "Used",
+    "price": 180000,
+    "rentPrice": 1000
+  },
+  {
+    "carId": "10",
+    "brand": "Jaguar",
+    "name": "F-PACE",
+    "transmission": "Automatic",
+    "fuelType": "Petrol",
+    "seatNumbers": 5,
+    "condition": "New",
+    "price": 280000,
+    "rentPrice": 1600
+  },
+  {
+    "carId": "10",
+    "brand": "Jaguar",
+    "name": "I-PACE",
+    "transmission": "Automatic",
+    "fuelType": "Electric",
+    "seatNumbers": 5,
+    "condition": "New",
+    "price": 350000,
+    "rentPrice": 2000
+  },
+  {
+   "carId": "11",
+   "brand": "Aston Martin",
+   "name": "DB11",
+   "transmission": "Automatic",
+   "fuelType": "Petrol",
+   "seatNumbers": 2,
+   "condition": "New",
+   "price": 250000,
+   "rentPrice": 1500
+ },
+ {
+   "carId": "11",
+   "brand": "Aston Martin",
+   "name": "Vantage",
+   "transmission": "Automatic",
+   "fuelType": "Petrol",
+   "seatNumbers": 2,
+   "condition": "New",
+   "price": 280000,
+   "rentPrice": 1600
+ },
+ {
+   "carId": "11",
+   "brand": "Aston Martin",
+   "name": "DBS Superleggera",
+   "transmission": "Automatic",
+   "fuelType": "Petrol",
+   "seatNumbers": 2,
+   "condition": "New",
+   "price": 300000,
+   "rentPrice": 1800
+ },
+ {
+   "carId": "11",
+   "brand": "Aston Martin",
+   "name": "Rapide",
+   "transmission": "Automatic",
+   "fuelType": "Petrol",
+   "seatNumbers": 4,
+   "condition": "Used",
+   "price": 320000,
+   "rentPrice": 2000
+ },
+ {
+   "carId": "11",
+   "brand": "Aston Martin",
+   "name": "Valhalla",
+   "transmission": "Automatic",
+   "fuelType": "Hybrid",
+   "seatNumbers": 2,
+   "condition": "New",
+   "price": 350000,
+   "rentPrice": 2200
+ }
+]

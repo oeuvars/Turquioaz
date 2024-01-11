@@ -142,7 +142,7 @@ const UpdateCars: Component = () => {
       return;
     }
    try {
-     const response = await axios.put(`https://rent-ride.onrender.com/admin/inventory/${id}`,
+     const response = await axios.put(`http://localhost:4000/admin/inventory/${id}`,
       carData(),
       {
          headers: {

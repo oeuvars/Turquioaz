@@ -32,19 +32,13 @@ model User {
   onWishlist WishlistedCar[]
 }
 
-model Cars {
-  id     Int     @id @default(autoincrement())
-  brand  String
-  models Model[]
-}
-
 model Model {
   id             Int     @id @default(autoincrement())
+  brand          String
   name           String
   transmission   String
   fuelType       String
   seatNumbers    Int
-  condition      String
   price          Int
   rent           Int
   published      Boolean @default(false)
@@ -52,8 +46,6 @@ model Model {
 
   rentedBy  RentedCar[]
   wishlistedBy WishlistedCar[]
-
-  car         Cars     @relation(fields: [carId], references: [id])
 }
 
 

@@ -25,6 +25,7 @@ const Navbar: Component = () => {
 
   const handleClick = async (e: Event) => {
     localStorage.removeItem("loginToken")
+    localStorage.removeItem("signupToken")
     navigate("/user/login")
   };
 

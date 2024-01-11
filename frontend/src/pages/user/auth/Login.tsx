@@ -9,7 +9,7 @@ import { FiEye, FiEyeOff } from 'solid-icons/fi'
 
 const Login = () => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
-   const [user,setUser] = createSignal({
+   const [user, setUser] = createSignal({
       email : "",
       password : ""
     })
@@ -23,46 +23,50 @@ const Login = () => {
 
     const handleClick = async (e: Event) => {
       e.preventDefault();
-     try {
       setIsLoggingIn(true);
-      const res = await axios.post('https://rent-ride.onrender.com/user/login',user())
-      const token = res.data.token;
-      localStorage.setItem('loginToken', token);
-      navigate('/user/collections')
-      toast.success("You are logged in!", {
-        style: {
-          border: "2px solid rgba(255, 255, 255, 0.1)",
-          padding: "10px",
-          color: "#fff",
-          "background-color": "rgba(0, 0, 0, 0.1)",
-          "backdrop-filter": "blur(10px)",
-          "font-size": '1.1em',
-          "min-width": "10em",
-        },
-        iconTheme: {
-          primary: "#000",
-          secondary: "#fff",
-        },
-      });
-     } catch (err) {
-      toast.error("Please check your credentials", {
-        style: {
-          border: "2px solid rgba(255, 255, 255, 0.1)",
-          padding: "10px",
-          color: "#fff",
-          "background-color": "rgba(0, 0, 0, 0.1)",
-          "backdrop-filter": "blur(10px)",
-          "font-size": '1.1em',
-          "min-width": "10em",
-        },
-        iconTheme: {
-          primary: "#000",
-          secondary: "#fff",
-        },
-      });
-     } finally {
-      setIsLoggingIn(false);
-     }
+      const res = await axios.post('http://localhost:4000/user/login', user())
+      if (res.data.exists === false) {
+        toast.error(res.data.message, {
+          style: {
+            border: "2px solid rgba(255, 255, 255, 0.1)",
+            padding: "10px",
+            color: "#fff",
+            "background-color": "rgba(0, 0, 0, 0.1)",
+            "backdrop-filter": "blur(10px)",
+            "font-size": '1.1em',
+            "min-width": "10em",
+          },
+          iconTheme: {
+            primary: "#000",
+            secondary: "#fff",
+          },
+        });
+        setIsLoggingIn(false);
+      } else {
+        if (res.data.token) {
+          const token = res.data.token;
+          localStorage.setItem('loginToken', token);
+          navigate('/user/collections')
+          setIsLoggingIn(false);
+        } else {
+          toast.error("Incorrect passoword", {
+            style: {
+              border: "2px solid rgba(255, 255, 255, 0.1)",
+              padding: "10px",
+              color: "#fff",
+              "background-color": "rgba(0, 0, 0, 0.1)",
+              "backdrop-filter": "blur(10px)",
+              "font-size": '1.1em',
+              "min-width": "10em",
+            },
+            iconTheme: {
+              primary: "#000",
+              secondary: "#fff",
+            },
+          });
+          setIsLoggingIn(false);
+        }
+      }
     }
 
   return (
@@ -76,14 +80,14 @@ const Login = () => {
         <></>
       )}
       <div class="p-8 shadow-lg rounded-md phone:w-[90%] lg:w-[50%] m-auto bg-white/10">
-        <h1 class="text-4xl py-2 text-white font-bold mb-4 header text-center font-doran-regular">Log In</h1>
+        <h1 class="text-4xl py-2 text-white font-bold mb-4 header text-center font-satoshi-medium">Log In</h1>
           <div class='mb-2'>
           <label class="block text-lg text-yellow-100 font-didact-gothic">Email</label>
             <input
               type="email"
               id="email"
               name="email"
-              class="font-didact-gothic w-full px-4 py-2 border-2 border-white/20 rounded-md focus:outline-none bg-white/10 focus:border-white/10 animation text-white/70 text-lg font-medium"
+              class="font-satoshi-regular w-full px-4 py-2 border-2 border-white/20 rounded-md focus:outline-none bg-white/10 focus:border-white/10 animation text-white/70 text-lg font-medium"
               onChange={(e) => setUser({ ...user(), email: e.target.value })}
             />
           </div>
@@ -93,7 +97,7 @@ const Login = () => {
               type={showPassword() ? 'text' : 'password'}
               id="password"
               name="password"
-              class="font-didact-gothic w-full px-4 py-2 border-2 border-white/20 rounded-md focus:outline-none bg-white/10 focus:border-white/10 transition duration-500 text-white/70 text-lg font-medium"
+              class="font-satoshi-regular w-full px-4 py-2 border-2 border-white/20 rounded-md focus:outline-none bg-white/10 focus:border-white/10 transition duration-500 text-white/70 text-lg font-medium"
               onChange={(e) => setUser({ ...user(), password: e.target.value })}
             />
             <button
@@ -103,7 +107,7 @@ const Login = () => {
                 {showPassword() ? (<FiEye class='w-6 h-6 text-neutral-300'/>) : (<FiEyeOff class='w-6 h-6 text-neutral-300'/>)}
             </button>
           </div>
-          <A href="/user/forgot-password" class='underline text-yellow-50/50 text-base font-didact-gothic'>Forgot Your Password?</A>
+          <A href="/user/forgot-password" class='underline text-yellow-50/50 text-sm font-satoshi-medium'>Forgot Your Password?</A>
           <Toaster
               position="top-center"
           />

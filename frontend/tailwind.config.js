@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "rethink-sans": ['Rethink Sans', "sans-serif"],
-        "dm-sans": ['DM Sans', "sans-serif"],
         "rubintek": ["Rubintek", "sans-serif"],
-        "doran": ["Doran", "serif"]
+        "doran": ["Doran", "serif"],
+        "satoshi-regular": ["Satoshi-Regular", "sans-serif"],
+        "satoshi-medium": ["Satoshi-Medium", "sans-serif"],
       },
     },
     screens: {

@@ -121,6 +121,17 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/verify", async (req, res) => {
+  const {email, oneTimePass} = req.body;
+  const user = await prisma.user.findUnique({ where: { email: email }});
+  if (user.otp === oneTimePass) {
+    await prisma.user.update({where: {email: email}, data: {otp: null, is_verified: true}});
+    res.json({ message: "User Verified"})
+  } else {
+    res.json({ message: "User does not exist"})
+  }
+})
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = await prisma.user.findUnique({ where: { email: email }});
@@ -128,14 +139,14 @@ router.post("/login", async (req, res) => {
     res.json({ message: "User not verified or don't exist", token: null });
   } else {
     const passwordCheck: boolean = await new Promise((resolve, reject) => {
-      bcrypt.compare(password, user.password! , async (error, result) => {
+      bcrypt.compare(password, user.password , async (error, result) => {
         if (error) reject(error);
         else resolve(result);
       })
     });
     if(passwordCheck === true) {
-      const loginToken = jwt.sign({ email, role: "user", name }, process.env.hiddenKey as string, { expiresIn: "24h" });
-      await prisma.user.update({where: {email: email},data: {last_login: new Date().toLocaleDateString()}});
+      const loginToken = jwt.sign({ email, role: "user" }, process.env.hiddenKey as string, { expiresIn: "24h" });
+      await prisma.user.update({where: {email: email}, data: {last_login: new Date().toLocaleDateString()}});
       res.json({ message: "Logged in successfully", token: loginToken });
     } else {
       res.json({ message: "Incorrect Password", token: null });

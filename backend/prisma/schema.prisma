@@ -24,7 +24,7 @@ model User {
   name     String?
   password String
   is_verified Boolean
-  otp Int
+  otp Int?
   last_login String?
   created_at String
   updated_at String?

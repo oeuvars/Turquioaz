@@ -35,7 +35,7 @@ const ForgotPassword: Component = () => {
 
       try {
         setIsSubmitting(true);
-        const res = await axios.post('https://rent-n-ride-ts-production.up.railway.app/user/forgotPassword', user());
+        const res = await axios.post('https://rent-ride.onrender.com/user/forgotPassword', user());
         navigate('/user/please-verify');
         toast.success("Verification mail sent.", {
          style: {

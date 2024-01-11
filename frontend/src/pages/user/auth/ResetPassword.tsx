@@ -32,7 +32,7 @@ function ConfirmPasswordPage() {
     if (password() === confirmPassword()) {
       try {
         setIsSubmitting(true);
-        await axios.post(`https://rent-n-ride-ts-production.up.railway.app/user/resetPassword/${id}/${token}`, {
+        await axios.post(`https://rent-ride.onrender.com/user/resetPassword/${id}/${token}`, {
           password: password(),
           confirmPassword: confirmPassword(),
         });

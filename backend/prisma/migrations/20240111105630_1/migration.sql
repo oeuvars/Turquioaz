@@ -16,7 +16,7 @@ CREATE TABLE "User" (
     "name" TEXT,
     "password" TEXT NOT NULL,
     "is_verified" BOOLEAN NOT NULL,
-    "otp" INTEGER NOT NULL,
+    "otp" INTEGER,
     "last_login" TEXT,
     "created_at" TEXT NOT NULL,
     "updated_at" TEXT,

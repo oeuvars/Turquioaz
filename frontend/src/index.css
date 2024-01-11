@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #131b1c;
   scrollbar-width: none;
-  @apply text-[#F2EEC0] font-rethink-sans font-medium;
+  @apply text-[#F2EEC0] font-satoshi-regular font-medium;
 }
 
 .blur {
@@ -56,6 +53,21 @@ body::-webkit-scrollbar {
 @font-face {
   font-family: Doran;
   src: url("./assets/fonts/Doran-Bold.ttf");
+}
+
+@font-face {
+  font-family: Satoshi-Regular;
+  src: url("./assets/fonts/Satoshi-Regular.ttf");
+}
+
+@font-face {
+  font-family: Satoshi-Medium;
+  src: url("./assets/fonts/Satoshi-Medium.ttf");
+}
+
+@font-face {
+  font-family: Satoshi-Bold;
+  src: url("./assets/fonts/Satoshi-Bold.ttf");
 }
 
 .scroll {

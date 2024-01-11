@@ -26,7 +26,7 @@ const Search: Component = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.get(
-      "https://rent-n-ride-ts-production.up.railway.app/user/",
+      "https://rent-ride.onrender.com/user/",
       {
         headers: {
           Authorization: `Bearer ${token}`,

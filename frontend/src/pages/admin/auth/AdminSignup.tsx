@@ -26,7 +26,7 @@ const AdminSignup: Component = () => {
     e.preventDefault();
     try {
       setIsLoggingIn(true);
-      const res = await axios.post('https://rent-n-ride-ts-production.up.railway.app/admin/signup', admin())
+      const res = await axios.post('https://rent-ride.onrender.com/admin/signup', admin())
       const token = res.data.token;
       localStorage.setItem('signupAdminToken', token);
       navigate('/admin/inventory')

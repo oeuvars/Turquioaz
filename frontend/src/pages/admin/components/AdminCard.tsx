@@ -30,7 +30,7 @@ const AdminCard: Component<CardProps> = (props) => {
     event.preventDefault();
     const token = localStorage.getItem("loginToken");
     const res = await axios.delete(
-        `https://rent-n-ride-ts-production.up.railway.app/admin/inventory/${id}`,
+        `https://rent-ride.onrender.com/admin/inventory/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

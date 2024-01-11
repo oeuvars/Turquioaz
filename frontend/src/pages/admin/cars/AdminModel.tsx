@@ -13,7 +13,7 @@ const AdminModel = () => {
   createEffect(async () => {
     const token = localStorage.getItem("loginToken");
     const res = await axios.get(
-      `https://rent-n-ride-ts-production.up.railway.app/admin/inventory/${id}`,
+      `https://rent-ride.onrender.com/admin/inventory/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

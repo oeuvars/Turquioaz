@@ -31,7 +31,7 @@ const Signup: Component = () => {
     console.log(user())
     try {
       setIsLoggingIn(true);
-      const res = await axios.post('https://rent-n-ride-ts-production.up.railway.app/user/signup', user())
+      const res = await axios.post('https://rent-ride.onrender.com/user/register', user())
       const token = res.data.token;
       localStorage.setItem('signupToken', token);
       navigate('/user/collections')

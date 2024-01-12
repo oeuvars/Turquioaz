@@ -90,11 +90,11 @@ router.post("/inventory/addCar", authentication, async (req: RequestWithUser, re
     const newModel = await prisma.model.create({
       data: {
         carId: parseInt(req.body.carId),
+        brand: req.body.brand,
         name: req.body.name,
         transmission: req.body.transmission,
         fuelType: req.body.fuelType,
         seatNumbers: parseInt(req.body.seatNumbers),
-        condition: req.body.condition,
         price: parseInt(req.body.price),
         rent: parseInt(req.body.rentPrice),
         published: req.body.published,
@@ -120,11 +120,11 @@ router.put("/inventory/:id", authentication, async (req: RequestWithUser, res) =
       where: { id: id },
       data: {
         carId: parseInt(req.body.carId),
+        brand: req.body.brand,
         name: req.body.name,
         transmission: req.body.transmission,
         fuelType: req.body.fuelType,
         seatNumbers: parseInt(req.body.seatNumbers),
-        condition: req.body.condition,
         price: parseInt(req.body.price),
         rent: parseInt(req.body.rentPrice),
         published: req.body.published,

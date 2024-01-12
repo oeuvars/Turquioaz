@@ -10,19 +10,7 @@ const Hero: Component = () => {
     <div class="">
       {isAboveSmallScreens() ? (
         <>
-          <div class="justify-between w-11/12 flex mx-auto relative">
-            <img src={mercedes} class="sm:w-[32vw] tablet:w-[28vw] md:w-[32vw] lg:w-[32vw] absolute" />
-            <p class="flex text-base items-center relative my-2 ml-auto sm:w-1/2 md:w-1/3 lg:w-1/3 text-justify">
-              Discover opulence and performance. Navigate our exquisite
-              selection of luxury cars, where elegance meets innovation and
-              power.
-            </p>
-          </div>
-          <img
-            src={cover}
-            alt="car"
-            class="w-11/12 flex mx-auto rounded-md"
-          />
+
         </>
       ) : (
         <div class="">

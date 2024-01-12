@@ -1,5 +1,4 @@
 import express from "express";
-import { authentication } from "../middleware/authenticator";
 import { register } from "controllers/user/auth/register";
 import { login } from "controllers/user/auth/login";
 import { verifyRegistration } from "controllers/user/auth/verify-registration";
@@ -14,6 +13,7 @@ import { rentedCars } from "controllers/user/rent/rented-cars";
 import { wishlistCar } from "controllers/user/wishlist/wishlist-car";
 import { wishlistedCars } from "controllers/user/wishlist/wishlisted-cars";
 import { deleteWishlistedCar } from "controllers/user/wishlist/wishlist-delete";
+import { authentication } from "middleware/authenticator";
 
 const router = express.Router();
 

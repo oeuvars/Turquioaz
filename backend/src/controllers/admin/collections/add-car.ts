@@ -1,20 +1,17 @@
 import prisma from "db/db.config";
 import express from "express";
 
-interface User {
+interface Admin {
    email: string;
    name: string;
    password: string;
-   is_Verified: boolean;
  }
- interface RequestWithUser extends express.Request {
-   user: User;
+ interface AdminRequest extends express.Request {
+   admin: Admin;
  }
 
-export const addCar = async (req: RequestWithUser, res: express.Response) => {
-   const admin = await prisma.admin.findUnique({
-     where: { adminMail: req.user.email },
-   });
+export const addCar = async (req: AdminRequest, res: express.Response) => {
+   const admin = await prisma.admin.findUnique({where: { email: req.admin.email }});
    if (admin) {
      const newModel = await prisma.model.create({
        data: {
@@ -25,7 +22,7 @@ export const addCar = async (req: RequestWithUser, res: express.Response) => {
          fuelType: req.body.fuelType,
          seatNumbers: parseInt(req.body.seatNumbers),
          price: parseInt(req.body.price),
-         rent: parseInt(req.body.rentPrice),
+         rent: parseInt(req.body.rent),
          published: req.body.published,
        },
      });

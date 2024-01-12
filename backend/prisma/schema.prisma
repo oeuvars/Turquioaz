@@ -11,25 +11,25 @@ datasource db {
 }
 
 model Admin{
-  id       Int      @id @default(autoincrement())
-  adminMail    String   @unique
-  name     String?
-  password String
-  last_login String?
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String?
+  password       String
+  last_login     String?
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  name     String?
-  password String
-  is_verified Boolean
-  otp Int?
-  last_login String?
-  created_at String
-  updated_at String?
-  onRent   RentedCar[]
-  onWishlist WishlistedCar[]
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String?
+  password       String
+  is_verified    Boolean
+  otp            Int?
+  last_login     String?
+  created_at     String
+  updated_at     String?
+  onRent         RentedCar[]
+  onWishlist     WishlistedCar[]
 }
 
 model Model {
@@ -44,27 +44,27 @@ model Model {
   published      Boolean @default(false)
   carId          Int
 
-  rentedBy  RentedCar[]
-  wishlistedBy WishlistedCar[]
+  rentedBy       RentedCar[]
+  wishlistedBy   WishlistedCar[]
 }
 
 
 model RentedCar{
-  id            Int           @id @default(autoincrement())
-  carId         Int
-  rentedtoId    Int
-  startDate     String
-  endDate       String
-  status        Boolean
+  id             Int           @id @default(autoincrement())
+  carId          Int
+  rentedtoId     Int
+  startDate      String
+  endDate        String
+  status         Boolean
 
-  rentedto      User    @relation(fields: [rentedtoId], references: [id])
-  car           Model   @relation(fields: [carId], references: [id])
+  rentedto       User    @relation(fields: [rentedtoId], references: [id])
+  car            Model   @relation(fields: [carId], references: [id])
 }
 
 model WishlistedCar{
-  id            Int           @id @default(autoincrement())
-  carId         Int
-  wishlistedbyId       Int
-  car           Model   @relation(fields: [carId], references: [id])
-  wishlistedby         User    @relation(fields: [wishlistedbyId], references: [id])
+  id             Int           @id @default(autoincrement())
+  carId          Int
+  wishlistedbyId Int
+  car            Model   @relation(fields: [carId], references: [id])
+  wishlistedby   User    @relation(fields: [wishlistedbyId], references: [id])
 }

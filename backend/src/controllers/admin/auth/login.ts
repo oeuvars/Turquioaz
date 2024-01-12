@@ -1,23 +1,25 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import prisma from "db/db.config";
+import bcrypt from "bcrypt";
 
-interface User {
-   id: number;
-   email: string;
-   password: string;
-}
-
-const users: User[] = [
-   { id: 1, email: 'oeuvars@gmail.com', password: 'oeuvars10' },
-   { id: 2, email: 'ritamislive9@gmail.com', password: 'writtam10' }
-];
-
-export const login = (req: express.Request, res: express.Response) => {
+export const login = async (req: express.Request, res: express.Response) => {
    const { email, password } = req.body;
-   const user = users.find((u) => u.email === email && u.password === password);
+   const user = await prisma.admin.findUnique({ where: { email: email }});
    if (!user) {
-      return res.status(401).json({ message: 'Authentication failed' });
+      return res.status(401).json({ message: 'Admins only' });
    }
-   const token = jwt.sign({ userId: user.id, email: user.email }, process.env.hiddenKey as string, {expiresIn: '24h'});
-   return res.status(200).send({message: 'Logged In',token: token});
+   const passwordCheck: boolean = await new Promise((resolve, reject) => {
+      bcrypt.compare(password, user.password , async (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      })
+    });
+    if(passwordCheck === true) {
+      const loginToken = jwt.sign({ email, role: "admin" }, process.env.hiddenKey as string, { expiresIn: "24h" });
+      await prisma.admin.update({where: {email: email}, data: {last_login: new Date().toLocaleDateString()}});
+      res.json({ exists: true, message: "Logged in successfully", token: loginToken });
+    } else {
+      res.json({ exists: true, message: "Incorrect Password", token: null });
+    }
 };

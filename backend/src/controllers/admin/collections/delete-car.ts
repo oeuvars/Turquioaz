@@ -14,7 +14,7 @@ interface User {
  export const deleteCar = async (req: RequestWithUser, res: express.Response) => {
    const id = parseInt(req.params.id);
    const admin = await prisma.admin.findUnique({
-     where: { adminMail: req.user.email },
+     where: { email: req.user.email },
    });
    if (admin) {
      const deletedModel = await prisma.model.delete({

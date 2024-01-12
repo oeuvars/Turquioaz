@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "Admin" (
     "id" SERIAL NOT NULL,
-    "adminMail" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "name" TEXT,
     "password" TEXT NOT NULL,
     "last_login" TEXT,
@@ -62,7 +62,7 @@ CREATE TABLE "WishlistedCar" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Admin_adminMail_key" ON "Admin"("adminMail");
+CREATE UNIQUE INDEX "Admin_email_key" ON "Admin"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

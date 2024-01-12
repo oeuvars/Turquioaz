@@ -1,4 +1,4 @@
-import { Request, NextFunction, Response } from "express";
+import express from "express"
 import jwt from "jsonwebtoken";
 
 interface User {
@@ -6,14 +6,14 @@ interface User {
   name: string;
   password: string;
 }
-interface RequestWithUser extends Request {
+interface RequestWithUser extends express.Request {
   user: User;
 }
 
 export const authentication = (
   req: RequestWithUser,
-  res: Response,
-  next: NextFunction
+  res: express.Response,
+  next: express.NextFunction
 ) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {

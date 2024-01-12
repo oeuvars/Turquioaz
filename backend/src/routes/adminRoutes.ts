@@ -1,5 +1,5 @@
 import express from "express";
-import { authentication } from "../middleware/authenticator";
+import { authentication } from "middleware/adminAuthenticator";
 import { login } from "controllers/admin/auth/login";
 import { inventory } from "controllers/admin/collections/inventory";
 import { singleCar } from "controllers/admin/collections/single-car";
@@ -14,8 +14,8 @@ router.post('/login', login)
 router.get("/inventory", authentication, inventory)
 router.get("/inventory/:id", authentication, singleCar)
 
-router.post("/inventory/add-car", authentication, addCar)
-router.put("/inventory/update-car/:id", authentication, updateCar)
-router.delete("/inventory/delete-car/:id", authentication, deleteCar)
+router.post("/add-car", authentication, addCar)
+router.put("/update-car/:id", authentication, updateCar)
+router.delete("/delete-car/:id", authentication, deleteCar)
 
 export default router;

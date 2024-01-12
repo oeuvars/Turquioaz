@@ -13,7 +13,7 @@ import { rentedCars } from "controllers/user/rent/rented-cars";
 import { wishlistCar } from "controllers/user/wishlist/wishlist-car";
 import { wishlistedCars } from "controllers/user/wishlist/wishlisted-cars";
 import { deleteWishlistedCar } from "controllers/user/wishlist/wishlist-delete";
-import { authentication } from "middleware/authenticator";
+import { authentication } from "middleware/userAuthenticator";
 
 const router = express.Router();
 
@@ -28,11 +28,11 @@ router.get("/inventory", authentication, inventory);
 router.get("/car/:id", authentication, singleCar);
 
 router.post("/rent-car/:id", authentication, rentCar);
-router.put("/statusCheck/:id", authentication, rentStatus);
-router.get("/rentedCars", authentication, rentedCars);
+router.put("/rent-status/:id", authentication, rentStatus);
+router.get("/rented-cars", authentication, rentedCars);
 
 router.post("/wishlist/:id", authentication, wishlistCar);
-router.get("/wishlistedCar", authentication, wishlistedCars);
-router.delete("/wishlistedCar/:id", authentication, deleteWishlistedCar)
+router.get("/wishlisted-car", authentication, wishlistedCars);
+router.delete("/delete-wishlisted-car/:id", authentication, deleteWishlistedCar)
 
 export default router;

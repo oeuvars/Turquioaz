@@ -36,9 +36,8 @@ model Model {
   id             Int     @id @default(autoincrement())
   brand          String
   name           String
-  transmission   String
-  fuelType       String
-  seatNumbers    Int
+  power          Int
+  MPH            Decimal
   price          Int
   rent           Int
   published      Boolean @default(false)

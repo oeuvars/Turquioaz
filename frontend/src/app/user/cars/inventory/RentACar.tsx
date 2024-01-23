@@ -1,10 +1,9 @@
 import Navbar from '@/app/home/Navbar'
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Model } from './AllCarCards';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { motion } from 'framer-motion'
 import { format } from "date-fns"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"

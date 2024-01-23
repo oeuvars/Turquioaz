@@ -24,7 +24,7 @@ interface MobileFiltersProps {
 }
 
 
-const MobileFilters: React.FC<MobileFiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, selectedAcceleration, setSelectedAcceleration }) => {
+const MobileFilters: React.FC<MobileFiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, setSelectedAcceleration }) => {
   const [clicked, setClicked] = useState(false);
   const [allBrands, setAllBrands] = useState<string[]>();
   const registerCookie = Cookies.get("RegisterCookie");

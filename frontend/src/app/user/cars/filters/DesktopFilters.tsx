@@ -21,7 +21,7 @@ interface DesktopFiltersProps {
   setSelectedAcceleration: React.Dispatch<React.SetStateAction<number[] | undefined>>
 }
 
-const DesktopFilters: React.FC<DesktopFiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, selectedAcceleration, setSelectedAcceleration }) => {
+const DesktopFilters: React.FC<DesktopFiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, setSelectedAcceleration }) => {
   const [open, setOpen] = useState(false);
   const [allBrands, setAllBrands] = useState<string[]>();
   const [clicked, setClicked] = useState(false);

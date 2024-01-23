@@ -42,9 +42,9 @@ const Wishlist: React.FC = () => {
       }
    }, [loginCookie])
 
-   const DELETE_BTN_WIDTH = 70
-   const MESSAGE_DELETE_ANIMATION = { height: 0, opacity: 0 }
-   const MESSAGE_DELETE_TRANSITION = {opacity: {transition: {duration: 0}}}
+   // const DELETE_BTN_WIDTH = 70
+   // const MESSAGE_DELETE_ANIMATION = { height: 0, opacity: 0 }
+   // const MESSAGE_DELETE_TRANSITION = {opacity: {transition: {duration: 0}}}
 
    useEffect(() => {
       const wishlisted = async () => {
@@ -70,29 +70,29 @@ const Wishlist: React.FC = () => {
       }
     }, [wishlistedCars]);
 
-    const handleDragEnd = async (info: any, id: number) => {
-      const dragDistance = info.point.x
-      if (dragDistance < -DELETE_BTN_WIDTH) {
-         await axios.delete(`https://calm-gold-rabbit-gown.cyclic.app/user/delete-wishlisted-car/${id}`,{headers});
-         const wishlisted = async () => {
-            const response = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/wishlisted-cars", { headers });
-            const result = response.data.wishlistedCar;
-            setWishlistedCars(result);
-          };
-          wishlisted();
-      }
-    }
+   //  const handleDragEnd = async (info: any, id: number) => {
+   //    const dragDistance = info.point.x
+   //    if (dragDistance < -DELETE_BTN_WIDTH) {
+   //       await axios.delete(`https://calm-gold-rabbit-gown.cyclic.app/user/delete-wishlisted-car/${id}`,{headers});
+   //       const wishlisted = async () => {
+   //          const response = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/wishlisted-cars", { headers });
+   //          const result = response.data.wishlistedCar;
+   //          setWishlistedCars(result);
+   //        };
+   //        wishlisted();
+   //    }
+   //  }
 
-    const handleDeleteClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
-      event.preventDefault();
-      await axios.delete(`https://calm-gold-rabbit-gown.cyclic.app/user/delete-wishlisted-car/${id}`,{headers});
-      const wishlisted = async () => {
-         const response = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/wishlisted-cars", { headers });
-         const result = response.data.wishlistedCar;
-         setWishlistedCars(result);
-       };
-       wishlisted();
-    };
+   //  const handleDeleteClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
+   //    event.preventDefault();
+   //    await axios.delete(`https://calm-gold-rabbit-gown.cyclic.app/user/delete-wishlisted-car/${id}`,{headers});
+   //    const wishlisted = async () => {
+   //       const response = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/wishlisted-cars", { headers });
+   //       const result = response.data.wishlistedCar;
+   //       setWishlistedCars(result);
+   //     };
+   //     wishlisted();
+   //  };
 
   return (
     <>

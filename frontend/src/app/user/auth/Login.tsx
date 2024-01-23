@@ -39,7 +39,7 @@ const Login = () => {
       e.preventDefault();
       if (user.email && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("https://calm-gold-rabbit-gown.cyclic.app/user/login", user);
+         const response = await axios.post("http://localhost:4000/user/login", user);
          const result: Result = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })
@@ -63,26 +63,26 @@ const Login = () => {
       }
     };
   return (
-      <>
+      <div className='min-h-screen flex flex-col justify-between'>
          <Navbar />
-         <div className='m-auto w-[50%] flex flex-col justify-center gap-4 mt-[5vw]'>
+         <div className='m-auto phone:w-[90%] tablet:w-[70%] md:w-[50%] flex flex-col justify-center phone:mt-[9vh] tablet:mt-[5vw]'>
             <motion.div className='flex flex-col gap-1' variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1 }}>
                <div>
-                  <p className='text-[#333333] text-4xl font-semibold tracking-tighter'>Login</p>
-                  <span className='text-6xl font-semibold gradient-text tracking-tight'>Welcome Back!</span>
+                  <p className='text-[#333333] phone:text-2xl md:text-4xl font-semibold tracking-tighter'>Login</p>
+                  <span className='phone:text-4xl md:text-6xl font-semibold gradient-text tracking-tight'>Welcome Back!</span>
                </div>
-               <div className='flex gap-3 justify-center bg-[#1f1f1f] py-3 px-5 rounded mt-[1.5vw]'>
+               <div className='flex gap-3 justify-center bg-[#1f1f1f] py-2 px-5 rounded phone:my-[2vh] tablet:my-[1.5vw]'>
                   <img src='/icons/google.svg' alt="" className='w-6 h-6 my-auto'/>
                   <Link to="/login/github" className='font-medium tracking-tighter text-[#AFAFAF] text-lg'>Continue with Google</Link>
                </div>
             </motion.div>
-            <div className='mx-auto flex flex-col gap-5 w-full'>
+            <div className='mx-auto flex flex-col phone:gap-2 md:gap-5 w-full'>
                <motion.input
                   variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.3 }}
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-3 py-4 text-[#FAFAFA] bg-[#141414] outline-none font-medium text-lg tracking-tight"
+                  className="w-full px-3 phone:py-3 md:py-4 text-[#FAFAFA] bg-[#141414] outline-none font-medium text-lg tracking-tight rounded"
                   placeholder='Email'
                   value={user.email}
                   required
@@ -95,13 +95,13 @@ const Login = () => {
                      name="password"
                      placeholder='Password'
                      value={user.password}
-                     className="w-full px-3 py-4 text-[#FAFAFA] bg-[#141414] outline-none font-medium text-lg tracking-tight"
+                     className="w-full px-3 phone:py-3 md:py-4 text-[#FAFAFA] bg-[#141414] outline-none font-medium text-lg tracking-tight rounded"
                      required
                      onChange={(e)=>{setUser({...user,password:e.target.value})}}
                   />
                   <button
                      onClick={togglePasswordVisibility}
-                     className='text-[#333333] font-medium bg-transparent border-0 outline-none focus:outline-none cursor-pointer -ml-[2.5vw]'
+                     className='text-[#333333] font-medium bg-transparent border-0 outline-none focus:outline-none cursor-pointer phone:-ml-[5vh] md:-ml-[2.5vw]'
                   >
                      {showPassword ? (<Eye className='w-6 h-6'/>) : (<EyeOff className='w-6 h-6'/>)}
                   </button>
@@ -111,24 +111,24 @@ const Login = () => {
             <motion.button
                variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.6 }}
                onClick={handleAddUser}
-               className={`bg-[#1f1f1f] text-[#FAFAFA] px-6 py-3 rounded font-satoshi-medium text-lg tracking-tight ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+               className={`bg-[#1f1f1f] phone:my-[2vh] tablet:mt-[2vw] text-[#FAFAFA] px-6 phone:py-2 md:py-3 rounded font-satoshi-medium text-lg tracking-tight ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                disabled={loading}
             >
                {loading ? 'Loggin In...' : 'Log In'}
             </motion.button>
-            <motion.div variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.75 }} className='-mt-3'>
+            <motion.div variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.75 }} className=''>
                <Link to="/auth/forgot-password" className='text-[#80796B] font-satoshi-medium text-sm hover:underline animation'>
                   Forgot Password?
                </Link>
             </motion.div>
-            <motion.div variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 2 }} className='flex justify-center mb-[5vw]'>
+            <motion.div variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 2 }} className='flex justify-center phone:my-[2vh] tablet:my-[1vw] phone:mb-0 tablet:mb-[5vw]'>
                <Link to="/auth/register" className='py-2 px-7 bg-[#131313] rounded text-sm text-[#FAFAFA] animation font-medium text-center'>
                   Don't have an account? <span className="gradient-text">Register</span>
                </Link>
             </motion.div>
          </div>
          <Footer />
-      </>
+      </div>
   )
 }
 

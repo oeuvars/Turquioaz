@@ -19,7 +19,7 @@ const Success: React.FC = () => {
     };
     useEffect (() => {
       const updateStatus = async () => {
-         await axios.put(`https://calm-gold-rabbit-gown.cyclic.app/user/statusCheck/${id}`,{status: true},{headers});
+         await axios.put(`http://localhost:4000/user/statusCheck/${id}`,{status: true},{headers});
       }
       updateStatus()
     }, [])

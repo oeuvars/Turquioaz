@@ -4,11 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node",
-    "dev": "nodemon",
-    "db:generate": "drizzle-kit generate:mysql",
-    "db:push": "drizzle-kit push:mysql",
-    "db-introspect": "drizzle-kit introspect:mysql"
+    "start": "nodemon -r tsconfig-paths/register"
   },
   "keywords": [],
   "author": "",

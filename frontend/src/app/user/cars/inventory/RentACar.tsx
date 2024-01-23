@@ -32,7 +32,7 @@ const RentACar: React.FC = () => {
     };
    useEffect(() => {
       const getCar = async () => {
-         const response = await axios.get(`http://localhost:4000/user/car/${id}`, {headers});
+         const response = await axios.get(`https://calm-gold-rabbit-gown.cyclic.app/user/car/${id}`, {headers});
          const result: Model = response.data.model;
          setModel(result)
       }
@@ -86,7 +86,7 @@ const RentACar: React.FC = () => {
           if (session.url) {
             window.location.href = session.url;
           }
-         const response = await axios.post(`http://localhost:4000/user/rent-car/${id}`,{startDate: startDate.toISOString().split('T')[0],endDate: endDate.toISOString().split('T')[0],status: false}, {headers});
+         const response = await axios.post(`https://calm-gold-rabbit-gown.cyclic.app/user/rent-car/${id}`,{startDate: startDate.toISOString().split('T')[0],endDate: endDate.toISOString().split('T')[0],status: false}, {headers});
          const idToken = response.data.token;
          localStorage.setItem('idToken', idToken);
        }

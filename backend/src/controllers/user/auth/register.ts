@@ -14,7 +14,7 @@ export const register = async (req: express.Request, res: express.Response) => {
      const isUserVerified = existingUser.is_verified
      if (isUserVerified === false) {
        const randomOTP = sendOTP();
-       await prisma.user.update({ where: { email: email }, data: { otp: randomOTP, created_at: new Date().toLocaleDateString() }});
+       await prisma.user.update({ where: { email: email }, data: { name: name, otp: randomOTP, created_at: new Date().toLocaleDateString() }});
        const content =
          `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
              <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
@@ -51,10 +51,10 @@ export const register = async (req: express.Request, res: express.Response) => {
 
                </html>`;
        await sendMail(email, mailSubject, content);
-       const emailOldToken = jwt.sign({ email: email }, process.env.hiddenKey as string,{ expiresIn: "24h" });
-       res.status(200).json({ message: "User updated", token: emailOldToken });
+       const token = jwt.sign({ email: email, name: name }, process.env.hiddenKey as string,{ expiresIn: "1d" });
+       res.status(200).json({ success: true, message: "User updated", token: token });
      } else {
-       res.status(403).json({ message: "User already exists", token: null });
+       res.status(403).json({ success: false, message: "User already exists", token: null });
      }
    } else {
      const hashedPassword: string = await new Promise((resolve, reject) => {
@@ -102,7 +102,7 @@ export const register = async (req: express.Request, res: express.Response) => {
                </html>`;
      await sendMail(email, mailSubject, content);
      await prisma.user.update({ where: { email: email }, data: { updated_at: new Date().toLocaleDateString() }});
-     const token = jwt.sign({ email, role: "user", name }, process.env.hiddenKey as string, { expiresIn: "1h" });
-     res.json({ message: "User created successfully", token: token });
+     const token = jwt.sign({ email: email, name: name }, process.env.hiddenKey as string, { expiresIn: "1d" });
+     res.json({ success: true, message: "User created successfully", token: token });
    }
  };

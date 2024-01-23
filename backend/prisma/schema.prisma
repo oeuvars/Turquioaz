@@ -37,10 +37,12 @@ model Model {
   brand          String
   name           String
   power          Int
-  MPH            Decimal
+  acceleration   Decimal
+  topSpeed       Int
   price          Int
   rent           Int
   published      Boolean @default(false)
+  imageSource    String
   carId          Int
 
   rentedBy       RentedCar[]

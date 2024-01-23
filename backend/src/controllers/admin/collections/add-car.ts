@@ -19,9 +19,11 @@ export const addCar = async (req: AdminRequest, res: express.Response) => {
          brand: req.body.brand,
          name: req.body.name,
          power: req.body.power,
-         MPH: req.body.mph,
+         acceleration: req.body.acceleration,
+         topSpeed: req.body.topSpeed,
          price: parseInt(req.body.price),
          rent: parseInt(req.body.rent),
+         imageSource: req.body.src,
          published: req.body.published,
        },
      });

@@ -16,11 +16,11 @@ export const login = async (req: express.Request, res: express.Response) => {
        })
      });
      if(passwordCheck === true) {
-       const loginToken = jwt.sign({ email, role: "user" }, process.env.hiddenKey as string, { expiresIn: "24h" });
+       const loginToken = jwt.sign({ email: email, name: user.name }, process.env.hiddenKey as string, { expiresIn: "7d" });
        await prisma.user.update({where: {email: email}, data: {last_login: new Date().toLocaleDateString()}});
-       res.json({ exists: true, message: "Logged in successfully", token: loginToken });
+       res.json({ exists: true, success: true, message: "Logged in successfully", token: loginToken });
      } else {
-       res.json({ exists: true, message: "Incorrect Password", token: null });
+       res.json({ exists: true, success: false, message: "Incorrect Password", token: null });
      }
    }
  };

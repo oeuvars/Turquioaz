@@ -1,21 +1,20 @@
 import prisma from "db/db.config";
 import express from "express";
 
-interface User {
+interface Admin {
    email: string;
    name: string;
    password: string;
-   is_Verified: boolean;
  }
- interface RequestWithUser extends express.Request {
-   user: User;
+ interface AdminRequest extends express.Request {
+   admin: Admin;
  }
 
-export const updateCar = async (req: RequestWithUser, res: express.Response) => {
+export const updateCar = async (req: AdminRequest, res: express.Response) => {
    const id = parseInt(req.params.id);
 
    const admin = await prisma.admin.findUnique({
-     where: { email: req.user.email },
+     where: { email: req.admin.email },
    });
    if (admin) {
      const updatedModel = await prisma.model.update({
@@ -25,7 +24,7 @@ export const updateCar = async (req: RequestWithUser, res: express.Response) => 
          brand: req.body.brand,
          name: req.body.name,
          power: req.body.power,
-         MPH: req.body.mph,
+         acceleration: req.body.acceleration,
          price: parseInt(req.body.price),
          rent: parseInt(req.body.rentPrice),
          published: req.body.published,

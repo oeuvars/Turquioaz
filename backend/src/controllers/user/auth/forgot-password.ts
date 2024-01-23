@@ -10,7 +10,7 @@ export const forgotPassword = async (req: express.Request, res: express.Response
    if (user && user.is_verified === true) {
      const randomOTP = sendOTP();
      const otpUpdated = await prisma.user.update({where: {email: email}, data: {otp: randomOTP}});
-     const token = jwt.sign({ email: email }, process.env.hiddenKey as string, {expiresIn: '1h'});
+     const token = jwt.sign({ email: email }, process.env.hiddenKey as string, {expiresIn: '1d'});
      const content =
          `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
              <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />

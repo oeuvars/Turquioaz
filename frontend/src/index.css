@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -48,31 +50,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-@font-face {
-  font-family: Rubintek;
-  src: url("./assets/fonts/rubintek.ttf");
-}
-
-@font-face {
-  font-family: Doran;
-  src: url("./assets/fonts/Doran-Bold.ttf");
-}
-
-@font-face {
-  font-family: Satoshi-Regular;
-  src: url("./assets/fonts/Satoshi-Regular.ttf");
-}
-
-@font-face {
-  font-family: Satoshi-Medium;
-  src: url("./assets/fonts/Satoshi-Medium.ttf");
-}
-
-@font-face {
-  font-family: Satoshi-Bold;
-  src: url("./assets/fonts/Satoshi-Bold.ttf");
-}
-
 .scroll {
   scrollbar-width: none;
 }
@@ -80,24 +57,7 @@ body::-webkit-scrollbar {
 html {
   -webkit-tap-highlight-color: transparent;
   height: 100%;
-  overscroll-behavior: none;
   scroll-behavior: smooth;
-}
-.ciao {
-  background: #a1ffce; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #faffd1,
-    #a1ffce
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #faffd1,
-    #a1ffce
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .custom-toast {
@@ -108,3 +68,20 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.info-box {
+  place-content: flex-start center;
+  align-items: flex-start;
+  background-color: var(--token-7fd21321-91d9-48b8-b0ba-90ce106aef12, #000000);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.01) 0px 1.00399px 1.00399px 0px, rgba(0, 0, 0, 0.02) 0px 2.39052px 2.39052px 0px, rgba(0, 0, 0, 0.03) 0px 4.35559px 4.35559px 0px, rgba(0, 0, 0, 0.054) 0px 7.24103px 7.24103px 0px, rgba(0, 0, 0, 0.088) 0px 11.7003px 11.7003px 0px, rgba(0, 0, 0, 0.144) 0px 19.1409px 19.1409px 0px, rgba(0, 0, 0, 0.247) 0px 32.9762px 32.9762px 0px, rgba(0, 0, 0, 0.45) 0px 60px 60px 0px;
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: column;
+  gap: 4px;
+  height: min-content;
+  overflow: hidden;
+  padding: 16px;
+  position: relative;
+  width: 580px;
+  will-change: transform;
+}

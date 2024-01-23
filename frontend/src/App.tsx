@@ -1,13 +1,12 @@
-import { Component } from "solid-js";
-import AppRoutes from "./routes/AppRoutes";
+import React from 'react'
+import AppRoutes from '@/routes/AppRoutes'
 
-const App: Component = () => {
-
+const App: React.FC = () => {
   return (
-    <div class="">
+    <>
       <AppRoutes />
-    </div>
-  );
-};
+    </>
+  )
+}
 
-export default App;
+export default App

@@ -1,13 +1,32 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+  prefix: "",
   theme: {
     extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
       fontFamily: {
-        "rubintek": ["Rubintek", "sans-serif"],
-        "doran": ["Doran", "serif"],
-        "satoshi-regular": ["Satoshi-Regular", "sans-serif"],
-        "satoshi-medium": ["Satoshi-Medium", "sans-serif"],
+        "dm-mono": ['DM Mono', "monospace"],
+        "roboto-mono": ["Roboto Mono", "monospace"]
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
     screens: {
@@ -21,5 +40,5 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [],
-};
+  plugins: [require("tailwindcss-animate")],
+}

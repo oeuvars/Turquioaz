@@ -14,6 +14,8 @@ import { wishlistCar } from "controllers/user/wishlist/wishlist-car";
 import { wishlistedCars } from "controllers/user/wishlist/wishlisted-cars";
 import { deleteWishlistedCar } from "controllers/user/wishlist/wishlist-delete";
 import { authentication } from "middleware/userAuthenticator";
+import { totalCars } from "controllers/user/collections/total-cars";
+import { featuredCars } from "controllers/user/collections/featured-cars";
 
 const router = express.Router();
 
@@ -24,15 +26,18 @@ router.post("/forgot-password", forgotPassword);
 router.post("/verify-updation", verifyUpdation);
 router.post("/reset-password", resetPassword);
 
-router.get("/inventory", authentication, inventory);
-router.get("/car/:id", authentication, singleCar);
+
+router.get("/inventory", inventory);
+router.get("/featured-cars", featuredCars);
+router.get("/total-cars", totalCars);
+router.get("/car/:id", singleCar);
 
 router.post("/rent-car/:id", authentication, rentCar);
 router.put("/rent-status/:id", authentication, rentStatus);
 router.get("/rented-cars", authentication, rentedCars);
 
-router.post("/wishlist/:id", authentication, wishlistCar);
-router.get("/wishlisted-car", authentication, wishlistedCars);
+router.post("/add-to-wishlist/:id", authentication, wishlistCar);
+router.get("/wishlisted-cars", authentication, wishlistedCars);
 router.delete("/delete-wishlisted-car/:id", authentication, deleteWishlistedCar)
 
 export default router;

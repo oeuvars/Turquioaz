@@ -1,11 +1,11 @@
-import { createSignal, createEffect } from "solid-js";
+import { useState, useEffect } from "react";
 
 const useMediaQuery = (query: string) => {
-    const [matches, setMatches ] = createSignal(false);
+    const [matches, setMatches ] = useState(false);
 
-    createEffect(() => {
+    useEffect(() => {
         const media = window.matchMedia(query);
-        if (media.matches !== matches()) {
+        if (media.matches !== matches) {
             setMatches(media.matches);
         }
         const listener = () => setMatches(media.matches);

@@ -12,9 +12,7 @@ interface User {
  }
 
 export const wishlistedCars =  async (req: RequestWithUser, res: express.Response) => {
-   const user = await prisma.user.findUnique({
-     where: {email: req.user.email}, include: {onWishlist: true},
-   });
+   const user = await prisma.user.findUnique({where: {email: req.user.email}, include: {onWishlist: true}});
    if (user) {
      res.json({ wishlistedCar: user.onWishlist || [] });
    } else {

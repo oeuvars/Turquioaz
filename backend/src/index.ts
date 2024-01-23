@@ -6,6 +6,8 @@ import cors from 'cors';
 import 'dotenv/config';
 import userRoutes from "./routes/userRoutes";
 import adminRoutes from "./routes/adminRoutes";
+import { createUploadthingExpressHandler } from "uploadthing/express";
+import { uploadRouter } from "./uploadthing";
 
 const app = express();
 
@@ -21,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => res.send("this is home page!"));
 app.use("/user", userRoutes);
 app.use("/admin", adminRoutes);
+app.use("/api/uploadthing",createUploadthingExpressHandler({router: uploadRouter}));
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

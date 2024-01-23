@@ -7,8 +7,8 @@ export const verifyRegistration = async (req: express.Request, res: express.Resp
    const user = await prisma.user.findUnique({ where: { email: email }});
    if (user.otp === otp) {
      await prisma.user.update({where: {email: email}, data: {otp: null, is_verified: true}});
-     res.json({ message: "User Verified"})
+     res.json({ success: true, message: "User Verified"})
    } else {
-     res.json({ message: "User does not exist"})
+     res.json({ success: false, message: "User does not exist"})
    }
  }

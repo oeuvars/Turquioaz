@@ -50,6 +50,9 @@ dependencies:
   pg:
     specifier: ^8.11.3
     version: 8.11.3
+  stripe:
+    specifier: ^14.12.0
+    version: 14.12.0
   uploadthing:
     specifier: ^6.1.1
     version: 6.1.1
@@ -1565,6 +1568,14 @@ packages:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
     dev: true
+
+  /stripe@14.12.0:
+    resolution: {integrity: sha512-3lze4QdO8fM6nh1vaRsnFpaoA0WV7DerYtjEprOwcwyfdF5LdesfQNZiT22LO1dFiYobBifDzEn8V51MXHPrPQ==}
+    engines: {node: '>=12.*'}
+    dependencies:
+      '@types/node': 20.10.8
+      qs: 6.11.0
+    dev: false
 
   /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}

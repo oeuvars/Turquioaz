@@ -1,8 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { sendMail } from "helpers/sendMail";
-import prisma from "db/db.config";
-import { sendOTP } from "helpers/sendOTP";
+import { sendMail } from "../../../helpers/sendMail";
+import prisma from "../../../db/db.config";
+import { sendOTP } from "../../../helpers/sendOTP";
 import bcrypt from "bcrypt";
 
 const mailSubject = "Verification from Rent&Ride"

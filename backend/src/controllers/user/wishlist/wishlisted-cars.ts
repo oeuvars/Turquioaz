@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "db/db.config";
+import prisma from "../../../db/db.config";
 
 interface User {
    email: string;

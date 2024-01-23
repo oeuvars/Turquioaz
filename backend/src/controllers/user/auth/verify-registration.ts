@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "db/db.config";
+import prisma from "../../../db/db.config";
 
 export const verifyRegistration = async (req: express.Request, res: express.Response) => {
    const {email, oneTimePass} = req.body;

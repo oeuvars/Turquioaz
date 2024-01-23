@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "db/db.config";
+import prisma from "../../../db/db.config";
 import bcrypt from "bcrypt";
 
 export const resetPassword = async (req: express.Request, res: express.Response) => {

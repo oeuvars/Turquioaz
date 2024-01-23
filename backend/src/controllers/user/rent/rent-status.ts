@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "db/db.config";
+import prisma from "../../../db/db.config";
 
 export const rentStatus = async (req: express.Request, res: express.Response) => {
    const id = parseInt(req.params.id);

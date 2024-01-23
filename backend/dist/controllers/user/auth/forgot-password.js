@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.forgotPassword = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const sendMail_1 = require("helpers/sendMail");
-const db_config_1 = __importDefault(require("db/db.config"));
-const sendOTP_1 = require("helpers/sendOTP");
+const sendMail_1 = require("../../../helpers/sendMail");
+const db_config_1 = __importDefault(require("../../../db/db.config"));
+const sendOTP_1 = require("../../../helpers/sendOTP");
 const forgotPassword = async (req, res) => {
     const { email } = req.body;
     const user = await db_config_1.default.user.findUnique({ where: { email: email } });

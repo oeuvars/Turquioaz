@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.register = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const sendMail_1 = require("helpers/sendMail");
-const db_config_1 = __importDefault(require("db/db.config"));
-const sendOTP_1 = require("helpers/sendOTP");
+const sendMail_1 = require("../../../helpers/sendMail");
+const db_config_1 = __importDefault(require("../../../db/db.config"));
+const sendOTP_1 = require("../../../helpers/sendOTP");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const mailSubject = "Verification from Rent&Ride";
 const register = async (req, res) => {

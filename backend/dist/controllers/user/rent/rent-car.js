@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rentCar = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const db_config_1 = __importDefault(require("db/db.config"));
+const db_config_1 = __importDefault(require("../../../db/db.config"));
 const rentCar = async (req, res) => {
     const { startDate, endDate, status } = req.body;
     const id = parseInt(req.params.id);

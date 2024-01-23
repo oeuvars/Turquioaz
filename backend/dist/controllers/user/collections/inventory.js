@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.inventory = void 0;
-const db_config_1 = __importDefault(require("db/db.config"));
+const db_config_1 = __importDefault(require("../../../db/db.config"));
 const inventory = async (req, res) => {
     try {
         const { page, pageSize, brand, minprice, maxprice, minpower, maxpower, minacceleration, maxacceleration } = req.query;

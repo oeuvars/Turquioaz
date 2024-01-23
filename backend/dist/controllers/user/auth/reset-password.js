@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resetPassword = void 0;
-const db_config_1 = __importDefault(require("db/db.config"));
+const db_config_1 = __importDefault(require("../../../db/db.config"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const resetPassword = async (req, res) => {
     const { password, email } = req.body;

@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "db/db.config";
+import prisma from "../../../db/db.config";
 
 let lastShuffleTime: Date | null = null;
 let shuffledModels: any[] | null = null;

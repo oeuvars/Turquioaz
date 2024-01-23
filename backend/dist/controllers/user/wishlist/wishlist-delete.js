@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteWishlistedCar = void 0;
-const db_config_1 = __importDefault(require("db/db.config"));
+const db_config_1 = __importDefault(require("../../../db/db.config"));
 const deleteWishlistedCar = async (req, res) => {
     const wishCar = await db_config_1.default.wishlistedCar.findUnique({
         where: { id: parseInt(req.params.id) },

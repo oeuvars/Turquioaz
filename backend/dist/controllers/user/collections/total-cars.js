@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.totalCars = void 0;
-const db_config_1 = __importDefault(require("db/db.config"));
+const db_config_1 = __importDefault(require("../../../db/db.config"));
 const totalCars = async (req, res) => {
     try {
         const totalModels = await db_config_1.default.model.count({ where: { published: true } });

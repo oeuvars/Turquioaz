@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin{
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String?
+  password       String
+  last_login     String?
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String?
+  password       String
+  is_verified    Boolean
+  otp            Int?
+  last_login     String?
+  created_at     String
+  updated_at     String?
+  onRent         RentedCar[]
+  onWishlist     WishlistedCar[]
+}
+
+model Model {
+  id             Int     @id @default(autoincrement())
+  brand          String
+  name           String
+  power          Int
+  acceleration   Decimal
+  topSpeed       Int
+  price          Int
+  rent           Int
+  published      Boolean @default(false)
+  imageSource    String
+  carId          Int
+
+  rentedBy       RentedCar[]
+  wishlistedBy   WishlistedCar[]
+}
+
+
+model RentedCar{
+  id             Int           @id @default(autoincrement())
+  carId          Int
+  rentedtoId     Int
+  startDate      String
+  endDate        String
+  status         Boolean
+
+  rentedto       User    @relation(fields: [rentedtoId], references: [id])
+  car            Model   @relation(fields: [carId], references: [id])
+}
+
+model WishlistedCar{
+  id             Int           @id @default(autoincrement())
+  carId          Int
+  wishlistedbyId Int
+  car            Model   @relation(fields: [carId], references: [id])
+  wishlistedby   User    @relation(fields: [wishlistedbyId], references: [id])
+}

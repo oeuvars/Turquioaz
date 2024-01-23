@@ -1,8 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { sendMail } from "helpers/sendMail";
-import prisma from "db/db.config";
-import { sendOTP } from "helpers/sendOTP";
+import { sendMail } from "../../../helpers/sendMail";
+import prisma from "../../../db/db.config";
+import { sendOTP } from "../../../helpers/sendOTP";
 
 export const forgotPassword = async (req: express.Request, res: express.Response) => {
    const { email } = req.body;

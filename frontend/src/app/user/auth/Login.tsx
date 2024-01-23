@@ -39,7 +39,7 @@ const Login = () => {
       e.preventDefault();
       if (user.email && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("http://localhost:4000/user/login", user);
+         const response = await axios.post("https://calm-gold-rabbit-gown.cyclic.app/user/login", user);
          const result: Result = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })

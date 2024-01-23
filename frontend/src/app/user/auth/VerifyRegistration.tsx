@@ -62,7 +62,7 @@ const VerifyRegistation: React.FC = () => {
     setLoading(true);
     const oneTimePass = otp.join("")
     try {
-      const response = await axios.post("http://localhost:4000/user/verify-registration", {email, oneTimePass})
+      const response = await axios.post("https://calm-gold-rabbit-gown.cyclic.app/user/verify-registration", {email, oneTimePass})
       const result: Result = response.data
        if (result.success === true) {
         navigate(-2);
@@ -80,17 +80,15 @@ const VerifyRegistation: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <Navbar />
-      <div className="w-[60%] mx-auto my-[7vw]">
+      <div className="phone:w-[90%] tablet:w-[60%] mx-auto phone:my-[7vh] tablet:my-[7vw]">
         <div className="flex flex-col">
-          <h1 className="text-5xl gardient-text tracking-tight text-center">Hey,</h1>
-          <h1 className="gradient-text text-5xl font-medium leading-relaxed text-center tracking-tight">
+          <h1 className="phone:text-3xl tablet:text-5xl gardient-text tracking-tight text-center">Hey,</h1>
+          <h1 className="gradient-text phone:text-3xl tablet:text-5xl font-medium leading-relaxed text-center tracking-tight">
             Please verify your email.
           </h1>
         </div>
-
-
         <motion.div className="flex justify-center space-x-3 mt-7">
           {otp.map((digit, index) => (
             <input
@@ -100,14 +98,14 @@ const VerifyRegistation: React.FC = () => {
               onChange={(e) => handleChange(e.target.value, index)}
               onKeyUp={(e) => handleBackspaceAndEnter(e, index)}
               ref={(reference) => (otpBoxReference.current[index] = reference)}
-              className={`w-20 px-5 py-5 text-[#FAFAFA] rounded block bg-[#333333] appearance-none text-center text-lg`}
+              className={`phone:w-16 phone:h-16 tablet:w-20 tablet:h-20 px-5 py-5 text-[#FAFAFA] rounded block bg-[#303030] appearance-none text-center text-lg`}
             />
           ))}
         </motion.div>
         <Toaster />
         <button
           onClick={handleClick}
-          className={`flex bg-[#333333] text-[#FAFAFA] px-6 py-3 rounded-lg text-lg mt-7 w-[50%] mx-auto justify-center ${
+          className={`flex bg-[#202020] text-[#FAFAFA] px-6 py-3 rounded text-lg mt-7 w-[50%] mx-auto justify-center ${
             loading ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={loading}
@@ -116,7 +114,7 @@ const VerifyRegistation: React.FC = () => {
         </button>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

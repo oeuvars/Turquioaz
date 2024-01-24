@@ -19,7 +19,7 @@ const SingleCarCard: React.FC = () => {
    const { id } = useParams<{ id: string }>();
    useEffect(() => {
       const getCar = async () => {
-        const response = await axios.get(`http://localhost:4000/user/car/${id}`, {headers});
+        const response = await axios.get(`https://calm-gold-rabbit-gown.cyclic.app/user/car/${id}`, {headers});
         const result: Model = response.data.model;
         setModel(result)
     }

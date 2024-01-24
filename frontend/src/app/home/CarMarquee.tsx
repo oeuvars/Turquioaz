@@ -8,7 +8,7 @@ const CarMarquee: React.FC = () => {
    const [cars, setCars] = useState<Model[]>([])
    useEffect(() => {
       const featuredCars = async () => {
-         const response = await axios.get("http://localhost:4000/user/featured-cars")
+         const response = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/featured-cars")
          const result: Model[] = response.data.models
          setCars(result)
       }

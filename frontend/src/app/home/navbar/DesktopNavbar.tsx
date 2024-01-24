@@ -1,7 +1,7 @@
-import { ArrowUpRight, ChevronDownIcon, Clover, Cog, LogOut } from 'lucide-react'
+import { ArrowUpRight, Cog, LibrarySquare, Phone } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion, useAnimation } from "framer-motion"
+import { Link, useNavigate } from 'react-router-dom'
+import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTrigger } from "@/components/ui/drawer"
 import Cookies from 'js-cookie'
 import { jwtDecode } from 'jwt-decode'
 
@@ -14,12 +14,9 @@ export interface Payload {
 }
 
 const DesktopNavbar:React.FC = () => {
-   const [isServicesHovered, setIsServicesHovered] = useState<boolean>(false);
-   const controls = useAnimation();
-   const arrowControls = useAnimation();
    const [userEmail, setUserEmail] = useState<string>()
    const [userName, setUserName] = useState<string>()
-
+   const navigate = useNavigate()
    const registerCookie = Cookies.get("RegisterCookie");
    const loginCookie = Cookies.get("LoginCookie")
 
@@ -35,26 +32,16 @@ const DesktopNavbar:React.FC = () => {
          setUserName(decoded.name)
       }
       else {
-         setUserEmail("Hi")
+         setUserEmail("")
          setUserName("Guest")
       }
    }, [loginCookie, registerCookie])
 
-   const handleServicesHover = (isHovered: boolean) => {
-      setIsServicesHovered(isHovered);
-
-      if (isHovered) {
-        controls.start({ opacity: 1, y: 0 });
-        arrowControls.start({ rotate: 180 });
-      } else {
-        controls.start({ opacity: 0, y: -10 });
-        arrowControls.start({ rotate: 0 });
-      }
-    };
-
-    const handleLogout = () => {
-
-    }
+   const handleLogout = () => {
+      Cookies.remove('LoginCookie');
+      Cookies.remove("RegisterCookie");
+      navigate('/auth/login')
+   }
 
   return (
     <div>
@@ -69,49 +56,50 @@ const DesktopNavbar:React.FC = () => {
             <Link to="#membership" className="font-dm-mono text-[#999999] hover:text-[#FAFAFA] uppercase font-medium my-auto animation z-20">Become A Member</Link>
          </div>
          <div className="flex justify-between gap-[5vw]">
-            <div className={`relative my-auto z-20 text-[#999999]`} onMouseEnter={() => handleServicesHover(true)} onMouseLeave={() => handleServicesHover(false)}>
-               <button className="flex items-center font-dm-mono uppercase font-medium my-auto animation z-20">
-                  <span className="mr-2">Account</span>
-                  <motion.span
-                     initial={{ rotate: 0 }}
-                     animate={arrowControls}
-                     className="h-5 w-5 text-white my-auto"
-                  >
-                     <ChevronDownIcon className={`h-5 w-5 my-auto text-[#999999]`} />
-                  </motion.span>
-               </button>
-
-               <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={controls}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className={`absolute grid px-5 tracking-tight gap-3 py-5 -left-[3.5vw] backdrop-blur bg-[#111111]/50 rounded shadow-xl phone:text-base lg:text-lg ${
-                     isServicesHovered ? "block" : "hidden"
-                  }`}
-               >
-                  <div className='flex'>
-                     <div className='border border-r rounded-full'></div>
-                     <div>
-                        <h1 className='text-[#FAFAFA]'>{userEmail}</h1>
-                        <h1 className='text-[#FAFAFA]'>{userName}</h1>
+            <Drawer>
+               <DrawerTrigger asChild className='my-auto'>
+                  <button className='flex gap-2 font-dm-mono text-[#999999] hover:text-[#FAFAFA] uppercase font-medium my-auto animation z-20'><span className='uppercase'>Account</span></button>
+               </DrawerTrigger>
+               <DrawerContent className="bg-[#111111]/50 backdrop-blur-xl pb-[2vh]">
+               <div className="mx-auto w-[90%]">
+                  <p className='font-sacramento text-white text-5xl'>Hi, <span className='text-xl font-space-grotesk text-[#FAFAFA] tracking-tighter'>{userName}</span></p>
+                  <Link to="/wishlist" className='w-full flex justify-between mt-[2vw]'>
+                     <div className='flex gap-3'>
+                        <LibrarySquare className='w-5 h-5 my-auto text-[#FAFAFA]'/>
+                        <p className='text-2xl tracking-tighter text-[#FAFAFA]'>Wishlist</p>
                      </div>
-                  </div>
-                  <hr />
-                  <Link to="/wishlist" className='flex w-full gap-2'>
-                     <Clover className='my-auto h-5 w-5'/>
-                     <h1>Wishlist</h1>
+                     <ArrowUpRight className='text-[#FAFAFA]'/>
                   </Link>
-                  <Link to="/settings" className='flex w-full gap-2'>
-                     <Cog className='my-auto h-5 w-5'/>
-                     <h1>Settings</h1>
+                  <hr className='border-t-[1px] border-[#303030] mt-2'/>
+                  <Link to="/settings" className='w-full flex justify-between mt-[2vw]'>
+                     <div className='flex gap-3'>
+                        <Cog className='w-5 h-5 my-auto text-[#FAFAFA]'/>
+                        <p className='text-2xl tracking-tighter text-[#FAFAFA]'>Settings</p>
+                     </div>
+                     <ArrowUpRight className='text-[#FAFAFA]'/>
                   </Link>
-                  <div onClick={handleLogout} className='flex w-full gap-2'>
-                     <LogOut className='my-auto h-5 w-5'/>
-                     <h1>Logout</h1>
-                  </div>
-               </motion.div>
-            </div>
+                  <hr className='border-t-[1px] border-[#303030] mt-2'/>
+                  <Link to="/contact" className='w-full flex justify-between mt-[2vw]'>
+                     <div className='flex gap-3'>
+                        <Phone className='w-5 h-5 my-auto text-[#FAFAFA]'/>
+                        <p className='text-2xl tracking-tighter text-[#FAFAFA]'>Contact</p>
+                     </div>
+                     <ArrowUpRight className='text-[#FAFAFA]'/>
+                  </Link>
+                  <hr className='border-t-[1px] border-[#303030] mt-2'/>
+                  <DrawerFooter className="mt-10">
+                     <DrawerClose asChild>
+                        {registerCookie || loginCookie ? (
+                           <button onClick={handleLogout} className="bg-[#FAFAFA]/70 py-2 rounded text-[#222222] tracking-tighter font-medium">Log out</button>
+                        ) : (
+                           <Link to="/auth/login" className="bg-[#FAFAFA]/70 py-2 rounded text-[#222222] tracking-tighter font-medium text-center">Log In</Link>
+                        )}
+                     </DrawerClose>
+                     <p className='text-center text-neutral-500 tracking-tighter'>{userEmail}</p>
+                  </DrawerFooter>
+               </div>
+               </DrawerContent>
+            </Drawer>
             <Link to="/auth/register" className="font-dm-mono text-[#999999] hover:text-[#FAFAFA] uppercase font-medium my-auto animation z-20">Turquioaz Rides</Link>
             <Link to="/download" className="flex gap-1 z-20">
                <p className="font-dm-mono gradient-text uppercase font-medium my-auto animation">Download The App</p>

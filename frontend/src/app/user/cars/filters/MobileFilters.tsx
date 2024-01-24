@@ -1,10 +1,4 @@
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
+import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTrigger } from "@/components/ui/drawer"
 import { Slider } from "@/components/ui/slider"
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -23,7 +17,6 @@ interface MobileFiltersProps {
   setSelectedAcceleration: React.Dispatch<React.SetStateAction<number[] | undefined>>
 }
 
-
 const MobileFilters: React.FC<MobileFiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, setSelectedAcceleration }) => {
   const [clicked, setClicked] = useState(false);
   const [allBrands, setAllBrands] = useState<string[]>();
@@ -36,7 +29,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ setPage, selectedBrand ,s
 
    useEffect(() => {
     const getResponse = async () => {
-      const response = await axios.get('https://calm-gold-rabbit-gown.cyclic.app/user/total-cars', {headers})
+      const response = await axios.get('http://localhost:4000/user/total-cars', {headers})
       const result: string[] = response.data.brands
       const uniqueBrands = [...new Set(result)];
       setAllBrands(uniqueBrands)
@@ -76,7 +69,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ setPage, selectedBrand ,s
             </div>
           </div>
           {/* Price */}
-          <div className='mx-auto grid gap-2 rounded py-[1vh]'>
+          <div className='mx-auto grid gap-2 rounded py-[1vh] z-20'>
             <p className='text-lg tracking-tighter'><span className='gradient-text text-lg'>Price</span></p>
             <Slider defaultValue={selectedPrice} max={100} step={1} onValueChange={handleSliderPrice} className='m-auto'/>
             <div className='flex text-sm justify-between tracking-tight'>
@@ -94,7 +87,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ setPage, selectedBrand ,s
             </div>
           </div>
           {/*Power*/}
-          <div className='mx-auto grid gap-2 rounded py-[1vh]'>
+          <div className='mx-auto grid gap-2 rounded py-[1vh] z-20'>
             <p className='tracking-tighter'><span className='gradient-text text-lg'>HorsePower</span></p>
             <Slider defaultValue={selectedPower} max={100} step={1} onValueChange={handleSliderPower} className='m-auto'/>
             <div className='flex text-sm justify-between tracking-tight'>

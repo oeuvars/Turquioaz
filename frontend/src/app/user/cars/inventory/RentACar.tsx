@@ -31,7 +31,7 @@ const RentACar: React.FC = () => {
     };
    useEffect(() => {
       const getCar = async () => {
-         const response = await axios.get(`https://calm-gold-rabbit-gown.cyclic.app/user/car/${id}`, {headers});
+         const response = await axios.get(`http://localhost:4000/user/car/${id}`, {headers});
          const result: Model = response.data.model;
          setModel(result)
       }
@@ -85,7 +85,7 @@ const RentACar: React.FC = () => {
           if (session.url) {
             window.location.href = session.url;
           }
-         const response = await axios.post(`https://calm-gold-rabbit-gown.cyclic.app/user/rent-car/${id}`,{startDate: startDate.toISOString().split('T')[0],endDate: endDate.toISOString().split('T')[0],status: false}, {headers});
+         const response = await axios.post(`http://localhost:4000/user/rent-car/${id}`,{startDate: startDate.toISOString().split('T')[0],endDate: endDate.toISOString().split('T')[0],status: false}, {headers});
          const idToken = response.data.token;
          localStorage.setItem('idToken', idToken);
        }
@@ -105,7 +105,7 @@ const RentACar: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">Power</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.power} HP</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 3rd row */}
               <div className="w-full justify-between">
@@ -113,7 +113,7 @@ const RentACar: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">0-60 MPH</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.acceleration} Sec</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 4th row */}
               <div className="w-full justify-between">
@@ -121,7 +121,7 @@ const RentACar: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">Top Speed</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.topSpeed} MPH</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 5th row */}
               <div className="w-full justify-between">
@@ -129,7 +129,7 @@ const RentACar: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">Price</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.price}$</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
             </div>
             <div className='grid md:grid-cols-2 phone:gap-3 md:gap-5'>
@@ -189,7 +189,7 @@ const RentACar: React.FC = () => {
             {loginCookie || registerCookie ? (
                <button onClick={handleClick} className='w-full bg-[#111111] hover:shadow-md animation phone:my-[2vh] md:my-auto py-3 rounded'><span className='gradient-text font-medium tracking-tight text-xl'>Checkout</span></button>
             ) : (
-               <Link to='auth/login' className='w-full bg-[#111111] hover:shadow-md animation phone:my-[2vh] md:my-auto py-3 rounded'><span className='gradient-text font-medium tracking-tight text-xl'>Checkout</span></Link>
+               <Link to='/auth/login' className='w-full bg-[#111111] hover:shadow-md animation phone:my-[2vh] md:my-auto py-3 rounded text-center'><span className='gradient-text font-medium tracking-tight text-xl'>Checkout</span></Link>
             )}
          </div>
       </div>

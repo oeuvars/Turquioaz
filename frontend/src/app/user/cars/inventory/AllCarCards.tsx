@@ -52,18 +52,18 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
 
     const handleAddToWishlistClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
       e.preventDefault();
-      await axios.post(`https://calm-gold-rabbit-gown.cyclic.app/user/add-to-wishlist/${id}`,{},{headers});
+      await axios.post(`http://localhost:4000/user/add-to-wishlist/${id}`,{},{headers});
       const wishlistedCar = async () => {
-         const res = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/wishlisted-cars", {headers});
+         const res = await axios.get("http://localhost:4000/user/wishlisted-cars", {headers});
          setWishlistedModels(res.data.wishlistedCar);
       };
       wishlistedCar();
     };
     const handleDeleteClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
       event.preventDefault();
-      await axios.delete(`https://calm-gold-rabbit-gown.cyclic.app/user/delete-wishlisted-car/${id}`,{headers});
+      await axios.delete(`http://localhost:4000/user/delete-wishlisted-car/${id}`,{headers});
       const wishlistedCar = async () => {
-         const res = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/wishlisted-cars", {headers});
+         const res = await axios.get("http://localhost:4000/user/wishlisted-cars", {headers});
          setWishlistedModels(res.data.wishlistedCar);
       };
       wishlistedCar();
@@ -71,7 +71,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
 
     useEffect(() => {
       const wishlistedCar = async () => {
-         const res = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/wishlisted-cars", {headers});
+         const res = await axios.get("http://localhost:4000/user/wishlisted-cars", {headers});
          setWishlistedModels(res.data.wishlistedCar);
       };
       wishlistedCar();
@@ -79,7 +79,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
 
     useEffect(() => {
       const getCars = async () => {
-        let apiUrl = `https://calm-gold-rabbit-gown.cyclic.app/user/inventory?page=${page}&pageSize=4`;
+        let apiUrl = `http://localhost:4000/user/inventory?page=${page}&pageSize=4`;
         if (selectedBrand) {
           apiUrl += `&brand=${selectedBrand}`;
         }

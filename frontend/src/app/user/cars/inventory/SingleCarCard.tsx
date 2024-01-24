@@ -19,7 +19,7 @@ const SingleCarCard: React.FC = () => {
    const { id } = useParams<{ id: string }>();
    useEffect(() => {
       const getCar = async () => {
-        const response = await axios.get(`https://calm-gold-rabbit-gown.cyclic.app/user/car/${id}`, {headers});
+        const response = await axios.get(`http://localhost:4000/user/car/${id}`, {headers});
         const result: Model = response.data.model;
         setModel(result)
     }
@@ -43,7 +43,7 @@ const SingleCarCard: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.brand}</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.name}</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 2nd row */}
               <div className="w-full justify-between">
@@ -51,7 +51,7 @@ const SingleCarCard: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">Power</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.power} HP</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 3rd row */}
               <div className="w-full justify-between">
@@ -59,7 +59,7 @@ const SingleCarCard: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">0-60 MPH</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.acceleration} Sec</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 4th row */}
               <div className="w-full justify-between">
@@ -67,7 +67,7 @@ const SingleCarCard: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">Top Speed</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.topSpeed} MPH</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 5th row */}
               <div className="w-full justify-between">
@@ -75,7 +75,7 @@ const SingleCarCard: React.FC = () => {
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">Price</p>
                     <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">{model?.price}$</p>
                 </div>
-                <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]"/>
+                <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]"/>
               </div>
               {/* 6th row */}
               <div className="w-full justify-between mt-[1vw]">

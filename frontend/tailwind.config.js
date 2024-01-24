@@ -22,7 +22,9 @@ module.exports = {
       },
       fontFamily: {
         "dm-mono": ['DM Mono', "monospace"],
-        "roboto-mono": ["Roboto Mono", "monospace"]
+        "roboto-mono": ["Roboto Mono", "monospace"],
+        "sacramento": ['Sacramento', "cursive"],
+        "space-grotesk": ['Space Grotesk', "sans-serif"]
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

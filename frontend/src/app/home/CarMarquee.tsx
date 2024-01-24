@@ -8,7 +8,7 @@ const CarMarquee: React.FC = () => {
    const [cars, setCars] = useState<Model[]>([])
    useEffect(() => {
       const featuredCars = async () => {
-         const response = await axios.get("https://calm-gold-rabbit-gown.cyclic.app/user/featured-cars")
+         const response = await axios.get("http://localhost:4000/user/featured-cars")
          const result: Model[] = response.data.models
          setCars(result)
       }
@@ -29,7 +29,7 @@ const CarMarquee: React.FC = () => {
                         <p className="phone:text-xl md:text-2xl tracking-tight text-[#FAFAFA]">{car.brand}</p>
                         <p className="phone:text-xl md:text-2xl tracking-tight text-[#BBBBBB]">{car.name}</p>
                      </div>
-                     <hr className="border-t-[1px] border-[#AFAFAF]"/>
+                     <hr className="border-t-[1px] border-[#303030]"/>
                   </div>
                   <div className="flex flex-col gap-2 mt-2">
                      <div className="flex w-full justify-between">
@@ -39,7 +39,7 @@ const CarMarquee: React.FC = () => {
                            <img src='/icons/arrow-up-right.svg' alt='' className='w-4 h-4 my-auto'/>
                         </div>
                      </div>
-                     <hr className="border-t-[1px] border-[#AFAFAF]"/>
+                     <hr className="border-t-[1px] border-[#303030]"/>
                   </div>
                </Link>
             ))}

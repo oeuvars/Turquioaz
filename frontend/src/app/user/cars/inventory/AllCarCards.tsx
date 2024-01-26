@@ -136,9 +136,16 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
                                  ))}
                               </div>
                            ) : (
-                              <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={(event) => handleAddToWishlistClick(event, model.id)} className='absolute'>
-                                 <Star className="text-[#BBBBBB] animation hover:text-white w-6 h-6" />
-                              </motion.button>
+                              (registerCookie || loginCookie ? (
+                                 <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={(event) => handleAddToWishlistClick(event, model.id)} className='absolute'>
+                                    <Star className="text-[#BBBBBB] animation hover:text-white w-6 h-6" />
+                                 </motion.button>
+                              ) : (
+                                 <Link to ="/auth/kogin" className='absolute'>
+                                    <Star className="text-[#BBBBBB] animation hover:text-white w-6 h-6" />
+                                 </Link>
+                              ))
+
                            )}
                         </AnimatePresence>
                      </div>

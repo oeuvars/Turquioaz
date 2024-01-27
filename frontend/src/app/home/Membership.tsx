@@ -69,8 +69,8 @@ const Membership:React.FC = () => {
                   <div className='phone:w-[90%] md:w-full mx-auto grid phone:gap-[1vh] md:gap-[1vw] mb-10'>
                      {membership.features.map((feature, index) => (
                         <div key={index} className='flex gap-2'>
-                           <ArrowUpRight />
-                           <p className='tracking-tighter phone:text-base md:text-lg text-[#FAFAFA] bottom-0 leading-tight'>{feature}</p>
+                           <img src='/icons/check-circle.svg' alt='' className='w-6 h-6 mt-1'/>
+                           <p className='tracking-tighter phone:text-base md:text-lg text-[#FAFAFA] bottom-0'>{feature}</p>
                         </div>
                      ))}
                   </div>

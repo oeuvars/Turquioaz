@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Model } from "../user/cars/inventory/AllCarCards";
 import { Link } from "react-router-dom";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const CarMarquee: React.FC = () => {
    const [cars, setCars] = useState<Model[]>([])
@@ -23,7 +24,11 @@ const CarMarquee: React.FC = () => {
                      <img src='/icons/dot.svg' alt='' className='w-3 h-3 my-auto'/>
                      <p className="phone:text-xl md:text-2xl tracking-tight text-[#BBBBBB]">Available</p>
                   </div>
-                  <img src={car.imageSource} className="phone:w-[45vh] phone:h-[40vh] tablet:w-[35vw] tablet:h-[25vw] object-cover opacity-70"/>
+                  {car.imageSource ? (
+                     <img src={car.imageSource} className="phone:w-[45vh] phone:h-[40vh] tablet:w-[35vw] tablet:h-[25vw] object-cover opacity-70"/>
+                  ) : (
+                     <Skeleton className="phone:w-[45vh] phone:h-[40vh] tablet:w-[35vw] tablet:h-[25vw]" />
+                  )}
                   <div className="flex flex-col gap-2 mt-2">
                      <div className="flex w-full justify-between">
                         <p className="phone:text-xl md:text-2xl tracking-tight text-[#FAFAFA]">{car.brand}</p>

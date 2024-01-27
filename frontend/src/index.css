@@ -29,6 +29,12 @@ body {
   @apply phone:text-[3vh] xs:text-[3vh] s:text-[3vh] sm:text-[4vw] tablet:text-[4vw] md:text-[3.5vw] lg:text-[3.5vw]
 }
 
+.landing-text {
+  background-image: linear-gradient(93.4082deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .animation {
   @apply transition duration-500 ease-in-out
 }

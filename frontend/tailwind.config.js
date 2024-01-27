@@ -11,6 +11,14 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
+        shimmer: {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -19,6 +27,9 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+      },
+      animation: {
+        shimmer: "shimmer 2s linear infinite"
       },
       fontFamily: {
         "dm-mono": ['DM Mono', "monospace"],

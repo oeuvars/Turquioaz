@@ -47,7 +47,7 @@ const Membership:React.FC = () => {
 
   return (
       <div className=''>
-         <h1 className='phone:text-3xl lg:text-6xl font-medium text-center landing-text tracking-tighter py-2 my-10'>Membership that fits your niche.</h1>
+         <h1 className='phone:text-3xl lg:text-6xl font-medium text-center landing-text tracking-tighter py-2 phone:my-5 lg:my-10 phone:w-[80%] mx-auto text-wrap'>Membership that fits your niche.</h1>
          <div className='flex justify-center'>
             <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
                <span className="absolute inset-0 overflow-hidden rounded-full">
@@ -60,10 +60,10 @@ const Membership:React.FC = () => {
                <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
             </button>
          </div>
-         <div className='flex phone:gap-2 tablet:gap-5 w-[90%] mx-auto phone:my-5 tablet:my-10'>
+         <div className='phone:grid tablet:flex phone:gap-2 tablet:gap-5 phone:w-[95%] md:w-[90%] mx-auto phone:my-5 tablet:my-10'>
             {memberships.map((membership) => (
                <div className='flex flex-col rounded px-[2vw] phone:py-[2.5vh] md:py-[2.5vw] border border-dashed border-[#333333]'>
-                  <h2 className='text-6xl text-[#FAFAFA] font-sacramento text-center'>{membership.title}</h2>
+                  <h2 className='text-6xl font-sacramento text-center my-auto'><span className='gradient-text py-3 px-1'>{membership.title}</span></h2>
                   <h1 className='font-gambarino phone:text-4xl md:text-5xl text-center mt-[2.5vw] text-[#FAFAFA]'>{membership.price}<span className='text-2xl'>.99&nbsp;</span><span className='text-[#303030] text-base font-medium tracking-tighter'>/month</span></h1>
                   <hr className='border-[#333333] border-dashed border-t-[1px] phone:mt-[3vh] md:mt-[3vw] phone:mb-[3vh] md:mb-[2vw]'/>
                   <div className='phone:w-[90%] md:w-full mx-auto grid phone:gap-[1vh] md:gap-[1vw] mb-10'>

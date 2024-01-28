@@ -1,7 +1,6 @@
 import Navbar from '@/app/home/Navbar'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import { Model } from './AllCarCards';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { format } from "date-fns"
@@ -12,6 +11,7 @@ import Footer from '@/app/home/Footer';
 import { toast } from '@/components/ui/use-toast';
 import { ToastAction } from '@radix-ui/react-toast';
 import Stripe from "stripe";
+import { Model } from '@/types/Model';
 
 const RentACar: React.FC = () => {
 

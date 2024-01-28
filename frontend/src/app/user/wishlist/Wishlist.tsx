@@ -5,9 +5,9 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { jwtDecode } from 'jwt-decode'
 import React, { useEffect, useState } from 'react'
-import { Model } from '../cars/inventory/AllCarCards'
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion'
+import { Model } from '@/types/Model'
 
 interface WishlistedCar {
    id: number;

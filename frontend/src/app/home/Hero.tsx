@@ -5,14 +5,14 @@ import { ArrowUpRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
    const leftVariants = {
-      hidden: { opacity: 0, x: -200, y: 0 },
+      hidden: { opacity: 0, x: -100, y: 0 },
       enter: { opacity: 1, x: 0, y: 0 },
-      exit: { opacity: 1, x: -200, y: 0 },
+      exit: { opacity: 1, x: -100, y: 0 },
    };
    const rightVariants = {
-      hidden: { opacity: 0, x: 200, y: 0 },
+      hidden: { opacity: 0, x: 100, y: 0 },
       enter: { opacity: 1, x: 0, y: 0 },
-      exit: { opacity: 0, x: 200, y: 0 },
+      exit: { opacity: 0, x: 100, y: 0 },
    };
    return (
       <AnimatePresence>

@@ -1,27 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover"
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { Slider } from "@/components/ui/slider"
 import { X } from 'lucide-react'
+import { FiltersProps } from '@/types/Filters'
 
-interface DesktopFiltersProps {
-  setPage: React.Dispatch<React.SetStateAction<number>>;
-  selectedPrice: number[];
-  setSelectedPrice: React.Dispatch<React.SetStateAction<number[]>>;
-  selectedBrand: string | null;
-  setSelectedBrand: React.Dispatch<React.SetStateAction<string | null>>
-  selectedPower: number[];
-  setSelectedPower: React.Dispatch<React.SetStateAction<number[]>>
-  selectedAcceleration: number[] | undefined
-  setSelectedAcceleration: React.Dispatch<React.SetStateAction<number[] | undefined>>
-}
-
-const DesktopFilters: React.FC<DesktopFiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, setSelectedAcceleration }) => {
+const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, setSelectedAcceleration }) => {
   const [open, setOpen] = useState(false);
   const [allBrands, setAllBrands] = useState<string[]>();
   const [clicked, setClicked] = useState(false);

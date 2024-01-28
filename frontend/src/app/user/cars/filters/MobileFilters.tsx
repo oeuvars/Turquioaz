@@ -1,23 +1,12 @@
 import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTrigger } from "@/components/ui/drawer"
 import { Slider } from "@/components/ui/slider"
+import { FiltersProps } from "@/types/Filters";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { SlidersHorizontal } from "lucide-react"
 import { useEffect, useState } from "react";
 
-interface MobileFiltersProps {
-  setPage: React.Dispatch<React.SetStateAction<number>>;
-  selectedPrice: number[];
-  setSelectedPrice: React.Dispatch<React.SetStateAction<number[]>>;
-  selectedBrand: string | null;
-  setSelectedBrand: React.Dispatch<React.SetStateAction<string | null>>
-  selectedPower: number[];
-  setSelectedPower: React.Dispatch<React.SetStateAction<number[]>>
-  selectedAcceleration: number[] | undefined
-  setSelectedAcceleration: React.Dispatch<React.SetStateAction<number[] | undefined>>
-}
-
-const MobileFilters: React.FC<MobileFiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, setSelectedAcceleration }) => {
+const MobileFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSelectedBrand, selectedPrice, setSelectedPrice, selectedPower, setSelectedPower, setSelectedAcceleration }) => {
   const [clicked, setClicked] = useState(false);
   const [allBrands, setAllBrands] = useState<string[]>();
   const registerCookie = Cookies.get("RegisterCookie");

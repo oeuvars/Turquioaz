@@ -1,20 +1,29 @@
-import { ArrowUpRight } from 'lucide-react'
-import React from 'react'
-
+import React from 'react';
+import { motion } from 'framer-motion';
 const Feature: React.FC = () => {
-  return (
-    <div className='mx-auto phone:mt-[2.5vh] tablet:mt-[2vw] tablet:h-screen'>
-      <div className='tablet:absolute mx-[2vw]'>
-         <h1 className=' phone:text-3xl tablet:text-5xl md:text-7xl font-medium tracking-tighter mb-[1.5vw] landing-text'>Ride Comfort+</h1>
-         <p className='text-[#BBBBBB] phone:text-sm md:text-2xl mb-[1.5vw] tracking-tighter'>Book a private Chauffeur with any <br /> reservation — Members only.</p>
-         <div className="flex gap-1 text-[#999999] hover:text-white animation">
-            <p className="phone:text-sm md:text-xl font-medium">Book Resevation</p>
-            <ArrowUpRight className='my-auto w-6 h-6' />
-         </div>
+   return (
+      <div className="mx-auto phone:mt-[2.5vh] tablet:mt-[2vw] tablet:h-screen relative justify-center flex">
+         <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: 'easeInOut' }}
+            viewport={{ once: true }}
+            className="mx-[2vw] flex flex-col gap-3 justify-center items-center absolute"
+         >
+            <h1 className=" phone:text-3xl tablet:text-5xl md:text-7xl font-medium tracking-tighter landing-text">
+               Ride To The Future
+            </h1>
+            <p className="text-[#BBBBBB] phone:text-sm md:text-2xl tracking-tighter text-center">
+               Book a private Chauffeur with any <br /> reservation — Members only.
+            </p>
+         </motion.div>
+         <img
+            src="/images/future.webp"
+            alt=""
+            className="phone:h-auto md:max-h-screen w-full mx-auto object-cover opacity-50 tablet:absolute -z-10 blur-sm absolute"
+         />
       </div>
-      <img src='/images/home/comfort.webp' alt='' className='phone:h-auto md:max-h-screen w-full mx-auto object-cover opacity-70 tablet:absolute -z-10'/>
-    </div>
-  )
-}
+   );
+};
 
-export default Feature
+export default Feature;

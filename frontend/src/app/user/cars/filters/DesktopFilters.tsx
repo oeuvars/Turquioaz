@@ -20,7 +20,7 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
 
   useEffect(() => {
     const getResponse = async () => {
-      const response = await axios.get('https://calm-gold-rabbit-gown.cyclic.app/user/total-cars', {headers})
+      const response = await axios.get('http://localhost:4000/user/total-cars', {headers})
       const result: string[] = response.data.brands
       const uniqueBrands = [...new Set(result)];
       setAllBrands(uniqueBrands)

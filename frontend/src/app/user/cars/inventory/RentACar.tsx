@@ -31,7 +31,7 @@ const RentACar: React.FC = () => {
    useEffect(() => {
       const getCar = async () => {
          const response = await axios.get(
-            `https://calm-gold-rabbit-gown.cyclic.app/user/car/${id}`,
+            `http://localhost:4000/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -88,7 +88,7 @@ const RentACar: React.FC = () => {
             window.location.href = session.url;
          }
          const response = await axios.post(
-            `https://calm-gold-rabbit-gown.cyclic.app/user/rent-car/${id}`,
+            `http://localhost:4000/user/rent-car/${id}`,
             {
                startDate: startDate.toISOString().split('T')[0],
                endDate: endDate.toISOString().split('T')[0],

@@ -12,12 +12,12 @@ const sendMail = async (email, mailSubject, content) => {
             port: 465,
             secure: true,
             auth: {
-                user: "verify.rentride@gmail.com",
+                user: "turquioaze@gmail.com",
                 pass: process.env.password,
             },
         });
         const mailOptions = {
-            from: "Rent & Ride",
+            from: "Turquioaz",
             to: email,
             subject: mailSubject,
             html: content,

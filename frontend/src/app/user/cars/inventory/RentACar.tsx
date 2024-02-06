@@ -1,6 +1,6 @@
 import Navbar from '@/app/home/Navbar';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { format } from 'date-fns';

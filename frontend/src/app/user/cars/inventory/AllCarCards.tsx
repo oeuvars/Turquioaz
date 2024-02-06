@@ -57,7 +57,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
    useEffect(() => {
       const getCars = async () => {
          setLoading(true);
-         let apiUrl = `https://combative-ant-scarf.cyclic.app//user/inventory?page=${page}&pageSize=4`;
+         let apiUrl = `https://combative-ant-scarf.cyclic.app/user/inventory?page=${page}&pageSize=4`;
          if (selectedBrand) {
             apiUrl += `&brand=${selectedBrand}`;
          }

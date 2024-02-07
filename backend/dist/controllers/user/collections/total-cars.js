@@ -10,7 +10,6 @@ const totalCars = async (req, res) => {
         const totalModels = await db_config_1.default.model.count({ where: { published: true } });
         const allModels = await db_config_1.default.model.findMany({ where: { published: true } });
         const brands = allModels.map(model => model.brand);
-        console.log(brands);
         res.json({ total: totalModels, brands: brands });
     }
     catch (error) {

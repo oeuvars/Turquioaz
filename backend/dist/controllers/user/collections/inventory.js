@@ -5,30 +5,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.inventory = void 0;
 const db_config_1 = __importDefault(require("../../../db/db.config"));
+const shuffleCars_1 = require("../../../helpers/shuffleCars");
 const inventory = async (req, res) => {
     try {
         const { page, pageSize, brand, minprice, maxprice, minpower, maxpower, minacceleration, maxacceleration } = req.query;
         const skip = (parseInt(page) - 1) * parseInt(pageSize);
-        const whereCondition = { published: true };
+        const filters = { published: true };
         if (brand) {
-            whereCondition.brand = brand;
+            filters.brand = brand;
         }
         if (minprice && maxprice) {
-            whereCondition.price = { gte: parseInt(minprice), lte: parseInt(maxprice) };
+            filters.price = { gte: parseInt(minprice), lte: parseInt(maxprice) };
         }
         if (minpower && maxpower) {
-            whereCondition.power = { gte: parseInt(minpower), lte: parseInt(maxpower) };
+            filters.power = { gte: parseInt(minpower), lte: parseInt(maxpower) };
         }
         if (minacceleration && maxacceleration) {
-            whereCondition.acceleration = { gte: parseFloat(minacceleration), lte: parseFloat(maxacceleration) };
+            filters.acceleration = { gte: parseFloat(minacceleration), lte: parseFloat(maxacceleration) };
         }
-        const models = await db_config_1.default.model.findMany({
-            where: whereCondition,
+        const allModels = await db_config_1.default.model.findMany({
+            where: filters,
             skip: skip,
             take: parseInt(pageSize),
         });
-        const totalModels = await db_config_1.default.model.count({ where: whereCondition });
-        res.json({ models: models, totalModels: totalModels });
+        const totalModels = await db_config_1.default.model.count({ where: filters });
+        res.json({ models: (0, shuffleCars_1.shuffleCars)(allModels), totalModels: totalModels });
     }
     catch (error) {
         res.json({ models: null, totalModels: 0 });

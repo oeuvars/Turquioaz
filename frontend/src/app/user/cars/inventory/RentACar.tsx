@@ -35,7 +35,7 @@ const RentACar: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
+            `http://localhost:4000/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -92,7 +92,7 @@ const RentACar: React.FC = () => {
                window.location.href = session.url;
             }
             const response = await axios.post(
-               `https://combative-ant-scarf.cyclic.app//user/rent-car/${id}`,
+               `http://localhost:4000//user/rent-car/${id}`,
                {
                   startDate: startDate.toISOString().split('T')[0],
                   endDate: endDate.toISOString().split('T')[0],
@@ -119,7 +119,7 @@ const RentACar: React.FC = () => {
             {loading ? (
                <Skeleton className='h-[97vh]'/>
             ) : (
-               <img src={model?.imageSource} alt="" className="w-full mx-auto object-cover phone:h-[45vh] md:h-[95vh] -z-10 opacity-70 rounded-sm" />
+               <img src={model?.imageSource} alt="" className="w-full mx-auto object-cover phone:h-[45vh] md:h-[95vh] -z-10 opacity-70 rounded-sm" loading='lazy'/>
             )}
             <div className="flex flex-col justify-between">
                <>
@@ -131,7 +131,7 @@ const RentACar: React.FC = () => {
                   ) : (
                      <h1 className="text-[#333333] phone:text-2xl md:text-7xl tracking-tighter font-medium">
                         {model?.brand} <br />
-                        <span className="gradient-text phone:text-4xl md:text-7xl">{model?.name}</span>
+                        <span className="gradient-text phone:text-4xl md:text-6xl">{model?.name}</span>
                      </h1>
                   )}
                </>

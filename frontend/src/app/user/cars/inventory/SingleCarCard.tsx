@@ -23,7 +23,7 @@ const SingleCarCard: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
+            `http://localhost:4000/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -32,6 +32,14 @@ const SingleCarCard: React.FC = () => {
       };
       getCar();
    }, []);
+
+   const carDetails = [
+      {label: `${model?.brand}`, value: `${model?.name}`},
+      { label: "Power", value: `${model?.power} HP` },
+      { label: "0-60 MPH", value: `${model?.acceleration} Sec` },
+      { label: "Top Speed", value: `${model?.topSpeed} MPH` },
+      { label: "Price", value: `${model?.price}$` },
+    ];
 
    return (
       <>
@@ -72,75 +80,25 @@ const SingleCarCard: React.FC = () => {
                      src={model?.imageSource}
                      alt=""
                      className="w-full px-[1vw] mx-auto object-cover md:absolute phone:h-[45vh] md:h-[95vh] -z-10 opacity-70"
+                     loading='lazy'
                   />
                   <div className="flex phone:ml-0 md:ml-auto phone:w-full md:w-[35vw] phone:m-[1vh] md:m-[1vw]">
                      <div className="flex flex-col w-full justify-between gap-2 bg-black phone:p-[0vh] md:p-[1.5vw] phone:m-[1.5vh] md:m-[1vw] z-10 rounded-sm">
-                        {/* 1st row */}
-                        <div className="w-full justify-between">
-                           <div className="flex justify-between w-[] text-[#FAFAFA]">
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 {model?.brand}
-                              </p>
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 {model?.name}
-                              </p>
+                        {carDetails.map((detail, index) => (
+                           <div key={index} className="w-full justify-between">
+                              <div className="flex justify-between text-[#FAFAFA]">
+                                 <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
+                                    {detail.label}
+                                 </p>
+                                 <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
+                                    {detail.value}
+                                 </p>
+                              </div>
+                              <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]" />
                            </div>
-                           <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]" />
-                        </div>
-                        {/* 2nd row */}
-                        <div className="w-full justify-between">
-                           <div className="flex justify-between w-[] text-[#FAFAFA]">
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 Power
-                              </p>
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 {model?.power} HP
-                              </p>
-                           </div>
-                           <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]" />
-                        </div>
-                        {/* 3rd row */}
-                        <div className="w-full justify-between">
-                           <div className="flex justify-between w-full text-[#FAFAFA]">
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 0-60 MPH
-                              </p>
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 {model?.acceleration} Sec
-                              </p>
-                           </div>
-                           <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]" />
-                        </div>
-                        {/* 4th row */}
-                        <div className="w-full justify-between">
-                           <div className="flex justify-between w-full text-[#FAFAFA]">
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 Top Speed
-                              </p>
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 {model?.topSpeed} MPH
-                              </p>
-                           </div>
-                           <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]" />
-                        </div>
-                        {/* 5th row */}
-                        <div className="w-full justify-between">
-                           <div className="flex justify-between w-full text-[#FAFAFA]">
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 Price
-                              </p>
-                              <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                 {model?.price}$
-                              </p>
-                           </div>
-                           <hr className="border-t-[1px] border-[#303030] border-dashed mt-[1vw]" />
-                        </div>
-                        {/* 6th row */}
+                        ))}
                         <div className="w-full justify-between mt-[1vw]">
-                           <Link
-                              to={`/the-collection/all-cars/rent-car/${model?.id}`}
-                              className="flex justify-between w-full text-[#FAFAFA]"
-                           >
+                           <Link to={`/the-collection/all-cars/rent-car/${model?.id}`} className="flex justify-between w-full text-[#FAFAFA]">
                               <div className="phone:text-base tablet:text-lg md:text-xl tracking-tight gradient-text flex">
                                  <span className="phone:text-base tablet:text-lg md:text-xl tracking-tight my-auto">
                                     Rent Now

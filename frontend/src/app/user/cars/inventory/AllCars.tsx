@@ -43,8 +43,8 @@ const AllCars: React.FC = () => {
   const pageSize = 4;
   const totalPages = Math.ceil(totalModels / pageSize);
 
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
-  const [selectedPrice, setSelectedPrice] = useState<number[]>([100]);
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null)
+  const [selectedPrice, setSelectedPrice] = useState<number[]>([100])
   const [selectedPower, setSelectedPower] = useState<number[]>([100])
   const [selectedAcceleration, setSelectedAcceleration] = useState<number[]>()
 

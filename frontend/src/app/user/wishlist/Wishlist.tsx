@@ -49,7 +49,7 @@ const Wishlist: React.FC = () => {
    useEffect(() => {
       const wishlisted = async () => {
          const response = await axios.get(
-            'https://combative-ant-scarf.cyclic.app//user/wishlisted-cars',
+            'http://localhost:4000//user/wishlisted-cars',
             { headers },
          );
          const result = response.data.wishlistedCar;
@@ -62,7 +62,7 @@ const Wishlist: React.FC = () => {
       const fetchCarDetails = async () => {
          const carDetailsPromises = wishlistedCars.map(async (wishlistedCar: WishlistedCar) => {
             const carRes = await axios.get(
-               `https://combative-ant-scarf.cyclic.app//user/car/${wishlistedCar.carId}`,
+               `http://localhost:4000//user/car/${wishlistedCar.carId}`,
                { headers },
             );
             return { ...carRes.data, wishlistedCarId: wishlistedCar.id };
@@ -79,9 +79,9 @@ const Wishlist: React.FC = () => {
    //  const handleDragEnd = async (info: any, id: number) => {
    //    const dragDistance = info.point.x
    //    if (dragDistance < -DELETE_BTN_WIDTH) {
-   //       await axios.delete(`https://combative-ant-scarf.cyclic.app//user/delete-wishlisted-car/${id}`,{headers});
+   //       await axios.delete(`http://localhost:4000//user/delete-wishlisted-car/${id}`,{headers});
    //       const wishlisted = async () => {
-   //          const response = await axios.get("https://combative-ant-scarf.cyclic.app//user/wishlisted-cars", { headers });
+   //          const response = await axios.get("http://localhost:4000//user/wishlisted-cars", { headers });
    //          const result = response.data.wishlistedCar;
    //          setWishlistedCars(result);
    //        };
@@ -91,9 +91,9 @@ const Wishlist: React.FC = () => {
 
    //  const handleDeleteClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
    //    event.preventDefault();
-   //    await axios.delete(`https://combative-ant-scarf.cyclic.app//user/delete-wishlisted-car/${id}`,{headers});
+   //    await axios.delete(`http://localhost:4000//user/delete-wishlisted-car/${id}`,{headers});
    //    const wishlisted = async () => {
-   //       const response = await axios.get("https://combative-ant-scarf.cyclic.app//user/wishlisted-cars", { headers });
+   //       const response = await axios.get("http://localhost:4000//user/wishlisted-cars", { headers });
    //       const result = response.data.wishlistedCar;
    //       setWishlistedCars(result);
    //     };

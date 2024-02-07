@@ -12,7 +12,7 @@ const CarMarquee: React.FC = () => {
    useEffect(() => {
       const featuredCars = async () => {
          setLaoding(true)
-         const response = await axios.get("http://localhost:4000/user/featured-cars")
+         const response = await axios.get("https://combative-ant-scarf.cyclic.app/user/featured-cars")
          const result: Model[] = response.data.models
          setCars(result)
          setLaoding(false)

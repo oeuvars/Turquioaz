@@ -1,6 +1,6 @@
 import express from "express";
 import prisma from "../../../db/db.config";
-import { shuffleCars } from "helpers/shuffleCars";
+import { shuffleCars } from "../../../helpers/shuffleCars";
 
 let lastShuffleTime: Date | null = null;
 let shuffledModels: any[] | null = null;

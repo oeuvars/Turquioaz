@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.featuredCars = void 0;
 const db_config_1 = __importDefault(require("../../../db/db.config"));
-const shuffleCars_1 = require("helpers/shuffleCars");
+const shuffleCars_1 = require("../../../helpers/shuffleCars");
 let lastShuffleTime = null;
 let shuffledModels = null;
 const featuredCars = async (req, res) => {

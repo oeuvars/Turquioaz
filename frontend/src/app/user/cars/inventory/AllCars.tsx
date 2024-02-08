@@ -16,7 +16,7 @@ const AllCars: React.FC = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = searchParams.get('page');
-  const [page, setPage] = useState<number>(Number(currentPage));
+  const [page, setPage] = useState<number>(Number(currentPage) || 1);
 
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null)
   const [selectedPrice, setSelectedPrice] = useState<number[]>([100])

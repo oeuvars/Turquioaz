@@ -68,7 +68,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
          apiUrl += selectedPrice ? `&minprice=0&maxprice=${selectedPrice[0] * 6500}` : '';
          apiUrl += selectedPower ? `&minpower=0&maxpower=${selectedPower[0] * 10.5}` : '';
 
-         const response = await axios.get(apiUrl, { headers });
+         const response = await axios.get(apiUrl);
          const result: Model[] = response.data.models;
          const totalModels: number = response.data.totalModels;
 

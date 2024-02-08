@@ -6,13 +6,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Model } from "@/types/Model";
 import { ArrowUpRight } from "lucide-react";
 
-const CarMarquee: React.FC = () => {
+const Recommended: React.FC = () => {
    const [cars, setCars] = useState<Model[]>([])
    const [loading, setLaoding] = useState<boolean>(true)
    useEffect(() => {
       const featuredCars = async () => {
          setLaoding(true)
-         const response = await axios.get("https://combative-ant-scarf.cyclic.app/user/featured-cars")
+         const response = await axios.get("http://localhost:4000/user/featured-cars")
          const result: Model[] = response.data.models
          setCars(result)
          setLaoding(false)
@@ -76,4 +76,4 @@ const CarMarquee: React.FC = () => {
    )
 }
 
-export default CarMarquee;
+export default Recommended;

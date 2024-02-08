@@ -8,9 +8,9 @@ const Feature: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: 'easeInOut' }}
             viewport={{ once: true }}
-            className="mx-[2vw] flex flex-col gap-3 justify-center items-center absolute"
+            className="mx-[2vw] flex flex-col gap-3 justify-center items-center phone:h-[70vh] tablet:h-screen"
          >
-            <h1 className=" phone:text-3xl tablet:text-5xl md:text-7xl font-medium tracking-tighter landing-text">
+            <h1 className=" phone:text-4xl tablet:text-5xl md:text-8xl font-medium tracking-tighter landing-text text-center">
                Ride To The Future
             </h1>
             <p className="text-[#BBBBBB] phone:text-sm md:text-2xl tracking-tighter text-center">
@@ -18,9 +18,9 @@ const Feature: React.FC = () => {
             </p>
          </motion.div>
          <img
-            src="/images/future.webp"
+            src="/images/feature.jpg"
             alt=""
-            className="phone:h-auto md:max-h-screen w-full mx-auto object-cover opacity-50 tablet:absolute -z-10 blur-sm absolute"
+            className="phone:h-[70vh] tablet:h-screen w-full mx-auto object-cover opacity-60 absolute -z-10"
          />
       </div>
    );

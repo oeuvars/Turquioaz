@@ -8,8 +8,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { CalendarIcon } from 'lucide-react';
 import Footer from '@/app/home/Footer';
-import { toast } from '@/components/ui/use-toast';
-import { ToastAction } from '@radix-ui/react-toast';
+import toast, { Toaster } from "react-hot-toast";
 import Stripe from 'stripe';
 import { Model } from '@/types/Model';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -35,7 +34,7 @@ const RentACar: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
+            `http://localhost:4000/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -57,16 +56,29 @@ const RentACar: React.FC = () => {
       apiVersion: '2023-10-16',
    });
    const handleClick = async () => {
-      if (!loginCookie || !registerCookie) {
-         navigate('/auth/login')
+      if (days! <= 0) {
+         toast.error("How is it even possible?", {
+         style: {
+            border: "2px solid rgba(255, 255, 255, 0.1)",
+            padding: "10px",
+            color: "#fff",
+            backgroundColor: "rgba(0, 0, 0, 0.1)",
+            backdropFilter: "blur(10px)",
+            fontSize: '1rem',
+            minWidth: "10em",
+            letterSpacing: "-0.05em"
+         },
+         iconTheme: {
+            primary: "#000",
+            secondary: "#fff",
+         },
+         });
       }
       else {
-         if (days! <= 0) {
-            toast({
-               title: 'Really?',
-               action: <ToastAction altText="Try again">Try again</ToastAction>,
-            });
-         } else {
+         if (!loginCookie || !registerCookie) {
+            navigate('/auth/login')
+         }
+         else {
             const session = await stripe.checkout.sessions.create({
                payment_method_types: ['card'],
 
@@ -92,7 +104,7 @@ const RentACar: React.FC = () => {
                window.location.href = session.url;
             }
             const response = await axios.post(
-               `https://combative-ant-scarf.cyclic.app//user/rent-car/${id}`,
+               `http://localhost:4000//user/rent-car/${id}`,
                {
                   startDate: startDate.toISOString().split('T')[0],
                   endDate: endDate.toISOString().split('T')[0],
@@ -250,6 +262,9 @@ const RentACar: React.FC = () => {
                      </h1>
                   )}
                </div>
+               <Toaster
+                  position="top-right"
+               />
                <button
                   onClick={handleClick}
                   className="w-full bg-[#111111] hover:shadow-md animation phone:my-[2vh] py-3 rounded"

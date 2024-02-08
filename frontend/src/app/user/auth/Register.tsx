@@ -4,11 +4,9 @@ import { motion } from "framer-motion";
 import Navbar from '@/app/home/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Toaster } from "@/components/ui/toaster";
-import { useToast } from '@/components/ui/use-toast';
 import { Eye, EyeOff } from 'lucide-react';
-import { ToastAction } from '@/components/ui/toast';
 import Footer from '@/app/home/Footer';
+import toast, { Toaster } from "react-hot-toast";
 
 interface Result {
    success: boolean;
@@ -33,20 +31,30 @@ const Register = () => {
       enter: { opacity: 1, x: 0, y: 0},
       exit: {opacity: 0, x: 0, y: -200}
     }
-    const { toast } = useToast()
     const navigate = useNavigate()
     const handleAddUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (user.email && user.name && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("https://combative-ant-scarf.cyclic.app//user/register", user)
+         const response = await axios.post("http://localhost:4000//user/register", user)
          const result: Result = response.data
          if (result.success === false ) {
-            toast({
-               title: "Hi",
-               description: result.message,
-               action: <ToastAction altText="Try again">Try again</ToastAction>,
-             })
+            toast.error("Please try again", {
+               style: {
+                  border: "2px solid rgba(255, 255, 255, 0.1)",
+                  padding: "10px",
+                  color: "#fff",
+                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  backdropFilter: "blur(10px)",
+                  fontSize: '1rem',
+                  minWidth: "10em",
+                  letterSpacing: "-0.05em"
+               },
+               iconTheme: {
+                  primary: "#000",
+                  secondary: "#fff",
+               },
+            });
          } else {
             Cookies.set('RegisterCookie', result.token! , { expires: 7 })
             console.log(result.token)
@@ -111,7 +119,7 @@ const Register = () => {
                   </button>
                </motion.div>
             </div>
-            <Toaster />
+            <Toaster position="top-center"/>
             <motion.button
                variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.75 }}
                onClick={handleAddUser}

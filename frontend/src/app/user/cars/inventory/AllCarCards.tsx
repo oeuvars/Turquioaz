@@ -32,9 +32,9 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
       if (!loginCookie || !registerCookie) {
          navigate('/auth/login')
       } else {
-         await axios.post(`https://combative-ant-scarf.cyclic.app//user/add-to-wishlist/${id}`, {}, { headers });
+         await axios.post(`http://localhost:4000//user/add-to-wishlist/${id}`, {}, { headers });
          const wishlistedCar = async () => {
-            const res = await axios.get("https://combative-ant-scarf.cyclic.app//user/wishlisted-cars", { headers });
+            const res = await axios.get("http://localhost:4000//user/wishlisted-cars", { headers });
             setWishlistedModels(res.data.wishlistedCar);
          };
          wishlistedCar();
@@ -42,9 +42,9 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
    };
    const handleDeleteClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
       event.preventDefault();
-      await axios.delete(`https://combative-ant-scarf.cyclic.app//user/delete-wishlisted-car/${id}`, { headers });
+      await axios.delete(`http://localhost:4000//user/delete-wishlisted-car/${id}`, { headers });
       const wishlistedCar = async () => {
-         const res = await axios.get("https://combative-ant-scarf.cyclic.app//user/wishlisted-cars", { headers });
+         const res = await axios.get("http://localhost:4000//user/wishlisted-cars", { headers });
          setWishlistedModels(res.data.wishlistedCar);
       };
       wishlistedCar();
@@ -52,7 +52,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
 
    useEffect(() => {
       const wishlistedCar = async () => {
-         const res = await axios.get("https://combative-ant-scarf.cyclic.app//user/wishlisted-cars", { headers });
+         const res = await axios.get("http://localhost:4000//user/wishlisted-cars", { headers });
          setWishlistedModels(res.data.wishlistedCar);
       };
       wishlistedCar();
@@ -62,7 +62,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
       const getCars = async () => {
          setLoading(true);
 
-         let apiUrl = `https://combative-ant-scarf.cyclic.app/user/inventory?page=${page}&pageSize=4`;
+         let apiUrl = `http://localhost:4000/user/inventory?page=${page}&pageSize=4`;
          apiUrl += selectedBrand ? `&brand=${selectedBrand}` : '';
          apiUrl += selectedAcceleration ? `&minacceleration=${selectedAcceleration[0]}&maxacceleration=${selectedAcceleration[1]}` : '';
          apiUrl += selectedPrice ? `&minprice=0&maxprice=${selectedPrice[0] * 6500}` : '';
@@ -114,9 +114,9 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
             ) : (
                <>
                   {models.map((model: Model) => (
-                     <Link to={`/the-collection/all-cars/${model.id}`} className='relative rounded-sm overflow-hidden' key={model.id}>
-                        <img src={model.imageSource} alt="" className="h-full w-full mx-auto object-cover opacity-70 absolute -z-10" loading='lazy'/>
-                        <div className="mx-auto flex flex-col phone:h-[40vh] md:h-[40vw] justify-between phone:p-[1.5vh] md:p-[1vw]">
+                     <Link to={`/the-collection/all-cars/${model.id}`} className='relative rounded-sm overflow-hidden flex flex-col justify-between' key={model.id}>
+                        <img src={model.imageSource} alt="" className="h-full w-full mx-auto object-cover opacity-70 absolute -z-10 phone:h-[40vh] md:h-[40vw]" loading='lazy'/>
+                        <div className="mx-auto flex flex-col phone:h-[40vh] md:h-[40vw] justify-between phone:p-[1.5vh] md:p-[1vw] w-full">
                            <div className="flex justify-between">
                               <div className="z-20">
                                  <AnimatePresence>

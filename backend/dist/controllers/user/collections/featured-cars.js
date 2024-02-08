@@ -16,7 +16,7 @@ const featuredCars = async (req, res) => {
             shuffledModels = (0, shuffleCars_1.shuffleCars)(allModels);
             lastShuffleTime = currentTime;
         }
-        const selectedModels = shuffledModels.slice(0, 6);
+        const selectedModels = shuffledModels.slice(0, 7);
         res.json({ total: selectedModels.length, models: selectedModels });
     }
     catch (error) {

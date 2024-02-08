@@ -49,7 +49,7 @@ const Wishlist: React.FC = () => {
    useEffect(() => {
       const wishlisted = async () => {
          const response = await axios.get(
-            'https://combative-ant-scarf.cyclic.app//user/wishlisted-cars',
+            'http://localhost:4000//user/wishlisted-cars',
             { headers },
          );
          const result = response.data.wishlistedCar;
@@ -62,7 +62,7 @@ const Wishlist: React.FC = () => {
       const fetchCarDetails = async () => {
          const carDetailsPromises = wishlistedCars.map(async (wishlistedCar: WishlistedCar) => {
             const carRes = await axios.get(
-               `https://combative-ant-scarf.cyclic.app//user/car/${wishlistedCar.carId}`,
+               `http://localhost:4000//user/car/${wishlistedCar.carId}`,
                { headers },
             );
             return { ...carRes.data, wishlistedCarId: wishlistedCar.id };
@@ -79,9 +79,9 @@ const Wishlist: React.FC = () => {
    //  const handleDragEnd = async (info: any, id: number) => {
    //    const dragDistance = info.point.x
    //    if (dragDistance < -DELETE_BTN_WIDTH) {
-   //       await axios.delete(`https://combative-ant-scarf.cyclic.app//user/delete-wishlisted-car/${id}`,{headers});
+   //       await axios.delete(`http://localhost:4000//user/delete-wishlisted-car/${id}`,{headers});
    //       const wishlisted = async () => {
-   //          const response = await axios.get("https://combative-ant-scarf.cyclic.app//user/wishlisted-cars", { headers });
+   //          const response = await axios.get("http://localhost:4000//user/wishlisted-cars", { headers });
    //          const result = response.data.wishlistedCar;
    //          setWishlistedCars(result);
    //        };
@@ -91,9 +91,9 @@ const Wishlist: React.FC = () => {
 
    //  const handleDeleteClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
    //    event.preventDefault();
-   //    await axios.delete(`https://combative-ant-scarf.cyclic.app//user/delete-wishlisted-car/${id}`,{headers});
+   //    await axios.delete(`http://localhost:4000//user/delete-wishlisted-car/${id}`,{headers});
    //    const wishlisted = async () => {
-   //       const response = await axios.get("https://combative-ant-scarf.cyclic.app//user/wishlisted-cars", { headers });
+   //       const response = await axios.get("http://localhost:4000//user/wishlisted-cars", { headers });
    //       const result = response.data.wishlistedCar;
    //       setWishlistedCars(result);
    //     };
@@ -104,72 +104,81 @@ const Wishlist: React.FC = () => {
       <>
          <Navbar />
          <div className="min-h-screen w-[98%] mx-auto my-[3vw]">
-            <h1 className="phone:px-[1vh] tablet:px-[1vw] text-right text-[#333333] phone:text-[8vh] tablet:text-[15.5vw] font-medium tracking-tighter uppercase leading-none">
-               <span className="lowercase text-9xl">the</span> {userName} Wishlist
-            </h1>
-            <AnimatePresence>
-               <motion.div className="grid grid-cols-2 gap-5">
-                  {wishlistedModels.map((wishlistedModel: any) => (
-                     <Link
-                        to={`/the-collection/all-cars/${wishlistedModel.model.id}`}
-                        className="relative rounded-sm overflow-hidden"
-                     >
-                        <img
-                           src={wishlistedModel.model.imageSource}
-                           alt=""
-                           className="h-full w-full mx-auto object-cover opacity-70 absolute -z-10"
-                        />
-                        <div className="mx-auto flex flex-col phone:h-[40vh] md:h-[40vw] justify-between phone:p-[1.5vh] md:p-[1vw]">
-                           <div className="flex justify-between">
-                              <div className="flex gap-3">
-                                 <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight text-[#FAFAFA]">
-                                    {wishlistedModel.model.brand}
-                                 </p>
-                                 <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight text-[#BBBBBB]">
-                                    {wishlistedModel.model.name}
-                                 </p>
-                              </div>
-                           </div>
-                           <div className="flex flex-col justify-between gap-2">
-                              <div className="w-full justify-between">
-                                 <div className="flex justify-between w-full text-[#FAFAFA]">
-                                    <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                       Power
-                                    </p>
-                                    <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
-                                       {wishlistedModel.model.power} HP
-                                    </p>
+            { !loginCookie || !registerCookie ? (
+               <div className='flex flex-col justify-center items-center mt-40 gap-10'>
+                  <p className='font-medium text-[#FAFAFA] tracking-tighter leading-none text-5xl'>To access your wishlist, please log in.</p>
+                  <Link to='/auth/login' className='px-16 py-2 rounded bg-[#FAFAFA]/90 text-[#1F1F1F] font-semibold tracking-tighter'>Log In</Link>
+               </div>
+            ) : (
+               <>
+                  <h1 className="phone:px-[1vh] tablet:px-[1vw] text-right text-[#333333] phone:text-[8vh] tablet:text-[15.5vw] font-medium tracking-tighter uppercase leading-none">
+                     <span className="lowercase text-9xl">the</span> {userName} Wishlist
+                  </h1>
+                  <AnimatePresence>
+                     <motion.div className="grid grid-cols-2 gap-5">
+                        {wishlistedModels.map((wishlistedModel: any) => (
+                           <Link
+                              to={`/the-collection/all-cars/${wishlistedModel.model.id}`}
+                              className="relative rounded-sm overflow-hidden"
+                           >
+                              <img
+                                 src={wishlistedModel.model.imageSource}
+                                 alt=""
+                                 className="h-full w-full mx-auto object-cover opacity-70 absolute -z-10"
+                              />
+                              <div className="mx-auto flex flex-col phone:h-[40vh] md:h-[40vw] justify-between phone:p-[1.5vh] md:p-[1vw]">
+                                 <div className="flex justify-between">
+                                    <div className="flex gap-3">
+                                       <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight text-[#FAFAFA]">
+                                          {wishlistedModel.model.brand}
+                                       </p>
+                                       <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight text-[#BBBBBB]">
+                                          {wishlistedModel.model.name}
+                                       </p>
+                                    </div>
                                  </div>
-                                 <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]" />
-                              </div>
-                              <div className="w-full justify-between">
-                                 <div className="flex justify-between w-full text-[#FAFAFA]">
-                                    <p className="phone:text-base tablet:text-lg md:text-xl">
-                                       0-60 MPH
-                                    </p>
-                                    <p className="phone:text-base tablet:text-lg md:text-xl">
-                                       {wishlistedModel.model.acceleration} Sec
-                                    </p>
+                                 <div className="flex flex-col justify-between gap-2">
+                                    <div className="w-full justify-between">
+                                       <div className="flex justify-between w-full text-[#FAFAFA]">
+                                          <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
+                                             Power
+                                          </p>
+                                          <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight">
+                                             {wishlistedModel.model.power} HP
+                                          </p>
+                                       </div>
+                                       <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]" />
+                                    </div>
+                                    <div className="w-full justify-between">
+                                       <div className="flex justify-between w-full text-[#FAFAFA]">
+                                          <p className="phone:text-base tablet:text-lg md:text-xl">
+                                             0-60 MPH
+                                          </p>
+                                          <p className="phone:text-base tablet:text-lg md:text-xl">
+                                             {wishlistedModel.model.acceleration} Sec
+                                          </p>
+                                       </div>
+                                       <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]" />
+                                    </div>
+                                    <div className="w-full justify-between">
+                                       <div className="flex justify-between w-full text-[#FAFAFA]">
+                                          <p className="phone:text-base tablet:text-lg md:text-xl">
+                                             Top Speed
+                                          </p>
+                                          <p className="phone:text-base tablet:text-lg md:text-xl">
+                                             {wishlistedModel.model.topSpeed} MPH
+                                          </p>
+                                       </div>
+                                       <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]" />
+                                    </div>
                                  </div>
-                                 <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]" />
                               </div>
-                              <div className="w-full justify-between">
-                                 <div className="flex justify-between w-full text-[#FAFAFA]">
-                                    <p className="phone:text-base tablet:text-lg md:text-xl">
-                                       Top Speed
-                                    </p>
-                                    <p className="phone:text-base tablet:text-lg md:text-xl">
-                                       {wishlistedModel.model.topSpeed} MPH
-                                    </p>
-                                 </div>
-                                 <hr className="border-t-[1px] border-[#AFAFAF] mt-[1vw]" />
-                              </div>
-                           </div>
-                        </div>
-                     </Link>
-                  ))}
-               </motion.div>
-            </AnimatePresence>
+                           </Link>
+                        ))}
+                     </motion.div>
+                  </AnimatePresence>
+               </>
+            )}
          </div>
          <Footer />
       </>

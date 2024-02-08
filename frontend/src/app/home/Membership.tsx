@@ -89,7 +89,7 @@ const Membership: React.FC = () => {
                      transition={{ type: 'spring', stiffness: 50 }}
                      className="flex flex-col rounded px-[2vw] phone:py-[2.5vh] md:py-[2.5vw] border border-dashed border-[#333333]"
                   >
-                     <div className="text-6xl font-sacramento text-center py-3">
+                     <div className="text-6xl font-space-grotesk tracking-tighter font-medium text-center py-3">
                         <span className="gradient-text px-1">{membership.title}</span>
                      </div>
                      <div className="font-gambarino phone:text-4xl md:text-5xl text-center mt-[2.5vw] text-[#FAFAFA]">

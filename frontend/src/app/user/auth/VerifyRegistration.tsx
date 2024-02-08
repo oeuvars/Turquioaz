@@ -6,9 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
 import Navbar from "@/app/home/Navbar";
 import Footer from "@/app/home/Footer";
-import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
-import { Toaster } from "@/components/ui/toaster";
+import toast, { Toaster } from "react-hot-toast";
 
 interface Result {
   success: boolean;
@@ -55,23 +53,33 @@ const VerifyRegistation: React.FC = () => {
       otpBoxReference.current[index + 1]!.focus();
     }
   }
-  const { toast } = useToast()
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
     const oneTimePass = otp.join("")
     try {
-      const response = await axios.post("https://combative-ant-scarf.cyclic.app//user/verify-registration", {email, oneTimePass})
+      const response = await axios.post("http://localhost:4000//user/verify-registration", {email, oneTimePass})
       const result: Result = response.data
        if (result.success === true) {
         navigate(-2);
        } else {
-         toast({
-          title: "Hi",
-          description: result.message,
-          action: <ToastAction altText="Try again">Try again</ToastAction>,
-        })
+        toast.error("Please enter the correct OTP", {
+          style: {
+             border: "2px solid rgba(255, 255, 255, 0.1)",
+             padding: "10px",
+             color: "#fff",
+             backgroundColor: "rgba(0, 0, 0, 0.1)",
+             backdropFilter: "blur(10px)",
+             fontSize: '1rem',
+             minWidth: "10em",
+             letterSpacing: "-0.05em"
+          },
+          iconTheme: {
+             primary: "#000",
+             secondary: "#fff",
+          },
+       });
        }
     } catch (err) {
     } finally {

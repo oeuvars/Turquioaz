@@ -25,11 +25,11 @@ const Discover: React.FC = () => {
                   alt=""
                   className="phone:w-12 phone:h-12 lg:w-20 lg:h-20"
                />
-               <h1 className="landing-text font-semibold phone:text-3xl lg:text-5xl tracking-tighter my-auto">
+               <h1 className="landing-text font-semibold phone:text-4xl lg:text-5xl tracking-tighter my-auto">
                   Turquioaz
                </h1>
             </div>
-            <h1 className="phone:text-4xl lg:text-6xl tracking-tighter font-medium text-center">
+            <h1 className="phone:text-2xl lg:text-6xl tracking-tighter font-medium text-center">
                Open your doors to the <br /> world of exotic cars.
             </h1>
             <button className="relative inline-flex mt-5 overflow-hidden rounded p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">

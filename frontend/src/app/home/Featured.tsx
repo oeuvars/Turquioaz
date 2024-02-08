@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const FeaturedCar: React.FC = () => {
+const Featured: React.FC = () => {
    return (
       <motion.div
          className="my-[2.5vw] overflow-hidden"
@@ -13,9 +13,10 @@ const FeaturedCar: React.FC = () => {
       >
          <Link to="/the-collection/all-cars/9">
             <img
-               src="/images/home/g63suv.webp"
+               src="/images/g63suv.webp"
                alt=""
                className="phone:h-[40vh] tablet:h-screen w-full px-[1vw] mx-auto object-cover opacity-70 absolute -z-10"
+               loading='lazy'
             />
             <div className="w-[95%] mx-auto flex flex-col phone:h-[40vh] tablet:h-screen justify-between py-[1vw]">
                <div className="flex justify-between">
@@ -94,4 +95,4 @@ const FeaturedCar: React.FC = () => {
    );
 };
 
-export default FeaturedCar;
+export default Featured;

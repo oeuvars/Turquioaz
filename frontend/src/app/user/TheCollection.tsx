@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../home/Navbar'
-import CarMarquee from '../home/CarMarquee'
+import CarMarquee from '../home/Recommended'
 import { ArrowUpRight } from 'lucide-react'
 import Footer from '../home/Footer'
 import { Link } from 'react-router-dom'

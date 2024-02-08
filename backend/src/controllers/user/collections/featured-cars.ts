@@ -13,7 +13,7 @@ export const featuredCars = async (req: express.Request, res: express.Response) 
       shuffledModels = shuffleCars(allModels);
       lastShuffleTime = currentTime;
     }
-    const selectedModels = shuffledModels.slice(0, 6);
+    const selectedModels = shuffledModels.slice(0, 7);
     res.json({ total: selectedModels.length, models: selectedModels });
   } catch (error) {
     res.json({ total: null, models: null });

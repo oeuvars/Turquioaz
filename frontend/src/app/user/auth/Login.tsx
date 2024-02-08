@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import { motion } from "framer-motion";
 import { Link, useNavigate } from 'react-router-dom';
-import { Toaster } from "@/components/ui/toaster";
-import { useToast } from "@/components/ui/use-toast"
 import axios from 'axios';
-import { ToastAction } from '@/components/ui/toast';
+import toast, { Toaster } from "react-hot-toast";
 import Navbar from '@/app/home/Navbar';
 import { Eye, EyeOff } from 'lucide-react';
 import Footer from '@/app/home/Footer';
@@ -33,13 +31,12 @@ const Login = () => {
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     }
-    const { toast } = useToast()
     const navigate = useNavigate()
     const handleAddUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (user.email && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("https://combative-ant-scarf.cyclic.app//user/login", user);
+         const response = await axios.post("http://localhost:4000//user/login", user);
          const result: Result = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })
@@ -47,17 +44,39 @@ const Login = () => {
          }
          else {
             if (result.exists === true) {
-               toast({
-                  title: "Hi",
-                  description: result.message,
-                  action: <ToastAction altText="Try again">Try again</ToastAction>,
-               })
+               toast.error("Incorrect Password", {
+                  style: {
+                     border: "2px solid rgba(255, 255, 255, 0.1)",
+                     padding: "10px",
+                     color: "#fff",
+                     backgroundColor: "rgba(0, 0, 0, 0.1)",
+                     backdropFilter: "blur(10px)",
+                     fontSize: '1rem',
+                     minWidth: "10em",
+                     letterSpacing: "-0.05em"
+                  },
+                  iconTheme: {
+                     primary: "#000",
+                     secondary: "#fff",
+                  },
+               });
             } else {
-               toast({
-                  title: "Hi",
-                  description: result.message,
-                  action: <ToastAction altText="Try again">Try again</ToastAction>,
-               })
+               toast.error("User does not exist", {
+                  style: {
+                     border: "2px solid rgba(255, 255, 255, 0.1)",
+                     padding: "10px",
+                     color: "#fff",
+                     backgroundColor: "rgba(0, 0, 0, 0.1)",
+                     backdropFilter: "blur(10px)",
+                     fontSize: '1rem',
+                     minWidth: "10em",
+                     letterSpacing: "-0.05em"
+                  },
+                  iconTheme: {
+                     primary: "#000",
+                     secondary: "#fff",
+                  },
+               });
             }
          }
       }
@@ -107,7 +126,7 @@ const Login = () => {
                   </button>
                </motion.div>
             </div>
-            <Toaster/>
+            <Toaster position="top-center"/>
             <motion.button
                variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.6 }}
                onClick={handleAddUser}

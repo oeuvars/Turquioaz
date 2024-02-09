@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
                exit={rightVariants.exit}
                className="font-medium phone:text-center tablet:text-right md:mr-[10vw] mt-2"
             >
-               <span className="phone:text-[12vh] md:text-[17.5vw] phone:leading-[9vh] md:leading-[14vw] gradient-text tracking-tighter px-2">
+               <span className="phone:text-[12vh] phone:mx-auto md:text-[17.5vw] phone:leading-[9vh] md:leading-[14vw] gradient-text tracking-tighter px-2">
                   LUXURY
                </span>
             </motion.h1>

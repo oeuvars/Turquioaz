@@ -13,7 +13,7 @@ const AllCars: React.FC = () => {
 
   const pageSize = 4;
   const totalPages = Math.ceil(totalModels / pageSize);
-
+0
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = searchParams.get('page');
   const [page, setPage] = useState<number>(Number(currentPage) || 1);

@@ -1,7 +1,7 @@
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation, MotionConfig } from 'framer-motion';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import {  Cog, Flame, Github, Heart, Home, Library, Linkedin, Menu, Phone, X } from 'lucide-react'
+import {  Cog, Flame, Github, Heart, Home, Library, Linkedin, Phone, X } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -17,6 +17,7 @@ const MobileNavbar: React.FC = () => {
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const sidebarControls = useAnimation();
   const [userEmail, setUserEmail] = useState<string>();
+  const [active, setActive] = useState(false);
 
   const navigate = useNavigate()
 
@@ -47,6 +48,44 @@ const MobileNavbar: React.FC = () => {
       Cookies.remove("RegisterCookie");
       navigate('/auth/login')
    }
+
+   const VARIANTS = {
+      top: {
+        open: {
+            rotate: ['0deg', '0deg', '45deg'],
+            top: ['35%', '50%', '50%'],
+        },
+
+        closed: {
+            rotate: ['45deg', '0deg', '0deg'],
+            top: ['50%', '50%', '35%'],
+        },
+      },
+
+      middle: {
+        open: {
+            rotate: ['0deg', '0deg', '-45deg'],
+        },
+
+        closed: {
+            rotate: ['-45deg', '0deg', '0deg'],
+        },
+      },
+
+      bottom: {
+        open: {
+            rotate: ['0deg', '0deg', '45deg'],
+            bottom: ['35%', '50%', '50%'],
+            left: '50%',
+        },
+
+        closed: {
+            rotate: ['45deg', '0deg', '0deg'],
+            bottom: ['50%', '50%', '35%'],
+            left: 'calc(50% + 10px)',
+        },
+      },
+  };
   return (
     <div>
       <p className="font-dm-mono text-center uppercase font-medium my-[1vh]"><span className="text-[#5E5E5E]">Built for supercars</span> - Turquioaz</p>
@@ -55,26 +94,33 @@ const MobileNavbar: React.FC = () => {
          <Link to="/">
             <img src="/icons/turquioaz.svg" alt="turquioaz" className="w-12 my-auto"/>
          </Link>
-         <button onClick={toggleMenu}>
-            <Menu className='w-8 h-8 text-[#303030]'/>
-         </button>
+         <MotionConfig transition={{ duration: 0.5, ease: 'easeInOut'}}>
+            <motion.button initial={false} animate={active ? 'open' : 'closed'} onClick={() => { setActive(prevValue => !prevValue); toggleMenu() }} className="relative h-8 w-8 rounded-full bg-white/0 transition-colors hover:bg-white/20 z-50 my-auto">
+                <motion.span
+                  variants={VARIANTS.top}
+                  className="absolute h-[0.2rem] w-8 bg-[#333333] rounded-3xl"
+                  style={{ y: '-50%', left: '50%', x: '-50%', top: '35%' }}
+                />
+                <motion.span
+                  variants={VARIANTS.middle}
+                  className="absolute h-[0.2rem] w-8 bg-[#333333] rounded-3xl"
+                  style={{ left: '50%', x: '-50%', top: '50%', y: '-50%' }}
+                />
+                <motion.span
+                  variants={VARIANTS.bottom}
+                  className="absolute h-[0.2rem] w-3 bg-[#333333] rounded-3xl"
+                  style={{x: '-50%', y: '50%', bottom: '35%', left: 'calc(50% + 10px)'}}
+                />
+            </motion.button>
+         </MotionConfig>
          <AnimatePresence>
           {isMenuToggled && (
             <motion.div
-            initial={{ x: "100%" }}
-            animate={isMenuToggled ? { x: 0 } : { x: "100%" }}
-            exit={{ x: "100%", transition: { type: "tween", stiffness: 150, damping: 30 } }}
-            className="fixed z-50 right-0 bottom-0 h-full bg-[#101010]/70 w-[100%] backdrop-blur-md">
-              <button
-                onClick={toggleMenu}
-                className="flex justify-start ml-7 mt-7 transition duration-500 ease-in-out"
-              >
-                <X className="h-8 w-8 text-[#303030]" />
-              </button>
-              <div
-                className="flex flex-col gap-5 mx-auto text-white px-8 py-10"
-                onClick={toggleMenu}
-              >
+            initial={{ x: "100%", opacity: 0 }}
+            animate={isMenuToggled ? { x: 0, opacity: 1, transition: { ease: 'easeInOut' } } : { x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
+            exit={{ x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
+            className="fixed flex flex-col z-40 right-0 bottom-0 h-screen bg-[#101010]/70 w-[100%] backdrop-blur-md">
+              <div className="flex flex-col gap-5 mx-auto text-white px-8 mt-16 w-full ml-auto">
                 <div className='flex gap-3'>
                   <Home className='w-5 h-5 my-auto'/>
                   <Link to="/" className="my-auto text-[#FAFAFA] tracking-tighter text-lg">Home</Link>
@@ -100,7 +146,7 @@ const MobileNavbar: React.FC = () => {
                   <Link to="/#contact" className="my-auto text-[#FAFAFA] tracking-tighter text-lg">Contact Us</Link>
                 </div>
               </div>
-              <div className="p-5 h-full mx-auto mt-20 justify-between">
+              <div className="p-5 mx-auto justify-between mt-auto w-full mb-10">
                 {registerCookie || loginCookie ? (
                   <div className='flex flex-col w-full gap-3 my-5'>
                     <p className='text-[#444444] tracking-tighter text-lg'>hey, <br /><span className='text-3xl text-[#FAFAFA]'>{userEmail}</span></p>

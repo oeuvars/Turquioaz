@@ -23,7 +23,7 @@ const SingleCarCard: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
+            `http://localhost:4000/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -79,7 +79,7 @@ const SingleCarCard: React.FC = () => {
                   <img
                      src={model?.imageSource}
                      alt=""
-                     className="w-full px-[1vw] mx-auto object-cover md:absolute phone:h-[45vh] md:h-[95vh] -z-10 opacity-70"
+                     className="w-full px-[1vw] mx-auto object-cover md:absolute phone:h-[65vh] md:h-[95vh] -z-10 opacity-70"
                      loading='lazy'
                   />
                   <div className="flex phone:ml-0 md:ml-auto phone:w-full md:w-[35vw] phone:m-[1vh] md:m-[1vw]">

@@ -82,7 +82,7 @@ const Membership: React.FC = () => {
             </button>
          </div>
          <AnimatePresence>
-            <motion.div className="phone:grid tablet:flex phone:gap-2 tablet:gap-5 phone:w-[95%] md:w-[90%] mx-auto phone:my-5 tablet:my-10">
+            <motion.div className="grid tablet:grid-cols-3 phone:gap-2 tablet:gap-5 phone:w-[95%] md:w-[90%] mx-auto phone:my-5 tablet:my-10">
                {memberships.map(membership => (
                   <motion.div
                      initial={membership.varients.hidden}

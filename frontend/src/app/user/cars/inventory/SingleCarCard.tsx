@@ -23,7 +23,7 @@ const SingleCarCard: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `http://localhost:4000/user/car/${id}`,
+            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;

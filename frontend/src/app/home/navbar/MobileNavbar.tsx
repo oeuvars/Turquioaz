@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useAnimation, MotionConfig } from 'framer-motion';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import {  Cog, Flame, Github, Heart, Home, Library, Linkedin, Phone, X } from 'lucide-react'
+import {  Cog, Flame, Github, Heart, Home, Library, Linkedin, Phone } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 

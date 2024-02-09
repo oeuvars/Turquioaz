@@ -95,32 +95,34 @@ const MobileNavbar: React.FC = () => {
             <img src="/icons/turquioaz.svg" alt="turquioaz" className="w-12 my-auto"/>
          </Link>
          <MotionConfig transition={{ duration: 0.5, ease: 'easeInOut'}}>
-            <motion.button initial={false} animate={active ? 'open' : 'closed'} onClick={() => { setActive(prevValue => !prevValue); toggleMenu() }} className="relative h-8 w-8 rounded-full bg-white/0 transition-colors hover:bg-white/20 z-50 my-auto">
-                <motion.span
-                  variants={VARIANTS.top}
-                  className="absolute h-[0.2rem] w-8 bg-[#333333] rounded-3xl"
-                  style={{ y: '-50%', left: '50%', x: '-50%', top: '35%' }}
-                />
-                <motion.span
-                  variants={VARIANTS.middle}
-                  className="absolute h-[0.2rem] w-8 bg-[#333333] rounded-3xl"
-                  style={{ left: '50%', x: '-50%', top: '50%', y: '-50%' }}
-                />
-                <motion.span
-                  variants={VARIANTS.bottom}
-                  className="absolute h-[0.2rem] w-3 bg-[#333333] rounded-3xl"
-                  style={{x: '-50%', y: '50%', bottom: '35%', left: 'calc(50% + 10px)'}}
-                />
-            </motion.button>
-         </MotionConfig>
-         <AnimatePresence>
+            <motion.button initial={false} animate={active ? 'open' : 'closed'} onClick={() => { setActive(prevValue => !prevValue); toggleMenu() }} className="relative h-8 w-8 rounded-full bg-white/0 transition-colors z-50 my-auto">
+              <motion.span
+                variants={VARIANTS.top}
+                className="absolute h-[0.22rem] w-7 bg-[#333333] rounded-3xl"
+                style={{ y: '-50%', left: '50%', x: '-50%', top: '35%' }}
+              />
+              <motion.span
+                variants={VARIANTS.middle}
+                className="absolute h-[0.22rem] w-7 bg-[#333333] rounded-3xl"
+                style={{ left: '50%', x: '-50%', top: '52%', y: '-50%' }}
+              />
+              {active ? null : (
+              <motion.span
+                variants={VARIANTS.bottom}
+                className="absolute h-[0.22rem] w-4 bg-[#333333] rounded-3xl"
+                style={{ x: '-80%', y: '50%', top: '59%', bottom: '35%', left: 'calc(50% + 10px)' }}
+              />
+            )}
+          </motion.button>
+        </MotionConfig>
+        <AnimatePresence>
           {isMenuToggled && (
             <motion.div
             initial={{ x: "100%", opacity: 0 }}
             animate={isMenuToggled ? { x: 0, opacity: 1, transition: { ease: 'easeInOut' } } : { x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
             exit={{ x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
             className="fixed flex flex-col z-40 right-0 bottom-0 h-screen bg-[#101010]/70 w-[100%] backdrop-blur-md">
-              <div className="flex flex-col gap-5 mx-auto text-white px-8 mt-16 w-full ml-auto">
+              <div className="flex flex-col gap-5 mx-auto text-white px-8 mt-28 w-full ml-auto">
                 <div className='flex gap-3'>
                   <Home className='w-5 h-5 my-auto'/>
                   <Link to="/" className="my-auto text-[#FAFAFA] tracking-tighter text-lg">Home</Link>

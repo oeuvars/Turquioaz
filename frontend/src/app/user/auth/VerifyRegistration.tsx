@@ -59,7 +59,7 @@ const VerifyRegistation: React.FC = () => {
     setLoading(true);
     const oneTimePass = otp.join("")
     try {
-      const response = await axios.post("https://combative-ant-scarf.cyclic.app/user/verify-registration", {email, oneTimePass})
+      const response = await axios.post("http://localhost:4000/user/verify-registration", {email, oneTimePass})
       const result: Result = response.data
        if (result.success === true) {
         navigate(-2);

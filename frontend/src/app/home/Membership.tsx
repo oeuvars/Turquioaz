@@ -20,48 +20,49 @@ const Membership: React.FC = () => {
    };
    const memberships = [
       {
-         price: 1,
-         title: 'Clay',
-         features: [
-            'Enjoy the journey planning feature to organize your trips effortlessly.',
-            'Maintain control over your data with our robust privacy settings.',
-            'Get a glimpse of your travel insights, including basic spending and time-saving data.',
-            'Integrate data from select apps to streamline your travel information.',
-            'Access an online copy of your app with all your travel data.',
-         ],
-         buttonLabel: 'Start Clay',
-         varients: leftVariants,
+        price: 1,
+        title: 'Clay',
+        features: [
+          'Effortlessly plan road trips in high-quality exotic, luxury, and sports cars.',
+          'Maintain control over your exclusive car rental data with robust privacy settings.',
+          'Get insights into your premium car rental activities, including basic spending and time-saving data.',
+          'Integrate data from select luxury car rental apps to streamline your information.',
+          'Access an online copy of your app with all your exclusive car rental data.',
+        ],
+        buttonLabel: 'Start Clay',
+        varients: leftVariants,
       },
       {
-         price: 12,
-         title: 'Steel',
-         features: [
-            'Create detailed itineraries and customize every aspect of your journey.',
-            'Maximize your data security with enhanced privacy settings.',
-            'Dive deep into your travel history, from detailed spending and savings breakdowns to time saved.',
-            'Integrate data from a wide array of apps and automate your experience.',
-            'Access an offline copy of your app with all your travel data.',
-            'Enjoy priority assistance from our dedicated support team.',
-         ],
-         buttonLabel: 'Start Steel',
-         varients: centerVariants,
+        price: 12,
+        title: 'Steel',
+        features: [
+          'Create detailed itineraries for high-quality exotic, luxury, and sports car rentals.',
+          'Maximize your data security with enhanced privacy settings for premium car rental activities.',
+          'Dive deep into your premium car rental history, from detailed spending and savings breakdowns to time saved.',
+          'Integrate data from a wide array of luxury car rental apps and automate your premium car rental experience.',
+          'Access an offline copy of your app with all your premium car rental data.',
+          'Enjoy priority assistance from our dedicated support team for luxury car rental queries.',
+        ],
+        buttonLabel: 'Start Steel',
+        varients: centerVariants,
       },
       {
-         price: 29,
-         title: 'Onyx',
-         features: [
-            'Highly customizable itineraries tailored to your preferences and desires.',
-            'Ensure the utmost security for your personal data with advanced privacy settings.',
-            'In-depth insights, from detailed spending and savings data to time-saving statistics.',
-            'Integrate data from a wide array of apps and automate your experience.',
-            'Access an offline copy of your app with all your travel data.',
-            'Receive personalized assistance and recommendations from a dedicated travel expert.',
-            'Unlock exclusive offers, perks, and discounts from our travel partners.',
-         ],
-         buttonLabel: 'Start Onyx',
-         varients: rightVariants,
+        price: 29,
+        title: 'Onyx',
+        features: [
+          'Enjoy highly customizable itineraries for high-quality exotic, luxury, and sports car rentals tailored to your preferences and desires.',
+          'Ensure the utmost security for your personal premium car rental data with advanced privacy settings.',
+          'Gain in-depth insights into your luxury car rental activities, from detailed spending and savings data to time-saving statistics.',
+          'Integrate data from a wide array of premium car rental apps and automate your luxury car rental experience.',
+          'Access an offline copy of your app with all your premium car rental data.',
+          'Receive personalized assistance and recommendations from a dedicated luxury car rental expert.',
+          'Unlock exclusive offers, perks, and discounts from our premium car rental partners.',
+        ],
+        buttonLabel: 'Start Onyx',
+        varients: rightVariants,
       },
-   ];
+    ];
+
 
    return (
       <div className="overflow-hidden">
@@ -110,7 +111,7 @@ const Membership: React.FC = () => {
                            </div>
                         ))}
                      </div>
-                     <button className="rounded-md border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none mt-auto">
+                     <button className="rounded-md border border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none mt-auto">
                         {membership.buttonLabel}
                      </button>
                   </motion.div>

@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { format } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarIcon, Loader, Loader2 } from 'lucide-react';
+import { CalendarIcon, Loader2 } from 'lucide-react';
 import Footer from '@/app/home/Footer';
 import toast, { Toaster } from "react-hot-toast";
 import Stripe from 'stripe';
@@ -35,7 +35,7 @@ const RentACar: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `http://localhost:4000/user/car/${id}`,
+            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -100,7 +100,7 @@ const RentACar: React.FC = () => {
                success_url: `${origin}/order-confirmation?success=true&id=${model?.id}`,
             });
             const response = await axios.post(
-               `http://localhost:4000/user/rent-car/${id}`,
+               `https://combative-ant-scarf.cyclic.app/user/rent-car/${id}`,
                {
                   startDate: startDate.toISOString().split('T')[0],
                   endDate: endDate.toISOString().split('T')[0],

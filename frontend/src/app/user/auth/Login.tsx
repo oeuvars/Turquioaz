@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
 import Navbar from '@/app/home/Navbar';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import Footer from '@/app/home/Footer';
 
 interface Result {
@@ -21,7 +21,6 @@ const Login = () => {
       enter: { opacity: 1, x: 0, y: 0},
     }
    const [user, setUser] = useState({
-      username: "",
       email : "",
       password : ""
     })
@@ -36,11 +35,11 @@ const Login = () => {
       e.preventDefault();
       if (user.email && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("https://combative-ant-scarf.cyclic.app/user/login", user);
+         const response = await axios.post("http://localhost:4000/user/login", user);
          const result: Result = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })
-            navigate(-1)
+            navigate(-2)
          }
          else {
             if (result.exists === true) {
@@ -133,7 +132,7 @@ const Login = () => {
                className={`bg-[#1f1f1f] phone:my-[2vh] tablet:mt-[2vw] text-[#FAFAFA] px-6 phone:py-2 md:py-3 rounded font-satoshi-medium text-lg tracking-tight ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                disabled={loading}
             >
-               {loading ? 'Loggin In...' : 'Log In'}
+               {loading ? <div className='flex gap-3 justify-center items-center'><Loader2 className='rotate w-6 h-6 my-auto text-[#555555]'/><span className='text-[#555555] font-medium tracking-tight text-xl'>Logging In...</span></div> : 'Log In'}
             </motion.button>
             <motion.div variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.75 }} className=''>
                <Link to="/auth/forgot-password" className='text-[#80796B] font-satoshi-medium text-sm hover:underline animation'>

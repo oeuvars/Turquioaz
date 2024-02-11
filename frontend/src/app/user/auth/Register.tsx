@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from '@/app/home/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import Footer from '@/app/home/Footer';
 import toast, { Toaster } from "react-hot-toast";
 
@@ -36,7 +36,7 @@ const Register = () => {
       e.preventDefault();
       if (user.email && user.name && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("https://combative-ant-scarf.cyclic.app/user/register", user)
+         const response = await axios.post("http://localhost:4000/user/register", user)
          const result: Result = response.data
          if (result.success === false ) {
             toast.error("Please try again", {
@@ -77,7 +77,7 @@ const Register = () => {
                   <Link to="/login/github" className='font-medium tracking-tighter text-[#AFAFAF] text-lg'>Continue with Google</Link>
                </div>
             </motion.div>
-            <div className='mx-auto flex flex-col phone:gap-2 tablet:gap-5 w-full phone:my-[2.5vh] tablet:my-0'>
+            <div className='mx-auto flex flex-col phone:gap-2 tablet:gap-5 w-full phone:my-[2.5vh] tablet:my-10'>
                <motion.input
                   variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.3 }}
                   type="email"
@@ -126,9 +126,9 @@ const Register = () => {
                className={`bg-[#1f1f1f] text-[#FAFAFA] px-6 phone:py-2 tablet:py-3 rounded font-satoshi-medium text-lg tracking-tight ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                disabled={loading}
             >
-               {loading ? 'Signing Up...' : 'Sign Up'}
+               {loading ? <div className='flex gap-3 justify-center items-center'><Loader2 className='rotate w-6 h-6 my-auto text-[#555555]'/><span className='text-[#555555] font-medium tracking-tight text-xl'>Signing Up...</span></div> : 'Sign Up'}
             </motion.button>
-            <motion.div variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 2 }} className='flex justify-center mt-2 mb-[5vw]'>
+            <motion.div variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 2 }} className='flex justify-center mt-5 mb-[5vw]'>
                <Link to="/auth/login" className='py-2 px-7 bg-[#131313] hover:bg-[#151515] rounded text-sm text-[#FAFAFA] animation font-medium text-center'>
                   Already an account? <span className="gradient-text">Login</span>
                </Link>

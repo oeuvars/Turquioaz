@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { format } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Loader, Loader2 } from 'lucide-react';
 import Footer from '@/app/home/Footer';
 import toast, { Toaster } from "react-hot-toast";
 import Stripe from 'stripe';
@@ -22,6 +22,7 @@ const RentACar: React.FC = () => {
    const [endDate, setEndDate] = useState<Date>(tomorrow);
    const [days, setDays] = useState<number>();
    const [loading, setLoading] = useState<boolean>(true);
+   const [loadingSession, setLoadingSession] = useState<boolean>(false)
    const navigate = useNavigate()
 
    const registerCookie = Cookies.get('RegisterCookie');
@@ -34,7 +35,7 @@ const RentACar: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
+            `http://localhost:4000/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -75,10 +76,8 @@ const RentACar: React.FC = () => {
          });
       }
       else {
-         if (!loginCookie || !registerCookie) {
-            navigate('/auth/login')
-         }
-         else {
+         if (loginCookie || registerCookie) {
+            setLoadingSession(true)
             const session = await stripe.checkout.sessions.create({
                payment_method_types: ['card'],
 
@@ -100,11 +99,8 @@ const RentACar: React.FC = () => {
                mode: 'payment',
                success_url: `${origin}/order-confirmation?success=true&id=${model?.id}`,
             });
-            if (session.url) {
-               window.location.href = session.url;
-            }
             const response = await axios.post(
-               `https://combative-ant-scarf.cyclic.app/user/rent-car/${id}`,
+               `http://localhost:4000/user/rent-car/${id}`,
                {
                   startDate: startDate.toISOString().split('T')[0],
                   endDate: endDate.toISOString().split('T')[0],
@@ -114,6 +110,13 @@ const RentACar: React.FC = () => {
             );
             const idToken = response.data.token;
             localStorage.setItem('idToken', idToken);
+            if (session.url) {
+               window.location.href = session.url;
+            }
+            setLoadingSession(false)
+         }
+         else {
+            navigate('/auth/login')
          }
       }
    };
@@ -267,10 +270,11 @@ const RentACar: React.FC = () => {
                />
                <button
                   onClick={handleClick}
+                  disabled={loadingSession}
                   className="w-full bg-[#111111] hover:shadow-md animation phone:my-[2vh] py-3 rounded"
                >
                   <span className="gradient-text font-medium tracking-tight text-xl">
-                     Checkout
+                     {loadingSession ? <div className='flex gap-3 justify-center items-center'><Loader2 className='rotate w-6 h-6 my-auto text-[#555555]'/><span className='text-[#555555] font-medium tracking-tight text-xl'>Checking out...</span></div> : 'Checkout'}
                   </span>
                </button>
             </div>

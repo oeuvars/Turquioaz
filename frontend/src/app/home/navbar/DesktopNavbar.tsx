@@ -81,8 +81,8 @@ const DesktopNavbar: React.FC = () => {
                   </DrawerTrigger>
                   <DrawerContent className="bg-[#111111]/50 backdrop-blur-xl pb-[2vh]">
                      <div className="mx-auto w-[90%]">
-                        <p className="font-sacramento text-white text-5xl">
-                           Hi,{' '}
+                        <p className="font-playfair text-white text-4xl">
+                           hi,{' '}
                            <span className="text-xl font-space-grotesk text-[#FAFAFA] tracking-tighter">
                               {userName}
                            </span>

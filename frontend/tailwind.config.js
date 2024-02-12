@@ -34,7 +34,7 @@ module.exports = {
       fontFamily: {
         "dm-mono": ['DM Mono', "monospace"],
         "roboto-mono": ["Roboto Mono", "monospace"],
-        "sacramento": ['Sacramento', "cursive"],
+        "playfair": ['Playfair Display', "serif"],
         "space-grotesk": ['Space Grotesk', "sans-serif"]
       },
       animation: {

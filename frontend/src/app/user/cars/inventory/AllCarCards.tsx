@@ -1,7 +1,7 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { AllCarCardsProps } from '@/types/AllCarCards';
 import { Model } from '@/types/Model';
-import { WishlistedCar } from '@/types/WishlistedCar';
+import { WishlistedCar } from '@/types/Wishlist';
 import axios from 'axios'
 import { motion, AnimatePresence } from 'framer-motion';
 import Cookies from 'js-cookie';

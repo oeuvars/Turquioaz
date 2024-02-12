@@ -15,7 +15,6 @@ export const deleteWishlistedCar = async (req: RequestWithUser, res: express.Res
    const wishCar = await prisma.wishlistedCar.findUnique({
      where: { id: parseInt(req.params.id) },
    });
-   console.log(wishCar);
    if (wishCar) {
      const user = await prisma.user.findUnique({where: { email: req.user.email }, include: {onWishlist: true}});
      if (user) {

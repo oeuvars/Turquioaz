@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.inventory = void 0;
 const db_config_1 = __importDefault(require("../../../db/db.config"));
-const shuffleCars_1 = require("../../../helpers/shuffleCars");
 const inventory = async (req, res) => {
     try {
         const { page, pageSize, brand, minprice, maxprice, minpower, maxpower, minacceleration, maxacceleration } = req.query;
@@ -29,7 +28,7 @@ const inventory = async (req, res) => {
             take: parseInt(pageSize),
         });
         const totalModels = await db_config_1.default.model.count({ where: filters });
-        res.json({ models: (0, shuffleCars_1.shuffleCars)(allModels), totalModels: totalModels });
+        res.json({ models: allModels, totalModels: totalModels });
     }
     catch (error) {
         res.json({ models: null, totalModels: 0 });

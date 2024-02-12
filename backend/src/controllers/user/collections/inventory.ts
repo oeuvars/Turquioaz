@@ -1,6 +1,5 @@
 import express from "express";
 import prisma from "../../../db/db.config";
-import { shuffleCars } from "../../../helpers/shuffleCars";
 
 export const inventory = async (req: express.Request, res: express.Response) => {
   try {
@@ -26,7 +25,7 @@ export const inventory = async (req: express.Request, res: express.Response) => 
       take: parseInt(pageSize as string),
     });
     const totalModels = await prisma.model.count({where: filters});
-    res.json({ models: shuffleCars(allModels), totalModels: totalModels });
+    res.json({ models: allModels, totalModels: totalModels });
   } catch (error) {
     res.json({models: null, totalModels: 0});
   }

@@ -5,7 +5,6 @@ import { WishlistedCar } from '@/types/WishlistedCar';
 import axios from 'axios'
 import { motion, AnimatePresence } from 'framer-motion';
 import Cookies from 'js-cookie';
-import { Star } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -123,15 +122,15 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
                                     {wishlistedModels.some((wishlistedModel) => wishlistedModel.carId === model.id) ? (
                                        <div key={model.id} className='absolute'>
                                           {wishlistedModels.map((wishlistedModel) => (wishlistedModel.carId === model.id ? (
-                                             <motion.button exit={{ opacity: 0 }} onClick={(event) => handleDeleteClick(event, wishlistedModel.id)} key={wishlistedModel.id}>
-                                                <motion.img initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} src='/icons/filled-star.svg' alt='star' className='my-auto w-6 h-6' />
+                                             <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={(event) => handleDeleteClick(event, wishlistedModel.id)} key={wishlistedModel.id}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FAFAFA" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
                                              </motion.button>
                                           ) : null
                                           ))}
                                        </div>
                                     ) : (
                                        <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={(event) => handleAddToWishlistClick(event, model.id)} className='absolute'>
-                                          <Star className="text-[#BBBBBB] animation hover:text-white w-6 h-6" />
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FAFAFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
                                        </motion.button>
                                     )}
                                  </AnimatePresence>

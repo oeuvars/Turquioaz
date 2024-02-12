@@ -55,6 +55,7 @@ const Register = () => {
                   secondary: "#fff",
                },
             });
+            setLoading(false)
          } else {
             Cookies.set('RegisterCookie', result.token! , { expires: 7 })
             console.log(result.token)

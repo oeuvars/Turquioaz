@@ -31,7 +31,7 @@ const Login = () => {
       setShowPassword(!showPassword);
     }
     const navigate = useNavigate()
-    const handleAddUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleUserLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (user.email && user.password && !loading) {
          setLoading(true);
@@ -39,7 +39,8 @@ const Login = () => {
          const result: Result = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })
-            navigate(-2)
+            navigate(-1)
+            setLoading(false)
          }
          else {
             if (result.exists === true) {
@@ -59,6 +60,7 @@ const Login = () => {
                      secondary: "#fff",
                   },
                });
+               setLoading(false)
             } else {
                toast.error("User does not exist", {
                   style: {
@@ -76,6 +78,7 @@ const Login = () => {
                      secondary: "#fff",
                   },
                });
+               setLoading(false)
             }
          }
       }
@@ -128,7 +131,7 @@ const Login = () => {
             <Toaster position="top-center"/>
             <motion.button
                variants={variants} initial="hidden" animate="enter" transition={{ ease: "easeOut", duration: 1.6 }}
-               onClick={handleAddUser}
+               onClick={handleUserLogin}
                className={`bg-[#1f1f1f] phone:my-[2vh] tablet:mt-[2vw] text-[#FAFAFA] px-6 phone:py-2 md:py-3 rounded font-satoshi-medium text-lg tracking-tight ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                disabled={loading}
             >

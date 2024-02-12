@@ -16,6 +16,7 @@ const Recommended: React.FC = () => {
          const result: Model[] = response.data.models
          setCars(result)
          setLaoding(false)
+         console.log(import.meta.env.VITE_SERVER_URL)
       }
       featuredCars();
    }, [])

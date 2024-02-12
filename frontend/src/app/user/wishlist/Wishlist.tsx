@@ -49,7 +49,7 @@ const Wishlist: React.FC = () => {
    useEffect(() => {
       const wishlisted = async () => {
          const response = await axios.get(
-            'https://combative-ant-scarf.cyclic.app/user/wishlisted-cars',
+            `${import.meta.env.VITE_SERVER_URL}/user/wishlisted-cars`,
             { headers },
          );
          const result = response.data.wishlistedCar;
@@ -62,7 +62,7 @@ const Wishlist: React.FC = () => {
       const fetchCarDetails = async () => {
          const carDetailsPromises = wishlistedCars.map(async (wishlistedCar: WishlistedCar) => {
             const carRes = await axios.get(
-               `https://combative-ant-scarf.cyclic.app/user/car/${wishlistedCar.carId}`,
+               `${import.meta.env.VITE_SERVER_URL}/user/car/${wishlistedCar.carId}`,
                { headers },
             );
             return { ...carRes.data, wishlistedCarId: wishlistedCar.id };
@@ -100,16 +100,14 @@ const Wishlist: React.FC = () => {
    //     wishlisted();
    //  };
 
+   useEffect(() => {
+      console.log(loginCookie)
+   }, [])
    return (
       <>
          <Navbar />
          <div className="min-h-screen w-[98%] mx-auto my-[3vw]">
-            { !loginCookie || !registerCookie ? (
-               <div className='flex flex-col justify-center items-center mt-40 gap-10'>
-                  <p className='font-medium text-[#FAFAFA] tracking-tighter leading-none text-5xl'>To access your wishlist, please log in.</p>
-                  <Link to='/auth/login' className='px-16 py-2 rounded bg-[#FAFAFA]/90 text-[#1F1F1F] font-semibold tracking-tighter'>Log In</Link>
-               </div>
-            ) : (
+            { loginCookie || registerCookie ? (
                <>
                   <h1 className="phone:px-[1vh] tablet:px-[1vw] text-right text-[#333333] phone:text-[8vh] tablet:text-[15.5vw] font-medium tracking-tighter uppercase leading-none">
                      <span className="lowercase text-9xl">the</span> {userName} Wishlist
@@ -178,6 +176,11 @@ const Wishlist: React.FC = () => {
                      </motion.div>
                   </AnimatePresence>
                </>
+            ) : (
+               <div className='flex flex-col justify-center items-center mt-40 gap-10'>
+                  <p className='font-medium text-[#FAFAFA] tracking-tighter leading-none text-5xl'>To access your wishlist, please log in.</p>
+                  <Link to='/auth/login' className='px-16 py-2 rounded bg-[#FAFAFA]/90 text-[#1F1F1F] font-semibold tracking-tighter'>Log In</Link>
+               </div>
             )}
          </div>
          <Footer />

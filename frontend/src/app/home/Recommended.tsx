@@ -12,7 +12,7 @@ const Recommended: React.FC = () => {
    useEffect(() => {
       const featuredCars = async () => {
          setLaoding(true)
-         const response = await axios.get("https://combative-ant-scarf.cyclic.app/user/featured-cars")
+         const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/featured-cars`)
          const result: Model[] = response.data.models
          setCars(result)
          setLaoding(false)

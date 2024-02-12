@@ -35,7 +35,7 @@ const Login = () => {
       e.preventDefault();
       if (user.email && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("https://combative-ant-scarf.cyclic.app/user/login", user);
+         const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/login`, user);
          const result: Result = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })

@@ -36,7 +36,7 @@ const Register = () => {
       e.preventDefault();
       if (user.email && user.name && user.password && !loading) {
          setLoading(true);
-         const response = await axios.post("https://combative-ant-scarf.cyclic.app/user/register", user)
+         const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/register`, user)
          const result: Result = response.data
          if (result.success === false ) {
             toast.error("Please try again", {

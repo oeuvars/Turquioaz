@@ -33,10 +33,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
 
    useEffect(() => {
       const getResponse = async () => {
-         const response = await axios.get(
-            'https://combative-ant-scarf.cyclic.app/user/total-cars',
-            { headers },
-         );
+         const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/total-cars`, { headers });
          const result: string[] = response.data.brands;
          const uniqueBrands = [...new Set(result)];
          setAllBrands(uniqueBrands);

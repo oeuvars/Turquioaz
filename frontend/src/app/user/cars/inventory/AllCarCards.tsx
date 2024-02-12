@@ -30,9 +30,9 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
    const handleAddToWishlistClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
       e.preventDefault();
       if (loginCookie || registerCookie) {
-         await axios.post(`https://combative-ant-scarf.cyclic.app/user/add-to-wishlist/${id}`, {}, { headers });
+         await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/add-to-wishlist/${id}`, {}, { headers });
          const wishlistedCar = async () => {
-            const res = await axios.get("https://combative-ant-scarf.cyclic.app/user/wishlisted-cars", { headers });
+            const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/wishlisted-cars`, { headers });
             setWishlistedModels(res.data.wishlistedCar);
          };
          wishlistedCar();
@@ -42,9 +42,9 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
    };
    const handleDeleteClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
       event.preventDefault();
-      await axios.delete(`https://combative-ant-scarf.cyclic.app/user/delete-wishlisted-car/${id}`, { headers });
+      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/user/delete-wishlisted-car/${id}`, { headers });
       const wishlistedCar = async () => {
-         const res = await axios.get("https://combative-ant-scarf.cyclic.app/user/wishlisted-cars", { headers });
+         const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/wishlisted-cars`, { headers });
          setWishlistedModels(res.data.wishlistedCar);
       };
       wishlistedCar();
@@ -52,7 +52,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
 
    useEffect(() => {
       const wishlistedCar = async () => {
-         const res = await axios.get("https://combative-ant-scarf.cyclic.app/user/wishlisted-cars", { headers });
+         const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/wishlisted-cars`, { headers });
          setWishlistedModels(res.data.wishlistedCar);
       };
       wishlistedCar();
@@ -62,7 +62,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
       const getCars = async () => {
          setLoading(true);
 
-         let apiUrl = `https://combative-ant-scarf.cyclic.app/user/inventory?page=${page}&pageSize=4`;
+         let apiUrl = `${import.meta.env.VITE_SERVER_URL}/user/inventory?page=${page}&pageSize=4`;
          apiUrl += selectedBrand ? `&brand=${selectedBrand}` : '';
          apiUrl += selectedAcceleration ? `&minacceleration=${selectedAcceleration[0]}&maxacceleration=${selectedAcceleration[1]}` : '';
          apiUrl += selectedPrice ? `&minprice=0&maxprice=${selectedPrice[0] * 6500}` : '';

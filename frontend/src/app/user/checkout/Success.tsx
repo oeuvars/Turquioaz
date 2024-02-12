@@ -19,7 +19,7 @@ const Success: React.FC = () => {
     };
     useEffect (() => {
       const updateStatus = async () => {
-         await axios.put(`https://combative-ant-scarf.cyclic.app/user/statusCheck/${id}`,{status: true},{headers});
+         await axios.put(`${import.meta.env.VITE_SERVER_URL}/user/statusCheck/${id}`,{status: true},{headers});
       }
       updateStatus()
     }, [])

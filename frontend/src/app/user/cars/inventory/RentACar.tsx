@@ -35,7 +35,7 @@ const RentACar: React.FC = () => {
       const getCar = async () => {
          setLoading(true);
          const response = await axios.get(
-            `https://combative-ant-scarf.cyclic.app/user/car/${id}`,
+            `${import.meta.env.VITE_SERVER_URL}/user/car/${id}`,
             { headers },
          );
          const result: Model = response.data.model;
@@ -100,7 +100,7 @@ const RentACar: React.FC = () => {
                success_url: `${origin}/order-confirmation?success=true&id=${model?.id}`,
             });
             const response = await axios.post(
-               `https://combative-ant-scarf.cyclic.app/user/rent-car/${id}`,
+               `${import.meta.env.VITE_SERVER_URL}/user/rent-car/${id}`,
                {
                   startDate: startDate.toISOString().split('T')[0],
                   endDate: endDate.toISOString().split('T')[0],

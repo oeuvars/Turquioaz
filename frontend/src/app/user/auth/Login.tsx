@@ -7,13 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Navbar from '@/app/home/Navbar';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import Footer from '@/app/home/Footer';
-
-interface Result {
-   exists: boolean;
-   success: boolean;
-   message: string;
-   token: string | null
-}
+import { Login } from '@/types/Login';
 
 const Login = () => {
     const variants = {
@@ -36,7 +30,7 @@ const Login = () => {
       if (user.email && user.password && !loading) {
          setLoading(true);
          const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/login`, user);
-         const result: Result = response.data;
+         const result: Login = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })
             navigate(-1)

@@ -83,7 +83,9 @@ const Wishlist: React.FC = () => {
             { loginCookie || registerCookie ? (
                <>
                   <div className="phone:px-[1vh] tablet:px-[1vw] text-right text-[#333333] tracking-tight phone:text-[8vh] tablet:text-[15.5vw] font-medium uppercase">
-                     <p className="lowercase text-9xl font-playfair tracking-tighter">the <span className='phone:text-[8vh] tablet:text-[15.5vw] font-space-grotesk uppercase tracking-tighter'>{userName}</span></p>
+                     <div>
+                        <p className='font-playfair'>the</p>
+                     </div>
                      <h1 className='font-playfair lowercase text-9xl tracking-tighter'>Wishlist</h1>
                   </div>
                   { loading ? (

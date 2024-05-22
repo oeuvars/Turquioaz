@@ -134,7 +134,7 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
                                  <p className="phone:text-base tablet:text-lg md:text-xl tracking-tight text-[#BBBBBB]">{model.name}</p>
                               </div>
                            </div>
-                           <div className="flex flex-col justify-between gap-2 phone:p-[1.5vh] md:p-[1vw] font-medium backdrop-blur-sm">
+                           <div className="flex flex-col justify-between gap-2 phone:p-[1.5vh] md:p-[1vw] font-medium">
                               {Object.entries({ Power: model.power + ' HP', '0-60 MPH': model.acceleration + ' Sec', 'Top Speed': model.topSpeed + ' MPH' }).map(([label, value]) => (
                                  <div className="w-full flex flex-col gap-2 justify-between" key={label}>
                                     <div className="flex justify-between w-full text-[#FAFAFA]">

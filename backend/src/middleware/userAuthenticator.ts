@@ -1,20 +1,9 @@
 import express from "express"
 import jwt from "jsonwebtoken";
+import { UserRequest } from "../types/UserRequest";
+import { User } from "@prisma/client";
 
-interface User {
-  email: string;
-  name: string;
-  password: string;
-}
-interface RequestWithUser extends express.Request {
-  user: User;
-}
-
-export const authentication = (
-  req: RequestWithUser,
-  res: express.Response,
-  next: express.NextFunction
-) => {
+export const authentication = ( req: UserRequest, res: express.Response, next: express.NextFunction ) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(" ")[1];

@@ -98,18 +98,18 @@ const MobileNavbar: React.FC = () => {
             <motion.button initial={false} animate={active ? 'open' : 'closed'} onClick={() => { setActive(prevValue => !prevValue); toggleMenu() }} className="relative h-8 w-8 rounded-full bg-white/0 transition-colors z-50 my-auto">
               <motion.span
                 variants={VARIANTS.top}
-                className="absolute h-[0.22rem] w-7 bg-[#333333] rounded-3xl"
+                className="absolute h-1 w-7 bg-[#333333] rounded-3xl"
                 style={{ y: '-50%', left: '50%', x: '-50%', top: '35%' }}
               />
               <motion.span
                 variants={VARIANTS.middle}
-                className="absolute h-[0.22rem] w-7 bg-[#333333] rounded-3xl"
+                className="absolute h-1 w-7 bg-[#333333] rounded-3xl"
                 style={{ left: '50%', x: '-50%', top: '52%', y: '-50%' }}
               />
               {active ? null : (
               <motion.span
                 variants={VARIANTS.bottom}
-                className="absolute h-[0.22rem] w-4 bg-[#333333] rounded-3xl"
+                className="absolute h-1 w-4 bg-[#333333] rounded-3xl"
                 style={{ x: '-80%', y: '50%', top: '59%', bottom: '35%', left: 'calc(50% + 10px)' }}
               />
             )}

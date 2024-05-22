@@ -7,7 +7,7 @@ exports.inventory = void 0;
 const db_config_1 = __importDefault(require("../../../db/db.config"));
 const inventory = async (req, res) => {
     const cars = await db_config_1.default.model.findMany();
-    res.json({ cars });
+    res.json({ success: true, cars: cars });
 };
 exports.inventory = inventory;
 //# sourceMappingURL=inventory.js.map

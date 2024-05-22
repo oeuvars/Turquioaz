@@ -9,7 +9,7 @@ const wishlistCar = async (req, res) => {
     const id = parseInt(req.params.id);
     const car = await db_config_1.default.model.findUnique({ where: { id: id } });
     if (car) {
-        const user = await db_config_1.default.user.findUnique({ where: { email: req.user.email } });
+        const user = await db_config_1.default.user.findUnique({ where: { email: req.user?.email } });
         if (user) {
             const userID = user.id;
             const carID = car.id;

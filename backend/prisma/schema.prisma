@@ -41,7 +41,6 @@ model Model {
   published      Boolean @default(false)
   imageSource    String
   carId          Int
-
   rentedBy       RentedCar[]
   wishlistedBy   WishlistedCar[]
 }
@@ -54,7 +53,6 @@ model RentedCar{
   startDate      String
   endDate        String
   status         Boolean
-
   rentedto       User    @relation(fields: [rentedtoId], references: [id])
   car            Model   @relation(fields: [carId], references: [id])
 }

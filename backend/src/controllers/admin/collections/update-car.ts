@@ -1,20 +1,12 @@
 import prisma from "../../../db/db.config";
 import express from "express";
-
-interface Admin {
-   email: string;
-   name: string;
-   password: string;
- }
- interface AdminRequest extends express.Request {
-   admin: Admin;
- }
+import { AdminRequest } from "../../../types/AdminRequest";
 
 export const updateCar = async (req: AdminRequest, res: express.Response) => {
    const id = parseInt(req.params.id);
 
    const admin = await prisma.admin.findUnique({
-     where: { email: req.admin.email },
+     where: { email: req.admin?.email },
    });
    if (admin) {
      const updatedModel = await prisma.model.update({

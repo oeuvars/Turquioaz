@@ -1,6 +1,8 @@
-import { ArrowUpRight, ChevronRight } from 'lucide-react';
+import { ArrowRightIcon, ArrowUpRight } from 'lucide-react';
+import TextShimmer from "@/components/ui/animated-shiny-text";
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 const Membership: React.FC = () => {
    const leftVariants = {
@@ -65,21 +67,21 @@ const Membership: React.FC = () => {
 
 
    return (
-      <div className="overflow-hidden">
-         <h1 className="phone:text-3xl lg:text-6xl font-medium text-center landing-text tracking-tighter py-2 phone:my-5 lg:my-10 phone:w-[80%] mx-auto text-wrap">
+      <div className="overflow-hidden phone:mt-0 lg:mt-20">
+         <h1 className="phone:text-3xl lg:text-6xl font-semibold text-center landing-text tracking-tighter py-2 phone:my-5 lg:my-10 phone:w-[80%] mx-auto text-wrap">
             Membership that fits your niche.
          </h1>
-         <div className="flex justify-center">
-            <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
-               <span className="absolute inset-0 overflow-hidden rounded-full">
-                  <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-               </span>
-               <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10 ">
-                  <span>{`Brand New Prices`}</span>
-                  <ChevronRight className="w-4 h-4 my-auto" />
-               </div>
-               <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
-            </button>
+         <div className="z-10 flex items-center justify-center">
+            <div
+            className={cn(
+               "group rounded-full border border-black/5 bg-neutral-100 text-base transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
+            )}
+            >
+            <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+               <span className='gradient-text tracking-tighter'>✨ Exclusive Memberships</span>
+               <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 text-amber-800" />
+            </TextShimmer>
+            </div>
          </div>
          <AnimatePresence>
             <motion.div className="grid tablet:grid-cols-3 phone:gap-2 tablet:gap-5 phone:w-[95%] md:w-[90%] mx-auto phone:my-5 tablet:my-10">
@@ -88,6 +90,7 @@ const Membership: React.FC = () => {
                      initial={membership.varients.hidden}
                      whileInView={membership.varients.enter}
                      transition={{ type: 'spring', stiffness: 50 }}
+                     viewport={{ once: true }}
                      className="flex flex-col rounded px-[2vw] phone:py-[2.5vh] md:py-[2.5vw] border border-dashed border-[#333333]"
                   >
                      <div className="text-6xl font-space-grotesk tracking-tighter font-medium text-center py-3">

@@ -1,17 +1,9 @@
 import prisma from "../../../db/db.config";
 import express from "express";
-
-interface Admin {
-   email: string;
-   name: string;
-   password: string;
- }
- interface AdminRequest extends express.Request {
-   admin: Admin;
- }
+import { AdminRequest } from "../../../types/AdminRequest";
 
 export const addCar = async (req: AdminRequest, res: express.Response) => {
-   const admin = await prisma.admin.findUnique({where: { email: req.admin.email }});
+   const admin = await prisma.admin.findUnique({where: { email: req.admin?.email }});
    if (admin) {
      const newModel = await prisma.model.create({
        data: {

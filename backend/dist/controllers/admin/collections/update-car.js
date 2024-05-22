@@ -8,7 +8,7 @@ const db_config_1 = __importDefault(require("../../../db/db.config"));
 const updateCar = async (req, res) => {
     const id = parseInt(req.params.id);
     const admin = await db_config_1.default.admin.findUnique({
-        where: { email: req.admin.email },
+        where: { email: req.admin?.email },
     });
     if (admin) {
         const updatedModel = await db_config_1.default.model.update({

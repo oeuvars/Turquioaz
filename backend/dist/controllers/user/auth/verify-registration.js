@@ -9,7 +9,7 @@ const verifyRegistration = async (req, res) => {
     const { email, oneTimePass } = req.body;
     const otp = Number(oneTimePass);
     const user = await db_config_1.default.user.findUnique({ where: { email: email } });
-    if (user.otp === otp) {
+    if (user?.otp === otp) {
         await db_config_1.default.user.update({ where: { email: email }, data: { otp: null, is_verified: true } });
         res.json({ success: true, message: "User Verified" });
     }

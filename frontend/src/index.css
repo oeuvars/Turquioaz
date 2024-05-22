@@ -105,3 +105,11 @@ html {
 .rotate {
   animation: rotation 2s infinite linear;
 }
+
+.DrawerOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}

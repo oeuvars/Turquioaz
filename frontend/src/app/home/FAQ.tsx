@@ -72,7 +72,7 @@ const FAQ: React.FC = () => {
                >
                   <Accordion type="single" collapsible className="w-[95%] mx-auto">
                      <AccordionItem value="item-1">
-                        <AccordionTrigger className="text-[#DEDEDE] font-normal phone:text-sm tablet:text-lg uppercase">
+                        <AccordionTrigger className="text-[#DEDEDE] font-normal phone:text-sm tablet:text-lg uppercase text-left">
                            {faq.question}
                         </AccordionTrigger>
                         <AccordionContent className="text-[#FAFAFA] phone:text-sm tablet:text-lg tracking-tighter">

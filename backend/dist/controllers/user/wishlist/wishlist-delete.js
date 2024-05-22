@@ -9,9 +9,8 @@ const deleteWishlistedCar = async (req, res) => {
     const wishCar = await db_config_1.default.wishlistedCar.findUnique({
         where: { id: parseInt(req.params.id) },
     });
-    console.log(wishCar);
     if (wishCar) {
-        const user = await db_config_1.default.user.findUnique({ where: { email: req.user.email }, include: { onWishlist: true } });
+        const user = await db_config_1.default.user.findUnique({ where: { email: req.user?.email }, include: { onWishlist: true } });
         if (user) {
             const wishCarId = wishCar.id;
             await db_config_1.default.wishlistedCar.delete({ where: { id: wishCarId } });

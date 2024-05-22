@@ -1,7 +1,8 @@
 import express from "express";
 import prisma from "../../../db/db.config";
+import { UserRequest } from "../../../types/UserRequest";
 
-export const rentStatus = async (req: express.Request, res: express.Response) => {
+export const rentStatus = async (req: UserRequest, res: express.Response) => {
    const id = parseInt(req.params.id);
    const { status } = req.body;
    const targetCar = await prisma.rentedCar.findUnique({

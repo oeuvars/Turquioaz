@@ -1,20 +1,9 @@
-import express from "express"
+import express, { Response, NextFunction } from "express"
 import jwt from "jsonwebtoken";
+import { AdminRequest } from "../types/AdminRequest";
+import { Admin } from "@prisma/client";
 
-interface Admin {
-   email: string;
-   name: string;
-   password: string;
- }
- interface AdminRequest extends express.Request {
-   admin: Admin;
- }
-
-export const authentication = (
-  req: AdminRequest,
-  res: express.Response,
-  next: express.NextFunction
-) => {
+export const authentication = ( req: AdminRequest, res: Response, next: NextFunction ) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(" ")[1];

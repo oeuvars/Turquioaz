@@ -9,10 +9,11 @@ const singleCar = async (req, res) => {
     const id = parseInt(req.params.id);
     const model = await db_config_1.default.model.findUnique({ where: { id: id } });
     try {
-        res.json({ model });
+        res.json({ success: true, model: model });
     }
     catch (error) {
-        res.json({ error });
+        console.log(error);
+        res.json({ success: false, model: null });
     }
 };
 exports.singleCar = singleCar;

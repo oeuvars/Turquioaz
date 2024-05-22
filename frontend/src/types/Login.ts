@@ -1,4 +1,4 @@
-export interface Login {
+export interface LoginProps {
    exists: boolean;
    success: boolean;
    message: string;

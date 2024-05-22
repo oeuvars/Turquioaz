@@ -60,7 +60,7 @@ const DesktopNavbar: React.FC = () => {
                   <img src="/icons/turquioaz.svg" alt="turquioaz" className="w-12 my-auto" />
                </Link>
                <Link
-                  to="/the-collection"
+                  to="/the-collection/all-cars"
                   className="font-dm-mono text-[#999999] hover:text-[#FAFAFA] uppercase font-medium my-auto animation z-20"
                >
                   The collection
@@ -103,7 +103,7 @@ const DesktopNavbar: React.FC = () => {
                            <ArrowUpRight className="text-[#FAFAFA]" />
                         </Link>
                         <hr className="border-t-[1px] border-[#303030] mt-2" />
-                        <Link to="/contact" className="w-full flex justify-between mt-[2vw]">
+                        <Link to="/contact-us" className="w-full flex justify-between mt-[2vw]">
                            <div className="flex gap-3">
                               <Phone className="w-5 h-5 my-auto text-[#FAFAFA]" />
                               <p className="text-2xl tracking-tighter text-[#FAFAFA]">Contact</p>

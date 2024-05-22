@@ -2,14 +2,22 @@
     "compilerOptions": {
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "target": "ES2021",
-        "baseUrl": "src",
+        "target": "ES2022",
         "outDir": "dist",
         "sourceMap": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "../*": ["src/*"]
+        },
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": true
     },
-    "ts-node": {
-        "require": ["tsconfig-paths/register"]
-    },
-    "include": ["src/**/*"]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 }

@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
    const ColumnOne = [
       {
          id: 1,
-         href: "/the-collection",
+         href: "/the-collection/all-cars",
          link: "The Collection"
       },
       {

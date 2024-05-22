@@ -1,20 +1,12 @@
 import express from "express";
 import prisma from "../../../db/db.config";
+import { UserRequest } from "../../../types/UserRequest";
 
-interface User {
-   email: string;
-   name: string;
-   password: string;
-   is_Verified: boolean;
- }
- interface RequestWithUser extends express.Request {
-   user: User;
- }
+export const rentedCars =  async (req: UserRequest, res: express.Response) => {
 
-export const rentedCars =  async (req: RequestWithUser, res: express.Response) => {
    const user = await prisma.user.findUnique({
      where: {
-       email: req.user.email,
+       email: req.user?.email
      },
      include: {
        onRent: {

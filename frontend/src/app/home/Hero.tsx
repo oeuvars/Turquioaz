@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
    };
    return (
       <AnimatePresence>
-         <div className="phone:mt-[5vh] md:my-[2vw] phone:px-[2vh] md:px-[2vw] hover:saturate-[1.25] animation overflow-hidden">
+         <div className="phone:mt-[5vh] md:my-[5vw] phone:px-[2vh] md:px-[2vw] hover:saturate-[1.25] animation overflow-hidden">
             <motion.h1
                variants={leftVariants}
                initial={leftVariants.hidden}

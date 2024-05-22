@@ -17,10 +17,10 @@ const featuredCars = async (req, res) => {
             lastShuffleTime = currentTime;
         }
         const selectedModels = shuffledModels.slice(0, 7);
-        res.json({ total: selectedModels.length, models: selectedModels });
+        res.json({ success: true, total: selectedModels.length, models: selectedModels });
     }
     catch (error) {
-        res.json({ total: null, models: null });
+        res.json({ success: false, total: null, models: null });
     }
 };
 exports.featuredCars = featuredCars;

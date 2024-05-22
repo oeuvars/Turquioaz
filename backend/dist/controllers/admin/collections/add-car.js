@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.addCar = void 0;
 const db_config_1 = __importDefault(require("../../../db/db.config"));
 const addCar = async (req, res) => {
-    const admin = await db_config_1.default.admin.findUnique({ where: { email: req.admin.email } });
+    const admin = await db_config_1.default.admin.findUnique({ where: { email: req.admin?.email } });
     if (admin) {
         const newModel = await db_config_1.default.model.create({
             data: {

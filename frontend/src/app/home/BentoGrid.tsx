@@ -72,17 +72,17 @@ const features = [
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
-      <Command className="absolute tracking-tighter right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
+      <Command className="absolute tracking-tighter right-10 top-10 w-[70%] origin-top translate-x-0 border [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10 transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none">
         <CommandInput placeholder="Type a invoice or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            <CommandItem>AMB_DB9.pdf</CommandItem>
-            <CommandItem>458_Italia.pdf</CommandItem>
-            <CommandItem>718_Boxster.xlsx</CommandItem>
-            <CommandItem>M8_Competition_Coupé.pdf</CommandItem>
-            <CommandItem>R8_Coupé_Quattro.pdf</CommandItem>
-            <CommandItem>812_Competizione.pdf</CommandItem>
+            <CommandItem className="text-neutral-200">AMB_DB9.pdf</CommandItem>
+            <CommandItem className="text-neutral-200">458_Italia.pdf</CommandItem>
+            <CommandItem className="text-neutral-200">718_Boxster.xlsx</CommandItem>
+            <CommandItem className="text-neutral-200">M8_Competition_Coupé.pdf</CommandItem>
+            <CommandItem className="text-neutral-200">R8_Coupé_Quattro.pdf</CommandItem>
+            <CommandItem className="text-neutral-200">812_Competizione.pdf</CommandItem>
           </CommandGroup>
         </CommandList>
       </Command>
@@ -110,7 +110,7 @@ const features = [
       <Calendar
         mode="single"
         selected={new Date(2022, 4, 11, 0, 0, 0)}
-        className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105 border-dashed  border-neutral-700"
+        className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105 border-dashed  border-neutral-700 transform-gpu blur-[1px] hover:blur-none"
       />
     ),
   },
@@ -126,7 +126,7 @@ export function Bento() {
          <video
             autoPlay
             loop
-            className="object-cover w-full h-full -z-10 blur-xl absolute opacity-60"
+            className="object-cover w-full h-[90vh] -z-10 blur-xl absolute opacity-60"
          >
             <source src="/videos/features.mp4" />
          </video>

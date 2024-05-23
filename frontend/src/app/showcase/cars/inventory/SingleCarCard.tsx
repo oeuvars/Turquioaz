@@ -99,8 +99,8 @@ const SingleCarCard: React.FC = () => {
                         ))}
                         <div className="w-full justify-between mt-[1vw]">
                            <Link to={`/the-collection/all-cars/rent-car/${model?.id}`} className="flex justify-between w-full text-[#FAFAFA]">
-                              <div className="phone:text-base tablet:text-lg md:text-xl tracking-tight gradient-text flex">
-                                 <span className="phone:text-base tablet:text-lg md:text-xl tracking-tight my-auto font-medium">
+                              <div className="tracking-tight gradient-text flex">
+                                 <span className="text-2xl tracking-tight my-auto font-medium">
                                     Rent Now
                                  </span>
                                  <ArrowUpRight className="my-auto text-yellow-700" />

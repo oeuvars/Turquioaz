@@ -94,7 +94,7 @@ const MobileNavbar: React.FC = () => {
          <Link to="/">
             <img src="/icons/turquioaz.svg" alt="turquioaz" className="w-12 my-auto"/>
          </Link>
-         <MotionConfig transition={{ duration: 0.5, ease: 'easeInOut'}}>
+         <MotionConfig transition={{ duration: 0.3, ease: 'easeInOut'}}>
             <motion.button initial={false} animate={active ? 'open' : 'closed'} onClick={() => { setActive(prevValue => !prevValue); toggleMenu() }} className="relative h-8 w-8 rounded-full bg-white/0 transition-colors z-50 my-auto">
               <motion.span
                 variants={VARIANTS.top}
@@ -110,7 +110,7 @@ const MobileNavbar: React.FC = () => {
               <motion.span
                 variants={VARIANTS.bottom}
                 className="absolute h-1 w-4 bg-[#333333] rounded-3xl"
-                style={{ x: '-80%', y: '50%', top: '59%', bottom: '35%', left: 'calc(50% + 10px)' }}
+                style={{ x: '-80%', y: '50%', top: '53%', bottom: '35%', left: 'calc(50% + 10px)' }}
               />
             )}
           </motion.button>
@@ -122,7 +122,7 @@ const MobileNavbar: React.FC = () => {
             animate={isMenuToggled ? { x: 0, opacity: 1, transition: { ease: 'easeInOut' } } : { x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
             exit={{ x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
             className="fixed flex flex-col z-40 right-0 bottom-0 h-screen bg-[#101010]/70 w-[100%] backdrop-blur-md">
-              <div className="flex flex-col gap-5 mx-auto text-white px-8 mt-28 w-full ml-auto">
+              <div className="flex flex-col gap-5 mx-auto text-white px-8 mt-[3.3rem] w-full ml-auto">
                 <div className='flex gap-3'>
                   <Home className='w-5 h-5 my-auto'/>
                   <Link to="/" className="my-auto text-[#FAFAFA] tracking-tighter text-lg">Home</Link>

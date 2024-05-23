@@ -110,7 +110,7 @@ const MobileNavbar: React.FC = () => {
               <motion.span
                 variants={VARIANTS.bottom}
                 className="absolute h-1 w-4 bg-[#333333] rounded-3xl"
-                style={{ x: '-80%', y: '50%', top: '53%', bottom: '35%', left: 'calc(50% + 10px)' }}
+                style={{ x: '-80%', y: '50%', top: '57%', bottom: '35%', left: 'calc(50% + 10px)' }}
               />
             )}
           </motion.button>

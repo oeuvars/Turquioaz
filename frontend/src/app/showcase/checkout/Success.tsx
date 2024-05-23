@@ -35,7 +35,9 @@ const Success: React.FC = () => {
       <Link to="/" className="rounded-md bg-[#151515] w-[10%] py-2 px-5 shadow-sm lg:text-xl phone:text-sm mx-auto">
          <span className='gradient-text tracking-tighter'>Return home</span>
       </Link>
-      <Footer />
+      <div className='phone:mt-7 lg:mt-0'>
+        <Footer />
+      </div>
     </div>
   )
 }

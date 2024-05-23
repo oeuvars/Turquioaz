@@ -113,7 +113,9 @@ const SingleCarCard: React.FC = () => {
                </div>
             </div>
          )}
-         <Footer />
+         <div className='phone:mt-7 lg:mt-0'>
+            <Footer />
+         </div>
       </>
    );
 };

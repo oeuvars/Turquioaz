@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
             {ColumnTwo.map((two) => (
                <div key={two.id}>
                   <div className='flex w-full justify-between text-[#FAFAFA] animation hover:text-[#BBBBBB]'>
-                     <Link to={two.href} className='phone:text-sm tablet:text-base md:text-lg tracking-tighter'>{two.link}</Link>
+                     <Link to={two.href} className='phone:text-base tablet:text-base md:text-lg tracking-tighter'>{two.link}</Link>
                      <ArrowUpRight className='phone:w-4 phone:h-4 tablet:w-4 tablet:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 my-auto'/>
                   </div>
                   <hr className='border-t-[1px] border-[#444444] phone:my-1 table:my-2 md:my-4'/>

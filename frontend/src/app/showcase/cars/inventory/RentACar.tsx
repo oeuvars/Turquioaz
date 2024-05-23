@@ -263,7 +263,9 @@ const RentACar: React.FC = () => {
                </div>
             </div>
          </div>
-         <Footer />
+         <div className='phone:mt-7 lg:mt-0'>
+            <Footer />
+         </div>
       </>
    );
 };

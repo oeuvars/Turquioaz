@@ -101,7 +101,9 @@ const AllCars: React.FC = () => {
           <ChevronRight className='text-[#FAFAFA] w-7 h-7'/>
         </button>
       </div>
-      <Footer />
+      <div className='phone:mt-7 lg:mt-0'>
+        <Footer />
+      </div>
    </>
 
   )

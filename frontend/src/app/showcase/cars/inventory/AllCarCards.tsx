@@ -152,7 +152,6 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
             )}
          </div>
       </>
-
    )
 }
 

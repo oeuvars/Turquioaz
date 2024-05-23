@@ -3,6 +3,7 @@ import TextShimmer from "@/components/ui/animated-shiny-text";
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Button } from '@nextui-org/button';
 
 const Membership: React.FC = () => {
    const leftVariants = {
@@ -74,7 +75,7 @@ const Membership: React.FC = () => {
          <div className="z-10 flex items-center justify-center">
             <div
             className={cn(
-               "group rounded-full border border-black/5 bg-neutral-100 text-base transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
+               "group rounded-full border text-base transition-all ease-in hover:cursor-pointer border-white/5 bg-neutral-900 hover:bg-neutral-800",
             )}
             >
             <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
@@ -114,16 +115,16 @@ const Membership: React.FC = () => {
                            </div>
                         ))}
                      </div>
-                     <button className="rounded-md border border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none mt-auto">
+                     <Button className="rounded-md border border-dashed border-black bg-neutral-100 px-6 phone:py-2.5 tablet:py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none mt-auto">
                         {membership.buttonLabel}
-                     </button>
+                     </Button>
                   </motion.div>
                ))}
             </motion.div>
          </AnimatePresence>
 
          <div className="flex gap-1 text-[#999999] hover:text-white animation justify-center mt-[1.5vw]">
-            <p className="text-xl uppercase font-medium font-roboto-mono tracking-tighter">
+            <p className="phone:text-base tablet:text-lg lg:text-xl uppercase font-medium font-roboto-mono tracking-tighter">
                Apply To Become A Member
             </p>
             <ArrowUpRight className="my-auto w-6 h-6" />

@@ -122,7 +122,7 @@ const MobileNavbar: React.FC = () => {
             animate={isMenuToggled ? { x: 0, opacity: 1, transition: { ease: 'easeInOut' } } : { x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
             exit={{ x: "100%", opacity: 0, transition: { ease: 'easeInOut' } }}
             className="fixed flex flex-col z-40 right-0 bottom-0 h-screen bg-[#101010]/70 w-[100%] backdrop-blur-md">
-              <div className="flex flex-col gap-5 mx-auto text-white px-8 mt-[3.3rem] w-full ml-auto">
+              <div className="flex flex-col gap-5 mx-auto text-white px-8 mt-28 w-full ml-auto">
                 <div className='flex gap-3'>
                   <Home className='w-5 h-5 my-auto'/>
                   <Link to="/" className="my-auto text-[#FAFAFA] tracking-tighter text-lg">Home</Link>

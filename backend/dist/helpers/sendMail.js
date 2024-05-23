@@ -13,7 +13,7 @@ const sendMail = async (email, mailSubject, content) => {
             secure: true,
             auth: {
                 user: "turquioaze@gmail.com",
-                pass: process.env.password,
+                pass: process.env.PASSWORD,
             },
         });
         const mailOptions = {

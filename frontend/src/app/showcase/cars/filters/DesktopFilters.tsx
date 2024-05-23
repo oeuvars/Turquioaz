@@ -45,7 +45,7 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
 
   return (
     <div className='bg-[#333333]/10 py-[1vw] rounded-sm overflow-hidden'>
-      <span className='text-5xl tracking-tight text-[#333333] font-medium flex justify-center font-space-grotesk uppercase'>Filters</span>
+      <span className='text-4xl text-[#333333] font-medium flex justify-center font-roboto-mono tracking-tighter uppercase'>Filters</span>
       <div className="flex items-center justify-center mt-[2vw] z-10">
         <Accordion type="single" collapsible className='w-[95%] rounded bg-[#111111]/50'>
           <AccordionItem value='1' className='border-none'>

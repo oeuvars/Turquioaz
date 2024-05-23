@@ -69,7 +69,7 @@ const Membership: React.FC = () => {
    return (
       <section id='membership' className="overflow-hidden phone:mt-0 lg:mt-20">
          <h1 className="phone:text-3xl lg:text-6xl font-semibold text-center landing-text tracking-tighter py-2 phone:my-5 lg:my-5 phone:w-[80%] mx-auto text-wrap">
-            Membership that fits your niche.
+            Memberships that fits your niche.
          </h1>
          <div className="z-10 flex items-center justify-center">
             <div

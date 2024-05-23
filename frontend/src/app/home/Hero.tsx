@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
       <div className='phone:min-h-[70vh] tablet:min-h-[95vh] phone:flex phone:flex-col tablet:grid items-center phone:justify-center tablet:justify-end'>
          <img className="w-screen phone:h-[70vh] tablet:h-full flex object-cover opacity-20 absolute tablet:pt-7" src="/assets/box-pattern.svg" alt="" />
          <AnimatePresence>
-            <div className="phone:px-[2vh] md:px-[2vw] saturate-[1.25] animation overflow-hidden">
+            <div className="phone:px-[2vh] md:px-[2vw] saturate-[1.1] animation overflow-hidden">
                <motion.h1
                   variants={leftVariants}
                   initial={leftVariants.hidden}

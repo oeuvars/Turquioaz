@@ -42,12 +42,12 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <div className='grid grid-cols-2 gap-5 phone:w-[95%] md:w-[98%] mx-auto mt-auto'>
+      <div className='grid tablet:grid-cols-2 tablet:gap-5 phone:w-[95%] md:w-[98%] mx-auto mt-auto'>
          <div>
             {ColumnOne.map((one) => (
                <div key={one.id}>
                   <div className='flex w-full justify-between text-[#FAFAFA] animation hover:text-[#BBBBBB]'>
-                     <Link to={one.href} className='phone:text-sm tablet:text-base md:text-lg tracking-tighter '>{one.link}</Link>
+                     <Link to={one.href} className='phone:text-base md:text-lg tracking-tighter '>{one.link}</Link>
                      <ArrowUpRight className='phone:w-4 phone:h-4 tablet:w-4 tablet:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 my-auto'/>
                   </div>
                   <hr className='border-t-[1px] border-[#444444] phone:my-1 table:my-2 md:my-4'/>

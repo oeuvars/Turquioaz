@@ -12,6 +12,8 @@ import Globe from "@/components/ui/globe";
 import Marquee from "@/components/ui/marquee";
 import { CalendarIcon, FileTextIcon, GlobeIcon, InputIcon } from "@radix-ui/react-icons";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import TextShimmer from "@/components/ui/animated-shiny-text";
+import { ArrowRightIcon } from "lucide-react";
 
 const files = [
   {
@@ -120,9 +122,21 @@ export function Bento() {
   return (
    <div className="py-8">
       <div>
-         <h1 className="phone:text-4xl lg:text-7xl font-semibold text-center tracking-tighter py-2 phone:my-5 lg:my-10 phone:w-[80%] mx-auto text-wrap">
-            <span className="landing-text px-1">Our Features</span>
+         <h1 className="phone:text-4xl lg:text-6xl font-semibold text-center tracking-tighter py-2 phone:my-2 tablet:my-5 phone:w-[80%] mx-auto text-wrap">
+            <span className="landing-text px-1">Why Turqioaz</span>
          </h1>
+         <div className="z-10 flex items-center justify-center phone:mb-7 lg:mb-10">
+            <div
+            className={cn(
+               "group rounded-full border border-black/5 bg-neutral-100 text-base transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
+            )}
+            >
+            <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+               <span className='gradient-text tracking-tight font-medium phone:text-sm tablet:text-base'>✨ Exclusive Featureset</span>
+               <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 text-amber-800" />
+            </TextShimmer>
+            </div>
+         </div>
          <video
             autoPlay
             loop

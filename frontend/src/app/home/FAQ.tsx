@@ -70,7 +70,7 @@ const FAQ: React.FC = () => {
                   transition={{ duration: 1, ease: 'easeInOut' }}
                   viewport={{ once: true }}
                >
-                  <Accordion type="single" collapsible className="w-[95%] mx-auto">
+                  <Accordion type="single" collapsible className="w-[98%] phone:pt-1 tablet:pt-2 mx-auto">
                      <AccordionItem value="item-1">
                         <AccordionTrigger className="text-[#DEDEDE] font-normal phone:text-sm tablet:text-lg uppercase text-left">
                            {faq.question}

@@ -67,8 +67,8 @@ const Membership: React.FC = () => {
 
 
    return (
-      <div className="overflow-hidden phone:mt-0 lg:mt-20">
-         <h1 className="phone:text-3xl lg:text-6xl font-semibold text-center landing-text tracking-tighter py-2 phone:my-5 lg:my-10 phone:w-[80%] mx-auto text-wrap">
+      <section id='membership' className="overflow-hidden phone:mt-0 lg:mt-20">
+         <h1 className="phone:text-3xl lg:text-6xl font-semibold text-center landing-text tracking-tighter py-2 phone:my-5 lg:my-5 phone:w-[80%] mx-auto text-wrap">
             Membership that fits your niche.
          </h1>
          <div className="z-10 flex items-center justify-center">
@@ -78,7 +78,7 @@ const Membership: React.FC = () => {
             )}
             >
             <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
-               <span className='gradient-text tracking-tighter'>✨ Exclusive Memberships</span>
+               <span className='gradient-text tracking-tight font-medium phone:text-sm tablet:text-base'>✨ Exclusive Memberships</span>
                <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 text-amber-800" />
             </TextShimmer>
             </div>
@@ -128,7 +128,7 @@ const Membership: React.FC = () => {
             </p>
             <ArrowUpRight className="my-auto w-6 h-6" />
          </div>
-      </div>
+      </section>
    );
 };
 

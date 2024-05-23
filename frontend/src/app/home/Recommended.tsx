@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRightIcon, ArrowUpRight } from "lucide-react";
 import { Model } from "@/types/DataTypes";
 import { Image } from "@nextui-org/image";
+import TextShimmer from "@/components/ui/animated-shiny-text";
+import { cn } from "@/lib/utils";
 
 const Recommended: React.FC = () => {
    const [cars, setCars] = useState<Model[]>([])
@@ -21,11 +23,20 @@ const Recommended: React.FC = () => {
    }, [])
    return (
       <>
-         <h1 className="text-center phone:text-4xl lg:text-7xl font-semibold tracking-tighter mt-20">
-            <span className="landing-text ">Today's Featured</span>
-         </h1>
+         <div className="z-10 flex items-center justify-center mt-10 phone:mb-5">
+            <div
+            className={cn(
+               "group rounded-full border border-black/5 bg-neutral-100 text-base transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
+            )}
+            >
+            <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+               <span className='gradient-text tracking-tight font-medium phone:text-sm tablet:text-base'>✨ Exclusive Cars</span>
+               <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 text-amber-800" />
+            </TextShimmer>
+            </div>
+         </div>
          <Marquee>
-            <div className="flex mt-5">
+            <div className="flex">
                {loading ? (
                   Array.from({ length: 4 }).map((_, index) => (
                      <Skeleton className="mx-2 tracking-tight my-[2vw] border-dashed p-4 border-[#303030] border rounded" key={index}>

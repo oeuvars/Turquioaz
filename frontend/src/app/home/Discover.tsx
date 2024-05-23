@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Button } from '@nextui-org/button';
 
 const Discover: React.FC = () => {
    return (
@@ -32,14 +33,14 @@ const Discover: React.FC = () => {
             <h1 className="phone:text-2xl lg:text-6xl tracking-tighter font-medium text-center">
                Open your doors to the <br /> world of exotic cars.
             </h1>
-            <button className="relative inline-flex mt-5 overflow-hidden rounded p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+            <Button className="relative inline-flex mt-5 overflow-hidden rounded p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded bg-slate-950 phone:px-9 lg:px-12 phone:py-2 lg:py-3 text-sm font-medium text-white backdrop-blur-3xl">
                   <Link to="/the-collection/all-cars">
                      Explore
                   </Link>
                </span>
-            </button>
+            </Button>
          </motion.div>
       </div>
    );

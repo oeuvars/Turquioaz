@@ -129,11 +129,11 @@ const MobileNavbar: React.FC = () => {
                 </div>
                 <div className='flex gap-3'>
                   <Library className='w-5 h-5 my-auto'/>
-                  <Link to="/the-collection" className="hover:text-[#FAFAFA] my-auto tracking-tighter text-lg">The collection</Link>
+                  <Link to="/the-collection/all-cars" className="hover:text-[#FAFAFA] my-auto tracking-tighter text-lg">The collection</Link>
                 </div>
                 <div className='flex gap-3'>
                   <Flame className='w-5 h-5 my-auto'/>
-                  <a href="/#membership" className="hover:text-[#FAFAFA] my-auto tracking-tighter text-lg">Become A Member</a>
+                  <a href="/404" className="hover:text-[#FAFAFA] my-auto tracking-tighter text-lg">Become A Member</a>
                 </div>
                 <div className='flex gap-3'>
                   <Heart className='w-5 h-5 my-auto'/>
@@ -145,7 +145,7 @@ const MobileNavbar: React.FC = () => {
                 </div>
                 <div className='flex gap-3'>
                   <Phone className='w-5 h-5 my-auto'/>
-                  <Link to="/#contact" className="my-auto text-[#FAFAFA] tracking-tighter text-lg">Contact Us</Link>
+                  <Link to="/contact-us" className="my-auto text-[#FAFAFA] tracking-tighter text-lg">Contact Us</Link>
                 </div>
               </div>
               <div className="p-5 mx-auto justify-between mt-auto w-full mb-10">

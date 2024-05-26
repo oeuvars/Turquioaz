@@ -65,6 +65,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
                            {allBrands?.map(brand => (
                               <Button
                                  key={brand}
+                                 size='sm'
                                  onClick={() => {
                                     setSelectedBrand(prevBrand =>
                                        prevBrand === brand ? null : brand,
@@ -103,13 +104,13 @@ const MobileFilters: React.FC<FiltersProps> = ({
                      <span className="gradient-text text-lg font-medium">Tier</span>
                   </p>
                   <div className="flex flex-wrap gap-2">
-                     <Button className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]" >
+                     <Button size='sm' className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]" >
                         Clay
                      </Button>
-                     <Button className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]">
+                     <Button size='sm' className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]">
                         Steel
                      </Button>
-                     <Button className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]">
+                     <Button size='sm' className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]">
                         Onyx
                      </Button>
                   </div>
@@ -139,6 +140,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
                   <div className="flex flex-wrap gap-2">
                      <Button
                         className="px-4 py-1 rounded bg-[#333333] text-[#FAFAFA] text-sm"
+                        size='sm'
                         onClick={() => {
                            setSelectedAcceleration([0, 2]), setPage(1);
                            setClicked(true);
@@ -148,6 +150,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
                      </Button>
                      <Button
                         className="px-4 py-1 rounded bg-[#333333] text-[#FAFAFA] text-sm"
+                        size='sm'
                         onClick={() => {
                            setSelectedAcceleration([2, 4]), setPage(1);
                            setClicked(true);
@@ -159,6 +162,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
                         className={`px-4 py-1 rounded bg-[#333333] text-[#FAFAFA] text-sm ${
                            clicked ? 'bg-[#222222]' : 'bg-[#333333]'
                         }`}
+                        size='sm'
                         onClick={() => {
                            setSelectedAcceleration([4, 7]), setPage(1);
                            setClicked(true);

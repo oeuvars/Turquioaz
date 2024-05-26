@@ -123,12 +123,12 @@ const Wishlist: React.FC = () => {
                                  </div>
                                  <div className='flex flex-col justify-between gap-2'>
                                     {Array.from({length: 3 }).map((_, index) => (
-                                       <div className="w-full justify-between" key={index}>
-                                          <div className="flex justify-between w-full ">
+                                       <div className="w-full flex flex-col gap-2 justify-between" key={index}>
+                                          <div className="flex justify-between w-full">
                                              <Skeleton className='w-44 h-6 my-auto' />
                                              <Skeleton className='w-44 h-6 my-auto' />
                                           </div>
-                                          <hr className="border-t-[1px] border-[#303030] border-dashed rounded-full mt-[1vw]" />
+                                          <hr className="border-t-[1px] border-[#303030] border-dashed rounded-full" />
                                        </div>
                                     ))}
                                  </div>
@@ -151,16 +151,16 @@ const Wishlist: React.FC = () => {
                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FAFAFA" stroke="#FAFAFA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
                                           </button>
                                           <div className="flex gap-3 font-medium">
-                                             <p className="phone:text-base tablet:text-lg tracking-tight text-[#FAFAFA]">{wishlist.car.brand}</p>
-                                             <p className="phone:text-base tablet:text-lg tracking-tight text-[#BBBBBB]">{wishlist.car.name}</p>
+                                             <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight text-[#FAFAFA]">{wishlist.car.brand}</p>
+                                             <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight text-[#BBBBBB]">{wishlist.car.name}</p>
                                           </div>
                                        </div>
                                        <div className='flex flex-col justify-between gap-2 phone:p-[1.5vh] md:p-[1vw] font-medium'>
                                           {Object.entries({ Power: wishlist.car.power + ' HP', '0-60 MPH': wishlist.car.acceleration + ' Sec', 'Top Speed': wishlist.car.topSpeed + ' MPH' }).map(([label, value]) => (
                                              <div className="w-full flex flex-col gap-2 justify-between" key={label}>
                                                 <div className="flex justify-between w-full text-[#FAFAFA]">
-                                                   <p className="phone:text-base tablet:text-lg tracking-tight">{label}</p>
-                                                   <p className="phone:text-base tablet:text-lg tracking-tight">{value}</p>
+                                                   <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight">{label}</p>
+                                                   <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight">{value}</p>
                                                 </div>
                                                 <hr className="border-t-[1px] border-[#AFAFAF]" />
                                              </div>

@@ -88,7 +88,7 @@ const Wishlist: React.FC = () => {
          )}
          <div className='phone:h-[30vh] tablet:h-[37vh] overflow-hidden relative mb-auto'>
             <img className="w-screen flex object-cover opacity-50 h-full" src="/assets/box-pattern.svg" alt="" />
-            <h1 className='w-full flex justify-center phone:text-4xl sm:text-5xl tablet:6xl lg:text-7xl absolute phone:-mt-[20vh] tablet:-mt-[18vh] lg:-mt-[20vh] tracking-tighter font-semibold saturate-[1.1]'>
+            <h1 className='w-full flex justify-center phone:text-3xl sm:text-5xl tablet:6xl lg:text-7xl absolute phone:-mt-[20vh] tablet:-mt-[18vh] lg:-mt-[20vh] tracking-tighter font-semibold saturate-[1.1]'>
                <span className='gradient-text'>The Turquioaz wishlist</span>
             </h1>
          </div>

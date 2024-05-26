@@ -1,10 +1,4 @@
-import {
-   Drawer,
-   DrawerClose,
-   DrawerContent,
-   DrawerFooter,
-   DrawerTrigger,
-} from '@/components/ui/drawer';
+import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTrigger } from '@/components/ui/drawer';
 import { Slider } from '@/components/ui/slider';
 import { FiltersProps } from '@/types/Filters';
 import { Button } from '@nextui-org/button';

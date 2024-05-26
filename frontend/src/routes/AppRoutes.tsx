@@ -1,7 +1,6 @@
 import About from '@/app/extra/AboutUs'
 import ContactUs from '@/app/extra/ContactUs'
 import Home from '@/app/home/Home'
-import TheCollection from '@/app/showcase/TheCollection'
 import Login from '@/app/auth/Login'
 import Register from '@/app/auth/Register'
 import VerifyRegistation from '@/app/auth/VerifyRegistration'
@@ -23,7 +22,6 @@ const AppRoutes: React.FC = () => {
       <Route path="/auth/login" element={<Login />} />
       <Route path="/auth/register" element={<Register />} />
       <Route path='/auth/verify-registration' element={<VerifyRegistation />} />
-      <Route path="/the-collection" element={<TheCollection />} />
       <Route path="/the-collection/all-cars" element={<AllCars />} />
       <Route path='/wishlist' element={<Wishlist />} />
       <Route path="/the-collection/all-cars/:id" element={<SingleCarCard />} />

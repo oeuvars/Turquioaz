@@ -1,10 +1,11 @@
-import express from "express";
+import express, { Response } from "express";
 import prisma from "../../../db/db.config";
 import { UserRequest } from "../../../types/UserRequest";
 
-export const wishlistCar = async (req: UserRequest, res: express.Response) => {
+export const AddToWishlist = async (req: UserRequest, res: Response) => {
    const id = parseInt(req.params.id);
    const car = await prisma.model.findUnique({ where: { id: id } });
+   console.log(car)
    if (car) {
      const user = await prisma.user.findUnique({where: {email: req.user?.email}});
      if (user) {

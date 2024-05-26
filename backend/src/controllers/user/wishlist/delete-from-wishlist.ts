@@ -2,7 +2,9 @@ import express from "express";
 import prisma from "../../../db/db.config";
 import { UserRequest } from "../../../types/UserRequest";
 
-export const deleteWishlistedCar = async (req: UserRequest, res: express.Response) => {
+export const deleteFromWishlist = async (req: UserRequest, res: express.Response) => {
+  console.log("lol")
+  console.log(req.params.id)
    const wishCar = await prisma.wishlistedCar.findUnique({
      where: { id: parseInt(req.params.id) },
    });

@@ -108,7 +108,9 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
                <>
                   {models.map((model: Model) => (
                      <Link to={`/the-collection/all-cars/${model.id}`} className='relative rounded-sm overflow-hidden flex flex-col justify-between' key={model.id}>
-                        <Image src={model.imageSource} alt="" className="w-screen mx-auto object-cover opacity-70 phone:h-[40vh] xs:h-[50vh] s:h-[55vh] sm:h-[60vh] md:h-[40vw]" loading='lazy'/>
+                        <div className='opacity-80'>
+                           <Image src={model.imageSource} alt="" className="w-screen mx-auto object-cover opacity-70 phone:h-[40vh] xs:h-[50vh] s:h-[55vh] sm:h-[60vh] md:h-[40vw]" loading='lazy'/>
+                        </div>
                         <div className="mx-auto flex flex-col phone:h-[40vh] xs:h-[50vh] s:h-[55vh] sm:h-[60vh] md:h-[40vw] justify-between w-full absolute z-10">
                            <div className="flex justify-between phone:p-[1.5vh] md:p-[1vw]">
                               <div className="z-20">

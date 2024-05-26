@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
    };
    return (
       <div className='phone:min-h-[70vh] tablet:min-h-[95vh] phone:flex phone:flex-col tablet:grid items-center phone:justify-center tablet:justify-end'>
-         <img className="w-screen phone:h-[70vh] tablet:h-[95vh] flex object-cover opacity-20 absolute tablet:pt-7" src="/assets/box-pattern.svg" alt="" />
+         <img className="w-screen phone:h-[70vh] tablet:h-[95vh] flex object-cover opacity-50 absolute tablet:pt-7" src="/assets/box-pattern.svg" alt="" />
          <AnimatePresence>
             <div className="phone:px-[2vh] md:px-[2vw] saturate-[1.1] animation overflow-hidden">
                <motion.h1

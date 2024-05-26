@@ -60,7 +60,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
          <DrawerContent className="bg-[#111111]/50 backdrop-blur-xl pb-[2vh]">
             <div className="mx-auto w-[90%]">
                {/* Brands */}
-               <h1 className="text-[#FAFAFA]/80 tracking-tight text-4xl font-medium text-center my-[1.5vh]">
+               <h1 className="text-[#FAFAFA]/80 tracking-tighter text-4xl font-medium text-center my-[1.5vh] font-roboto-mono">
                   Filters
                </h1>
                <div className="">
@@ -77,8 +77,8 @@ const MobileFilters: React.FC<FiltersProps> = ({
                                     );
                                     setPage(1);
                                  }}
-                                 className={`text-[#FAFAFA] text-left text-sm tracking-tight animation hover:bg-[#202020] py-1 px-4 ${
-                                    selectedBrand === brand ? 'bg-[#202020]' : 'bg-[#303030]'
+                                 className={`text-[#FAFAFA] text-left text-sm tracking-tight animation hover:bg-[#202020] rounded px-4 ${
+                                    selectedBrand === brand ? 'bg-[#111111]' : 'bg-[#222222]'
                                  }`}
                               >
                                  {brand}
@@ -108,14 +108,14 @@ const MobileFilters: React.FC<FiltersProps> = ({
                   <p className="tracking-tighter">
                      <span className="gradient-text text-lg font-medium">Tier</span>
                   </p>
-                  <div className="flex gap-2">
-                     <Button className="px-4 py-1 rounded-sm text-sm bg-[#333333] text-[#FAFAFA]" >
+                  <div className="flex flex-wrap gap-2">
+                     <Button className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]" >
                         Clay
                      </Button>
-                     <Button className="px-4 py-1 rounded-sm text-sm bg-[#333333] text-[#FAFAFA]">
+                     <Button className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]">
                         Steel
                      </Button>
-                     <Button className="px-4 py-1 rounded-sm text-sm bg-[#333333] text-[#FAFAFA]">
+                     <Button className="px-4 py-1 rounded text-sm bg-[#333333] text-[#FAFAFA]">
                         Onyx
                      </Button>
                   </div>
@@ -142,9 +142,9 @@ const MobileFilters: React.FC<FiltersProps> = ({
                   <p className="tracking-tighter">
                      <span className="gradient-text text-lg font-medium">Accleration (0-60 MPH)</span>
                   </p>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                      <Button
-                        className="px-4 py-1 rounded-sm bg-[#333333] text-[#FAFAFA] text-sm"
+                        className="px-4 py-1 rounded bg-[#333333] text-[#FAFAFA] text-sm"
                         onClick={() => {
                            setSelectedAcceleration([0, 2]), setPage(1);
                            setClicked(true);
@@ -153,7 +153,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
                         &lt;2s
                      </Button>
                      <Button
-                        className="px-4 py-1 rounded-sm bg-[#333333] text-[#FAFAFA] text-sm"
+                        className="px-4 py-1 rounded bg-[#333333] text-[#FAFAFA] text-sm"
                         onClick={() => {
                            setSelectedAcceleration([2, 4]), setPage(1);
                            setClicked(true);
@@ -162,7 +162,7 @@ const MobileFilters: React.FC<FiltersProps> = ({
                         2-4s
                      </Button>
                      <Button
-                        className={`px-4 py-1 rounded-sm bg-[#333333] text-[#FAFAFA] text-sm ${
+                        className={`px-4 py-1 rounded bg-[#333333] text-[#FAFAFA] text-sm ${
                            clicked ? 'bg-[#222222]' : 'bg-[#333333]'
                         }`}
                         onClick={() => {

@@ -61,7 +61,7 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
                 {allBrands?.map((brand) => (
                   <div className='text-left w-full px-1.5'>
                     <Button key={brand} onClick={() => {setSelectedBrand(brand), setPage(1)}} className={`${selectedBrand === brand ? 'bg-[#111111]' : ''} text-[#fff] text-left text-lg tracking-tight hover:bg-[#111111] rounded mr-auto px-[1.5vw] w-full`}>
-                      <h1 className='text-left flex mr-auto'>{brand}</h1>
+                      <h1 className='text-left flex mr-auto text-base'>{brand}</h1>
                     </Button>
                   </div>
                 ))}
@@ -80,10 +80,10 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
       </div>
       <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/50 p-[1.5vw] mt-[1vw]'>
         <p className='text-lg tracking-tight'><span className='gradient-text text-lg font-medium'>Tier</span></p>
-        <div className='flex gap-2'>
-          <Button className='px-5 py-2 rounded-sm bg-[#111111] text-[#FAFAFA]'>Clay</Button>
-          <Button className='px-5 py-2 rounded-sm bg-[#111111] text-[#FAFAFA]'>Steel</Button>
-          <Button className='px-5 py-2 rounded-sm bg-[#111111] text-[#FAFAFA]'>Onyx</Button>
+        <div className='flex flex-wrap gap-2'>
+          <Button className='px-5 py-2 bg-[#111111] text-[#FAFAFA] rounded'>Clay</Button>
+          <Button className='px-5 py-2 rounded bg-[#111111] text-[#FAFAFA]'>Steel</Button>
+          <Button className='px-5 py-2 rounded bg-[#111111] text-[#FAFAFA]'>Onyx</Button>
         </div>
       </div>
       <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/50 py-[2vw] px-[1.5vw] mt-[1vw]'>
@@ -96,10 +96,10 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
       </div>
       <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/50 p-[1.5vw] mt-[1vw]'>
         <p className='text-lg tracking-tight'><span className='gradient-text text-lg font-medium'>Accleration (0-60 MPH)</span></p>
-        <div className='flex gap-2'>
-          <Button className={`px-5 py-2 rounded-sm bg-[#111111] text-[#FAFAFA]`} onClick={()=>{setSelectedAcceleration([0, 2]), setPage(1); setClicked(true);}}>&lt;2s</Button>
-          <Button className={`px-5 py-2 rounded-sm bg-[#111111] text-[#FAFAFA]`} onClick={()=>{setSelectedAcceleration([2, 4]), setPage(1); setClicked(true);}}>2-4s</Button>
-          <Button className={`px-5 py-2 rounded-sm bg-[#111111] text-[#FAFAFA]`} onClick={()=>{setSelectedAcceleration([4, 7]), setPage(1); setClicked(true);}}>&gt;4s</Button>
+        <div className='flex flex-wrap gap-2'>
+          <Button className={`px-5 py-2 rounded bg-[#111111] text-[#FAFAFA]`} onClick={()=>{setSelectedAcceleration([0, 2]), setPage(1); setClicked(true);}}>&lt;2s</Button>
+          <Button className={`px-5 py-2 rounded bg-[#111111] text-[#FAFAFA]`} onClick={()=>{setSelectedAcceleration([2, 4]), setPage(1); setClicked(true);}}>2-4s</Button>
+          <Button className={`px-5 py-2 rounded bg-[#111111] text-[#FAFAFA]`} onClick={()=>{setSelectedAcceleration([4, 7]), setPage(1); setClicked(true);}}>&gt;4s</Button>
         </div>
       </div>
     </div>

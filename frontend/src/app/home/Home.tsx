@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { FC } from 'react';
 import Hero from './Hero';
 import Membership from './Membership';
 import FAQ from './FAQ';
@@ -8,10 +8,7 @@ import Navbar from './Navbar';
 import Recommended from './Recommended';
 import { Bento } from './BentoGrid';
 
-const Home: React.FC = () => {
-   useEffect(() => {
-      window.scrollTo(0, 0);
-   }, []);
+const Home: FC = () => {
    return (
       <>
          <Navbar />

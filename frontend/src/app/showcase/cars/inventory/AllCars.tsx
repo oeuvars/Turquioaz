@@ -55,7 +55,7 @@ const AllCars: React.FC = () => {
           </div>
         </div>
       )}
-      <div className='grid tablet:grid-cols-[1fr_3fr] mt-[3vw] w-[98%] mx-auto gap-[1vw]'>
+      <div className='grid tablet:grid-cols-[1fr_3fr] mt-[3vw] w-[98%] mx-auto gap-1'>
          {isAboveSmallScreens ? (
           <DesktopFilters
             setPage={setPage}

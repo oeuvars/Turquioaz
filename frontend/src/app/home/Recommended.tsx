@@ -65,7 +65,9 @@ const Recommended: React.FC = () => {
                               <img src='/icons/dot.svg' alt='' className='w-3 h-3 my-auto' />
                               <p className="phone:text-xl md:text-2xl tracking-tight text-[#BBBBBB]">Available</p>
                            </div>
-                           <Image src={car.imageSource} className="phone:w-[45vh] phone:h-[40vh] tablet:w-[35vw] tablet:h-[25vw] object-cover opacity-70 rounded" />
+                           <div className="opacity-70">
+                              <Image src={car.imageSource} className="phone:w-[45vh] phone:h-[40vh] tablet:w-[35vw] tablet:h-[25vw] object-cover opacity-70 rounded" />
+                           </div>
                            <div className="flex flex-col gap-2 mt-2">
                               <div className="flex w-full justify-between">
                                  <p className="phone:text-lg md:text-2xl tracking-tight text-[#FAFAFA]">{car.brand}</p>

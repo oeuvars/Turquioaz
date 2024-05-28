@@ -16,7 +16,6 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
 
    const handleAddToWishlistClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
       e.preventDefault();
-      console.log(id)
       if (loginCookie || registerCookie) {
          await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/add-to-wishlist/${id}`, {}, { headers });
          const wishlistedCar = async () => {
@@ -30,7 +29,6 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
    };
    const handleRemoveFromWishlist = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: number) => {
       event.preventDefault();
-      console.log(id)
       await axios.delete(`${import.meta.env.VITE_SERVER_URL}/user/delete-from-wishlist/${id}`, { headers });
       const wishlistedCar = async () => {
          const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/get-wishlist`, { headers });

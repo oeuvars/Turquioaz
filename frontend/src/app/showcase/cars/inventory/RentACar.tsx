@@ -2,30 +2,33 @@ import Navbar from '@/app/home/Navbar';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { format } from 'date-fns';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarIcon, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import Footer from '@/app/home/Footer';
-import Stripe from 'stripe';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Model } from '@/types/DataTypes';
 import { Button } from "@nextui-org/button"
 import { Image } from '@nextui-org/image';
 import { showToast } from '@/helpers/showToats';
-import { headers, loginCookie, registerCookie } from '@/utils/authHeader';
+import { headers } from '@/utils/authHeader';
+import DatePickerPopover from '@/components/global/date-picker-popover';
+import { useDatePicker } from '@/hooks/useDatePicker';
+import { useStripeCheckout } from '@/hooks/useStripeCheckout';
 
 const RentACar: React.FC = () => {
    const { id } = useParams<{ id: string }>();
    const [model, setModel] = useState<Model>();
-   const [startDate, setStartDate] = useState<Date>(new Date());
+
+   const today = new Date()
    const tomorrow = new Date();
    tomorrow.setDate(tomorrow.getDate() + 1);
-   const [endDate, setEndDate] = useState<Date>(tomorrow);
+   const { date: startDate, setDate: setStartDate } = useDatePicker(today);
+   const { date: endDate, setDate: setEndDate } = useDatePicker(tomorrow);
    const [days, setDays] = useState<number>();
+
    const [loading, setLoading] = useState<boolean>(true);
-   const [loadingSession, setLoadingSession] = useState<boolean>(false)
    const navigate = useNavigate()
+
+   const { createCheckoutSession, loadingSession } = useStripeCheckout();
 
    useEffect(() => {
       const getCar = async () => {
@@ -39,66 +42,22 @@ const RentACar: React.FC = () => {
          setLoading(false);
       };
       getCar();
-   }, []);
+   }, [id]);
 
    useEffect(() => {
-      const utc1 = Date.UTC(startDate!.getFullYear(), startDate!.getMonth(), startDate!.getDate());
-      const utc2 = Date.UTC(endDate!.getFullYear(), endDate!.getMonth(), endDate!.getDate());
-      const diffDays = Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
-      setDays(diffDays);
+      if (startDate && endDate) {
+         const utc1 = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+         const utc2 = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+         const diffDays = Math.floor((utc2 - utc1) / (1000 * 60 * 60 * 24));
+         setDays(diffDays);
+      } else {
+         setDays(0);
+      }
    }, [startDate, endDate]);
 
-   const Key = import.meta.env.VITE_STRIPE_SECRET_KEY;
-   const stripe = new Stripe(Key, {
-      apiVersion: '2023-10-16',
-   });
-   const handleClick = async () => {
-      if (days! <= 0) {
-         showToast("Not possible", false)
-      }
-      else {
-         if (loginCookie || registerCookie) {
-            setLoadingSession(true)
-            const session = await stripe.checkout.sessions.create({
-               payment_method_types: ['card'],
-
-               line_items: [
-                  {
-                     price_data: {
-                        currency: 'usd',
-                        product_data: {
-                           name: model!.name,
-                        },
-                        unit_amount: model!.rent * 100,
-                     },
-                     quantity: days,
-                  },
-               ],
-               shipping_address_collection: {
-                  allowed_countries: ['US'],
-               },
-               mode: 'payment',
-               success_url: `${origin}/order-confirmation?success=true&id=${model?.id}`,
-            });
-            const response = await axios.post(
-               `${import.meta.env.VITE_SERVER_URL}/user/rent-car/${id}`,
-               {
-                  startDate: startDate.toISOString().split('T')[0],
-                  endDate: endDate.toISOString().split('T')[0],
-                  status: false,
-               },
-               { headers },
-            );
-            const idToken = response.data.token;
-            localStorage.setItem('idToken', idToken);
-            if (session.url) {
-               window.location.href = session.url;
-            }
-            setLoadingSession(false)
-         }
-         else {
-            navigate('/auth/login')
-         }
+   const handleClick = () => {
+      if(model && days && startDate && endDate) {
+         createCheckoutSession(model, days, startDate, endDate, navigate, showToast);
       }
    };
    const carDetails = [
@@ -168,76 +127,16 @@ const RentACar: React.FC = () => {
                </div>
                <div className='flex flex-col gap-7'>
                   <div className="grid md:grid-cols-2 phone:gap-3 md:gap-5">
-                     <div className="border border-dashed border-[#555555] rounded p-4 flex flex-col gap-2 justify-between w-full">
-                        <h1 className="text-[#333333] font-semibold phone:text-2xl md:text-5xl tracking-tighter text-left">
-                           Start Date
-                        </h1>
-                        <Popover>
-                           <PopoverTrigger asChild>
-                              <button className="bg-[#222222] w-full rounded flex px-5 py-3 tracking-tight outline-none text-[#FAFAFA]">
-                                 <CalendarIcon className="mr-2 my-auto h-5 w-5 text-[#BBBBBB]" />
-                                 {startDate ? (
-                                    format(startDate, 'PPP')
-                                 ) : (
-                                    <span className="text-[#FAFAFA] tracking-tighter">
-                                       Pick a date
-                                    </span>
-                                 )}
-                              </button>
-                           </PopoverTrigger>
-                           <PopoverContent
-                              className="w-auto p-0 backdrop-blur-md rounded-2xl z-10"
-                              align="center"
-                           >
-                              <Calendar
-                                 mode="single"
-                                 selected={startDate}
-                                 onSelect={(date: Date | undefined) => {
-                                    if (date) {
-                                       setStartDate(date);
-                                    }
-                                 }}
-                                 initialFocus
-                                 className="w-auto backdrop-blur-md rounded z-20 p-5 text-[#FAFAFA] bg-white/10"
-                              />
-                           </PopoverContent>
-                        </Popover>
-                     </div>
-                     <div className="border border-dashed border-[#555555] rounded p-4 flex flex-col gap-2 justify-between w-full">
-                        <h1 className="text-[#333333] font-semibold phone:text-2xl md:text-5xl tracking-tighter">
-                           End Date
-                        </h1>
-                        <Popover>
-                           <PopoverTrigger asChild>
-                              <button className="bg-[#222222] w-full rounded flex px-5 py-3 tracking-tight outline-none text-[#FAFAFA]">
-                                 <CalendarIcon className="mr-2 my-auto h-5 w-5 text-[#BBBBBB]" />
-                                 {endDate ? (
-                                    format(endDate, 'PPP')
-                                 ) : (
-                                    <span className="text-[#FAFAFA] tracking-tighter text-lg">
-                                       Pick a date
-                                    </span>
-                                 )}
-                              </button>
-                           </PopoverTrigger>
-                           <PopoverContent
-                              className="w-auto p-0 backdrop-blur-md rounded-2xl z-10"
-                              align="center"
-                           >
-                              <Calendar
-                                 mode="single"
-                                 selected={endDate}
-                                 onSelect={(date: Date | undefined) => {
-                                    if (date) {
-                                       setEndDate(date);
-                                    }
-                                 }}
-                                 initialFocus
-                                 className="w-auto backdrop-blur-md rounded z-20 p-5 text-[#FAFAFA] bg-white/10"
-                              />
-                           </PopoverContent>
-                        </Popover>
-                     </div>
+                     <DatePickerPopover
+                        label="Start Date"
+                        date={startDate}
+                        onDateChange={setStartDate}
+                     />
+                     <DatePickerPopover
+                        label="End Date"
+                        date={endDate}
+                        onDateChange={setEndDate}
+                     />
                   </div>
                   <div className="border border-dashed border-[#555555] rounded p-4 flex justify-between">
                      <h1 className="phone:text-3xl md:text-5xl font-medium tracking-tighter text-[#333333] my-auto">

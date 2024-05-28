@@ -8,14 +8,9 @@ import { ArrowUpRight } from 'lucide-react';
 import Footer from '@/app/home/Footer';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Model } from '@/types/DataTypes';
+import { headers } from '@/utils/authHeader';
 
 const SingleCarCard: React.FC = () => {
-   const registerCookie = Cookies.get('RegisterCookie');
-   const loginCookie = Cookies.get('LoginCookie');
-   const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${loginCookie || registerCookie}`,
-   };
    const [model, setModel] = useState<Model>();
    const [loading, setLoading] = useState<boolean>(true);
    const { id } = useParams<{ id: string }>();

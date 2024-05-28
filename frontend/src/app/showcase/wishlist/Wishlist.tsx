@@ -3,7 +3,6 @@ import Navbar from '@/app/home/Navbar';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { motion} from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 import { WishlistedCar } from '@/types/DataTypes';
 import { headers, loginCookie, registerCookie } from '@/utils/authHeader';

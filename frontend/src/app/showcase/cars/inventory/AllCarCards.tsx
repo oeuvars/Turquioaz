@@ -125,17 +125,17 @@ const AllCarCards: React.FC<AllCarCardsProps> = ({ onTotalModelsChange, page, se
                                     )}
                                  </AnimatePresence>
                               </div>
-                              <div className="flex gap-3 font-medium">
+                              <div className="flex gap-3">
                                  <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight text-[#FAFAFA]">{model.brand}</p>
                                  <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight text-[#BBBBBB]">{model.name}</p>
                               </div>
                            </div>
-                           <div className="flex flex-col justify-between gap-2 phone:p-[1.5vh] md:p-[1vw] font-medium">
+                           <div className="flex flex-col justify-between gap-2 phone:p-[1.5vh] md:p-[1vw]">
                               {Object.entries({ Power: model.power + ' HP', '0-60 MPH': model.acceleration + ' Sec', 'Top Speed': model.topSpeed + ' MPH' }).map(([label, value]) => (
                                  <div className="w-full flex flex-col gap-2 justify-between" key={label}>
                                     <div className="flex justify-between w-full text-[#FAFAFA]">
-                                       <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight">{label}</p>
-                                       <p className="phone:text-sm tablet:text-base lg:text-lg tracking-tight">{value}</p>
+                                       <p className="phone:text-sm tablet:text-base tracking-tight">{label}</p>
+                                       <p className="phone:text-sm tablet:text-base tracking-tight">{value}</p>
                                     </div>
                                     <hr className="border-t-[1px] border-[#AFAFAF]" />
                                  </div>

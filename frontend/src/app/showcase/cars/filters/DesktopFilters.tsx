@@ -44,10 +44,10 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
   };
 
   return (
-    <div className='bg-[#333333]/10 py-[1vw] rounded-sm overflow-hidden'>
+    <div className='bg-[#333333]/20 py-[1vw] rounded-sm overflow-hidden'>
       <span className='text-4xl text-[#333333] font-medium flex justify-center font-roboto-mono tracking-tighter uppercase'>Filters</span>
       <div className="flex items-center justify-center mt-[2vw] z-10">
-        <Accordion type="single" collapsible className='w-[95%] rounded bg-[#111111]/50'>
+        <Accordion type="single" collapsible className='w-[95%] rounded bg-[#111111]/95'>
           <AccordionItem value='1' className='border-none'>
             <AccordionTrigger className='px-[1.75vw]'>
               <div className='flex justify-between'>
@@ -70,7 +70,7 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
           </AccordionItem>
         </Accordion>
       </div>
-      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/50 py-[2vw] px-[1.5vw] mt-[1vw]'>
+      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/95 py-[2vw] px-[1.5vw] mt-[1vw]'>
         <p className='text-lg tracking-tight'><span className='gradient-text text-lg font-medium'>Price</span></p>
         <Slider defaultValue={selectedPrice} max={100} step={1} onValueChange={handleSliderPrice} className='m-auto'/>
         <div className='flex text-sm justify-between tracking-tight'>
@@ -78,7 +78,7 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
           <p>650,000&nbsp;$</p>
         </div>
       </div>
-      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/50 p-[1.5vw] mt-[1vw]'>
+      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/95 p-[1.5vw] mt-[1vw]'>
         <p className='text-lg tracking-tight'><span className='gradient-text text-lg font-medium'>Tier</span></p>
         <div className='flex flex-wrap gap-2'>
           <Button className='px-5 py-2 bg-[#111111] text-[#FAFAFA] rounded'>Clay</Button>
@@ -86,7 +86,7 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
           <Button className='px-5 py-2 rounded bg-[#111111] text-[#FAFAFA]'>Onyx</Button>
         </div>
       </div>
-      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/50 py-[2vw] px-[1.5vw] mt-[1vw]'>
+      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/95 py-[2vw] px-[1.5vw] mt-[1vw]'>
         <p className='text-lg tracking-tight'><span className='gradient-text text-lg font-medium'>HorsePower</span></p>
         <Slider defaultValue={selectedPower} max={100} step={1} onValueChange={handleSliderPower} className='m-auto'/>
         <div className='flex text-sm justify-between tracking-tight'>
@@ -94,7 +94,7 @@ const DesktopFilters: React.FC<FiltersProps> = ({ setPage, selectedBrand ,setSel
           <p>1050 HP</p>
         </div>
       </div>
-      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/50 p-[1.5vw] mt-[1vw]'>
+      <div className='w-[95%] mx-auto grid gap-2 rounded bg-[#111111]/95 p-[1.5vw] mt-[1vw]'>
         <p className='text-lg tracking-tight'><span className='gradient-text text-lg font-medium'>Accleration (0-60 MPH)</span></p>
         <div className='flex flex-wrap gap-2'>
           <Button className={`px-5 py-2 rounded bg-[#111111] text-[#FAFAFA]`} onClick={()=>{setSelectedAcceleration([0, 2]), setPage(1); setClicked(true);}}>&lt;2s</Button>

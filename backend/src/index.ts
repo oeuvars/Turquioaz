@@ -10,7 +10,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({ credentials: true }));
-app.use(express.json());
+
+app.use(cors({
+    origin: ['https://turquioaz.vercel.app', 'http://localhost:3000'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);

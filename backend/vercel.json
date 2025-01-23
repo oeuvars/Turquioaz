@@ -12,7 +12,9 @@
       "dest": "src/index.ts"
     }
   ],
-  "env": {
-    "DATABASE_URL": "@database_url"
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
   }
 }

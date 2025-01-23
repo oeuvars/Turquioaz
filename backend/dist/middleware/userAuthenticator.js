@@ -9,7 +9,7 @@ const authentication = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader) {
         const token = authHeader.split(" ")[1];
-        jsonwebtoken_1.default.verify(token, process.env.hiddenKey, (err, user) => {
+        jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET, (err, user) => {
             if (err) {
                 return res.sendStatus(403);
             }

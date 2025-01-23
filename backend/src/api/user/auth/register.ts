@@ -1,24 +1,22 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = void 0;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const sendMail_1 = require("../../../helpers/sendMail");
-const db_config_1 = __importDefault(require("../../../db/db.config"));
-const sendOTP_1 = require("../../../helpers/sendOTP");
-const bcrypt_1 = __importDefault(require("bcrypt"));
-const mailSubject = "Verification from Rent&Ride";
-const register = async (req, res) => {
-    const { name, email, password } = req.body;
-    const existingUser = await db_config_1.default.user.findUnique({ where: { email: email } });
-    if (existingUser) {
-        const isUserVerified = existingUser.is_verified;
-        if (isUserVerified === false) {
-            const randomOTP = (0, sendOTP_1.sendOTP)();
-            await db_config_1.default.user.update({ where: { email: email }, data: { name: name, otp: randomOTP, created_at: new Date().toLocaleDateString() } });
-            const content = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+import { Request, Response } from "express"
+import jwt from "jsonwebtoken";
+import { sendMail } from "../../../helpers/send-mail";
+import prisma from "../../../../db.config";
+import { sendOTP } from "../../../helpers/send-OTP";
+import bcrypt from "bcrypt";
+
+const mailSubject = "Verification from Rent&Ride"
+
+export const register = async (req: Request, res: Response) => {
+   const { name, email, password } = req.body;
+   const existingUser = await prisma.user.findUnique({ where: { email: email }});
+   if (existingUser) {
+     const isUserVerified = existingUser.is_verified
+     if (isUserVerified === false) {
+       const randomOTP = sendOTP();
+       await prisma.user.update({ where: { email: email }, data: { name: name, otp: randomOTP, created_at: new Date().toLocaleDateString() }});
+       const content =
+         `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
              <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
                <html lang="en">
 
@@ -52,26 +50,23 @@ const register = async (req, res) => {
                  </body>
 
                </html>`;
-            await (0, sendMail_1.sendMail)(email, mailSubject, content);
-            const token = jsonwebtoken_1.default.sign({ email: email, name: name }, process.env.JWT_SECRET, { expiresIn: "1d" });
-            res.status(200).json({ success: true, message: "User updated", token: token });
-        }
-        else {
-            res.status(403).json({ success: false, message: "User already exists", token: null });
-        }
-    }
-    else {
-        const hashedPassword = await new Promise((resolve, reject) => {
-            bcrypt_1.default.hash(password, 7, (err, hash) => {
-                if (err)
-                    reject(err);
-                else
-                    resolve(hash);
-            });
-        });
-        const randomOTP = (0, sendOTP_1.sendOTP)();
-        await db_config_1.default.user.create({ data: { name: name, email: email, password: hashedPassword, is_verified: false, otp: randomOTP, created_at: new Date().toLocaleDateString() } });
-        const content = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+       await sendMail(email, mailSubject, content);
+       const token = jwt.sign({ email: email, name: name }, process.env.JWT_SECRET as string,{ expiresIn: "1d" });
+       res.status(200).json({ success: true, message: "User updated", token: token });
+     } else {
+       res.status(403).json({ success: false, message: "User already exists", token: null });
+     }
+   } else {
+     const hashedPassword: string = await new Promise((resolve, reject) => {
+       bcrypt.hash(password, 7, (err, hash) => {
+         if (err) reject(err);
+         else resolve(hash);
+       });
+     });
+     const randomOTP = sendOTP();
+     await prisma.user.create({ data: { name: name, email: email, password: hashedPassword, is_verified: false, otp: randomOTP, created_at: new Date().toLocaleDateString() }});
+     const content =
+         `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
              <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
                <html lang="en">
 
@@ -105,11 +100,9 @@ const register = async (req, res) => {
                  </body>
 
                </html>`;
-        await (0, sendMail_1.sendMail)(email, mailSubject, content);
-        await db_config_1.default.user.update({ where: { email: email }, data: { updated_at: new Date().toLocaleDateString() } });
-        const token = jsonwebtoken_1.default.sign({ email: email, name: name }, process.env.JWT_SECRET, { expiresIn: "1d" });
-        res.json({ success: true, message: "User created successfully", token: token });
-    }
-};
-exports.register = register;
-//# sourceMappingURL=register.js.map
+     await sendMail(email, mailSubject, content);
+     await prisma.user.update({ where: { email: email }, data: { updated_at: new Date().toLocaleDateString() }});
+     const token = jwt.sign({ email: email, name: name }, process.env.JWT_SECRET as string, { expiresIn: "1d" });
+     res.json({ success: true, message: "User created successfully", token: token });
+   }
+ };

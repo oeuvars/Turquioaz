@@ -23,7 +23,7 @@ const login = async (req, res) => {
             });
         });
         if (passwordCheck === true) {
-            const loginToken = jsonwebtoken_1.default.sign({ email: email, name: user.name }, process.env.hiddenKey, { expiresIn: "7d" });
+            const loginToken = jsonwebtoken_1.default.sign({ email: email, name: user.name }, process.env.JWT_SECRET, { expiresIn: "7d" });
             await db_config_1.default.user.update({ where: { email: email }, data: { last_login: new Date().toLocaleDateString() } });
             res.json({ exists: true, success: true, message: "Logged in successfully", token: loginToken });
         }

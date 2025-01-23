@@ -28,7 +28,7 @@ const rentCar = async (req, res) => {
                 },
             });
             const rentedCarID = rentedCar.id;
-            const token = jsonwebtoken_1.default.sign({ id: rentedCarID }, process.env.hiddenKey, {
+            const token = jsonwebtoken_1.default.sign({ id: rentedCarID }, process.env.JWT_SECRET, {
                 expiresIn: '24h',
             });
             res.json({ success: true, message: 'Car Rented successfully', token: token });

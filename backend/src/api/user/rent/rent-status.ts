@@ -1,5 +1,5 @@
 import { Response } from "express"
-import prisma from "../../../../db.config";
+import prisma from "../../../config/db.config";
 import { UserRequest } from "../../../types";
 
 export const rentStatus = async (req: UserRequest, res: Response) => {

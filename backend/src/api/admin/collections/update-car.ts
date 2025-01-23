@@ -1,4 +1,4 @@
-import prisma from "../../../../db.config";
+import prisma from "../../../config/db.config";
 import { Request, Response } from "express"
 import { AdminRequest } from "../../../types";
 

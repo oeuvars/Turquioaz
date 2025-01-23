@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import jwt from "jsonwebtoken";
-import prisma from "../../../../db.config";
+import prisma from "../../../config/db.config";
 import bcrypt from "bcrypt";
 
 export const login = async (req: Request, res: Response) => {

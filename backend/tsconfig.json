@@ -18,6 +18,6 @@
         "noUnusedParameters": false,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["src/**/*", "db.config.ts"],
+    "include": ["src/**/*", "src/config/db.config.ts"],
     "exclude": ["node_modules"]
 }

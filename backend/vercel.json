@@ -16,5 +16,14 @@
     "deploymentEnabled": {
       "main": true
     }
+  },
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "src/index.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
   }
 }

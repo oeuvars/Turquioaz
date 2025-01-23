@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import jwt from "jsonwebtoken";
 import { sendMail } from "../../../helpers/send-mail";
-import prisma from "../../../../db.config";
+import prisma from "../../../config/db.config";
 import { sendOTP } from "../../../helpers/send-OTP";
 
 export const forgotPassword = async (req: Request, res: Response) => {

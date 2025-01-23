@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import prisma from "../../../../db.config";
+import prisma from "../../../config/db.config";
 
 export const singleCar = async (req: Request, res: Response) => {
    const id = parseInt(req.params.id);

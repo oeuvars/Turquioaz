@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import prisma from "../../../../db.config";
+import prisma from "../../../config/db.config";
 import { shuffleCars } from "../../../helpers/shuffle-cars";
 
 let lastShuffleTime: Date | null = null;

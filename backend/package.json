@@ -7,7 +7,9 @@
     "dev": "nodemon",
     "build": "tsc -b",
     "db:push": "prisma db push",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma db push"
   },
   "keywords": [],
   "author": "",

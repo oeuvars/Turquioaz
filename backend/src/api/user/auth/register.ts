@@ -5,9 +5,10 @@ import prisma from "../../../config/db.config";
 import { sendOTP } from "../../../helpers/send-OTP";
 import bcrypt from "bcrypt";
 
-const mailSubject = "Verification from Rent&Ride"
+const mailSubject = "Please verify | Turquioaz"
 
 export const register = async (req: Request, res: Response) => {
+  console.log(req.body)
    const { name, email, password } = req.body;
    const existingUser = await prisma.user.findUnique({ where: { email: email }});
    if (existingUser) {

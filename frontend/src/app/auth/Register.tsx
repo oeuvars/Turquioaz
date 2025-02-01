@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import Cookies from 'js-cookie';
 import { motion } from "framer-motion";
 import Navbar from '@/app/home/Navbar';
@@ -32,10 +32,11 @@ const Register = () => {
       exit: {opacity: 0, x: 0, y: -200}
     }
     const navigate = useNavigate()
-    const handleAddUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleAddUser = async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (user.email && user.name && user.password && !loading) {
          setLoading(true);
+         console.log("first", user)
          const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/register`, user)
          const result: Result = response.data
          if (result.success === false ) {

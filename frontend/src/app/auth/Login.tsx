@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import Cookies from 'js-cookie';
 import { motion } from "framer-motion";
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,8 +6,14 @@ import axios from 'axios';
 import Navbar from '@/app/home/Navbar';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import Footer from '@/app/home/Footer';
-import { LoginProps } from '@/types/Login';
 import { showToast } from '@/helpers/showToats';
+
+type Result = {
+   exists: boolean;
+   success: boolean;
+   message: string;
+   token: string | null
+}
 
 const Login = () => {
     const variants = {
@@ -25,12 +31,13 @@ const Login = () => {
       setShowPassword(!showPassword);
     }
     const navigate = useNavigate()
-    const handleUserLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleUserLogin = async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (user.email && user.password && !loading) {
          setLoading(true);
+         console.log(user)
          const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/login`, user);
-         const result: LoginProps = response.data;
+         const result: Result = response.data;
          if (result.success === true) {
             Cookies.set('LoginCookie', result.token! , { expires: 7 })
             navigate(-1)

@@ -6,11 +6,10 @@ import adminRoutes from './routes/admin-routes';
 import prisma from './config/db.config';
 
 const app = express();
-
 const port = process.env.PORT || 3000;
 
 app.use(cors({ credentials: true }));
-
+app.use(express.json())
 app.use(cors({
     origin: ['https://turquioaz.vercel.app', 'http://localhost:3000'],
     credentials: true,
